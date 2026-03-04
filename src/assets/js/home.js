@@ -232,13 +232,26 @@ class Home extends BasePage {
         const checkProductsLoaded = () => {
             productCards = getProductCards();
             
+            console.log('Checking products loaded:', productCards.length, 'found');
+            
             if (productCards.length > 0) {
+                console.log('Products found, initializing slider...');
                 initSlider();
             } else {
                 // Check if products-list is hydrated/ready
-                if (productsList.classList.contains('hydrated') || productsList.querySelector('.s-products-list')) {
-                    // Give it a bit more time for cards to render
-                    setTimeout(initSlider, 300);
+                const productsListEl = productsList.querySelector('.s-products-list');
+                if (productsList.classList.contains('hydrated') || productsListEl) {
+                    console.log('Products list element found, waiting for cards...');
+                    // Give it more time for cards to render
+                    setTimeout(() => {
+                        productCards = getProductCards();
+                        if (productCards.length > 0) {
+                            console.log('Products loaded after delay:', productCards.length);
+                            initSlider();
+                        } else {
+                            setTimeout(checkProductsLoaded, 500);
+                        }
+                    }, 800);
                 } else {
                     // Try again after a delay
                     setTimeout(checkProductsLoaded, 500);
@@ -252,7 +265,24 @@ class Home extends BasePage {
         // Also listen for Salla ready event if available
         if (typeof salla !== 'undefined' && salla.onReady) {
             salla.onReady(() => {
+                console.log('Salla ready, checking products...');
                 setTimeout(checkProductsLoaded, 500);
+            });
+        }
+
+        // Also listen for DOM mutations to catch when products are added
+        if (typeof MutationObserver !== 'undefined') {
+            const observer = new MutationObserver(() => {
+                productCards = getProductCards();
+                if (productCards.length > 0 && totalGroups === 0) {
+                    console.log('Products detected via mutation observer:', productCards.length);
+                    initSlider();
+                }
+            });
+            
+            observer.observe(productsList, {
+                childList: true,
+                subtree: true
             });
         }
     }
