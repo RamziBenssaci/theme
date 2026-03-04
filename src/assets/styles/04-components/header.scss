@@ -83,6 +83,11 @@
   .search-btn{
     @apply grow sm:grow-0 justify-start md:justify-center;
   }
+  
+  // Hide search in top nav (moved to main nav)
+  .header-search {
+    display: none;
+  }
 }
 
 // contacs menu items - pages menu items
@@ -372,24 +377,122 @@ salla-user-menu{
   }
 }
 
-// Main nav search bar styling
-.main-nav-container .header-search {
-  flex: 1;
-  max-width: 600px;
-  margin: 0 auto;
-  
-  salla-search {
+// Main nav search bar styling - match reference design
+.main-nav-container {
+  .header-search {
+    flex: 1;
+    max-width: 600px;
+    margin: 0 20px;
     display: flex;
-    align-items: stretch;
-    background-color: #ffffff;
-    border-radius: 0;
-    overflow: hidden;
+    align-items: center;
     
-    .s-search-input {
-      flex: 1;
-      padding: 12px 15px;
-      border: none;
-      font-size: 14px;
+    salla-search {
+      display: flex;
+      align-items: stretch;
+      width: 100%;
+      height: 48px;
+      
+      .s-search-container {
+        display: flex;
+        width: 100%;
+        align-items: stretch;
+        border-radius: 0 !important;
+        background-color: #ffffff;
+        overflow: hidden;
+      }
+      
+      .s-search-input-wrapper {
+        flex: 1;
+        display: flex;
+        align-items: center;
+      }
+      
+      .s-search-input {
+        flex: 1;
+        padding: 12px 15px;
+        border: none;
+        font-size: 14px;
+        background-color: #ffffff;
+        color: #111;
+        border-radius: 0;
+        height: 48px;
+        
+        &::placeholder {
+          color: #999;
+        }
+        
+        &:focus {
+          outline: none;
+        }
+      }
+      
+      // Red search button on the right
+      .s-search-action,
+      button[type="submit"],
+      .s-search-submit {
+        background-color: #bf3617 !important;
+        color: #ffffff !important;
+        border: none !important;
+        padding: 12px 20px !important;
+        cursor: pointer;
+        border-radius: 0 !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s;
+        min-width: 50px;
+        height: 48px;
+        
+        &:hover {
+          background-color: #a02d12 !important;
+        }
+        
+        i, svg {
+          color: #ffffff !important;
+        }
+      }
+    }
+  }
+  
+  // Layout: logo left, search center, icons right
+  .container > div.flex.items-stretch {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    
+    > div:first-child {
+      flex-shrink: 0;
+    }
+    
+    > div:last-child {
+      flex-shrink: 0;
+    }
+  }
+  
+  // Ensure proper spacing and alignment
+  .flex.items-stretch {
+    align-items: center;
+  }
+  
+  // Responsive adjustments for search bar
+  @media (max-width: 1024px) {
+    .header-search {
+      max-width: 100%;
+      margin: 0 10px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .header-search {
+      order: 3;
+      width: 100%;
+      max-width: 100%;
+      margin: 10px 0 0 0;
+    }
+    
+    .flex.items-stretch {
+      flex-wrap: wrap;
     }
   }
 }

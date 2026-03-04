@@ -34,11 +34,6 @@
                   <i class="sicon-location rtl:ml-1 ltr:mr-1"></i> {{ store.scope.name }}
               </button>
           {% endif %}
-
-          {# Search bar #}
-          <div class="header-search flex-1">
-            <salla-search inline oval height="36"></salla-search>
-          </div>
       </div>
 
       <salla-contacts is-header></salla-contacts>
@@ -64,6 +59,12 @@
                       </a>
                       <custom-main-menu></custom-main-menu>
                   </div>
+                  
+                  {# Search bar in main nav - positioned center #}
+                  <div class="header-search flex-1" style="max-width: 600px; margin: 0 20px;">
+                    <salla-search inline height="48"></salla-search>
+                  </div>
+                  
                   <div class="flex items-center justify-end my-2.5">
                       {% if user.type=='user' %}
                         <salla-user-menu avatar-only show-header></salla-user-menu>
