@@ -4,9 +4,8 @@
         "en": "mobex"
     },
     "repository": "https://github.com/RamziBenssaci/theme",
-    "developer": "ramzi benssaci",
+    "author_email": "support@salla.sa",
     "author": "ramzi benssaci",
-    "author_email": "ramzi.benssaci@gmail.com",
     "features": [
         "mega-menu",
         "fonts",

@@ -1,11 +1,11 @@
 {
-  "name": "mobex",
+  "name": "theme-mobex",
   "version": "1.0.3",
   "description": "Salla Theme",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SallaApp/theme-raed.git"
+    "url": "git+https://github.com/RamziBenssaci/theme.git"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
