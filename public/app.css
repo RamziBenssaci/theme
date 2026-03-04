@@ -30059,7 +30059,7 @@ section.hero-section .hero-slide .hero-image img {
 section.hero-section .hero-content {
   display: flex !important;
   justify-content: flex-end !important;
-  align-items: center !important;
+  align-items: flex-end !important;
   max-width: 1200px !important;
   margin: 0 auto !important;
   padding: 80px 20px !important;
@@ -30069,9 +30069,12 @@ section.hero-section .hero-content {
   min-height: 500px !important;
 }
 section.hero-section .hero-text {
-  flex: 1 !important;
+  flex: 0 0 auto !important;
   max-width: 500px !important;
-  z-index: 2 !important;
+  z-index: 3 !important;
+  text-align: right !important;
+  margin-bottom: 100px !important;
+  margin-right: 20px !important;
 }
 section.hero-section .hero-text h2 {
   font-size: 48px !important;
@@ -30107,12 +30110,6 @@ section.hero-section .shop-now-btn:hover {
 section.hero-section .shop-now-btn i {
   font-size: 14px !important;
 }
-section.hero-section .hero-text {
-  flex: 1 !important;
-  max-width: 500px !important;
-  z-index: 3 !important;
-  position: relative !important;
-}
 section.hero-section .hero-slide .price-badge {
   position: absolute !important;
   bottom: 20px !important;
@@ -30124,6 +30121,10 @@ section.hero-section .hero-slide .price-badge {
   font-weight: bold !important;
   font-size: 18px !important;
   z-index: 3 !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  width: calc(100% - 40px) !important;
+  text-align: right !important;
 }
 section.hero-section .slider-dots {
   position: absolute !important;
