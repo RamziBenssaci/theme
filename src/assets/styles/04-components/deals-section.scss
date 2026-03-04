@@ -185,7 +185,7 @@
   max-height: none !important;
 }
 
-/* Product Image - Compact */
+/* Product Image - Compact with Gallery */
 .deals-section .s-product-card-image {
   width: 100% !important;
   padding: 12px !important;
@@ -197,6 +197,7 @@
   min-height: 150px !important;
   max-height: 180px !important;
   position: relative !important;
+  overflow: hidden !important;
   
   img {
     max-width: 100% !important;
@@ -211,6 +212,68 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    position: relative !important;
+  }
+  
+  /* Image Gallery Wrapper */
+  .product-image-gallery-wrapper {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+  
+  /* Image Gallery - Scrollable */
+  .product-image-gallery {
+    display: flex !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE/Edge */
+    
+    &::-webkit-scrollbar {
+      display: none !important; /* Chrome/Safari */
+    }
+    
+    img {
+      flex-shrink: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain !important;
+      scroll-snap-align: start !important;
+      cursor: pointer !important;
+    }
+  }
+  
+  /* Gallery Dots */
+  .product-gallery-dots {
+    position: absolute !important;
+    bottom: 15px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    display: flex !important;
+    gap: 4px !important;
+    z-index: 10 !important;
+    
+    .gallery-dot {
+      width: 6px !important;
+      height: 6px !important;
+      border-radius: 50% !important;
+      background-color: rgba(255, 255, 255, 0.5) !important;
+      cursor: pointer !important;
+      transition: all 0.3s !important;
+      
+      &.active {
+        background-color: #034c8c !important;
+        width: 8px !important;
+        height: 8px !important;
+      }
+    }
   }
 }
 
