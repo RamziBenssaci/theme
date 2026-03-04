@@ -45,19 +45,22 @@
     width: 100%;
     overflow: visible;
     
+    // Override .main-menu flex-wrap from menus.scss
+    .main-menu,
     ul {
       display: flex !important;
-      align-items: center;
-      justify-content: center;
+      align-items: center !important;
+      justify-content: center !important;
       list-style: none !important;
       margin: 0 !important;
       padding: 0 !important;
-      gap: 30px;
+      gap: 30px !important;
       flex-wrap: nowrap !important;
       white-space: nowrap !important;
       overflow: visible !important;
-      width: auto;
-      max-width: none;
+      width: auto !important;
+      max-width: none !important;
+      flex-direction: row !important;
     }
     
     li {
@@ -65,6 +68,19 @@
       flex-shrink: 0 !important;
       white-space: nowrap !important;
       float: none !important;
+      position: relative !important;
+      
+      // Override root-level padding that might cause wrapping
+      &.root-level {
+        display: inline-block !important;
+        
+        > a {
+          padding-top: 0 !important;
+          padding-bottom: 0 !important;
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+      }
     }
     
     a {
@@ -94,5 +110,17 @@
   .flex.items-center.justify-between {
     flex-wrap: nowrap !important;
     overflow: visible !important;
+  }
+  
+  // Additional override for any nested .main-menu that might be causing wrapping
+  * {
+    &.main-menu {
+      flex-wrap: nowrap !important;
+      
+      li {
+        display: inline-block !important;
+        flex-shrink: 0 !important;
+      }
+    }
   }
 }

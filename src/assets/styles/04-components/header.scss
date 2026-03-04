@@ -426,33 +426,42 @@
       text-decoration: none !important;
       display: flex !important;
       align-items: center;
-      gap: 5px;
+      gap: 8px;
       font-size: 14px;
     }
     
     .s-cart-summary-icon {
+      display: flex !important;
+      align-items: center;
+      
       i, svg {
         color: #ffffff !important;
-        font-size: 18px;
-        width: 18px;
-        height: 18px;
+        font-size: 20px !important;
+        width: 20px !important;
+        height: 20px !important;
+        display: block !important;
       }
     }
     
+    // Cart icon slot styling
     .cart-icon,
+    i[slot="icon"],
+    i.sicon-shopping-bag,
     i {
       color: #ffffff !important;
-      font-size: 18px !important;
+      font-size: 20px !important;
       display: inline-block !important;
       visibility: visible !important;
       opacity: 1 !important;
+      width: 20px !important;
+      height: 20px !important;
     }
     
     .s-cart-summary-total {
       color: #ffffff !important;
       font-weight: normal !important;
       font-size: 14px;
-      margin-left: 5px;
+      margin-left: 0;
     }
     
     // Style count to show as "Cart 0 items"
@@ -613,14 +622,16 @@ salla-user-menu{
         overflow: visible !important;
         height: 48px;
         box-shadow: none !important;
+        flex-direction: row !important; // Ensure horizontal layout
       }
       
       .s-search-input-wrapper {
-        display: flex;
+        display: flex !important;
         flex: 1;
         align-items: stretch;
         background-color: #ffffff;
         border: none;
+        position: relative;
       }
       
       .s-search-input {
@@ -642,10 +653,11 @@ salla-user-menu{
         }
       }
       
-      // Red search button on the right - EXACT match (red background, search icon MUST be visible)
+      // Red search button on the right - EXACT match (red background, search icon MUST be visible at the END)
       .s-search-action,
       button[type="submit"],
-      .s-search-submit {
+      .s-search-submit,
+      [type="submit"] {
         background-color: #bf3617 !important;
         color: #ffffff !important;
         border: none !important;
@@ -653,18 +665,21 @@ salla-user-menu{
         cursor: pointer;
         border-radius: 0 !important;
         display: flex !important;
-        align-items: center;
-        justify-content: center;
+        align-items: center !important;
+        justify-content: center !important;
         transition: background-color 0.3s;
-        min-width: 50px;
-        height: 48px;
-        width: auto;
+        min-width: 50px !important;
+        height: 48px !important;
+        width: auto !important;
+        order: 999 !important; // Ensure it's at the end
+        margin-left: 0 !important;
         
         &:hover {
           background-color: #a02d12 !important;
         }
         
-        i, svg {
+        // Show search icon - ensure it's visible
+        i, svg, .sicon-search, [class*="icon"] {
           color: #ffffff !important;
           font-size: 18px !important;
           display: block !important;
@@ -672,18 +687,18 @@ salla-user-menu{
           opacity: 1 !important;
           width: 18px !important;
           height: 18px !important;
+          margin: 0 !important;
         }
         
-        // Force search icon visibility with SVG
-        &::after {
-          content: '';
-          display: inline-block;
-          width: 18px;
-          height: 18px;
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E");
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: center;
+        // Force search icon visibility with SVG fallback if icon not showing
+        &::before {
+          content: '\e91f'; // Salla search icon code
+          font-family: 'sallaicons' !important;
+          color: #ffffff !important;
+          font-size: 18px !important;
+          display: inline-block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
         }
       }
     }
