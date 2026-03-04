@@ -280,25 +280,51 @@
     background-color: transparent !important;
   }
   
-  /* Hide Salla's default icons - More specific targeting */
-  i,
-  .sicon,
-  [class*="icon"],
-  svg,
-  salla-button i,
-  salla-button .sicon,
-  salla-button svg,
-  button i,
-  button .sicon,
-  button svg,
-  .s-button i,
-  .s-button .sicon,
-  .s-button svg {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    width: 0 !important;
-    height: 0 !important;
+  /* Hide ALL Salla's default icons and arrows - Very aggressive targeting */
+  salla-add-product-button,
+  salla-button {
+    i,
+    .sicon,
+    [class*="icon"],
+    svg,
+    [class*="arrow"],
+    [class*="Arrow"],
+    * i,
+    * .sicon,
+    * [class*="icon"],
+    * svg {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+      font-size: 0 !important;
+      line-height: 0 !important;
+    }
+  }
+  
+  salla-add-product-button button,
+  salla-button button,
+  button,
+  .s-button {
+    i,
+    .sicon,
+    [class*="icon"],
+    svg,
+    [class*="arrow"],
+    [class*="Arrow"],
+    * i,
+    * .sicon,
+    * [class*="icon"],
+    * svg {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+      font-size: 0 !important;
+      line-height: 0 !important;
+    }
   }
   
   &::after {
