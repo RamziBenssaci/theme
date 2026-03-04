@@ -33,11 +33,17 @@
                         <i class="sicon-menu text-primary text-2xl"></i>
                       </a>
                       <a class="navbar-brand" href="{{ store.url }}">
-                          <img fetchpriority="high" width="100%" height="100%" loading="eager" src="{{ store.logo|cdn(175) }}" alt="{{ store.name }} logo">
+                          {# MOBEX AUTO PARTS & ACCESSORIES Logo #}
                           {% if is_page('index') %}
-                            <h1 class="sr-only">{{ store.name }}</h1>
+                            <h1 class="mobex-logo">
+                              <span class="mobex-title">MOBEX</span>
+                              <span class="mobex-subtitle">AUTO PARTS & ACCESSORIES</span>
+                            </h1>
                           {% else %}
-                            <h2 class="sr-only">{{ store.name }}</h2>
+                            <h2 class="mobex-logo">
+                              <span class="mobex-title">MOBEX</span>
+                              <span class="mobex-subtitle">AUTO PARTS & ACCESSORIES</span>
+                            </h2>
                           {% endif %}
                       </a>
                   </div>
@@ -83,9 +89,9 @@
                           </button>
                       {% endif %}
                       
-                      {# Cart - Match reference design with fa-shopping-cart icon style #}
+                      {# Cart - Match reference design with Font Awesome shopping cart icon #}
                       <salla-cart-summary class="cart-link ml-4 rtl:ml-[unset] rtl:mr-4">
-                        <i slot="icon" class="sicon-shopping-bag cart-icon"></i>
+                        <i slot="icon" class="fas fa-shopping-cart cart-icon"></i>
                       </salla-cart-summary>
                   </div>
               </div>
@@ -94,10 +100,10 @@
       </div>
   </div>
   
-  {# Navigation Row 2: Nav Links | All Categories Button #}
+  {# Navigation Row 2: All Categories Button | Nav Links (all on same line) #}
   <nav class="main-nav-row-2">
       <div class="container">
-          <div class="flex items-center justify-between">
+          <div class="flex items-center">
               {# All Categories Button - Left #}
               <a href="#mobile-menu" class="all-categories-btn mburger mburger--collapse" aria-label="All Categories">
                   <i class="sicon-menu rtl:ml-2 ltr:mr-2"></i>
@@ -105,13 +111,10 @@
                   <i class="sicon-sar rtl:mr-2 ltr:ml-2"></i>
               </a>
               
-              {# Navigation Menu - Center #}
-              <div class="flex-1 flex justify-center">
+              {# Navigation Menu - Center (same line as button) #}
+              <div class="flex-1 flex justify-center nav-menu-wrapper">
                   <custom-main-menu></custom-main-menu>
               </div>
-              
-              {# Empty space for alignment #}
-              <div style="width: 150px;"></div>
           </div>
       </div>
   </nav>

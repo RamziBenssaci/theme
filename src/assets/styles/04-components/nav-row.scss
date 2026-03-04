@@ -5,11 +5,11 @@
   
   .container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 20px;
   }
   
-  // All Categories Button - Left
+  // All Categories Button - Left (same line as menu)
   .all-categories-btn {
     background-color: #f29f05;
     color: #000000;
@@ -37,6 +37,14 @@
       color: #000000;
       font-size: 14px;
     }
+  }
+  
+  // Nav menu wrapper - ensures menu is on same line
+  .nav-menu-wrapper {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0; // Allow flex shrinking
   }
   
   // Navigation Menu - Center, ONE LINE, no wrapping - FIXED
