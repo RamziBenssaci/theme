@@ -159,15 +159,95 @@
     color: #ffffff;
   }
   
-  // Main menu links styling
+  // Row 1 styling
+  .main-nav-row-1 {
+    margin-bottom: 0;
+  }
+  
+  // Row 2 styling - All Categories + Nav Links
+  .main-nav-row-2 {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    min-height: 50px;
+    align-items: center;
+  }
+  
+  // All Categories Button
+  .all-categories-btn {
+    background-color: #f29f05;
+    color: #000000;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+    font-size: 14px;
+    text-decoration: none;
+    
+    &:hover {
+      background-color: #e68f04;
+      color: #000000;
+    }
+    
+    i {
+      color: #000000;
+    }
+  }
+  
+  // Main menu links styling - centered in row 2
   .main-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
     a {
       color: #ffffff;
       text-decoration: none;
       transition: all 0.3s;
+      padding: 8px 15px;
       
       &:hover {
         color: #ffffff;
+        text-decoration: underline;
+        text-decoration-color: #bf3617;
+      }
+    }
+  }
+  
+  // Custom main menu component styling
+  custom-main-menu {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 10px;
+    }
+    
+    li {
+      display: inline-block;
+    }
+    
+    a {
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 15px;
+      transition: all 0.3s;
+      
+      &:hover {
         text-decoration: underline;
         text-decoration-color: #bf3617;
       }
@@ -475,15 +555,30 @@ salla-user-menu{
     align-items: center;
   }
   
-  // Responsive adjustments for search bar
+  // Responsive adjustments
   @media (max-width: 1024px) {
     .header-search {
       max-width: 100%;
       margin: 0 10px;
     }
+    
+    .main-nav-row-2 {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .all-categories-btn {
+      font-size: 12px;
+      padding: 10px 15px;
+    }
   }
   
   @media (max-width: 768px) {
+    .main-nav-row-1 {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
     .header-search {
       order: 3;
       width: 100%;
@@ -491,8 +586,19 @@ salla-user-menu{
       margin: 10px 0 0 0;
     }
     
-    .flex.items-stretch {
-      flex-wrap: wrap;
+    .main-nav-row-2 {
+      flex-direction: column;
+      align-items: stretch;
+      
+      .all-categories-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      custom-main-menu {
+        width: 100%;
+        margin-top: 10px;
+      }
     }
   }
 }
