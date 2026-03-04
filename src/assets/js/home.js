@@ -1,28 +1,17 @@
 import "lite-youtube-embed";
 import BasePage from "./base-page";
 import Lightbox from "fslightbox";
+import ProductImageGallery from "./product-image-gallery";
 window.fslightbox = Lightbox;
-
-// Import product image gallery
-import "./product-image-gallery.js";
 
 class Home extends BasePage {
     onReady() {
         this.initFeaturedTabs();
         this.initDealsSection();
-        this.initProductImageGalleries();
-    }
-    
-    /**
-     * Initialize product image galleries
-     */
-    initProductImageGalleries() {
-        // Wait a bit for products to load
-        setTimeout(() => {
-            if (window.ProductImageGallery) {
-                new window.ProductImageGallery();
-            }
-        }, 1000);
+        this.initTopBannerCountdown();
+        
+        // Initialize product image gallery
+        new ProductImageGallery();
     }
 
     /**
@@ -50,58 +39,98 @@ class Home extends BasePage {
      */
     initDealsSection() {
         try {
-            // Countdown Timer for Deals Section
-            const initDealsCountdown = () => {
-                const dealsTimerBoxes = document.querySelectorAll('.deals-countdown .timer-box');
-                if (dealsTimerBoxes.length > 0) {
-                    let dealsHours = 9;
-                    let dealsMinutes = 20;
-                    let dealsSeconds = 54;
-                    let dealsMilliseconds = 27;
-
-                    const updateTimer = () => {
-                        dealsMilliseconds--;
-                        if (dealsMilliseconds < 0) {
-                            dealsMilliseconds = 99;
-                            dealsSeconds--;
-                            if (dealsSeconds < 0) {
-                                dealsSeconds = 59;
-                                dealsMinutes--;
-                                if (dealsMinutes < 0) {
-                                    dealsMinutes = 59;
-                                    dealsHours--;
-                                    if (dealsHours < 0) {
-                                        dealsHours = 23;
-                                    }
-                                }
-                            }
-                        }
-
-                        if (dealsTimerBoxes[0]) dealsTimerBoxes[0].textContent = String(dealsHours).padStart(2, '0');
-                        if (dealsTimerBoxes[1]) dealsTimerBoxes[1].textContent = String(dealsMinutes).padStart(2, '0');
-                        if (dealsTimerBoxes[2]) dealsTimerBoxes[2].textContent = String(dealsSeconds).padStart(2, '0');
-                        if (dealsTimerBoxes[3]) dealsTimerBoxes[3].textContent = String(dealsMilliseconds).padStart(2, '0');
-                    };
-
-                    // Update every 10ms for milliseconds
-                    setInterval(updateTimer, 10);
-                    console.log('Deals countdown timer started');
-                } else {
-                    // Retry if not enough elements found
-                    setTimeout(initDealsCountdown, 500);
-                }
-            };
+            // Countdown Timer - Deals Section
+            this.initDealsCountdown();
             
-            // Try immediately and also after delays
-            initDealsCountdown();
-            setTimeout(initDealsCountdown, 500);
-            setTimeout(initDealsCountdown, 1500);
-
             // Product Slider - Show 4 products at a time
             this.initDealsProductSlider();
         } catch (error) {
             console.error('Error initializing deals section:', error);
         }
+    }
+
+    /**
+     * Initialize countdown timer for deals section
+     */
+    initDealsCountdown() {
+        const dealsTimerBoxes = document.querySelectorAll('.deals-countdown .timer-box');
+        if (dealsTimerBoxes.length === 0) return;
+
+        let dealsHours = parseInt(dealsTimerBoxes[0]?.textContent || '09', 10);
+        let dealsMinutes = parseInt(dealsTimerBoxes[1]?.textContent || '20', 10);
+        let dealsSeconds = parseInt(dealsTimerBoxes[2]?.textContent || '54', 10);
+        let dealsMilliseconds = parseInt(dealsTimerBoxes[3]?.textContent || '27', 10);
+
+        const updateTimer = () => {
+            dealsMilliseconds--;
+            if (dealsMilliseconds < 0) {
+                dealsMilliseconds = 99;
+                dealsSeconds--;
+                if (dealsSeconds < 0) {
+                    dealsSeconds = 59;
+                    dealsMinutes--;
+                    if (dealsMinutes < 0) {
+                        dealsMinutes = 59;
+                        dealsHours--;
+                        if (dealsHours < 0) {
+                            dealsHours = 23;
+                        }
+                    }
+                }
+            }
+
+            if (dealsTimerBoxes[0]) dealsTimerBoxes[0].textContent = String(dealsHours).padStart(2, '0');
+            if (dealsTimerBoxes[1]) dealsTimerBoxes[1].textContent = String(dealsMinutes).padStart(2, '0');
+            if (dealsTimerBoxes[2]) dealsTimerBoxes[2].textContent = String(dealsSeconds).padStart(2, '0');
+            if (dealsTimerBoxes[3]) dealsTimerBoxes[3].textContent = String(dealsMilliseconds).padStart(2, '0');
+        };
+
+        // Update every 10ms for milliseconds
+        setInterval(updateTimer, 10);
+    }
+
+    /**
+     * Initialize countdown timer for top banner
+     */
+    initTopBannerCountdown() {
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+        const millisecondsEl = document.getElementById('milliseconds');
+        
+        if (!hoursEl || !minutesEl || !secondsEl || !millisecondsEl) return;
+
+        let hours = parseInt(hoursEl.textContent || '09', 10);
+        let minutes = parseInt(minutesEl.textContent || '15', 10);
+        let seconds = parseInt(secondsEl.textContent || '29', 10);
+        let milliseconds = parseInt(millisecondsEl.textContent || '14', 10);
+
+        const updateTimer = () => {
+            milliseconds--;
+            if (milliseconds < 0) {
+                milliseconds = 99;
+                seconds--;
+                if (seconds < 0) {
+                    seconds = 59;
+                    minutes--;
+                    if (minutes < 0) {
+                        minutes = 59;
+                        hours--;
+                        if (hours < 0) {
+                            hours = 23;
+                        }
+                    }
+                }
+            }
+
+            hoursEl.textContent = String(hours).padStart(2, '0');
+            minutesEl.textContent = String(minutes).padStart(2, '0');
+            secondsEl.textContent = String(seconds).padStart(2, '0');
+            millisecondsEl.textContent = String(milliseconds).padStart(2, '0');
+        };
+
+        // Update every 10ms for milliseconds
+        setInterval(updateTimer, 10);
     }
 
     /**

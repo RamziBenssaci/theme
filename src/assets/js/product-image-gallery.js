@@ -3,32 +3,24 @@
  * Works with mouse scroll, touch swipe, and auto-scroll on hover
  */
 
-class ProductImageGallery {
+export default class ProductImageGallery {
     constructor() {
         this.init();
     }
 
     init() {
-        // Wait for DOM and Salla to be ready
-        const initGallery = () => {
-            this.setupImageGalleries();
-            this.observeNewProducts();
-        };
-        
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                if (typeof salla !== 'undefined' && salla.onReady) {
-                    salla.onReady(initGallery);
-                } else {
-                    setTimeout(initGallery, 1000);
-                }
+        // Wait for Salla to be ready
+        if (typeof salla !== 'undefined' && salla.onReady) {
+            salla.onReady(() => {
+                this.setupImageGalleries();
+                this.observeNewProducts();
             });
         } else {
-            if (typeof salla !== 'undefined' && salla.onReady) {
-                salla.onReady(initGallery);
-            } else {
-                setTimeout(initGallery, 1000);
-            }
+            // Fallback if salla is not available
+            document.addEventListener('DOMContentLoaded', () => {
+                setTimeout(() => this.setupImageGalleries(), 1000);
+                this.observeNewProducts();
+            });
         }
     }
 
@@ -310,15 +302,4 @@ class ProductImageGallery {
 }
 
 // Export for use in other modules
-window.ProductImageGallery = ProductImageGallery;
-
-// Initialize when DOM is ready (if not imported as module)
-if (typeof module === 'undefined' || !module.exports) {
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-            new ProductImageGallery();
-        });
-    } else {
-        new ProductImageGallery();
-    }
-}
+export { ProductImageGallery };

@@ -22,7 +22,6 @@ class App extends AppHelpers {
     this.initiateModals();
     this.initiateCollapse();
     this.initAttachWishlistListeners();
-    this.initTopBannerCountdown();
     
     // Ensure #more-menu-dropdown exists before running changeMenuDirection
     const menuDirInterval = setInterval(() => {
@@ -299,70 +298,6 @@ isElementLoaded(selector){
     salla.cart.event.onItemAdded((response, prodId) => {
       app.element('salla-cart-summary').animateToCart(app.element(`#product-${prodId} img`));
     });
-  }
-
-  /**
-   * Initialize top banner countdown timer
-   */
-  initTopBannerCountdown() {
-    // Try to find countdown elements - check multiple times as they might load later
-    const initCountdown = () => {
-      const hoursEl = document.getElementById('hours');
-      const minutesEl = document.getElementById('minutes');
-      const secondsEl = document.getElementById('seconds');
-      const millisecondsEl = document.getElementById('milliseconds');
-      
-      if (!hoursEl || !minutesEl || !secondsEl) {
-        // Try again after a delay
-        setTimeout(initCountdown, 500);
-        return;
-      }
-      
-      let hours = parseInt(hoursEl.textContent.trim()) || 9;
-      let minutes = parseInt(minutesEl.textContent.trim()) || 15;
-      let seconds = parseInt(secondsEl.textContent.trim()) || 29;
-      let milliseconds = millisecondsEl ? (parseInt(millisecondsEl.textContent.trim()) || 14) : 0;
-      
-      console.log('Top banner countdown initialized:', hours, minutes, seconds, milliseconds);
-      
-      const updateTimer = () => {
-        if (millisecondsEl) {
-          milliseconds--;
-          if (milliseconds < 0) {
-            milliseconds = 99;
-            seconds--;
-          }
-          if (millisecondsEl) millisecondsEl.textContent = String(milliseconds).padStart(2, '0');
-        } else {
-          seconds--;
-        }
-        
-        if (seconds < 0) {
-          seconds = 59;
-          minutes--;
-          if (minutes < 0) {
-            minutes = 59;
-            hours--;
-            if (hours < 0) {
-              hours = 23;
-            }
-          }
-        }
-        
-        hoursEl.textContent = String(hours).padStart(2, '0');
-        minutesEl.textContent = String(minutes).padStart(2, '0');
-        secondsEl.textContent = String(seconds).padStart(2, '0');
-      };
-      
-      // Update every 10ms if milliseconds exist, otherwise every second
-      const interval = millisecondsEl ? 10 : 1000;
-      setInterval(updateTimer, interval);
-    };
-    
-    // Start initialization - try multiple times
-    initCountdown();
-    setTimeout(initCountdown, 1000);
-    setTimeout(initCountdown, 2000);
   }
 }
 
