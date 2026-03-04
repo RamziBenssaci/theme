@@ -11,17 +11,17 @@
     <section class="hero-section">
         <div class="hero-slider">
             <div class="hero-slide active">
+                <div class="hero-image">
+                    <img src="{{ 'images/slider.png'|asset }}" alt="Hero Banner" onerror="this.src='{{ 'images/placeholder.png'|asset }}'">
+                </div>
                 <div class="hero-content">
                     <div class="hero-text">
                         <h2>JUMP STARTERS</h2>
                         <p>START BATTERIES IN SECONDS</p>
                         <button class="shop-now-btn">Shop now <i class="fas fa-arrow-right"></i></button>
                     </div>
-                    <div class="hero-image">
-                        <img src="{{ 'images/slider.png'|asset }}" alt="Hero Banner" onerror="this.src='{{ 'images/placeholder.png'|asset }}'">
-                        <div class="price-badge">FROM $49.99</div>
-                    </div>
                 </div>
+                <div class="price-badge">FROM $49.99</div>
             </div>
         </div>
         
