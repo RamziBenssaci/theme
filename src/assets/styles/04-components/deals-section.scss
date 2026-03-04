@@ -115,21 +115,15 @@
   position: relative !important;
 }
 
-/* Deals Slider - Override Salla styles */
-.deals-section salla-products-slider {
+/* Deals Products List - Override Salla styles */
+.deals-section salla-products-list {
   display: block !important;
   
-  .s-products-slider {
-    background-color: transparent !important;
-  }
-  
-  /* Force grid layout for products */
-  .s-products-list,
-  .swiper-wrapper {
+  .s-products-list {
     display: grid !important;
     grid-template-columns: repeat(4, 1fr) !important;
     gap: 20px !important;
-    transform: none !important;
+    background-color: transparent !important;
     
     @media (max-width: 1200px) {
       grid-template-columns: repeat(3, 1fr) !important;
@@ -145,24 +139,6 @@
       grid-template-columns: 1fr !important;
       gap: 12px !important;
     }
-  }
-  
-  /* Override swiper slide styles */
-  .swiper-slide {
-    width: auto !important;
-    height: auto !important;
-  }
-  
-  /* Hide default Salla slider controls if any */
-  .swiper-button-next,
-  .swiper-button-prev,
-  .swiper-pagination {
-    display: none !important;
-  }
-  
-  /* Ensure swiper container doesn't overflow */
-  .swiper {
-    overflow: visible !important;
   }
 }
 

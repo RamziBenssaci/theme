@@ -34389,65 +34389,34 @@ salla-quantity-input[max="1"] .s-quantity-input-button {
 .deals-products-wrapper {
   position: relative !important;
 }
-/* Deals Slider - Override Salla styles */
-.deals-section salla-products-slider {
+/* Deals Products List - Override Salla styles */
+.deals-section salla-products-list {
   display: block !important;
 }
-.deals-section salla-products-slider .s-products-slider {
-  background-color: transparent !important;
-}
-.deals-section salla-products-slider {
-  /* Force grid layout for products */
-}
-.deals-section salla-products-slider .s-products-list,
-.deals-section salla-products-slider .swiper-wrapper {
+.deals-section salla-products-list .s-products-list {
   display: grid !important;
   grid-template-columns: repeat(4, 1fr) !important;
   grid-gap: 20px !important;
   gap: 20px !important;
-  transform: none !important;
+  background-color: transparent !important;
 }
 @media (max-width: 1200px) {
-  .deals-section salla-products-slider .s-products-list,
-  .deals-section salla-products-slider .swiper-wrapper {
+  .deals-section salla-products-list .s-products-list {
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 16px !important;
   }
 }
 @media (max-width: 768px) {
-  .deals-section salla-products-slider .s-products-list,
-  .deals-section salla-products-slider .swiper-wrapper {
+  .deals-section salla-products-list .s-products-list {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 12px !important;
   }
 }
 @media (max-width: 480px) {
-  .deals-section salla-products-slider .s-products-list,
-  .deals-section salla-products-slider .swiper-wrapper {
+  .deals-section salla-products-list .s-products-list {
     grid-template-columns: 1fr !important;
     gap: 12px !important;
   }
-}
-.deals-section salla-products-slider {
-  /* Override swiper slide styles */
-}
-.deals-section salla-products-slider .swiper-slide {
-  width: auto !important;
-  height: auto !important;
-}
-.deals-section salla-products-slider {
-  /* Hide default Salla slider controls if any */
-}
-.deals-section salla-products-slider .swiper-button-next,
-.deals-section salla-products-slider .swiper-button-prev,
-.deals-section salla-products-slider .swiper-pagination {
-  display: none !important;
-}
-.deals-section salla-products-slider {
-  /* Ensure swiper container doesn't overflow */
-}
-.deals-section salla-products-slider .swiper {
-  overflow: visible !important;
 }
 /* Product Cards in Deals Section - White Background */
 .deals-section .s-product-card-entry {
