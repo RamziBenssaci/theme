@@ -3,10 +3,26 @@ import BasePage from "./base-page";
 import Lightbox from "fslightbox";
 window.fslightbox = Lightbox;
 
+// Import product image gallery
+import "./product-image-gallery.js";
+
 class Home extends BasePage {
     onReady() {
         this.initFeaturedTabs();
         this.initDealsSection();
+        this.initProductImageGalleries();
+    }
+    
+    /**
+     * Initialize product image galleries
+     */
+    initProductImageGalleries() {
+        // Wait a bit for products to load
+        setTimeout(() => {
+            if (window.ProductImageGallery) {
+                new window.ProductImageGallery();
+            }
+        }, 1000);
     }
 
     /**
@@ -34,41 +50,52 @@ class Home extends BasePage {
      */
     initDealsSection() {
         try {
-            // Countdown Timer
-            const dealsTimerBoxes = document.querySelectorAll('.deals-countdown .timer-box');
-            if (dealsTimerBoxes.length > 0) {
-                let dealsHours = 9;
-                let dealsMinutes = 20;
-                let dealsSeconds = 54;
-                let dealsMilliseconds = 27;
+            // Countdown Timer for Deals Section
+            const initDealsCountdown = () => {
+                const dealsTimerBoxes = document.querySelectorAll('.deals-countdown .timer-box');
+                if (dealsTimerBoxes.length > 0) {
+                    let dealsHours = 9;
+                    let dealsMinutes = 20;
+                    let dealsSeconds = 54;
+                    let dealsMilliseconds = 27;
 
-                const updateTimer = () => {
-                    dealsMilliseconds--;
-                    if (dealsMilliseconds < 0) {
-                        dealsMilliseconds = 99;
-                        dealsSeconds--;
-                        if (dealsSeconds < 0) {
-                            dealsSeconds = 59;
-                            dealsMinutes--;
-                            if (dealsMinutes < 0) {
-                                dealsMinutes = 59;
-                                dealsHours--;
-                                if (dealsHours < 0) {
-                                    dealsHours = 23;
+                    const updateTimer = () => {
+                        dealsMilliseconds--;
+                        if (dealsMilliseconds < 0) {
+                            dealsMilliseconds = 99;
+                            dealsSeconds--;
+                            if (dealsSeconds < 0) {
+                                dealsSeconds = 59;
+                                dealsMinutes--;
+                                if (dealsMinutes < 0) {
+                                    dealsMinutes = 59;
+                                    dealsHours--;
+                                    if (dealsHours < 0) {
+                                        dealsHours = 23;
+                                    }
                                 }
                             }
                         }
-                    }
 
-                    if (dealsTimerBoxes[0]) dealsTimerBoxes[0].textContent = String(dealsHours).padStart(2, '0');
-                    if (dealsTimerBoxes[1]) dealsTimerBoxes[1].textContent = String(dealsMinutes).padStart(2, '0');
-                    if (dealsTimerBoxes[2]) dealsTimerBoxes[2].textContent = String(dealsSeconds).padStart(2, '0');
-                    if (dealsTimerBoxes[3]) dealsTimerBoxes[3].textContent = String(dealsMilliseconds).padStart(2, '0');
-                };
+                        if (dealsTimerBoxes[0]) dealsTimerBoxes[0].textContent = String(dealsHours).padStart(2, '0');
+                        if (dealsTimerBoxes[1]) dealsTimerBoxes[1].textContent = String(dealsMinutes).padStart(2, '0');
+                        if (dealsTimerBoxes[2]) dealsTimerBoxes[2].textContent = String(dealsSeconds).padStart(2, '0');
+                        if (dealsTimerBoxes[3]) dealsTimerBoxes[3].textContent = String(dealsMilliseconds).padStart(2, '0');
+                    };
 
-                // Update every 10ms for milliseconds
-                setInterval(updateTimer, 10);
-            }
+                    // Update every 10ms for milliseconds
+                    setInterval(updateTimer, 10);
+                    console.log('Deals countdown timer started');
+                } else {
+                    // Retry if not enough elements found
+                    setTimeout(initDealsCountdown, 500);
+                }
+            };
+            
+            // Try immediately and also after delays
+            initDealsCountdown();
+            setTimeout(initDealsCountdown, 500);
+            setTimeout(initDealsCountdown, 1500);
 
             // Product Slider - Show 4 products at a time
             this.initDealsProductSlider();
