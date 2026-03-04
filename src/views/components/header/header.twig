@@ -72,8 +72,9 @@
                       {% if user.type=='user' %}
                         <salla-user-menu avatar-only show-header></salla-user-menu>
                       {% else %}
-                          <button class="header-btn" aria-label="user-icon" onclick="salla.event.dispatch('login::open')">
-                            <i class="header-btn__icon sicon-user-circle"></i>
+                          <button class="header-btn login-btn" aria-label="Login" onclick="salla.event.dispatch('login::open')">
+                            <i class="sicon-user-circle"></i>
+                            <span>Login</span>
                           </button>
                       {% endif %}
                       
@@ -84,9 +85,14 @@
                   </div>
               </div>
               
-              {# Row 2: All Categories Button | Nav Links #}
+              {# Row 2: Nav Links | All Categories Button #}
               <div class="flex items-center justify-between relative main-nav-row-2">
-                  {# All Categories Button - Left #}
+                  {# Navigation Menu - Left/Center #}
+                  <div class="flex-1 flex justify-start">
+                      <custom-main-menu></custom-main-menu>
+                  </div>
+                  
+                  {# All Categories Button - Right #}
                   <div class="flex items-center">
                       <a href="#mobile-menu" class="all-categories-btn mburger mburger--collapse" aria-label="All Categories">
                           <i class="sicon-menu rtl:ml-2 ltr:mr-2"></i>
@@ -94,14 +100,6 @@
                           <i class="sicon-sar rtl:mr-2 ltr:ml-2"></i>
                       </a>
                   </div>
-                  
-                  {# Navigation Menu - Center #}
-                  <div class="flex-1 flex justify-center">
-                      <custom-main-menu></custom-main-menu>
-                  </div>
-                  
-                  {# Empty space for alignment #}
-                  <div class="flex items-center" style="width: 200px;"></div>
               </div>
           </div>
       </div>

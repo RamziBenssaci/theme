@@ -21,23 +21,27 @@
     @apply text-[color:var(--topnav-text-color)];
   }
 
-  // Button styles for top nav
-  .btn--rounded-gray {
-    background-color: transparent;
-    color: #ffffff;
-    border: 1px solid rgba(255,255,255,0.3);
-    padding: 8px 15px;
-    border-radius: 3px;
-    transition: all 0.3s;
-    
-    &:hover {
-      background-color: rgba(255,255,255,0.1);
-      border-color: rgba(255,255,255,0.5);
+  // Currency/Language Select styling - match reference design
+  .header-buttons {
+    .btn--rounded-gray {
+      background-color: transparent;
+      color: #ffffff;
+      border: none;
+      padding: 8px;
+      border-radius: 0;
+      transition: all 0.3s;
+      cursor: pointer;
+      font-size: 14px;
+      
+      &:hover {
+        background-color: rgba(255,255,255,0.1);
+      }
     }
   }
   
-  // Login button styling in top nav (white outline)
-  button[onclick*="login"] {
+  // Login button styling - match reference design
+  .login-btn,
+  .header-btn.login-btn {
     background-color: transparent;
     border: 1px solid #ffffff;
     color: #ffffff;
@@ -45,9 +49,17 @@
     border-radius: 3px;
     transition: all 0.3s;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
     
     &:hover {
       background-color: rgba(255,255,255,0.1);
+    }
+    
+    i {
+      font-size: 16px;
     }
   }
 
@@ -164,21 +176,42 @@
     margin-bottom: 0;
   }
   
-  // Row 2 styling - All Categories + Nav Links
+  // Row 2 styling - All Categories + Nav Links (light blue background)
   .main-nav-row-2 {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 0;
+    padding: 15px 0;
+    background-color: #e8f4f8;
     min-height: 50px;
     align-items: center;
+    
+    // Nav links should be dark gray in row 2
+    a {
+      color: #111 !important;
+      
+      &:hover {
+        color: #bf3617 !important;
+      }
+    }
+    
+    custom-main-menu {
+      a {
+        color: #111 !important;
+        
+        &:hover {
+          color: #bf3617 !important;
+          text-decoration: underline;
+          text-decoration-color: #bf3617;
+        }
+      }
+    }
   }
   
-  // All Categories Button
+  // All Categories Button - Smaller height, on right
   .all-categories-btn {
     background-color: #f29f05;
     color: #000000;
     border: none;
-    padding: 12px 20px;
+    padding: 8px 15px;
     border-radius: 3px;
     cursor: pointer;
     font-weight: bold;
@@ -187,6 +220,8 @@
     transition: background-color 0.3s;
     font-size: 14px;
     text-decoration: none;
+    height: 36px;
+    white-space: nowrap;
     
     &:hover {
       background-color: #e68f04;
@@ -195,6 +230,7 @@
     
     i {
       color: #000000;
+      font-size: 14px;
     }
   }
   
@@ -221,16 +257,16 @@
     }
   }
   
-  // Custom main menu component styling
+  // Custom main menu component styling - left aligned
   custom-main-menu {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
     
     ul {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       list-style: none;
       margin: 0;
       padding: 0;
@@ -354,14 +390,50 @@
   }
 }
 
-// Mainnav cart icon
-.header-btn{
-  @apply border-none outline-none transition-opacity hover:opacity-80;
-
-  &__icon{
-    @apply text-xl w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white;
-    &.icon{
-      @apply mr-[9px] rtl:ml-[9px] rtl:mr-[unset];
+// Mainnav cart icon - match reference design
+.main-nav-container {
+  .header-btn {
+    @apply border-none outline-none transition-opacity hover:opacity-80;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    
+    &__icon {
+      @apply text-lg;
+      color: #ffffff;
+      font-size: 18px;
+      width: auto;
+      height: auto;
+      border: none;
+      background: transparent;
+      
+      &.icon {
+        @apply mr-[9px] rtl:ml-[9px] rtl:mr-[unset];
+      }
+    }
+  }
+  
+  // Cart summary styling - match reference design
+  salla-cart-summary {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+    .s-cart-summary-total {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    // Style cart link to show icon + text
+    a, button {
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 14px;
     }
   }
 }
@@ -457,7 +529,7 @@ salla-user-menu{
   }
 }
 
-// Main nav search bar styling - match reference design
+// Main nav search bar styling - match reference design with category dropdown
 .main-nav-container {
   .header-search {
     flex: 1;
@@ -479,6 +551,20 @@ salla-user-menu{
         border-radius: 0 !important;
         background-color: #ffffff;
         overflow: hidden;
+      }
+      
+      // Category dropdown on left (if supported by Salla)
+      .s-search-category,
+      select.search-category {
+        padding: 12px 15px;
+        border: none;
+        background-color: #ffffff;
+        border-radius: 0;
+        cursor: pointer;
+        border-right: 1px solid #e0e0e0;
+        font-size: 14px;
+        color: #111;
+        min-width: 150px;
       }
       
       .s-search-input-wrapper {
