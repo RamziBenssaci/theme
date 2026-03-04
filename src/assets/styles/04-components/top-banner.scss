@@ -1,0 +1,139 @@
+/* Top Banner - Promotional Banner */
+.top-banner {
+  background-color: #023a6b; // var(--dark-blue)
+  color: #ffffff; // var(--white)
+  padding: 10px 0;
+  font-size: 14px;
+  width: 100%;
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .top-banner-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    
+    span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+      
+      i {
+        font-size: 14px;
+      }
+    }
+  }
+  
+  .top-banner-center {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    .sale-text {
+      font-weight: bold;
+      white-space: nowrap;
+    }
+    
+    .sale-code {
+      color: #f29f05; // var(--primary-orange)
+      white-space: nowrap;
+    }
+  }
+  
+  .top-banner-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    
+    .countdown {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      
+      > span:first-child {
+        white-space: nowrap;
+      }
+      
+      .countdown-timer {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        
+        .timer-box {
+          background-color: #bf3617; // var(--primary-red)
+          color: #ffffff; // var(--white)
+          padding: 5px 10px;
+          border-radius: 3px;
+          font-weight: bold;
+          min-width: 30px;
+          text-align: center;
+          display: inline-block;
+        }
+        
+        .timer-separator {
+          color: #ffffff; // var(--white)
+          font-weight: bold;
+        }
+      }
+    }
+    
+    .close-banner {
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      transition: opacity 0.3s;
+      
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+  
+  // Responsive adjustments
+  @media (max-width: 1024px) {
+    .container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .top-banner-left,
+    .top-banner-center,
+    .top-banner-right {
+      justify-content: center;
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    font-size: 12px;
+    padding: 8px 0;
+    
+    .top-banner-left {
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .countdown-timer {
+      .timer-box {
+        padding: 4px 8px;
+        font-size: 12px;
+        min-width: 25px;
+      }
+    }
+  }
+}

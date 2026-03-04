@@ -3231,6 +3231,20 @@ textarea.s-input {
     padding-top: 0.625rem;
     padding-bottom: 0.625rem;
 }
+.top-banner .s-advertisement-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+@media (max-width: 1024px) {
+  .top-banner .s-advertisement-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
 .main-nav-container .s-advertisement-content > div.flex.items-stretch {
   display: flex;
   align-items: center;
@@ -28741,6 +28755,124 @@ input[type=radio].sr-only:checked ~ div.radio-images__badge {
 .radio-images input[type=radio]:disabled + label {
   opacity: 0.45;
 }
+/* Top Banner - Promotional Banner */
+.top-banner {
+  background-color: #023a6b;
+  color: #ffffff;
+  padding: 10px 0;
+  font-size: 14px;
+  width: 100%;
+}
+.top-banner .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.top-banner .top-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.top-banner .top-banner-left span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+.top-banner .top-banner-left span i {
+  font-size: 14px;
+}
+.top-banner .top-banner-center {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.top-banner .top-banner-center .sale-text {
+  font-weight: bold;
+  white-space: nowrap;
+}
+.top-banner .top-banner-center .sale-code {
+  color: #f29f05;
+  white-space: nowrap;
+}
+.top-banner .top-banner-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.top-banner .top-banner-right .countdown {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.top-banner .top-banner-right .countdown > span:first-child {
+  white-space: nowrap;
+}
+.top-banner .top-banner-right .countdown .countdown-timer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.top-banner .top-banner-right .countdown .countdown-timer .timer-box {
+  background-color: #bf3617;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-weight: bold;
+  min-width: 30px;
+  text-align: center;
+  display: inline-block;
+}
+.top-banner .top-banner-right .countdown .countdown-timer .timer-separator {
+  color: #ffffff;
+  font-weight: bold;
+}
+.top-banner .top-banner-right .close-banner {
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+.top-banner .top-banner-right .close-banner:hover {
+  opacity: 0.7;
+}
+@media (max-width: 1024px) {
+  .top-banner .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .top-banner .top-banner-left,
+  .top-banner .top-banner-center,
+  .top-banner .top-banner-right {
+    justify-content: center;
+    width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  .top-banner {
+    font-size: 12px;
+    padding: 8px 0;
+  }
+  .top-banner .top-banner-left {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .top-banner .countdown-timer .timer-box {
+    padding: 4px 8px;
+    font-size: 12px;
+    min-width: 25px;
+  }
+}
 /* Top Nav */
 .top-navbar {
     display: flex;
@@ -32583,6 +32715,20 @@ model-viewer[style*=width]:before {
     .s-comments-product .s-comments-container {
         max-width: 1280px;
     }
+}
+.top-banner .s-comments-product .s-comments-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+@media (max-width: 1024px) {
+  .top-banner .s-comments-product .s-comments-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 }
 .main-nav-container .s-comments-product .s-comments-container > div.flex.items-stretch {
   display: flex;
