@@ -73,19 +73,19 @@
                           </button>
                       {% endif %}
                       
-                      {# Login/User Menu #}
+                      {# Login/User Menu - Match reference with fa-user icon style #}
                       {% if user.type=='user' %}
                         <salla-user-menu avatar-only show-header></salla-user-menu>
                       {% else %}
                           <button class="header-btn login-btn" aria-label="Login" onclick="salla.event.dispatch('login::open')">
-                            <i class="sicon-user-circle"></i>
+                            <i class="sicon-user-circle login-icon"></i>
                             <span>Login</span>
                           </button>
                       {% endif %}
                       
-                      {# Cart - Match reference design #}
+                      {# Cart - Match reference design with fa-shopping-cart icon style #}
                       <salla-cart-summary class="cart-link ml-4 rtl:ml-[unset] rtl:mr-4">
-                        <i slot="icon" class="sicon-shopping-bag"></i>
+                        <i slot="icon" class="sicon-shopping-bag cart-icon"></i>
                       </salla-cart-summary>
                   </div>
               </div>

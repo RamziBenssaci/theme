@@ -75,15 +75,20 @@
       background-color: rgba(255,255,255,0.1);
     }
     
+    .login-icon,
     i {
-      font-size: 16px;
-      color: #ffffff;
-      display: inline-block;
+      font-size: 16px !important;
+      color: #ffffff !important;
+      display: inline-block !important;
+      width: 16px !important;
+      height: 16px !important;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
     
     span {
-      color: #ffffff;
-      display: inline-block;
+      color: #ffffff !important;
+      display: inline-block !important;
     }
   }
 
@@ -376,6 +381,41 @@
     }
   }
   
+  // Login button in main nav - EXACT match to reference
+  .login-btn,
+  .header-btn.login-btn {
+    background-color: transparent !important;
+    border: 1px solid #ffffff !important;
+    color: #ffffff !important;
+    padding: 8px 15px !important;
+    border-radius: 3px !important;
+    transition: all 0.3s;
+    cursor: pointer;
+    display: flex !important;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    font-weight: normal;
+    
+    &:hover {
+      background-color: rgba(255,255,255,0.1);
+    }
+    
+    .login-icon,
+    i {
+      font-size: 16px !important;
+      color: #ffffff !important;
+      display: inline-block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
+    span {
+      color: #ffffff !important;
+      display: inline-block !important;
+    }
+  }
+  
   // Cart summary styling - EXACT match to reference (icon + "Cart 0 items" text)
   salla-cart-summary.cart-link {
     color: #ffffff !important;
@@ -399,6 +439,15 @@
       }
     }
     
+    .cart-icon,
+    i {
+      color: #ffffff !important;
+      font-size: 18px !important;
+      display: inline-block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
     .s-cart-summary-total {
       color: #ffffff !important;
       font-weight: normal !important;
@@ -406,14 +455,18 @@
       margin-left: 5px;
     }
     
-    // Hide the count badge (we'll show it as text instead)
+    // Style count to show as "Cart 0 items"
     .s-cart-summary-count {
-      display: none !important;
-    }
-    
-    i {
+      position: static !important;
+      display: inline !important;
+      background: transparent !important;
       color: #ffffff !important;
-      font-size: 18px;
+      margin-left: 5px;
+      font-size: 14px;
+      padding: 0;
+      width: auto;
+      height: auto;
+      border-radius: 0;
     }
   }
 }
@@ -509,11 +562,12 @@ salla-user-menu{
   }
 }
 
-// Main nav search bar styling - EXACT match to reference (LONGER, red button with icon)
+// Main nav search bar styling - EXACT match to reference (MUCH LONGER, red button with visible search icon)
 .main-nav-container {
   .header-search {
     flex: 1;
-    max-width: 800px;
+    max-width: 1000px;
+    min-width: 700px;
     margin: 0 20px;
     display: flex;
     align-items: stretch;
@@ -524,6 +578,7 @@ salla-user-menu{
       align-items: stretch;
       width: 100%;
       height: 48px;
+      background-color: #ffffff;
     }
     
     // Category dropdown on left - EXACT match
@@ -557,6 +612,7 @@ salla-user-menu{
         background-color: transparent !important;
         overflow: visible !important;
         height: 48px;
+        box-shadow: none !important;
       }
       
       .s-search-input-wrapper {
@@ -586,7 +642,7 @@ salla-user-menu{
         }
       }
       
-      // Red search button on the right - EXACT match (red background, search icon)
+      // Red search button on the right - EXACT match (red background, search icon MUST be visible)
       .s-search-action,
       button[type="submit"],
       .s-search-submit {
@@ -610,8 +666,24 @@ salla-user-menu{
         
         i, svg {
           color: #ffffff !important;
-          font-size: 18px;
-          display: block;
+          font-size: 18px !important;
+          display: block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          width: 18px !important;
+          height: 18px !important;
+        }
+        
+        // Force search icon visibility with SVG
+        &::after {
+          content: '';
+          display: inline-block;
+          width: 18px;
+          height: 18px;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E");
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
         }
       }
     }

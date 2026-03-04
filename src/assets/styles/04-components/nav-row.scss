@@ -39,51 +39,60 @@
     }
   }
   
-  // Navigation Menu - Center, ONE LINE, no wrapping
+  // Navigation Menu - Center, ONE LINE, no wrapping - FIXED
   custom-main-menu {
-    display: flex;
-    justify-content: center;
+    display: block !important;
     width: 100%;
-    overflow: hidden;
+    overflow: visible;
     
     ul {
-      display: flex;
+      display: flex !important;
       align-items: center;
       justify-content: center;
-      list-style: none;
-      margin: 0;
-      padding: 0;
+      list-style: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
       gap: 30px;
-      flex-wrap: nowrap;
-      white-space: nowrap;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      
-      &::-webkit-scrollbar {
-        display: none;
-      }
+      flex-wrap: nowrap !important;
+      white-space: nowrap !important;
+      overflow: visible !important;
+      width: auto;
+      max-width: none;
     }
     
     li {
-      display: inline-block;
-      flex-shrink: 0;
-      white-space: nowrap;
+      display: inline-block !important;
+      flex-shrink: 0 !important;
+      white-space: nowrap !important;
+      float: none !important;
     }
     
     a {
-      color: #111;
-      text-decoration: none;
+      color: #111 !important;
+      text-decoration: none !important;
       font-weight: 500;
       padding: 0;
       transition: all 0.3s;
       position: relative;
-      white-space: nowrap;
+      white-space: nowrap !important;
+      display: inline-block !important;
       
       &:hover,
       &.active {
-        color: #bf3617;
-        text-decoration: underline;
+        color: #bf3617 !important;
+        text-decoration: underline !important;
       }
     }
+  }
+  
+  // Ensure container doesn't wrap
+  .container {
+    overflow: visible !important;
+    max-width: 100% !important;
+  }
+  
+  .flex.items-center.justify-between {
+    flex-wrap: nowrap !important;
+    overflow: visible !important;
   }
 }
