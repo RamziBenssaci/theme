@@ -1,7 +1,7 @@
-/* Navigation Row 2 - NO background, menu in one line */
+/* Navigation Row 2 - NO background, menu in one line - HALF HEIGHT */
 .main-nav-row-2 {
   background-color: transparent;
-  padding: 5px 0 !important; // Reduced to half to remove white space
+  padding: 5px 0 !important; // Cut to half to remove white space
   margin-bottom: 0 !important;
   margin-top: 0 !important;
   min-height: auto !important;
@@ -19,7 +19,7 @@
     }
   }
   
-  // All Categories Button - Left (same line as menu, aligned vertically with menu items)
+  // All Categories Button - Left (same line as menu, aligned vertically with menu items) - HALF HEIGHT
   .all-categories-btn {
     background-color: #f29f05;
     color: #000000;
@@ -60,7 +60,7 @@
     min-width: 0; // Allow flex shrinking
   }
   
-  // Navigation Menu - Center, ONE LINE, no wrapping - FIXED
+  // Navigation Menu - Center, ONE LINE, no wrapping - FIXED - HALF HEIGHT
   custom-main-menu {
     display: inline-block !important;
     width: 100%;
@@ -68,6 +68,8 @@
     margin: 0;
     padding: 0;
     vertical-align: baseline;
+    min-height: auto !important;
+    height: auto !important;
     
     // Override .main-menu flex-wrap from menus.scss
     .main-menu,
@@ -123,6 +125,7 @@
       position: relative;
       white-space: nowrap !important;
       display: inline-block !important;
+      line-height: 1.2 !important; // Reduced line-height to match button
       
       &:hover,
       &.active {

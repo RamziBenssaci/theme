@@ -548,7 +548,8 @@ min-height: 1.4rem;
 }
 
 custom-main-menu {
-  min-height: 84px
+  min-height: auto !important;
+  height: auto !important;
 }
 
 salla-cart-summary {

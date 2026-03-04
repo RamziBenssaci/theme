@@ -29989,7 +29989,8 @@ main#main-content,
   display: inline-block;
 }
 custom-main-menu {
-  min-height: 84px;
+  min-height: auto !important;
+  height: auto !important;
 }
 salla-cart-summary {
   min-width: 73px;
@@ -30326,7 +30327,7 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
     margin-top: 10px;
   }
 }
-/* Navigation Row 2 - NO background, menu in one line */
+/* Navigation Row 2 - NO background, menu in one line - HALF HEIGHT */
 .main-nav-row-2 {
   padding: 5px 0 !important;
   margin-bottom: 0 !important;
@@ -30387,6 +30388,8 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
 }
 .main-nav-row-2 custom-main-menu {
   display: inline-block !important;
+  min-height: auto !important;
+  height: auto !important;
 }
 .main-nav-row-2 custom-main-menu {
   width: 100%;
@@ -30449,6 +30452,7 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   text-decoration: none !important;
   white-space: nowrap !important;
   display: inline-block !important;
+  line-height: 1.2 !important;
 }
 .main-nav-row-2 custom-main-menu a {
   font-weight: 500;
@@ -30486,7 +30490,6 @@ section.hero-section {
   margin: 0 !important;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
-  padding-top: 0 !important;
 }
 section.hero-section .hero-slider {
   width: 100% !important;
