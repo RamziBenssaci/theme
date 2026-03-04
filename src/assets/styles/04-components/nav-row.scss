@@ -1,6 +1,6 @@
-/* Navigation Row 2 - Separate from main nav */
+/* Navigation Row 2 - NO background, menu in one line */
 .main-nav-row-2 {
-  background-color: #e8f4f8;
+  background-color: transparent;
   padding: 15px 0;
   
   .container {
@@ -26,6 +26,7 @@
     height: 36px;
     white-space: nowrap;
     gap: 10px;
+    flex-shrink: 0;
     
     &:hover {
       background-color: #e68f04;
@@ -38,11 +39,12 @@
     }
   }
   
-  // Navigation Menu - Center
+  // Navigation Menu - Center, ONE LINE, no wrapping
   custom-main-menu {
     display: flex;
     justify-content: center;
     width: 100%;
+    overflow: hidden;
     
     ul {
       display: flex;
@@ -52,10 +54,20 @@
       margin: 0;
       padding: 0;
       gap: 30px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
     
     li {
       display: inline-block;
+      flex-shrink: 0;
+      white-space: nowrap;
     }
     
     a {
@@ -65,6 +77,7 @@
       padding: 0;
       transition: all 0.3s;
       position: relative;
+      white-space: nowrap;
       
       &:hover,
       &.active {

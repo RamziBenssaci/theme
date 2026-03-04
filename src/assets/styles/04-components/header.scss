@@ -53,7 +53,7 @@
     font-size: 14px;
   }
   
-  // Login button styling - EXACT match to reference
+  // Login button styling - EXACT match to reference (white border, icon + text)
   .login-btn,
   .header-btn.login-btn {
     background-color: transparent !important;
@@ -68,6 +68,8 @@
     gap: 5px;
     font-size: 14px;
     font-weight: normal;
+    height: auto;
+    line-height: normal;
     
     &:hover {
       background-color: rgba(255,255,255,0.1);
@@ -76,10 +78,12 @@
     i {
       font-size: 16px;
       color: #ffffff;
+      display: inline-block;
     }
     
     span {
       color: #ffffff;
+      display: inline-block;
     }
   }
 
@@ -372,15 +376,12 @@
     }
   }
   
-  // Cart summary styling - EXACT match to reference (icon + text)
-  salla-cart-summary {
+  // Cart summary styling - EXACT match to reference (icon + "Cart 0 items" text)
+  salla-cart-summary.cart-link {
     color: #ffffff !important;
-    display: flex !important;
-    align-items: center;
-    gap: 5px;
-    text-decoration: none;
+    text-decoration: none !important;
     
-    a {
+    .s-cart-summary-wrapper {
       color: #ffffff !important;
       text-decoration: none !important;
       display: flex !important;
@@ -389,10 +390,25 @@
       font-size: 14px;
     }
     
+    .s-cart-summary-icon {
+      i, svg {
+        color: #ffffff !important;
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+      }
+    }
+    
     .s-cart-summary-total {
       color: #ffffff !important;
       font-weight: normal !important;
       font-size: 14px;
+      margin-left: 5px;
+    }
+    
+    // Hide the count badge (we'll show it as text instead)
+    .s-cart-summary-count {
+      display: none !important;
     }
     
     i {
@@ -493,11 +509,11 @@ salla-user-menu{
   }
 }
 
-// Main nav search bar styling - EXACT match to reference with category dropdown
+// Main nav search bar styling - EXACT match to reference (LONGER, red button with icon)
 .main-nav-container {
   .header-search {
     flex: 1;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 20px;
     display: flex;
     align-items: stretch;
@@ -570,7 +586,7 @@ salla-user-menu{
         }
       }
       
-      // Red search button on the right - EXACT match
+      // Red search button on the right - EXACT match (red background, search icon)
       .s-search-action,
       button[type="submit"],
       .s-search-submit {
@@ -594,7 +610,8 @@ salla-user-menu{
         
         i, svg {
           color: #ffffff !important;
-          font-size: 16px;
+          font-size: 18px;
+          display: block;
         }
       }
     }
