@@ -114,7 +114,8 @@ class Home extends BasePage {
         const updateProductVisibility = () => {
             if (productCards.length === 0) return;
 
-            productsPerPage = getProductsPerPage();
+            // Force 4 products per page on desktop
+            productsPerPage = window.innerWidth > 1200 ? 4 : getProductsPerPage();
             totalGroups = Math.ceil(productCards.length / productsPerPage);
 
             productCards.forEach((card, index) => {
@@ -123,10 +124,12 @@ class Home extends BasePage {
                 
                 if (index >= startIndex && index < endIndex) {
                     card.style.display = 'flex';
+                    card.style.visibility = 'visible';
                     card.classList.add('deals-product-visible');
                     card.classList.remove('deals-product-hidden');
                 } else {
                     card.style.display = 'none';
+                    card.style.visibility = 'hidden';
                     card.classList.add('deals-product-hidden');
                     card.classList.remove('deals-product-visible');
                 }
@@ -164,7 +167,8 @@ class Home extends BasePage {
                 return;
             }
 
-            productsPerPage = getProductsPerPage();
+            // Force 4 products per page on desktop (width > 1200px)
+            productsPerPage = window.innerWidth > 1200 ? 4 : getProductsPerPage();
             totalGroups = Math.ceil(productCards.length / productsPerPage);
             
             // Reset to first page if current index is out of bounds
