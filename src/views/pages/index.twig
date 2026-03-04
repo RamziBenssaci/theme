@@ -64,6 +64,47 @@
         </div>
     </section>
     
+    {# Promotional Banners - Top Brands #}
+    <section class="promo-banners">
+        <div class="container">
+            <div class="banner-grid">
+                <div class="promo-banner batteries-banner">
+                    <div class="banner-content">
+                        <span class="banner-badge">Top brands</span>
+                        <h2>BATTERIES</h2>
+                        <p>Stay charged up!</p>
+                        <button class="banner-btn">Shop now <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    <div class="banner-image">
+                        <img src="{{ 'images/battery.png'|asset }}" alt="Battery" onerror="this.src='https://enovathemes.com/mobex/wp-content/uploads/banner8-img.webp'">
+                    </div>
+                </div>
+                <div class="promo-banner tires-banner">
+                    <div class="banner-content">
+                        <span class="banner-badge green">Buy 3 Get 1 For Free</span>
+                        <h2>TIRES & WHEELS</h2>
+                        <p>Stay safe on road!</p>
+                        <button class="banner-btn">Shop now <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    <div class="banner-image">
+                        <img src="https://enovathemes.com/mobex/wp-content/uploads/banner7-img.webp" alt="Tires">
+                    </div>
+                </div>
+                <div class="promo-banner springs-banner">
+                    <div class="banner-content">
+                        <span class="banner-badge yellow">Big sale</span>
+                        <h2>BUY 1 GET 1</h2>
+                        <p>FREE</p>
+                        <button class="banner-btn">Shop now <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    <div class="banner-image">
+                        <img src="https://enovathemes.com/mobex/wp-content/uploads/banner8-img.webp" alt="Springs">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     {% component home %}
 {% endblock %}
 {% block scripts %}
