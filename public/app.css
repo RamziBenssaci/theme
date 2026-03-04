@@ -34853,9 +34853,12 @@ salla-quantity-input[max="1"] .s-quantity-input-button {
   align-items: center !important;
   justify-content: center !important;
 }
-/* Wishlist Button - Moved to bottom with add to cart button */
+/* Wishlist Button - Lower left corner of card, black, smaller */
 .s-block--latest-products .s-product-card-wishlist-btn {
-  position: static !important;
+  position: absolute !important;
+  bottom: 8px !important;
+  left: 8px !important;
+  z-index: 18 !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -34870,39 +34873,39 @@ salla-quantity-input[max="1"] .s-quantity-input-button {
 .s-block--latest-products .s-product-card-wishlist-btn button,
 .s-block--latest-products .s-product-card-wishlist-btn salla-button {
   background-color: transparent !important;
-  border: 1px solid #e0e0e0 !important;
-  border-radius: 4px !important;
-  width: 32px !important;
-  height: 32px !important;
-  min-width: 32px !important;
-  min-height: 32px !important;
-  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: auto !important;
+  min-height: auto !important;
+  padding: 4px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  color: #666 !important;
+  color: #000000 !important;
   transition: all 0.3s !important;
+  box-shadow: none !important;
 }
 .s-block--latest-products .s-product-card-wishlist-btn button:hover,
 .s-block--latest-products .s-product-card-wishlist-btn salla-button:hover {
-  border-color: #bf3617 !important;
-  color: #bf3617 !important;
+  color: #000000 !important;
   background-color: transparent !important;
+  opacity: 0.7 !important;
 }
 .s-block--latest-products .s-product-card-wishlist-btn button i,
 .s-block--latest-products .s-product-card-wishlist-btn salla-button i {
-  font-size: 16px !important;
-  color: inherit !important;
+  font-size: 14px !important;
+  color: #000000 !important;
 }
 .s-block--latest-products .s-product-card-wishlist-btn.s-product-card-wishlist-added button,
 .s-block--latest-products .s-product-card-wishlist-btn.s-product-card-wishlist-added salla-button {
-  border-color: #bf3617 !important;
-  color: #bf3617 !important;
+  color: #000000 !important;
   background-color: transparent !important;
 }
 .s-block--latest-products .s-product-card-wishlist-btn.s-product-card-wishlist-added button i,
 .s-block--latest-products .s-product-card-wishlist-btn.s-product-card-wishlist-added salla-button i {
-  color: #bf3617 !important;
+  color: #000000 !important;
 }
 /* Product Content - Compact */
 .s-block--latest-products .s-product-card-content {
@@ -35337,7 +35340,7 @@ salla-quantity-input[max="1"] .s-quantity-input-button {
   --s-button-padding: 0 !important;
   --s-button-min-height: auto !important;
 }
-/* Product Actions Wrapper - Compact - Heart icon at bottom */
+/* Product Actions Wrapper - Compact */
 .s-block--latest-products .s-product-card-actions,
 .s-block--latest-products .s-product-card-content-footer {
   margin-top: 4px !important;
@@ -35347,19 +35350,9 @@ salla-quantity-input[max="1"] .s-quantity-input-button {
   gap: 8px !important;
   justify-content: flex-start !important;
 }
-.s-block--latest-products .s-product-card-actions salla-button:not(.s-product-card-wishlist-btn),
-.s-block--latest-products .s-product-card-actions button:not(.s-product-card-wishlist-btn),
-.s-block--latest-products .s-product-card-content-footer salla-button:not(.s-product-card-wishlist-btn),
-.s-block--latest-products .s-product-card-content-footer button:not(.s-product-card-wishlist-btn) {
-  display: none !important;
-}
-.s-block--latest-products .s-product-card-actions .s-product-card-wishlist-btn,
-.s-block--latest-products .s-product-card-content-footer .s-product-card-wishlist-btn {
-  display: inline-flex !important;
-  order: 2 !important;
-}
 .s-block--latest-products .s-product-card-actions salla-add-product-button,
 .s-block--latest-products .s-product-card-content-footer salla-add-product-button {
+  display: inline-flex !important;
   order: 1 !important;
 }
 /* Out of Stock */
