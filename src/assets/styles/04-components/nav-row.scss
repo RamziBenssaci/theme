@@ -1,7 +1,7 @@
 /* Navigation Row 2 - NO background, menu in one line */
 .main-nav-row-2 {
   background-color: transparent;
-  padding: 15px 0;
+  padding: 10px 0 !important; // Reduced padding to remove white space
   margin-bottom: 0 !important;
   margin-top: 0 !important;
   

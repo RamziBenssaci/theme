@@ -196,7 +196,7 @@ main#main-content,
 .main-nav-container {
   @apply min-h-[68px] lg:min-h-[84px];
   background-color: #034c8c;
-  padding: 20px 0;
+  padding: 15px 0 !important; // Reduced padding to remove white space
   color: #ffffff;
   
   // Custom background Color
@@ -217,7 +217,8 @@ main#main-content,
   
   // Row 1 styling
   .main-nav-row-1 {
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
   }
   
   
@@ -785,16 +786,23 @@ salla-user-menu{
   // Header actions wrapper - align login and cart on same line
   .header-actions-wrapper {
     display: flex !important;
-    margin-right: 15px !important; // Add space on the right to prevent cart text from being hidden
-    padding-right: 10px !important;
     align-items: center !important;
-    gap: 15px;
+    gap: 8px !important; // Reduced gap to bring login and cart closer
+    margin-right: 0 !important; // Remove extra margin
+    padding-right: 0 !important;
     
     .login-btn,
     salla-cart-summary.cart-link {
       display: flex !important;
       align-items: center !important;
       height: auto;
+      margin: 0 !important;
+    }
+    
+    // Make cart right next to login
+    salla-cart-summary.cart-link {
+      margin-left: 8px !important;
+      margin-right: 0 !important;
     }
   }
   

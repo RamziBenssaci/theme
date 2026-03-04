@@ -1039,6 +1039,9 @@ input:where([type='file']):focus {
 .me-2\.5 {
     margin-right: 0.625rem;
 }
+.ml-2 {
+    margin-left: 0.5rem;
+}
 .ml-4 {
     margin-left: 1rem;
 }
@@ -29584,8 +29587,10 @@ main#main-content,
     }
 }
 .main-nav-container {
+  padding: 15px 0 !important;
+}
+.main-nav-container {
   background-color: #034c8c;
-  padding: 20px 0;
   color: #ffffff;
 }
 .has-bg .main-nav-container, .has-bg .main-nav-container .sub-menu {
@@ -29598,7 +29603,8 @@ main#main-content,
   color: #ffffff;
 }
 .main-nav-container .main-nav-row-1 {
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 .main-nav-container .all-categories-btn {
   background-color: #f29f05;
@@ -30248,21 +30254,24 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
 }
 .main-nav-container .header-actions-wrapper {
   display: flex !important;
-  margin-right: 15px !important;
-  padding-right: 10px !important;
   align-items: center !important;
-}
-.main-nav-container .header-actions-wrapper {
-  gap: 15px;
+  gap: 8px !important;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
 }
 .main-nav-container .header-actions-wrapper .login-btn,
 .main-nav-container .header-actions-wrapper salla-cart-summary.cart-link {
   display: flex !important;
   align-items: center !important;
+  margin: 0 !important;
 }
 .main-nav-container .header-actions-wrapper .login-btn,
 .main-nav-container .header-actions-wrapper salla-cart-summary.cart-link {
   height: auto;
+}
+.main-nav-container .header-actions-wrapper salla-cart-summary.cart-link {
+  margin-left: 8px !important;
+  margin-right: 0 !important;
 }
 .main-nav-container .container > div.flex.items-stretch {
   display: flex;
@@ -30319,12 +30328,12 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
 }
 /* Navigation Row 2 - NO background, menu in one line */
 .main-nav-row-2 {
+  padding: 10px 0 !important;
   margin-bottom: 0 !important;
   margin-top: 0 !important;
 }
 .main-nav-row-2 {
   background-color: transparent;
-  padding: 15px 0;
 }
 .main-nav-row-2 .container {
   display: flex;
@@ -38475,9 +38484,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .rtl\:mr-3:where([dir="rtl"], [dir="rtl"] *) {
     margin-right: 0.75rem;
-}
-.rtl\:mr-4:where([dir="rtl"], [dir="rtl"] *) {
-    margin-right: 1rem;
 }
 .rtl\:-scale-x-100:where([dir="rtl"], [dir="rtl"] *) {
     --tw-scale-x: -1;
