@@ -625,6 +625,35 @@ salla-user-menu{
       width: 100%;
       height: 48px;
       background-color: #ffffff;
+      position: relative;
+    }
+    
+    // Custom search submit button at the end (after salla-search)
+    .search-submit-btn {
+      background-color: #bf3617 !important;
+      color: #ffffff !important;
+      border: none !important;
+      padding: 0 !important;
+      cursor: pointer;
+      border-radius: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      transition: background-color 0.3s;
+      width: 50px !important;
+      height: 48px !important;
+      flex-shrink: 0 !important;
+      margin-left: 0 !important;
+      
+      &:hover {
+        background-color: #a02d12 !important;
+      }
+      
+      svg {
+        width: 20px !important;
+        height: 20px !important;
+        display: block !important;
+      }
     }
     
     // Category dropdown on left - EXACT match
@@ -649,6 +678,7 @@ salla-user-menu{
       align-items: stretch;
       flex: 1;
       height: 48px;
+      min-width: 0; // Allow it to shrink
       
       .s-search-container {
         display: flex !important;
@@ -670,6 +700,13 @@ salla-user-menu{
         }
       }
       
+      // Hide the search icon at the beginning (inside input wrapper)
+      .s-search-icon-wrap,
+      .s-search-icon {
+        display: none !important;
+        visibility: hidden !important;
+      }
+      
       .s-search-input-wrapper {
         display: flex !important;
         flex: 1;
@@ -677,20 +714,19 @@ salla-user-menu{
         background-color: #ffffff;
         border: none;
         position: relative;
-        overflow: visible !important; // Allow button to be visible outside
+        overflow: visible !important;
         order: 1 !important; // Input wrapper comes first
       }
       
       .s-search-input {
         flex: 1;
-        padding: 12px 15px;
+        padding: 12px 15px !important;
         border: none;
         font-size: 14px;
         background-color: #ffffff;
         color: #111;
         border-radius: 0;
         height: 48px;
-        padding-right: 0 !important; // Remove padding on right to make room for button
         
         &::placeholder {
           color: #999;
@@ -701,8 +737,8 @@ salla-user-menu{
         }
       }
       
-      // Red search button on the right - EXACT match (red background, search icon MUST be visible at the END)
-      // Position it as a separate button element at the end
+      // Red search button at the END (after input wrapper) - EXACT match
+      // This creates a button element at the end of .s-search-container
       .s-search-action,
       button[type="submit"],
       .s-search-submit,
@@ -721,7 +757,7 @@ salla-user-menu{
         min-width: 50px !important;
         height: 48px !important;
         width: auto !important;
-        order: 999 !important; // Ensure it's at the end
+        order: 999 !important; // Ensure it's at the end (after input wrapper)
         margin-left: 0 !important;
         position: relative !important;
         flex-shrink: 0 !important;
@@ -748,6 +784,24 @@ salla-user-menu{
           visibility: visible !important;
           opacity: 1 !important;
         }
+      }
+      
+      // If there's no submit button, create one using ::after on the container
+      .s-search-container:not(:has(button[type="submit"]))::after {
+        content: '';
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 50px !important;
+        height: 48px !important;
+        background-color: #bf3617 !important;
+        background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctitle%3Esearch%3C/title%3E%3Cpath fill='%23ffffff' d='M30.276 28.391l-7.576-7.576c1.644-2.053 2.633-4.652 2.633-7.481 0-6.616-5.384-12-12-12s-12 5.384-12 12 5.384 12 12 12c2.829 0 5.428-0.989 7.481-2.633l7.576 7.576c0.26 0.26 0.601 0.391 0.943 0.391s0.683-0.131 0.943-0.391c0.521-0.521 0.521-1.364 0-1.885zM13.333 22.667c-5.147 0-9.333-4.187-9.333-9.333s4.187-9.333 9.333-9.333 9.333 4.187 9.333 9.333-4.187 9.333-9.333 9.333z'/%3E%3C/svg%3E");
+        background-size: 20px 20px;
+        background-repeat: no-repeat;
+        background-position: center;
+        flex-shrink: 0 !important;
+        cursor: pointer;
+        order: 999 !important;
       }
     }
   }

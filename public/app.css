@@ -3262,6 +3262,12 @@ textarea.s-input {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+.main-nav-row-2 .s-advertisement-content > * {
+  display: flex;
+  align-items: center;
+}
+.main-nav-row-2 .s-advertisement-content {
   overflow: visible;
   max-width: 100%;
 }
@@ -29537,6 +29543,33 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   width: 100%;
   height: 48px;
   background-color: #ffffff;
+  position: relative;
+}
+.main-nav-container .header-search .search-submit-btn {
+  background-color: #bf3617 !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 50px !important;
+  height: 48px !important;
+  flex-shrink: 0 !important;
+  margin-left: 0 !important;
+}
+.main-nav-container .header-search .search-submit-btn {
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.main-nav-container .header-search .search-submit-btn:hover {
+  background-color: #a02d12 !important;
+}
+.main-nav-container .header-search .search-submit-btn svg {
+  width: 20px !important;
+  height: 20px !important;
+  display: block !important;
 }
 .main-nav-container .header-search .search-category {
   padding: 12px 15px;
@@ -29558,6 +29591,7 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   align-items: stretch;
   flex: 1;
   height: 48px;
+  min-width: 0;
 }
 .main-nav-container .header-search salla-search .s-search-container {
   display: flex !important;
@@ -29576,6 +29610,11 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
 .main-nav-container .header-search salla-search .s-search-container > *:last-child {
   order: 999 !important;
 }
+.main-nav-container .header-search salla-search .s-search-icon-wrap,
+.main-nav-container .header-search salla-search .s-search-icon {
+  display: none !important;
+  visibility: hidden !important;
+}
 .main-nav-container .header-search salla-search .s-search-input-wrapper {
   display: flex !important;
   overflow: visible !important;
@@ -29589,11 +29628,10 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   position: relative;
 }
 .main-nav-container .header-search salla-search .s-search-input {
-  padding-right: 0 !important;
+  padding: 12px 15px !important;
 }
 .main-nav-container .header-search salla-search .s-search-input {
   flex: 1;
-  padding: 12px 15px;
   border: none;
   font-size: 14px;
   background-color: #ffffff;
@@ -29687,6 +29725,24 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   background-repeat: no-repeat;
   background-position: center;
 }
+.main-nav-container .header-search salla-search .s-search-container:not(:has(button[type=submit]))::after {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 50px !important;
+  height: 48px !important;
+  background-color: #bf3617 !important;
+  flex-shrink: 0 !important;
+  order: 999 !important;
+}
+.main-nav-container .header-search salla-search .s-search-container:not(:has(button[type=submit]))::after {
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctitle%3Esearch%3C/title%3E%3Cpath fill='%23ffffff' d='M30.276 28.391l-7.576-7.576c1.644-2.053 2.633-4.652 2.633-7.481 0-6.616-5.384-12-12-12s-12 5.384-12 12 5.384 12 12 12c2.829 0 5.428-0.989 7.481-2.633l7.576 7.576c0.26 0.26 0.601 0.391 0.943 0.391s0.683-0.131 0.943-0.391c0.521-0.521 0.521-1.364 0-1.885zM13.333 22.667c-5.147 0-9.333-4.187-9.333-9.333s4.187-9.333 9.333-9.333 9.333 4.187 9.333 9.333-4.187 9.333-9.333 9.333z'/%3E%3C/svg%3E");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
 .main-nav-container .header-actions-wrapper {
   display: flex !important;
   align-items: center !important;
@@ -29766,6 +29822,10 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   align-items: center;
   gap: 20px;
 }
+.main-nav-row-2 .container > * {
+  display: flex;
+  align-items: center;
+}
 .main-nav-row-2 .all-categories-btn {
   background-color: #f29f05;
   color: #000000;
@@ -29780,11 +29840,13 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   font-size: 14px;
   -webkit-text-decoration: none;
   text-decoration: none;
-  height: 36px;
+  height: auto;
+  min-height: 36px;
   white-space: nowrap;
   gap: 10px;
   flex-shrink: 0;
-  align-self: center;
+  margin: 0;
+  vertical-align: middle;
 }
 .main-nav-row-2 .all-categories-btn:hover {
   background-color: #e68f04;
@@ -29806,7 +29868,9 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
 .main-nav-row-2 custom-main-menu {
   width: 100%;
   overflow: visible;
-  align-self: center;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
 }
 .main-nav-row-2 custom-main-menu .main-menu,
 .main-nav-row-2 custom-main-menu ul {
@@ -29824,6 +29888,10 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   max-width: none !important;
   flex-direction: row !important;
 }
+.main-nav-row-2 custom-main-menu .main-menu,
+.main-nav-row-2 custom-main-menu ul {
+  vertical-align: middle;
+}
 .main-nav-row-2 custom-main-menu li {
   display: inline-block !important;
   flex-shrink: 0 !important;
@@ -29831,14 +29899,26 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   float: none !important;
   position: relative !important;
 }
+.main-nav-row-2 custom-main-menu li {
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+}
 .main-nav-row-2 custom-main-menu li.root-level {
   display: inline-block !important;
+}
+.main-nav-row-2 custom-main-menu li.root-level {
+  vertical-align: middle;
 }
 .main-nav-row-2 custom-main-menu li.root-level > a {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
+}
+.main-nav-row-2 custom-main-menu li.root-level > a {
+  vertical-align: middle;
+  line-height: normal;
 }
 .main-nav-row-2 custom-main-menu a {
   color: #111 !important;
@@ -32593,6 +32673,12 @@ model-viewer[style*=width]:before {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+.main-nav-row-2 .s-comments-product .s-comments-container > * {
+  display: flex;
+  align-items: center;
+}
+.main-nav-row-2 .s-comments-product .s-comments-container {
   overflow: visible;
   max-width: 100%;
 }

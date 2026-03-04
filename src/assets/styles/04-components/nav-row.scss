@@ -7,9 +7,14 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    
+    > * {
+      display: flex;
+      align-items: center;
+    }
   }
   
-  // All Categories Button - Left (same line as menu, aligned vertically)
+  // All Categories Button - Left (same line as menu, aligned vertically with menu items)
   .all-categories-btn {
     background-color: #f29f05;
     color: #000000;
@@ -23,11 +28,13 @@
     transition: background-color 0.3s;
     font-size: 14px;
     text-decoration: none;
-    height: 36px;
+    height: auto;
+    min-height: 36px;
     white-space: nowrap;
     gap: 10px;
     flex-shrink: 0;
-    align-self: center; // Align with menu items vertically
+    margin: 0;
+    vertical-align: middle;
     
     &:hover {
       background-color: #e68f04;
@@ -53,7 +60,9 @@
     display: block !important;
     width: 100%;
     overflow: visible;
-    align-self: center; // Align with All Categories button vertically
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
     
     // Override .main-menu flex-wrap from menus.scss
     .main-menu,
@@ -71,6 +80,7 @@
       width: auto !important;
       max-width: none !important;
       flex-direction: row !important;
+      vertical-align: middle;
     }
     
     li {
@@ -79,16 +89,22 @@
       white-space: nowrap !important;
       float: none !important;
       position: relative !important;
+      vertical-align: middle;
+      margin: 0;
+      padding: 0;
       
       // Override root-level padding that might cause wrapping
       &.root-level {
         display: inline-block !important;
+        vertical-align: middle;
         
         > a {
           padding-top: 0 !important;
           padding-bottom: 0 !important;
           padding-left: 0 !important;
           padding-right: 0 !important;
+          vertical-align: middle;
+          line-height: normal;
         }
       }
     }
