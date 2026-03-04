@@ -715,17 +715,42 @@ salla-user-menu{
       width: 100%;
       height: 48px;
       border-right: none !important; // Border is on wrapper
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
+      appearance: none !important;
+      -webkit-appearance: none !important;
+      -moz-appearance: none !important;
       display: flex;
       align-items: center;
       line-height: 1.5;
       vertical-align: middle;
       
-      // Hide default browser arrow
+      // Remove ALL default arrow backgrounds and icons
+      background-image: none !important;
+      background-repeat: no-repeat !important;
+      background-position: right center !important;
+      
+      // Hide default browser arrow - ALL browsers
       &::-ms-expand {
-        display: none;
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+      }
+      
+      // Firefox - hide dropdown arrow
+      &::-moz-appearance {
+        text-indent: 0.01px;
+        text-overflow: '';
+        -moz-appearance: none !important;
+      }
+      
+      // Chrome/Safari/Edge - hide dropdown arrow
+      &::-webkit-appearance {
+        -webkit-appearance: none !important;
+      }
+      
+      // Additional selectors to catch any default arrows
+      &::before,
+      &::after {
+        display: none !important;
       }
       
       option {

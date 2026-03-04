@@ -30181,6 +30181,12 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
 .main-nav-container .header-search .search-category {
   padding: 12px 35px 12px 15px !important;
   border-right: none !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  background-image: none !important;
+  background-repeat: no-repeat !important;
+  background-position: right center !important;
 }
 .main-nav-container .header-search .search-category {
   border: none;
@@ -30192,16 +30198,28 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   min-width: 150px;
   width: 100%;
   height: 48px;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   display: flex;
   align-items: center;
   line-height: 1.5;
   vertical-align: middle;
 }
 .main-nav-container .header-search .search-category::-ms-expand {
-  display: none;
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+.main-nav-container .header-search .search-category::-moz-appearance {
+  -moz-appearance: none !important;
+}
+.main-nav-container .header-search .search-category::-moz-appearance {
+  text-indent: 0.01px;
+  text-overflow: "";
+}
+.main-nav-container .header-search .search-category::-webkit-appearance {
+  -webkit-appearance: none !important;
+}
+.main-nav-container .header-search .search-category::before, .main-nav-container .header-search .search-category::after {
+  display: none !important;
 }
 .main-nav-container .header-search .search-category option {
   padding: 8px;
