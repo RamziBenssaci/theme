@@ -146,24 +146,27 @@
     display: flex !important;
     flex-direction: row !important;
     
+    input {
+      flex: 1 !important;
+      padding: 12px !important;
+      border: none !important;
+      border-radius: 5px 0 0 5px !important;
+      background-color: #ffffff !important;
+      color: #333 !important;
+    }
+    
     button {
       padding: 12px 20px !important;
       background-color: #034c8c !important; // var(--primary-blue)
       color: #ffffff !important;
       border: none !important;
-      border-radius: 5px 0 0 5px !important;
-      cursor: pointer !important;
-      order: 1 !important;
-    }
-    
-    input {
-      flex: 1 !important;
-      padding: 12px !important;
-      border: none !important;
       border-radius: 0 5px 5px 0 !important;
-      background-color: #ffffff !important;
-      color: #333 !important;
-      order: 2 !important;
+      cursor: pointer !important;
+      transform: scaleX(-1) !important; // Flip the entire button horizontally
+      
+      i {
+        transform: scaleX(-1) !important; // Flip the arrow back to point left
+      }
     }
   }
 
