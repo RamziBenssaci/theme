@@ -42,9 +42,14 @@
                       </a>
                   </div>
                   
-                  {# Search bar - Center #}
+                  {# Search bar - Center with category dropdown #}
                   <div class="header-search flex-1" style="max-width: 600px; margin: 0 20px;">
-                    <salla-search inline height="48"></salla-search>
+                    <div class="search-wrapper">
+                      <select class="search-category">
+                        <option>Select category</option>
+                      </select>
+                      <salla-search inline height="48"></salla-search>
+                    </div>
                   </div>
                   
                   {# Currency/Language/Login/Cart - Right #}
@@ -85,23 +90,29 @@
                   </div>
               </div>
               
-              {# Row 2: Nav Links | All Categories Button #}
-              <div class="flex items-center justify-between relative main-nav-row-2">
-                  {# Navigation Menu - Left/Center #}
-                  <div class="flex-1 flex justify-start">
-                      <custom-main-menu></custom-main-menu>
-                  </div>
-                  
-                  {# All Categories Button - Right #}
-                  <div class="flex items-center">
-                      <a href="#mobile-menu" class="all-categories-btn mburger mburger--collapse" aria-label="All Categories">
-                          <i class="sicon-menu rtl:ml-2 ltr:mr-2"></i>
-                          <span>All Categories</span>
-                          <i class="sicon-sar rtl:mr-2 ltr:ml-2"></i>
-                      </a>
-                  </div>
-              </div>
           </div>
       </div>
   </div>
+  
+  {# Navigation Row 2: Nav Links | All Categories Button #}
+  <nav class="main-nav-row-2">
+      <div class="container">
+          <div class="flex items-center justify-between">
+              {# All Categories Button - Left #}
+              <a href="#mobile-menu" class="all-categories-btn mburger mburger--collapse" aria-label="All Categories">
+                  <i class="sicon-menu rtl:ml-2 ltr:mr-2"></i>
+                  <span>All Categories</span>
+                  <i class="sicon-sar rtl:mr-2 ltr:ml-2"></i>
+              </a>
+              
+              {# Navigation Menu - Center #}
+              <div class="flex-1 flex justify-center">
+                  <custom-main-menu></custom-main-menu>
+              </div>
+              
+              {# Empty space for alignment #}
+              <div style="width: 150px;"></div>
+          </div>
+      </div>
+  </nav>
 </header>

@@ -1,0 +1,76 @@
+/* Navigation Row 2 - Separate from main nav */
+.main-nav-row-2 {
+  background-color: #e8f4f8;
+  padding: 15px 0;
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  // All Categories Button - Left
+  .all-categories-btn {
+    background-color: #f29f05;
+    color: #000000;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+    font-size: 14px;
+    text-decoration: none;
+    height: 36px;
+    white-space: nowrap;
+    gap: 10px;
+    
+    &:hover {
+      background-color: #e68f04;
+      color: #000000;
+    }
+    
+    i {
+      color: #000000;
+      font-size: 14px;
+    }
+  }
+  
+  // Navigation Menu - Center
+  custom-main-menu {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 30px;
+    }
+    
+    li {
+      display: inline-block;
+    }
+    
+    a {
+      color: #111;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0;
+      transition: all 0.3s;
+      position: relative;
+      
+      &:hover,
+      &.active {
+        color: #bf3617;
+        text-decoration: underline;
+      }
+    }
+  }
+}
