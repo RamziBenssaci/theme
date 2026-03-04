@@ -194,9 +194,9 @@ isElementLoaded(selector){
 
   initiateStickyMenu() {
     let header = this.element('#mainnav'),
-      height = this.element('#mainnav .inner')?.clientHeight;
+      navRow2 = this.element('.main-nav-row-2');
     //when it's landing page, there is no header
-    if (!header) {
+    if (!header || !navRow2) {
       return;
     }
 
@@ -204,8 +204,26 @@ isElementLoaded(selector){
     window.addEventListener('resize', () => this.setHeaderHeight())
 
     window.addEventListener('scroll', () => {
-      window.scrollY >= header.offsetTop + height ? header.classList.add('fixed-pinned', 'animated') : header.classList.remove('fixed-pinned');
-      window.scrollY >= 200 ? header.classList.add('fixed-header') : header.classList.remove('fixed-header', 'animated');
+      // Only make row 2 (navigation menu) sticky, not the entire header
+      if (window.scrollY >= 200) {
+        navRow2.classList.add('sticky-nav-row');
+        navRow2.style.position = 'fixed';
+        navRow2.style.top = '0';
+        navRow2.style.left = '0';
+        navRow2.style.right = '0';
+        navRow2.style.zIndex = '30';
+        navRow2.style.backgroundColor = '#034c8c';
+        navRow2.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+      } else {
+        navRow2.classList.remove('sticky-nav-row');
+        navRow2.style.position = '';
+        navRow2.style.top = '';
+        navRow2.style.left = '';
+        navRow2.style.right = '';
+        navRow2.style.zIndex = '';
+        navRow2.style.backgroundColor = '';
+        navRow2.style.boxShadow = '';
+      }
     }, { passive: true });
   }
 

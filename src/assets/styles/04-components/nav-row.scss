@@ -6,6 +6,13 @@
   margin-top: 0 !important;
   min-height: auto !important;
   height: auto !important;
+  transition: all 0.3s ease !important;
+  
+  // Sticky state when scrolling
+  &.sticky-nav-row {
+    background-color: #034c8c !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+  }
   
   .container {
     display: flex;

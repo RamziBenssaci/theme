@@ -1,7 +1,9 @@
-/* Deals Section - Orange Background */
+/* Deals Section - Orange Background - Auto height based on visible products */
 .deals-section {
-  padding: 60px 0 !important;
+  padding: 40px 0 !important; // Reduced padding
   background-color: #f29f05 !important; // var(--primary-orange)
+  height: auto !important; // Auto height
+  min-height: auto !important;
   
   .container {
     max-width: 1200px !important;
@@ -15,6 +17,24 @@
     @media (min-width: 1024px) {
       padding: 0 24px !important;
     }
+  }
+  
+  // Make products wrapper only show visible products (one row)
+  .deals-products-wrapper {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+  }
+  
+  // Hide hidden products completely (not just opacity)
+  .s-product-card-entry.deals-product-hidden {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
   }
 }
 

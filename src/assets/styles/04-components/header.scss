@@ -478,9 +478,9 @@ main#main-content,
       text-decoration: none !important;
       display: flex !important;
       align-items: center;
-      gap: 8px;
+      gap: 4px !important; // Reduced gap to bring count closer to icon
       font-size: 14px;
-      padding-right: 10px !important; // Extra padding to ensure text is visible
+      padding-right: 0 !important;
     }
     
     .s-cart-summary-icon {
@@ -519,14 +519,14 @@ main#main-content,
       margin-left: 0;
     }
     
-    // Style count to show as "Cart 0 items"
+    // Style count to show as "Cart 0 items" - Closer to cart icon
     .s-cart-summary-count {
       position: static !important;
       display: inline !important;
       background: transparent !important;
       color: #ffffff !important;
-      margin-left: 5px;
-      margin-right: 15px !important; // Add space on the right to prevent text from being hidden
+      margin-left: 2px !important; // Closer to cart icon
+      margin-right: 0 !important;
       font-size: 14px;
       padding: 0;
       width: auto;
