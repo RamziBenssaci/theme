@@ -5,15 +5,18 @@
   padding: 80px 0;
   overflow: hidden;
   min-height: 500px;
+  width: 100%;
   
   .hero-slider {
     width: 100%;
     height: 100%;
+    position: relative;
   }
   
   .hero-slide {
     width: 100%;
     height: 100%;
+    display: none;
     
     &.active {
       display: block;
@@ -29,11 +32,13 @@
     padding: 0 20px;
     position: relative;
     z-index: 1;
+    width: 100%;
   }
   
   .hero-text {
     flex: 1;
     max-width: 500px;
+    z-index: 2;
     
     h2 {
       font-size: 48px;
@@ -79,12 +84,14 @@
     position: relative;
     max-width: 600px;
     text-align: center;
+    z-index: 2;
     
     img {
       width: 100%;
       height: auto;
       max-height: 500px;
       object-fit: contain;
+      display: block;
     }
     
     .price-badge {
@@ -107,7 +114,7 @@
     transform: translateX(-50%);
     display: flex;
     gap: 10px;
-    z-index: 2;
+    z-index: 5;
     
     .dot {
       width: 12px;
@@ -150,6 +157,7 @@
       margin-bottom: 16px;
       line-height: 24px;
       color: #111; // var(--dark-gray)
+      margin-top: 0;
     }
   }
   
@@ -171,10 +179,12 @@
     cursor: pointer;
     height: 48px;
     outline: 1px solid #e0e0e0;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, outline-color 0.3s;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+    width: 100%;
+    box-sizing: border-box;
     
     &:hover,
     &:focus {
@@ -194,6 +204,8 @@
     font-weight: 600;
     height: 48px;
     transition: background-color 0.3s;
+    width: 100%;
+    box-sizing: border-box;
     
     &:hover {
       background-color: #e68f04;
@@ -230,6 +242,7 @@
       color: #444; // var(--text-gray)
       position: relative;
       z-index: 1;
+      display: inline-block;
     }
   }
   
@@ -246,7 +259,9 @@
     font-size: 14px;
     height: 48px;
     outline: 1px solid #e0e0e0;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, outline-color 0.3s;
+    width: 100%;
+    box-sizing: border-box;
     
     &:hover,
     &:focus {
@@ -270,6 +285,7 @@
     white-space: nowrap;
     height: 48px;
     transition: background-color 0.3s;
+    flex-shrink: 0;
     
     &:hover {
       background-color: #023a6b; // var(--dark-blue)
