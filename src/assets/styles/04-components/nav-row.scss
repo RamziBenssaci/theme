@@ -1,9 +1,11 @@
 /* Navigation Row 2 - NO background, menu in one line */
 .main-nav-row-2 {
   background-color: transparent;
-  padding: 10px 0 !important; // Reduced padding to remove white space
+  padding: 5px 0 !important; // Reduced to half to remove white space
   margin-bottom: 0 !important;
   margin-top: 0 !important;
+  min-height: auto !important;
+  height: auto !important;
   
   .container {
     display: flex;
@@ -22,7 +24,7 @@
     background-color: #f29f05;
     color: #000000;
     border: none;
-    padding: 8px 15px;
+    padding: 4px 12px !important; // Reduced padding to cut height in half
     border-radius: 3px;
     cursor: pointer;
     font-weight: bold;
@@ -31,10 +33,10 @@
     transition: background-color 0.3s;
     font-size: 14px;
     text-decoration: none;
-    height: auto;
-    line-height: 1.5;
+    height: auto !important;
+    line-height: 1.2 !important; // Reduced line-height
     white-space: nowrap;
-    gap: 10px;
+    gap: 8px;
     flex-shrink: 0;
     margin: 0;
     vertical-align: baseline;
@@ -107,7 +109,7 @@
           padding-left: 0 !important;
           padding-right: 0 !important;
           vertical-align: baseline;
-          line-height: 1.5;
+          line-height: 1.2 !important; // Reduced line-height to match button
         }
       }
     }

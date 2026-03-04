@@ -30328,9 +30328,11 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
 }
 /* Navigation Row 2 - NO background, menu in one line */
 .main-nav-row-2 {
-  padding: 10px 0 !important;
+  padding: 5px 0 !important;
   margin-bottom: 0 !important;
   margin-top: 0 !important;
+  min-height: auto !important;
+  height: auto !important;
 }
 .main-nav-row-2 {
   background-color: transparent;
@@ -30346,10 +30348,14 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   vertical-align: baseline;
 }
 .main-nav-row-2 .all-categories-btn {
+  padding: 4px 12px !important;
+  height: auto !important;
+  line-height: 1.2 !important;
+}
+.main-nav-row-2 .all-categories-btn {
   background-color: #f29f05;
   color: #000000;
   border: none;
-  padding: 8px 15px;
   border-radius: 3px;
   cursor: pointer;
   font-weight: bold;
@@ -30359,10 +30365,8 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   font-size: 14px;
   -webkit-text-decoration: none;
   text-decoration: none;
-  height: auto;
-  line-height: 1.5;
   white-space: nowrap;
-  gap: 10px;
+  gap: 8px;
   flex-shrink: 0;
   margin: 0;
   vertical-align: baseline;
@@ -30434,10 +30438,10 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   padding-bottom: 0 !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
+  line-height: 1.2 !important;
 }
 .main-nav-row-2 custom-main-menu li.root-level > a {
   vertical-align: baseline;
-  line-height: 1.5;
 }
 .main-nav-row-2 custom-main-menu a {
   color: #111 !important;
@@ -30482,6 +30486,7 @@ section.hero-section {
   margin: 0 !important;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+  padding-top: 0 !important;
 }
 section.hero-section .hero-slider {
   width: 100% !important;
