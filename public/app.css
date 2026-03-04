@@ -31104,22 +31104,25 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
 }
 .store-footer .newsletter-form {
   display: flex !important;
-}
-.store-footer .newsletter-form input {
-  flex: 1 !important;
-  padding: 12px !important;
-  border: none !important;
-  border-radius: 5px 0 0 5px !important;
-  background-color: #ffffff !important;
-  color: #333 !important;
+  flex-direction: row !important;
 }
 .store-footer .newsletter-form button {
   padding: 12px 20px !important;
   background-color: #034c8c !important;
   color: #ffffff !important;
   border: none !important;
-  border-radius: 0 5px 5px 0 !important;
+  border-radius: 5px 0 0 5px !important;
   cursor: pointer !important;
+  order: 1 !important;
+}
+.store-footer .newsletter-form input {
+  flex: 1 !important;
+  padding: 12px !important;
+  border: none !important;
+  border-radius: 0 5px 5px 0 !important;
+  background-color: #ffffff !important;
+  color: #333 !important;
+  order: 2 !important;
 }
 .store-footer {
   /* Footer Menu Links */
