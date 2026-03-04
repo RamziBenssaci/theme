@@ -29301,6 +29301,20 @@ input[type=radio].sr-only:checked ~ div.radio-images__badge {
     min-width: 25px;
   }
 }
+/* Remove white space between header and content */
+.main-nav-container,
+.main-nav,
+#mainnav,
+header,
+.store-header {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+main#main-content,
+#main-content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
 /* Top Nav */
 .top-navbar {
     display: flex;
@@ -29895,12 +29909,14 @@ input[type=radio].sr-only:checked ~ div.radio-images__badge {
   text-decoration: none !important;
   display: flex !important;
   align-items: center !important;
+  margin-right: 15px !important;
 }
 .main-nav-container salla-cart-summary.cart-link .s-cart-summary-wrapper {
   color: #ffffff !important;
   -webkit-text-decoration: none !important;
   text-decoration: none !important;
   display: flex !important;
+  padding-right: 10px !important;
 }
 .main-nav-container salla-cart-summary.cart-link .s-cart-summary-wrapper {
   align-items: center;
@@ -29947,6 +29963,7 @@ input[type=radio].sr-only:checked ~ div.radio-images__badge {
   display: inline !important;
   background: transparent !important;
   color: #ffffff !important;
+  margin-right: 15px !important;
 }
 .main-nav-container salla-cart-summary.cart-link .s-cart-summary-count {
   margin-left: 5px;
@@ -30231,6 +30248,8 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
 }
 .main-nav-container .header-actions-wrapper {
   display: flex !important;
+  margin-right: 15px !important;
+  padding-right: 10px !important;
   align-items: center !important;
 }
 .main-nav-container .header-actions-wrapper {
