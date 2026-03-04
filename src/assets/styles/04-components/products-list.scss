@@ -145,12 +145,61 @@
   }
 }
 
-/* Wishlist Button - Repositioned for horizontal layout */
+/* Wishlist Button - Moved to bottom with add to cart button */
 .s-block--latest-products .s-product-card-wishlist-btn {
-  position: absolute !important;
-  top: 8px !important;
-  right: 8px !important;
-  z-index: 18 !important;
+  position: static !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  
+  button,
+  salla-button {
+    background-color: transparent !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 4px !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #666 !important;
+    transition: all 0.3s !important;
+    
+    &:hover {
+      border-color: #bf3617 !important;
+      color: #bf3617 !important;
+      background-color: transparent !important;
+    }
+    
+    i {
+      font-size: 16px !important;
+      color: inherit !important;
+    }
+  }
+  
+  // When added to wishlist
+  &.s-product-card-wishlist-added {
+    button,
+    salla-button {
+      border-color: #bf3617 !important;
+      color: #bf3617 !important;
+      background-color: transparent !important;
+      
+      i {
+        color: #bf3617 !important;
+      }
+    }
+  }
 }
 
 /* Product Content - Compact */
@@ -354,7 +403,7 @@
   --s-button-min-height: auto !important;
 }
 
-/* Product Actions Wrapper - Compact */
+/* Product Actions Wrapper - Compact - Heart icon at bottom */
 .s-block--latest-products .s-product-card-actions,
 .s-block--latest-products .s-product-card-content-footer {
   margin-top: 4px !important;
@@ -362,6 +411,24 @@
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
+  justify-content: flex-start !important;
+  
+  // Hide view and compare icons if they exist
+  salla-button:not(.s-product-card-wishlist-btn),
+  button:not(.s-product-card-wishlist-btn) {
+    display: none !important;
+  }
+  
+  // Ensure wishlist button is visible
+  .s-product-card-wishlist-btn {
+    display: inline-flex !important;
+    order: 2 !important; // After add to cart button
+  }
+  
+  // Add to cart button comes first
+  salla-add-product-button {
+    order: 1 !important;
+  }
 }
 
 /* Out of Stock */
