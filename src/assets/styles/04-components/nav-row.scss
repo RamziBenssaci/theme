@@ -5,12 +5,13 @@
   
   .container {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 20px;
     
     > * {
-      display: flex;
-      align-items: center;
+      display: inline-flex;
+      align-items: baseline;
+      vertical-align: baseline;
     }
   }
   
@@ -23,18 +24,18 @@
     border-radius: 3px;
     cursor: pointer;
     font-weight: bold;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     transition: background-color 0.3s;
     font-size: 14px;
     text-decoration: none;
     height: auto;
-    min-height: 36px;
+    line-height: 1.5;
     white-space: nowrap;
     gap: 10px;
     flex-shrink: 0;
     margin: 0;
-    vertical-align: middle;
+    vertical-align: baseline;
     
     &:hover {
       background-color: #e68f04;
@@ -57,18 +58,18 @@
   
   // Navigation Menu - Center, ONE LINE, no wrapping - FIXED
   custom-main-menu {
-    display: block !important;
+    display: inline-block !important;
     width: 100%;
     overflow: visible;
     margin: 0;
     padding: 0;
-    vertical-align: middle;
+    vertical-align: baseline;
     
     // Override .main-menu flex-wrap from menus.scss
     .main-menu,
     ul {
       display: flex !important;
-      align-items: center !important;
+      align-items: baseline !important;
       justify-content: center !important;
       list-style: none !important;
       margin: 0 !important;
@@ -80,7 +81,7 @@
       width: auto !important;
       max-width: none !important;
       flex-direction: row !important;
-      vertical-align: middle;
+      vertical-align: baseline;
     }
     
     li {
@@ -89,22 +90,22 @@
       white-space: nowrap !important;
       float: none !important;
       position: relative !important;
-      vertical-align: middle;
+      vertical-align: baseline;
       margin: 0;
       padding: 0;
       
       // Override root-level padding that might cause wrapping
       &.root-level {
         display: inline-block !important;
-        vertical-align: middle;
+        vertical-align: baseline;
         
         > a {
           padding-top: 0 !important;
           padding-bottom: 0 !important;
           padding-left: 0 !important;
           padding-right: 0 !important;
-          vertical-align: middle;
-          line-height: normal;
+          vertical-align: baseline;
+          line-height: 1.5;
         }
       }
     }

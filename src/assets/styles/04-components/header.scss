@@ -700,9 +700,23 @@ salla-user-menu{
         }
       }
       
-      // Hide the search icon at the beginning (inside input wrapper)
+      // Hide ALL search icons at the beginning (inside input wrapper) - prevent duplication
       .s-search-icon-wrap,
-      .s-search-icon {
+      .s-search-icon,
+      .s-search-input-wrapper .s-search-icon-wrap,
+      .s-search-input-wrapper .s-search-icon,
+      span.s-search-icon-wrap,
+      span.s-search-icon {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+      }
+      
+      // Also hide any SVG icons inside the input wrapper
+      .s-search-input-wrapper svg {
         display: none !important;
         visibility: hidden !important;
       }
@@ -737,71 +751,15 @@ salla-user-menu{
         }
       }
       
-      // Red search button at the END (after input wrapper) - EXACT match
-      // This creates a button element at the end of .s-search-container
+      // Hide ALL submit buttons inside salla-search to prevent duplication
+      // Only our custom button outside should show
       .s-search-action,
       button[type="submit"],
       .s-search-submit,
       [type="submit"],
       button.s-search-submit {
-        background-color: #bf3617 !important;
-        color: #ffffff !important;
-        border: none !important;
-        padding: 12px 20px !important;
-        cursor: pointer;
-        border-radius: 0 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        transition: background-color 0.3s;
-        min-width: 50px !important;
-        height: 48px !important;
-        width: auto !important;
-        order: 999 !important; // Ensure it's at the end (after input wrapper)
-        margin-left: 0 !important;
-        position: relative !important;
-        flex-shrink: 0 !important;
-        
-        &:hover {
-          background-color: #a02d12 !important;
-        }
-        
-        // Hide default icons
-        i, svg, .sicon-search, [class*="icon"] {
-          display: none !important;
-        }
-        
-        // Use provided SVG search icon
-        &::after {
-          content: '';
-          display: block !important;
-          width: 20px !important;
-          height: 20px !important;
-          background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctitle%3Esearch%3C/title%3E%3Cpath fill='%23ffffff' d='M30.276 28.391l-7.576-7.576c1.644-2.053 2.633-4.652 2.633-7.481 0-6.616-5.384-12-12-12s-12 5.384-12 12 5.384 12 12 12c2.829 0 5.428-0.989 7.481-2.633l7.576 7.576c0.26 0.26 0.601 0.391 0.943 0.391s0.683-0.131 0.943-0.391c0.521-0.521 0.521-1.364 0-1.885zM13.333 22.667c-5.147 0-9.333-4.187-9.333-9.333s4.187-9.333 9.333-9.333 9.333 4.187 9.333 9.333-4.187 9.333-9.333 9.333z'/%3E%3C/svg%3E");
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: center;
-          visibility: visible !important;
-          opacity: 1 !important;
-        }
-      }
-      
-      // If there's no submit button, create one using ::after on the container
-      .s-search-container:not(:has(button[type="submit"]))::after {
-        content: '';
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        width: 50px !important;
-        height: 48px !important;
-        background-color: #bf3617 !important;
-        background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctitle%3Esearch%3C/title%3E%3Cpath fill='%23ffffff' d='M30.276 28.391l-7.576-7.576c1.644-2.053 2.633-4.652 2.633-7.481 0-6.616-5.384-12-12-12s-12 5.384-12 12 5.384 12 12 12c2.829 0 5.428-0.989 7.481-2.633l7.576 7.576c0.26 0.26 0.601 0.391 0.943 0.391s0.683-0.131 0.943-0.391c0.521-0.521 0.521-1.364 0-1.885zM13.333 22.667c-5.147 0-9.333-4.187-9.333-9.333s4.187-9.333 9.333-9.333 9.333 4.187 9.333 9.333-4.187 9.333-9.333 9.333z'/%3E%3C/svg%3E");
-        background-size: 20px 20px;
-        background-repeat: no-repeat;
-        background-position: center;
-        flex-shrink: 0 !important;
-        cursor: pointer;
-        order: 999 !important;
+        display: none !important;
+        visibility: hidden !important;
       }
     }
   }
