@@ -114,22 +114,30 @@ class Home extends BasePage {
         const updateProductVisibility = () => {
             if (productCards.length === 0) return;
 
-            // Force 4 products per page on desktop
+            // Force 4 products per page on desktop (width > 1200px)
             productsPerPage = window.innerWidth > 1200 ? 4 : getProductsPerPage();
             totalGroups = Math.ceil(productCards.length / productsPerPage);
+
+            // Ensure currentIndex is valid
+            if (currentIndex >= totalGroups) {
+                currentIndex = 0;
+            }
 
             productCards.forEach((card, index) => {
                 const startIndex = currentIndex * productsPerPage;
                 const endIndex = startIndex + productsPerPage;
                 
+                // Show products in current range, hide others
                 if (index >= startIndex && index < endIndex) {
                     card.style.display = 'flex';
                     card.style.visibility = 'visible';
+                    card.style.opacity = '1';
                     card.classList.add('deals-product-visible');
                     card.classList.remove('deals-product-hidden');
                 } else {
                     card.style.display = 'none';
                     card.style.visibility = 'hidden';
+                    card.style.opacity = '0';
                     card.classList.add('deals-product-hidden');
                     card.classList.remove('deals-product-visible');
                 }
@@ -167,22 +175,25 @@ class Home extends BasePage {
                 return;
             }
 
+            console.log('Deals slider: Found', productCards.length, 'products');
+
             // Force 4 products per page on desktop (width > 1200px)
             productsPerPage = window.innerWidth > 1200 ? 4 : getProductsPerPage();
             totalGroups = Math.ceil(productCards.length / productsPerPage);
             
-            // Reset to first page if current index is out of bounds
-            if (currentIndex >= totalGroups) {
-                currentIndex = 0;
-            }
+            console.log('Deals slider: Showing', productsPerPage, 'products per page,', totalGroups, 'total groups');
+            
+            // Reset to first page
+            currentIndex = 0;
 
-            // Initially hide all products
-            productCards.forEach(card => {
+            // Initially hide all products (they're all in DOM, just hidden)
+            productCards.forEach((card, index) => {
                 card.style.display = 'none';
+                card.style.visibility = 'hidden';
                 card.classList.add('deals-product-hidden');
             });
 
-            // Show first group of products
+            // Show first group of 4 products
             updateProductVisibility();
 
             // Handle window resize to recalculate

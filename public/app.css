@@ -33953,14 +33953,14 @@ salla-quantity-input[max="1"] .s-quantity-input-button {
   background-color: #ffffff !important;
 }
 .s-block--latest-products .s-block__title {
-  text-align: left !important;
+  text-align: center !important;
   margin-bottom: 32px !important;
 }
 .s-block--latest-products .s-block__title h2 {
   font-size: 24px !important;
   font-weight: 700 !important;
   margin-bottom: 16px !important;
-  text-align: left !important;
+  text-align: center !important;
   color: #111 !important;
   line-height: 24px !important;
 }
@@ -34231,6 +34231,30 @@ salla-quantity-input[max="1"] .s-quantity-input-button {
 .s-block--latest-products .s-product-card-content-footer salla-add-product-button:hover .s-button {
   color: #023a6b !important;
   background-color: transparent !important;
+}
+.s-block--latest-products .s-product-card-content salla-add-product-button,
+.s-block--latest-products .s-product-card-content salla-button[fill=outline],
+.s-block--latest-products .s-product-card-content .s-product-card-actions salla-button,
+.s-block--latest-products .s-product-card-content-footer salla-add-product-button {
+  /* Hide Salla's default icons */
+}
+.s-block--latest-products .s-product-card-content salla-add-product-button i,
+.s-block--latest-products .s-product-card-content salla-add-product-button .sicon,
+.s-block--latest-products .s-product-card-content salla-add-product-button [class*=icon],
+.s-block--latest-products .s-product-card-content salla-add-product-button svg,
+.s-block--latest-products .s-product-card-content salla-button[fill=outline] i,
+.s-block--latest-products .s-product-card-content salla-button[fill=outline] .sicon,
+.s-block--latest-products .s-product-card-content salla-button[fill=outline] [class*=icon],
+.s-block--latest-products .s-product-card-content salla-button[fill=outline] svg,
+.s-block--latest-products .s-product-card-content .s-product-card-actions salla-button i,
+.s-block--latest-products .s-product-card-content .s-product-card-actions salla-button .sicon,
+.s-block--latest-products .s-product-card-content .s-product-card-actions salla-button [class*=icon],
+.s-block--latest-products .s-product-card-content .s-product-card-actions salla-button svg,
+.s-block--latest-products .s-product-card-content-footer salla-add-product-button i,
+.s-block--latest-products .s-product-card-content-footer salla-add-product-button .sicon,
+.s-block--latest-products .s-product-card-content-footer salla-add-product-button [class*=icon],
+.s-block--latest-products .s-product-card-content-footer salla-add-product-button svg {
+  display: none !important;
 }
 .s-block--latest-products .s-product-card-content salla-add-product-button::after,
 .s-block--latest-products .s-product-card-content salla-button[fill=outline]::after,
@@ -34624,6 +34648,30 @@ salla-quantity-input[max="1"] .s-quantity-input-button {
 .deals-section .s-product-card-content-footer salla-add-product-button:hover .s-button {
   color: #023a6b !important;
   background-color: transparent !important;
+}
+.deals-section .s-product-card-content salla-add-product-button,
+.deals-section .s-product-card-content salla-button[fill=outline],
+.deals-section .s-product-card-content .s-product-card-actions salla-button,
+.deals-section .s-product-card-content-footer salla-add-product-button {
+  /* Hide Salla's default icons */
+}
+.deals-section .s-product-card-content salla-add-product-button i,
+.deals-section .s-product-card-content salla-add-product-button .sicon,
+.deals-section .s-product-card-content salla-add-product-button [class*=icon],
+.deals-section .s-product-card-content salla-add-product-button svg,
+.deals-section .s-product-card-content salla-button[fill=outline] i,
+.deals-section .s-product-card-content salla-button[fill=outline] .sicon,
+.deals-section .s-product-card-content salla-button[fill=outline] [class*=icon],
+.deals-section .s-product-card-content salla-button[fill=outline] svg,
+.deals-section .s-product-card-content .s-product-card-actions salla-button i,
+.deals-section .s-product-card-content .s-product-card-actions salla-button .sicon,
+.deals-section .s-product-card-content .s-product-card-actions salla-button [class*=icon],
+.deals-section .s-product-card-content .s-product-card-actions salla-button svg,
+.deals-section .s-product-card-content-footer salla-add-product-button i,
+.deals-section .s-product-card-content-footer salla-add-product-button .sicon,
+.deals-section .s-product-card-content-footer salla-add-product-button [class*=icon],
+.deals-section .s-product-card-content-footer salla-add-product-button svg {
+  display: none !important;
 }
 .deals-section .s-product-card-content salla-add-product-button::after,
 .deals-section .s-product-card-content salla-button[fill=outline]::after,

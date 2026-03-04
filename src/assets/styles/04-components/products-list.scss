@@ -6,14 +6,14 @@
   background-color: #ffffff !important;
   
   .s-block__title {
-    text-align: left !important;
+    text-align: center !important;
     margin-bottom: 32px !important;
     
     h2 {
       font-size: 24px !important;
       font-weight: 700 !important;
       margin-bottom: 16px !important;
-      text-align: left !important;
+      text-align: center !important;
       color: #111 !important;
       line-height: 24px !important;
     }
@@ -274,6 +274,14 @@
   &:hover .s-button {
     color: #023a6b !important; // var(--dark-blue)
     background-color: transparent !important;
+  }
+  
+  /* Hide Salla's default icons */
+  i,
+  .sicon,
+  [class*="icon"],
+  svg {
+    display: none !important;
   }
   
   &::after {
