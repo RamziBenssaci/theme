@@ -26,6 +26,25 @@
     background-color: transparent;
     color: #ffffff;
     border: 1px solid rgba(255,255,255,0.3);
+    padding: 8px 15px;
+    border-radius: 3px;
+    transition: all 0.3s;
+    
+    &:hover {
+      background-color: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.5);
+    }
+  }
+  
+  // Login button styling in top nav (white outline)
+  button[onclick*="login"] {
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    padding: 8px 15px;
+    border-radius: 3px;
+    transition: all 0.3s;
+    cursor: pointer;
     
     &:hover {
       background-color: rgba(255,255,255,0.1);
@@ -70,9 +89,45 @@
 .topnav-link-item{
   @apply inline-block transition duration-300 px-4 rtl:last:pl-0 ltr:last:pr-0 py-px text-sm leading-none ltr:border-r rtl:border-l border-white/20 ltr:last:border-0 rtl:last:border-0 hover:opacity-80;
   color: #ffffff;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: #bf3617;
+  }
 
   &.right-side{
     @apply rtl:first:pr-0 ltr:first:pl-0
+  }
+}
+
+// Style salla-menu in top nav to match reference design
+.top-navbar salla-menu {
+  a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0 8px;
+    display: inline-block;
+    transition: all 0.3s;
+    
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: #bf3617;
+    }
+  }
+  
+  li {
+    display: inline-block;
+    
+    &:not(:last-child)::after {
+      content: '';
+      display: inline-block;
+      width: 1px;
+      height: 12px;
+      background-color: rgba(255,255,255,0.3);
+      margin: 0 4px;
+      vertical-align: middle;
+    }
   }
 }
 
@@ -97,6 +152,21 @@
   // Menu text color
   a, button, span {
     color: #ffffff;
+  }
+  
+  // Main menu links styling
+  .main-menu {
+    a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: all 0.3s;
+      
+      &:hover {
+        color: #ffffff;
+        text-decoration: underline;
+        text-decoration-color: #bf3617;
+      }
+    }
   }
 }
 
@@ -177,10 +247,25 @@
     font-size: 32px;
     font-weight: bold;
     margin: 0;
+    display: flex;
+    align-items: baseline;
 
     &::first-letter {
       color: #f29f05;
     }
+  }
+  
+  // If logo is text-based, style first 2 letters orange
+  &::first-letter,
+  h1::first-letter,
+  h2::first-letter {
+    color: #f29f05;
+  }
+  
+  // Style for MOBEX-like logo (first 2 chars orange, rest white)
+  &[data-logo-text]::before {
+    content: attr(data-logo-text);
+    color: #f29f05;
   }
 }
 
@@ -245,5 +330,66 @@ salla-user-menu{
 .header-search{
   .s-search-results{
     @apply z-10;
+  }
+  
+  // Style search in main nav to match reference design
+  salla-search {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    
+    .s-search-input {
+      background-color: #ffffff;
+      border: none;
+      padding: 12px 15px;
+      flex: 1;
+      color: #111;
+      border-radius: 0;
+      
+      &::placeholder {
+        color: #999;
+      }
+    }
+    
+    // Search button styling (red button on right)
+    button[type="submit"],
+    .s-search-submit {
+      background-color: #bf3617;
+      color: #ffffff;
+      border: none;
+      padding: 12px 20px;
+      cursor: pointer;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s;
+      
+      &:hover {
+        background-color: #a02d12;
+      }
+    }
+  }
+}
+
+// Main nav search bar styling
+.main-nav-container .header-search {
+  flex: 1;
+  max-width: 600px;
+  margin: 0 auto;
+  
+  salla-search {
+    display: flex;
+    align-items: stretch;
+    background-color: #ffffff;
+    border-radius: 0;
+    overflow: hidden;
+    
+    .s-search-input {
+      flex: 1;
+      padding: 12px 15px;
+      border: none;
+      font-size: 14px;
+    }
   }
 }
