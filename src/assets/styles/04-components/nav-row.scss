@@ -9,7 +9,7 @@
     gap: 20px;
   }
   
-  // All Categories Button - Left (same line as menu)
+  // All Categories Button - Left (same line as menu, aligned vertically)
   .all-categories-btn {
     background-color: #f29f05;
     color: #000000;
@@ -27,6 +27,7 @@
     white-space: nowrap;
     gap: 10px;
     flex-shrink: 0;
+    align-self: center; // Align with menu items vertically
     
     &:hover {
       background-color: #e68f04;
@@ -52,6 +53,7 @@
     display: block !important;
     width: 100%;
     overflow: visible;
+    align-self: center; // Align with All Categories button vertically
     
     // Override .main-menu flex-wrap from menus.scss
     .main-menu,

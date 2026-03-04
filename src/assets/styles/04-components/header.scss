@@ -346,6 +346,11 @@
       color: #ffffff;
       display: block;
       letter-spacing: 1px;
+      
+      // Make first letter "M" orange like category button
+      &::first-letter {
+        color: #f29f05 !important;
+      }
     }
     
     .mobex-subtitle {
@@ -444,9 +449,12 @@
   }
   
   // Cart summary styling - EXACT match to reference (Font Awesome shopping cart icon + "Cart 0 items" text)
+  // Align cart with login button
   salla-cart-summary.cart-link {
     color: #ffffff !important;
     text-decoration: none !important;
+    display: flex !important;
+    align-items: center !important;
     
     .s-cart-summary-wrapper {
       color: #ffffff !important;
@@ -652,6 +660,14 @@ salla-user-menu{
         height: 48px;
         box-shadow: none !important;
         flex-direction: row !important; // Ensure horizontal layout
+        gap: 0 !important; // No gap between input and button
+        
+        // Ensure button is positioned after input
+        > * {
+          &:last-child {
+            order: 999 !important;
+          }
+        }
       }
       
       .s-search-input-wrapper {
@@ -661,6 +677,8 @@ salla-user-menu{
         background-color: #ffffff;
         border: none;
         position: relative;
+        overflow: visible !important; // Allow button to be visible outside
+        order: 1 !important; // Input wrapper comes first
       }
       
       .s-search-input {
@@ -672,6 +690,7 @@ salla-user-menu{
         color: #111;
         border-radius: 0;
         height: 48px;
+        padding-right: 0 !important; // Remove padding on right to make room for button
         
         &::placeholder {
           color: #999;
@@ -683,10 +702,12 @@ salla-user-menu{
       }
       
       // Red search button on the right - EXACT match (red background, search icon MUST be visible at the END)
+      // Position it as a separate button element at the end
       .s-search-action,
       button[type="submit"],
       .s-search-submit,
-      [type="submit"] {
+      [type="submit"],
+      button.s-search-submit {
         background-color: #bf3617 !important;
         color: #ffffff !important;
         border: none !important;
@@ -702,7 +723,8 @@ salla-user-menu{
         width: auto !important;
         order: 999 !important; // Ensure it's at the end
         margin-left: 0 !important;
-        position: relative;
+        position: relative !important;
+        flex-shrink: 0 !important;
         
         &:hover {
           background-color: #a02d12 !important;
@@ -727,6 +749,20 @@ salla-user-menu{
           opacity: 1 !important;
         }
       }
+    }
+  }
+  
+  // Header actions wrapper - align login and cart on same line
+  .header-actions-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px;
+    
+    .login-btn,
+    salla-cart-summary.cart-link {
+      display: flex !important;
+      align-items: center !important;
+      height: auto;
     }
   }
   
