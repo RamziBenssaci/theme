@@ -33937,6 +33937,20 @@ salla-quantity-input[max="1"] .s-quantity-input-button {
 /* Products Grid - More columns for horizontal cards */
 .s-block--latest-products salla-products-list {
   display: block !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+@media (min-width: 768px) {
+  .s-block--latest-products salla-products-list {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+@media (min-width: 1024px) {
+  .s-block--latest-products salla-products-list {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
 }
 .s-block--latest-products salla-products-list .s-products-list {
   display: grid !important;
