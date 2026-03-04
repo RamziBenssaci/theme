@@ -111,6 +111,8 @@
     <main id="main-content" role="main">
     {% block content %}{% endblock %}
     </main>
+    {# Footer Features Section - Above Footer #}
+    {% include "components/footer/footer-features.twig" %}
     {% component 'footer.footer' %}
 </div>
 {% hook 'body:end' %}
