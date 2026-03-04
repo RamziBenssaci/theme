@@ -142,6 +142,28 @@
   }
 }
 
+/* Product visibility classes for slider */
+.deals-section .s-product-card-entry {
+  transition: opacity 0.3s ease, transform 0.3s ease !important;
+  
+  &.deals-product-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+  
+  &.deals-product-hidden {
+    opacity: 0 !important;
+    transform: translateY(10px) !important;
+  }
+}
+
+/* Navigation button disabled state */
+.deals-section .nav-arrow:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
 /* Product Cards in Deals Section - White Background */
 .deals-section .s-product-card-entry {
   background-color: #fff !important;

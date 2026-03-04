@@ -6,7 +6,7 @@ window.fslightbox = Lightbox;
 class Home extends BasePage {
     onReady() {
         this.initFeaturedTabs();
-        // this.initDealsSection();
+        this.initDealsSection();
     }
 
     /**
@@ -30,7 +30,7 @@ class Home extends BasePage {
     /**
      * Initialize Deals of the Week section
      * - Countdown timer
-     * - Slider navigation
+     * - Product slider (show 4 at a time, navigate through groups)
      */
     initDealsSection() {
         try {
@@ -70,64 +70,175 @@ class Home extends BasePage {
                 setInterval(updateTimer, 10);
             }
 
-            // Slider Navigation - Wait for page to be fully loaded
-            setTimeout(() => {
-                const dealsPrevBtn = document.querySelector('.deals-prev');
-                const dealsNextBtn = document.querySelector('.deals-next');
-                const dealsSlider = document.querySelector('#deals-of-week-slider');
-
-                if (dealsPrevBtn && dealsNextBtn && dealsSlider) {
-                    // Try to find Swiper instance
-                    const findSwiper = () => {
-                        try {
-                            if (dealsSlider.swiper) {
-                                return dealsSlider.swiper;
-                            }
-                            const swiperEl = dealsSlider.querySelector('.swiper');
-                            if (swiperEl && swiperEl.swiper) {
-                                return swiperEl.swiper;
-                            }
-                            if (dealsSlider._swiper) {
-                                return dealsSlider._swiper;
-                            }
-                        } catch (e) {
-                            console.log('Swiper not found yet');
-                        }
-                        return null;
-                    };
-
-                    // Try multiple times to find swiper
-                    let attempts = 0;
-                    const maxAttempts = 10;
-                    const checkSwiper = setInterval(() => {
-                        attempts++;
-                        const swiper = findSwiper();
-                        
-                        if (swiper) {
-                            clearInterval(checkSwiper);
-                            dealsPrevBtn.addEventListener('click', () => {
-                                swiper.slidePrev();
-                            });
-
-                            dealsNextBtn.addEventListener('click', () => {
-                                swiper.slideNext();
-                            });
-                        } else if (attempts >= maxAttempts) {
-                            clearInterval(checkSwiper);
-                            // Fallback: just prevent default and let Salla handle it
-                            dealsPrevBtn.addEventListener('click', (e) => {
-                                e.preventDefault();
-                            });
-
-                            dealsNextBtn.addEventListener('click', (e) => {
-                                e.preventDefault();
-                            });
-                        }
-                    }, 200);
-                }
-            }, 1000);
+            // Product Slider - Show 4 products at a time
+            this.initDealsProductSlider();
         } catch (error) {
             console.error('Error initializing deals section:', error);
+        }
+    }
+
+    /**
+     * Initialize product slider for deals section
+     * Shows 4 products at a time, navigates through groups
+     */
+    initDealsProductSlider() {
+        const dealsSection = document.querySelector('.deals-section');
+        if (!dealsSection) return;
+
+        const dealsPrevBtn = dealsSection.querySelector('.deals-prev');
+        const dealsNextBtn = dealsSection.querySelector('.deals-next');
+        const productsList = dealsSection.querySelector('salla-products-list');
+
+        if (!dealsPrevBtn || !dealsNextBtn || !productsList) return;
+
+        let currentIndex = 0;
+        let productCards = [];
+        let totalGroups = 0;
+        let productsPerPage = 4;
+
+        // Function to get products per page based on screen size
+        const getProductsPerPage = () => {
+            const width = window.innerWidth;
+            if (width <= 480) return 1;
+            if (width <= 768) return 2;
+            if (width <= 1200) return 3;
+            return 4;
+        };
+
+        // Function to get all product cards
+        const getProductCards = () => {
+            return Array.from(dealsSection.querySelectorAll('.s-product-card-entry'));
+        };
+
+        // Function to show/hide products based on current index
+        const updateProductVisibility = () => {
+            if (productCards.length === 0) return;
+
+            productsPerPage = getProductsPerPage();
+            totalGroups = Math.ceil(productCards.length / productsPerPage);
+
+            productCards.forEach((card, index) => {
+                const startIndex = currentIndex * productsPerPage;
+                const endIndex = startIndex + productsPerPage;
+                
+                if (index >= startIndex && index < endIndex) {
+                    card.style.display = 'flex';
+                    card.classList.add('deals-product-visible');
+                    card.classList.remove('deals-product-hidden');
+                } else {
+                    card.style.display = 'none';
+                    card.classList.add('deals-product-hidden');
+                    card.classList.remove('deals-product-visible');
+                }
+            });
+
+            // Update button states
+            dealsPrevBtn.disabled = currentIndex === 0;
+            dealsNextBtn.disabled = currentIndex >= totalGroups - 1;
+
+            // Add visual feedback for disabled state
+            if (dealsPrevBtn.disabled) {
+                dealsPrevBtn.style.opacity = '0.5';
+                dealsPrevBtn.style.cursor = 'not-allowed';
+            } else {
+                dealsPrevBtn.style.opacity = '1';
+                dealsPrevBtn.style.cursor = 'pointer';
+            }
+
+            if (dealsNextBtn.disabled) {
+                dealsNextBtn.style.opacity = '0.5';
+                dealsNextBtn.style.cursor = 'not-allowed';
+            } else {
+                dealsNextBtn.style.opacity = '1';
+                dealsNextBtn.style.cursor = 'pointer';
+            }
+        };
+
+        // Function to initialize slider
+        const initSlider = () => {
+            productCards = getProductCards();
+            
+            if (productCards.length === 0) {
+                // Products not loaded yet, try again
+                setTimeout(initSlider, 500);
+                return;
+            }
+
+            productsPerPage = getProductsPerPage();
+            totalGroups = Math.ceil(productCards.length / productsPerPage);
+            
+            // Reset to first page if current index is out of bounds
+            if (currentIndex >= totalGroups) {
+                currentIndex = 0;
+            }
+
+            // Initially hide all products
+            productCards.forEach(card => {
+                card.style.display = 'none';
+                card.classList.add('deals-product-hidden');
+            });
+
+            // Show first group of products
+            updateProductVisibility();
+
+            // Handle window resize to recalculate
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    // Reset to first page on resize to avoid showing empty pages
+                    if (currentIndex >= totalGroups) {
+                        currentIndex = 0;
+                    }
+                    updateProductVisibility();
+                }, 250);
+            });
+
+            // Navigation handlers
+            dealsPrevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateProductVisibility();
+                }
+            });
+
+            dealsNextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentIndex < totalGroups - 1) {
+                    currentIndex++;
+                    updateProductVisibility();
+                }
+            });
+        };
+
+        // Wait for Salla products to load
+        // Try multiple approaches to detect when products are loaded
+        const checkProductsLoaded = () => {
+            productCards = getProductCards();
+            
+            if (productCards.length > 0) {
+                initSlider();
+            } else {
+                // Check if products-list is hydrated/ready
+                if (productsList.classList.contains('hydrated') || productsList.querySelector('.s-products-list')) {
+                    // Give it a bit more time for cards to render
+                    setTimeout(initSlider, 300);
+                } else {
+                    // Try again after a delay
+                    setTimeout(checkProductsLoaded, 500);
+                }
+            }
+        };
+
+        // Start checking after a short delay to let Salla initialize
+        setTimeout(checkProductsLoaded, 1000);
+
+        // Also listen for Salla ready event if available
+        if (typeof salla !== 'undefined' && salla.onReady) {
+            salla.onReady(() => {
+                setTimeout(checkProductsLoaded, 500);
+            });
         }
     }
 }
