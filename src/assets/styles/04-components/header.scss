@@ -837,6 +837,15 @@ salla-user-menu{
     .main-nav-row-2 {
       flex-wrap: wrap;
       gap: 10px;
+      padding: 0 !important;
+      margin: 0 !important;
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+      
+      .container {
+        padding: 0 !important;
+        margin: 0 !important;
+      }
     }
     
     .all-categories-btn {
@@ -861,6 +870,15 @@ salla-user-menu{
     .main-nav-row-2 {
       flex-direction: column;
       align-items: stretch;
+      padding: 0 !important;
+      margin: 0 !important;
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+      
+      .container {
+        padding: 0 !important;
+        margin: 0 !important;
+      }
       
       .all-categories-btn {
         width: 100%;

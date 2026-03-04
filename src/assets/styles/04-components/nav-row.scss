@@ -1,21 +1,35 @@
 /* Navigation Row 2 - NO background, menu in one line */
 .main-nav-row-2 {
   background-color: transparent;
-  padding: 5px 0 !important; // Reduced to half to remove white space
+  padding: 0 !important; // Remove all padding
   margin-bottom: 0 !important;
   margin-top: 0 !important;
   min-height: auto !important;
   height: auto !important;
   
+  // Override any default nav styles
+  nav& {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
   .container {
-    display: flex;
-    align-items: baseline;
-    gap: 20px;
+    display: flex !important;
+    align-items: baseline !important;
+    gap: 20px !important;
+    padding: 0 !important; // Override Tailwind container padding
+    margin: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
     
     > * {
       display: inline-flex;
       align-items: baseline;
       vertical-align: baseline;
+      margin: 0 !important;
+      padding: 0 !important;
     }
   }
   
@@ -132,10 +146,16 @@
     }
   }
   
-  // Ensure container doesn't wrap
+  // Ensure container doesn't wrap and has no padding/margin
   .container {
     overflow: visible !important;
     max-width: 100% !important;
+    padding: 0 !important; // Force remove all padding
+    margin: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
   
   .flex.items-center.justify-between {

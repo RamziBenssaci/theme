@@ -10,6 +10,12 @@ section.hero-section {
   margin-bottom: 0 !important;
   padding-top: 0 !important;
   
+  // Ensure no gap after header
+  &::before {
+    display: none !important;
+    content: none !important;
+  }
+  
   .hero-slider {
     width: 100% !important;
     height: 100% !important;
