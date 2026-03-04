@@ -1,9 +1,10 @@
 {
     "name": {
-        "ar": "رائد",
-        "en": "Theme Raed"
+        "ar": "mobex",
+        "en": "mobex"
     },
     "repository": "https://github.com/SallaApp/theme-raed",
+    "author": "ramzi benssaci",
     "author_email": "support@salla.sa",
     "features": [
         "mega-menu",
