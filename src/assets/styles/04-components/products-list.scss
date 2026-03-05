@@ -208,11 +208,11 @@
   }
 }
 
-/* Wishlist Button - Lower left corner of card, black, smaller */
+/* Wishlist Button - In content area, NOT on image, bottom right of content */
 .s-block--latest-products .s-product-card-wishlist-btn {
   position: absolute !important;
   bottom: 8px !important;
-  left: 8px !important;
+  right: 8px !important; // Right side of content area
   z-index: 18 !important;
   display: inline-flex !important;
   align-items: center !important;
@@ -224,6 +224,11 @@
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
+  
+  // Ensure it's in content area, not image area
+  .s-product-card-content & {
+    position: absolute !important;
+  }
   
   button,
   salla-button {
@@ -243,26 +248,27 @@
     box-shadow: none !important;
     
     &:hover {
-      color: #000000 !important;
+      color: #bf3617 !important; // Red on hover
       background-color: transparent !important;
-      opacity: 0.7 !important;
+      opacity: 0.8 !important;
     }
     
     i {
-      font-size: 14px !important;
+      font-size: 16px !important;
       color: #000000 !important;
+      transition: color 0.3s !important;
     }
   }
   
-  // When added to wishlist - keep it black
+  // When added to wishlist - red color
   &.s-product-card-wishlist-added {
     button,
     salla-button {
-      color: #000000 !important;
+      color: #bf3617 !important;
       background-color: transparent !important;
       
       i {
-        color: #000000 !important;
+        color: #bf3617 !important;
       }
     }
   }
@@ -271,12 +277,14 @@
 /* Product Content - Compact */
 .s-block--latest-products .s-product-card-content {
   padding: 0 !important;
+  padding-bottom: 32px !important; // Space for heart icon
   text-align: left !important;
   display: flex !important;
   flex-direction: column !important;
   flex-grow: 1 !important;
   justify-content: space-between !important;
   min-width: 0 !important;
+  position: relative !important; // For absolute positioning of heart icon
 }
 
 /* Product Title - Compact */
@@ -352,74 +360,63 @@
   margin-right: 6px !important;
 }
 
-/* Add to Cart Button - Compact, close to price */
+/* Add to Cart Button - Professional Design with Single Arrow */
 .s-block--latest-products .s-product-card-content salla-add-product-button,
 .s-block--latest-products .s-product-card-content salla-button[fill="outline"],
 .s-block--latest-products .s-product-card-content .s-product-card-actions salla-button,
 .s-block--latest-products .s-product-card-content-footer salla-add-product-button {
   position: relative !important;
-  margin-top: 4px !important;
+  margin-top: 6px !important;
   margin-bottom: 0 !important;
   text-align: left !important;
   width: fit-content !important;
-  font-size: 14px !important;
-  font-weight: 700 !important;
-  background-color: transparent !important;
-  padding: 0 !important;
-  color: #034c8c !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  background-color: #034c8c !important; // Blue background
+  padding: 6px 12px !important;
+  color: #ffffff !important;
   border: none !important;
+  border-radius: 4px !important;
   cursor: pointer !important;
   display: inline-flex !important;
   align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
   min-height: auto !important;
   height: auto !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 4px rgba(3, 76, 140, 0.2) !important;
   
   button,
   .s-button {
     background-color: transparent !important;
-    color: #034c8c !important;
+    color: #ffffff !important;
     border: none !important;
     padding: 0 !important;
-    font-size: 14px !important;
-    font-weight: 700 !important;
-    text-align: left !important;
-    width: fit-content !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    width: 100% !important;
     min-height: auto !important;
     height: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
   }
   
   &:hover,
   &:hover button,
   &:hover .s-button {
-    color: #023a6b !important; // var(--dark-blue)
-    background-color: transparent !important;
+    color: #ffffff !important;
+    background-color: #023a6b !important; // Darker blue on hover
+    box-shadow: 0 3px 6px rgba(3, 76, 140, 0.3) !important;
+    transform: translateY(-1px) !important;
   }
   
   /* Hide ALL Salla's default icons and arrows - Very aggressive targeting */
   salla-add-product-button,
-  salla-button {
-    i,
-    .sicon,
-    [class*="icon"],
-    svg,
-    [class*="arrow"],
-    [class*="Arrow"],
-    * i,
-    * .sicon,
-    * [class*="icon"],
-    * svg {
-      display: none !important;
-      visibility: hidden !important;
-      opacity: 0 !important;
-      width: 0 !important;
-      height: 0 !important;
-      font-size: 0 !important;
-      line-height: 0 !important;
-    }
-  }
-  
-  salla-add-product-button button,
-  salla-button button,
+  salla-button,
   button,
   .s-button {
     i,
@@ -431,7 +428,9 @@
     * i,
     * .sicon,
     * [class*="icon"],
-    * svg {
+    * svg,
+    ::before,
+    ::after {
       display: none !important;
       visibility: hidden !important;
       opacity: 0 !important;
@@ -439,26 +438,24 @@
       height: 0 !important;
       font-size: 0 !important;
       line-height: 0 !important;
+      content: none !important;
     }
   }
   
+  // Add single professional arrow icon after text
   &::after {
-    content: "" !important;
-    width: 14px !important;
-    height: 14px !important;
+    content: "→" !important; // Single arrow character
     display: inline-block !important;
-    margin-left: 8px !important;
-    vertical-align: middle !important;
-    transition: all 0.2s ease-out !important;
-    background-color: #034c8c !important;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M7 0L5.5 1.5L9.5 5.5H0V8.5H9.5L5.5 12.5L7 14L14 7L7 0Z'/%3E%3C/svg%3E") no-repeat 50% 50% !important;
-    -webkit-mask-size: 100% !important;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M7 0L5.5 1.5L9.5 5.5H0V8.5H9.5L5.5 12.5L7 14L14 7L7 0Z'/%3E%3C/svg%3E") no-repeat 50% 50% !important;
-    mask-size: 100% !important;
+    font-size: 16px !important;
+    line-height: 1 !important;
+    color: #ffffff !important;
+    margin-left: 4px !important;
+    transition: transform 0.3s ease !important;
+    font-weight: normal !important;
   }
   
   &:hover::after {
-    background-color: #023a6b !important;
+    transform: translateX(2px) !important; // Slide arrow on hover
   }
 }
 
