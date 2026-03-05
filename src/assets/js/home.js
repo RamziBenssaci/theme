@@ -90,14 +90,18 @@ class Home extends BasePage {
     }
 
     /**
-     * Initialize countdown timer for top banner - Only minutes and seconds
+     * Initialize countdown timer for top banner - Days, Hours, Minutes, Seconds
      */
     initTopBannerCountdown() {
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
         const minutesEl = document.getElementById('minutes');
         const secondsEl = document.getElementById('seconds');
         
-        if (!minutesEl || !secondsEl) return;
+        if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
 
+        let days = parseInt(daysEl.textContent || '09', 10);
+        let hours = parseInt(hoursEl.textContent || '19', 10);
         let minutes = parseInt(minutesEl.textContent || '15', 10);
         let seconds = parseInt(secondsEl.textContent || '29', 10);
 
@@ -108,9 +112,19 @@ class Home extends BasePage {
                 minutes--;
                 if (minutes < 0) {
                     minutes = 59;
+                    hours--;
+                    if (hours < 0) {
+                        hours = 23;
+                        days--;
+                        if (days < 0) {
+                            days = 0;
+                        }
+                    }
                 }
             }
 
+            daysEl.textContent = String(days).padStart(2, '0');
+            hoursEl.textContent = String(hours).padStart(2, '0');
             minutesEl.textContent = String(minutes).padStart(2, '0');
             secondsEl.textContent = String(seconds).padStart(2, '0');
         };

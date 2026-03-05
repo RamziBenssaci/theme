@@ -30639,22 +30639,79 @@ input[type=radio].sr-only:checked ~ div.radio-images__badge {
   display: none !important;
 }
 .top-banner-contact .top-banner-contact-right salla-cart-summary.cart-link {
-  color: #ffffff !important;
+  background-color: #ffffff !important;
+  border: none !important;
+  color: #111111 !important;
   margin-left: 5px !important;
   margin-right: 0 !important;
+  padding: 8px 10px !important;
+  border-radius: 3px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  position: relative !important;
+  transition: all 0.3s !important;
+}
+.top-banner-contact .top-banner-contact-right salla-cart-summary.cart-link:hover {
+  background-color: rgba(255, 255, 255, 0.9) !important;
 }
 .top-banner-contact .top-banner-contact-right salla-cart-summary.cart-link .s-cart-summary-wrapper {
-  color: #ffffff !important;
-  gap: 4px !important;
+  color: #111111 !important;
+  gap: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+.top-banner-contact .top-banner-contact-right salla-cart-summary.cart-link .s-cart-summary-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 18px !important;
+  height: 18px !important;
 }
 .top-banner-contact .top-banner-contact-right salla-cart-summary.cart-link .cart-icon,
-.top-banner-contact .top-banner-contact-right salla-cart-summary.cart-link i[slot=icon] {
-  color: #ffffff !important;
+.top-banner-contact .top-banner-contact-right salla-cart-summary.cart-link i[slot=icon],
+.top-banner-contact .top-banner-contact-right salla-cart-summary.cart-link i.fa-shopping-cart,
+.top-banner-contact .top-banner-contact-right salla-cart-summary.cart-link i.fas.fa-shopping-cart,
+.top-banner-contact .top-banner-contact-right salla-cart-summary.cart-link svg,
+.top-banner-contact .top-banner-contact-right salla-cart-summary.cart-link [class*=icon] {
+  color: #111111 !important;
   font-size: 18px !important;
+  width: 18px !important;
+  height: 18px !important;
+  display: block !important;
+  margin: 0 !important;
 }
 .top-banner-contact .top-banner-contact-right salla-cart-summary.cart-link .s-cart-summary-count {
+  position: absolute !important;
+  top: -5px !important;
+  right: -5px !important;
+  background-color: #bf3617 !important;
   color: #ffffff !important;
-  margin-left: 2px !important;
+  border-radius: 50% !important;
+  width: 18px !important;
+  height: 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 11px !important;
+  font-weight: bold !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-width: 18px !important;
+  border: 2px solid #ffffff !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+  z-index: 10 !important;
+}
+.top-banner-contact .top-banner-contact-right salla-cart-summary.cart-link .s-cart-summary-text,
+.top-banner-contact .top-banner-contact-right salla-cart-summary.cart-link span:not(.s-cart-summary-count) {
+  display: none !important;
 }
 @media (max-width: 1024px) {
   .top-banner-contact .container {
@@ -30690,6 +30747,7 @@ input[type=radio].sr-only:checked ~ div.radio-images__badge {
   gap: 15px !important;
   flex-wrap: wrap !important;
   flex: 1 !important;
+  justify-content: center !important;
 }
 .top-banner-promo .top-banner-promo-content .sale-text {
   font-weight: bold !important;
