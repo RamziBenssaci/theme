@@ -41630,14 +41630,127 @@ iframe.tawk-widget {
     width: 100% !important;
   }
 }
+.swal2-container .swal2-backdrop-show {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(4px) !important;
+}
+.swal2-container .swal2-popup {
+  background-color: #ffffff !important;
+  border-radius: 16px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+  padding: 0 !important;
+  border: none !important;
+  max-width: 420px !important;
+  width: 90% !important;
+}
+.swal2-container .swal2-popup .swal2-header {
+  padding: 24px 24px 16px 24px !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  background-color: #f9fafb !important;
+  border-radius: 16px 16px 0 0 !important;
+}
+.swal2-container .swal2-popup .swal2-header .swal2-title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #111827 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: right !important;
+  font-family: "Cairo", sans-serif !important;
+}
+.swal2-container .swal2-popup .swal2-content {
+  padding: 20px 24px !important;
+  font-size: 16px !important;
+  color: #374151 !important;
+  line-height: 1.6 !important;
+  text-align: right !important;
+  font-family: "Cairo", sans-serif !important;
+  margin: 0 !important;
+}
+.swal2-container .swal2-popup .swal2-icon {
+  width: 60px !important;
+  height: 60px !important;
+  margin: 0 auto 16px auto !important;
+  border-width: 4px !important;
+}
+.swal2-container .swal2-popup .swal2-icon.swal2-success {
+  border-color: #10b981 !important;
+  color: #10b981 !important;
+}
+.swal2-container .swal2-popup .swal2-icon.swal2-success .swal2-success-ring {
+  border-color: #10b981 !important;
+}
+.swal2-container .swal2-popup .swal2-icon.swal2-success .swal2-success-line-tip,
+.swal2-container .swal2-popup .swal2-icon.swal2-success .swal2-success-line-long {
+  background-color: #10b981 !important;
+}
+.swal2-container .swal2-popup .swal2-actions {
+  padding: 16px 24px 24px 24px !important;
+  margin: 0 !important;
+  gap: 12px !important;
+  justify-content: center !important;
+}
+.swal2-container .swal2-popup .swal2-actions .swal2-confirm {
+  background-color: #034c8c !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 12px 32px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  font-family: "Cairo", sans-serif !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 4px rgba(3, 76, 140, 0.2) !important;
+}
+.swal2-container .swal2-popup .swal2-actions .swal2-confirm:hover {
+  background-color: #023a6b !important;
+  box-shadow: 0 4px 8px rgba(3, 76, 140, 0.3) !important;
+  transform: translateY(-1px) !important;
+}
+.swal2-container .swal2-popup .swal2-actions .swal2-confirm:focus {
+  box-shadow: 0 0 0 3px rgba(3, 76, 140, 0.2) !important;
+}
+.swal2-container .swal2-popup .swal2-actions .swal2-cancel {
+  background-color: #f3f4f6 !important;
+  color: #374151 !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px !important;
+  padding: 12px 32px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  font-family: "Cairo", sans-serif !important;
+  transition: all 0.3s ease !important;
+}
+.swal2-container .swal2-popup .swal2-actions .swal2-cancel:hover {
+  background-color: #e5e7eb !important;
+  border-color: #d1d5db !important;
+}
+.swal2-container .swal2-popup .swal2-close {
+  width: 32px !important;
+  height: 32px !important;
+  font-size: 20px !important;
+  color: #6b7280 !important;
+  transition: all 0.3s ease !important;
+  border-radius: 50% !important;
+  top: 16px !important;
+  right: 16px !important;
+}
+.swal2-container .swal2-popup .swal2-close:hover {
+  color: #111827 !important;
+  background-color: #f3f4f6 !important;
+  transform: rotate(90deg) !important;
+}
 .swal2-container .swal2-popup.swal2-toast {
-  max-width: 300px;
-  padding: 0 10px 5px;
-  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.0705882353);
+  max-width: 350px !important;
+  padding: 16px 20px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 12px !important;
+  background-color: #ffffff !important;
 }
 @media (max-width: 640px) {
   .swal2-container .swal2-popup.swal2-toast {
-    max-width: 100%;
+    max-width: 90% !important;
+    padding: 12px 16px !important;
   }
 }
 .swal2-container .swal2-popup.swal2-toast .swal2-icon{
@@ -41694,6 +41807,11 @@ iframe.tawk-widget {
   border-top: 2px solid #eee;
 }
 .swal2-container .swal2-popup.swal2-toast .swal2-title{
+  font-family: "Cairo", sans-serif !important;
+  color: #111827 !important;
+  font-weight: 600 !important;
+}
+.swal2-container .swal2-popup.swal2-toast .swal2-title{
     margin: 0px;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -41713,16 +41831,28 @@ iframe.tawk-widget {
 .swal2-container .swal2-popup.swal2-toast .swal2-close:where([dir="rtl"], [dir="rtl"] *){
     margin-right: 0.5rem;
 }
+.swal2-container .swal2-popup.swal2-toast .swal2-close {
+  color: #6b7280 !important;
+}
+.swal2-container .swal2-popup.swal2-toast .swal2-close:hover {
+  color: #111827 !important;
+}
 .swal2-container .swal2-popup.swal2-toast .swal2-timer-progress-bar-container {
-  height: 2px;
+  height: 3px !important;
+  border-radius: 0 0 12px 12px !important;
+  overflow: hidden !important;
 }
 .swal2-container .swal2-popup.swal2-toast .swal2-timer-progress-bar {
-  background: #ddd;
+  background: linear-gradient(90deg, #034c8c 0%, #023a6b 100%) !important;
+  height: 3px !important;
+}
+.swal2-container .swal2-popup.swal2-toast.swal2-icon-error{
+  border-radius: 12px !important;
 }
 .swal2-container .swal2-popup.swal2-toast.swal2-icon-error{
     --tw-bg-opacity: 1;
-    background-color: rgba(248, 113, 113, 1);
-    background-color: rgba(248, 113, 113, var(--tw-bg-opacity, 1));
+    background-color: rgba(239, 68, 68, 1);
+    background-color: rgba(239, 68, 68, var(--tw-bg-opacity, 1));
 }
 .swal2-container .swal2-popup.swal2-toast.swal2-icon-error *{
     --tw-text-opacity: 1;
@@ -41766,6 +41896,9 @@ iframe.tawk-widget {
   margin-top: 10px;
   padding-top: 15px;
   border-top: 2px solid #eee;
+}
+.swal2-container .swal2-popup.swal2-toast.swal2-icon-success{
+  border-radius: 12px !important;
 }
 .swal2-container .swal2-popup.swal2-toast.swal2-icon-success{
     --tw-bg-opacity: 1;
