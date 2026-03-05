@@ -209,7 +209,7 @@
 }
 
 /* Wishlist Button - Top-right corner of image container, overlaying image */
-.s-block--latest-products .s-product-card-wishlist-btn {
+.s-block--latest-products .s-product-card-entry .s-product-card-wishlist-btn {
   position: absolute !important;
   top: 8px !important;
   right: 8px !important;
@@ -233,6 +233,11 @@
     position: absolute !important;
   }
   
+  // Also position relative to card entry if needed
+  .s-product-card-entry & {
+    position: absolute !important;
+  }
+  
   &:hover {
     background-color: rgba(255, 255, 255, 1) !important;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2) !important;
@@ -249,22 +254,36 @@
     min-width: 32px !important;
     min-height: 32px !important;
     padding: 0 !important;
+    margin: 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     color: #333333 !important;
     transition: all 0.3s ease !important;
     box-shadow: none !important;
+    position: relative !important;
     
     &:hover {
       color: #bf3617 !important;
       background-color: transparent !important;
     }
     
-    i {
+    i,
+    svg,
+    [class*="icon"],
+    [class*="heart"] {
       font-size: 16px !important;
       color: #333333 !important;
       transition: color 0.3s ease !important;
+      display: block !important;
+      margin: 0 auto !important;
+      line-height: 1 !important;
+      width: 16px !important;
+      height: 16px !important;
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) !important;
     }
   }
   
@@ -423,7 +442,33 @@
     transform: translateY(-1px) !important;
   }
   
-  /* Hide ALL Salla's default icons and arrows - Very aggressive targeting */
+  /* Hide ALL Salla's default icons and arrows - EXTREMELY aggressive targeting */
+  * {
+    i,
+    .sicon,
+    [class*="icon"],
+    svg,
+    [class*="arrow"],
+    [class*="Arrow"],
+    [class*="chevron"],
+    [class*="Chevron"],
+    [data-icon],
+    [slot="icon"] {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+      font-size: 0 !important;
+      line-height: 0 !important;
+      content: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      position: absolute !important;
+      left: -9999px !important;
+    }
+  }
+  
   salla-add-product-button,
   salla-button,
   button,
@@ -434,10 +479,18 @@
     svg,
     [class*="arrow"],
     [class*="Arrow"],
+    [class*="chevron"],
+    [class*="Chevron"],
+    [data-icon],
+    [slot="icon"],
     * i,
     * .sicon,
     * [class*="icon"],
     * svg,
+    * [class*="arrow"],
+    * [class*="Arrow"],
+    * [class*="chevron"],
+    * [class*="Chevron"],
     ::before {
       display: none !important;
       visibility: hidden !important;
@@ -449,10 +502,33 @@
       content: none !important;
       margin: 0 !important;
       padding: 0 !important;
+      position: absolute !important;
+      left: -9999px !important;
     }
   }
   
-  // Single arrow after text
+  // Hide any nested button content that might have arrows
+  button *,
+  .s-button * {
+    i,
+    .sicon,
+    [class*="icon"],
+    svg,
+    [class*="arrow"],
+    [class*="Arrow"],
+    [class*="chevron"],
+    [class*="Chevron"] {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+      font-size: 0 !important;
+      line-height: 0 !important;
+    }
+  }
+  
+  // Single arrow after text - ONLY this arrow should show
   &::after {
     content: "→" !important;
     display: inline-block !important;
@@ -462,6 +538,8 @@
     margin-left: 6px !important;
     transition: transform 0.3s ease !important;
     font-weight: normal !important;
+    position: relative !important;
+    z-index: 1 !important;
   }
   
   &:hover::after {
