@@ -1,21 +1,22 @@
-/* Top Banner - Promotional Banner - Light Blue Design */
-.top-banner {
-  background-color: #e8f4f8 !important; // Light blue background like screenshot 3
-  color: #111111 !important; // Dark text
-  padding: 12px 0 !important;
+/* Top Banner - Two Section Design: Contact Info + Promotional Banner */
+
+/* Section 1: Contact Information - Dark Blue Background */
+.top-banner-contact {
+  background-color: #023a6b !important; // Dark blue
+  color: #ffffff !important;
+  padding: 10px 0 !important;
   font-size: 14px !important;
   width: 100% !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
   
   .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 15px !important;
   }
   
-  .top-banner-left {
+  .top-banner-contact-left {
     display: flex !important;
     align-items: center !important;
     gap: 20px !important;
@@ -24,131 +25,223 @@
     span {
       display: flex !important;
       align-items: center !important;
-      gap: 5px !important;
+      gap: 8px !important;
       white-space: nowrap !important;
-      color: #111111 !important; // Dark text
+      color: #ffffff !important;
       
       i {
-        font-size: 14px !important;
-        color: #111111 !important; // Dark icons
+        font-size: 16px !important;
+        color: #f29f05 !important; // Orange icons
+      }
+      
+      u {
+        text-decoration: underline !important;
+        cursor: pointer !important;
       }
     }
   }
   
-  .top-banner-center {
-    text-align: center !important;
+  .top-banner-contact-right {
     display: flex !important;
     align-items: center !important;
     gap: 10px !important;
     flex-wrap: wrap !important;
-    justify-content: center !important;
     
-    .sale-text {
-      font-weight: bold !important;
-      white-space: nowrap !important;
-      color: #111111 !important; // Dark text
-    }
-    
-    .sale-code {
-      color: #f29f05 !important; // var(--primary-orange) - Keep orange for code
-      white-space: nowrap !important;
-      font-weight: bold !important;
-    }
-  }
-  
-  .top-banner-right {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    
-    .countdown {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      
-      > span:first-child {
-        white-space: nowrap;
-      }
-      
-      > span:first-child {
-        color: #666666 !important; // Light gray text for "تنتهي العروض خلال"
-      }
-      
-      .countdown-timer {
+    .header-buttons {
+      .btn--rounded-gray {
+        background-color: #ffffff !important;
+        color: #111111 !important;
+        border: none !important;
+        padding: 6px 12px !important;
+        border-radius: 3px !important;
+        font-size: 13px !important;
         display: flex !important;
         align-items: center !important;
         gap: 5px !important;
         
-        .timer-box {
-          background-color: #bf3617 !important; // var(--primary-red) - Red boxes
-          color: #ffffff !important; // var(--white)
-          padding: 5px 10px !important;
-          border-radius: 5px !important; // More rounded like screenshot
-          font-weight: bold !important;
-          min-width: 35px !important;
-          text-align: center !important;
-          display: inline-block !important;
-          font-size: 14px !important;
-        }
-        
-        .timer-separator {
-          color: #111111 !important; // Dark separators
-          font-weight: bold !important;
-          font-size: 16px !important;
+        span {
+          color: #111111 !important;
+          
+          u {
+            text-decoration: underline !important;
+          }
         }
       }
     }
     
-    .close-banner {
+    .login-btn-icon {
+      background-color: #ffffff !important;
+      border: none !important;
+      color: #111111 !important;
+      padding: 8px 10px !important;
+      border-radius: 3px !important;
       cursor: pointer !important;
-      font-size: 18px !important;
       display: flex !important;
       align-items: center !important;
-      transition: opacity 0.3s !important;
-      color: #111111 !important; // Dark X icon
+      justify-content: center !important;
+      width: 36px !important; // Small square button
+      height: 36px !important;
+      min-width: 36px !important;
+      transition: all 0.3s !important;
       
       &:hover {
-        opacity: 0.7 !important;
+        background-color: rgba(255, 255, 255, 0.9) !important;
       }
       
-      i {
+      i, .login-icon {
+        font-size: 18px !important;
         color: #111111 !important;
+        margin: 0 !important;
+      }
+      
+      span {
+        display: none !important; // Hide text, icon only
+      }
+    }
+    
+    salla-cart-summary.cart-link {
+      color: #ffffff !important;
+      margin-left: 5px !important; // Close to login button
+      margin-right: 0 !important;
+      
+      .s-cart-summary-wrapper {
+        color: #ffffff !important;
+        gap: 4px !important;
+      }
+      
+      .cart-icon,
+      i[slot="icon"] {
+        color: #ffffff !important;
+        font-size: 18px !important;
+      }
+      
+      .s-cart-summary-count {
+        color: #ffffff !important;
+        margin-left: 2px !important;
       }
     }
   }
   
-  // Responsive adjustments
   @media (max-width: 1024px) {
     .container {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
     }
     
-    .top-banner-left,
-    .top-banner-center,
-    .top-banner-right {
-      justify-content: center;
-      width: 100%;
+    .top-banner-contact-left,
+    .top-banner-contact-right {
+      justify-content: center !important;
+      width: 100% !important;
+    }
+  }
+}
+
+/* Section 2: Promotional Banner - Light Blue Background */
+.top-banner-promo {
+  background-color: #e8f4f8 !important; // Light blue background
+  color: #111111 !important; // Dark text
+  padding: 10px 0 !important;
+  font-size: 14px !important;
+  width: 100% !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+  
+  .container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 15px !important;
+  }
+  
+  .top-banner-promo-content {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    flex-wrap: wrap !important;
+    flex: 1 !important;
+    
+    .sale-text {
+      font-weight: bold !important;
+      white-space: nowrap !important;
+      color: #111111 !important;
+    }
+    
+    .offer-expires {
+      color: #666666 !important; // Light gray
+      white-space: nowrap !important;
+    }
+    
+    .countdown-timer {
+      display: flex !important;
+      align-items: center !important;
+      gap: 5px !important;
+      
+      .timer-box {
+        background-color: #bf3617 !important; // Red boxes
+        color: #ffffff !important;
+        padding: 5px 10px !important;
+        border-radius: 5px !important;
+        font-weight: bold !important;
+        min-width: 35px !important;
+        text-align: center !important;
+        display: inline-block !important;
+        font-size: 14px !important;
+      }
+      
+      .timer-separator {
+        color: #111111 !important; // Dark separators
+        font-weight: bold !important;
+        font-size: 16px !important;
+      }
+    }
+  }
+  
+  .close-banner {
+    cursor: pointer !important;
+    font-size: 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    transition: opacity 0.3s !important;
+    color: #111111 !important;
+    padding: 5px !important;
+    
+    &:hover {
+      opacity: 0.7 !important;
+    }
+    
+    i {
+      color: #111111 !important;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .container {
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+    }
+    
+    .top-banner-promo-content {
+      justify-content: center !important;
+      width: 100% !important;
     }
   }
   
   @media (max-width: 640px) {
-    font-size: 12px;
-    padding: 8px 0;
+    font-size: 12px !important;
+    padding: 8px 0 !important;
     
-    .top-banner-left {
-      flex-direction: column;
-      gap: 10px;
+    .top-banner-promo-content {
+      flex-direction: column !important;
+      gap: 10px !important;
     }
     
     .countdown-timer {
       .timer-box {
-        padding: 4px 8px;
-        font-size: 12px;
-        min-width: 25px;
+        padding: 4px 8px !important;
+        font-size: 12px !important;
+        min-width: 30px !important;
       }
     }
   }

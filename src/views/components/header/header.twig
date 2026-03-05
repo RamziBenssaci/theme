@@ -7,28 +7,55 @@
 #}
 {% set important_links = theme.settings.get('important_links') %}
 <header class="store-header">
-  {# Top Banner - Promotional Banner #}
-  <div class="top-banner">
+  {# Top Banner - Two Section Design: Contact Info + Promotional Banner #}
+  {# Section 1: Contact Information #}
+  <div class="top-banner-contact">
     <div class="container">
-      <div class="top-banner-left">
+      <div class="top-banner-contact-left">
         <span><i class="fas fa-phone"></i> اتصل بنا من 8 صباحاً - 10 مساءً / 6668 5555 8464</span>
-        <span><i class="fas fa-headset"></i> محادثة مباشرة / تحدث مع خبير</span>
+        <span><i class="fas fa-headset"></i> محادثة مباشرة / <u>تحدث مع خبير</u></span>
+        <span><i class="fas fa-map-marker-alt"></i> <u>انقر لاكتشاف المواقع</u></span>
       </div>
-      <div class="top-banner-center">
-        <span class="sale-text">تخفيضات ما قبل الجمعة السوداء</span>
-        <span class="sale-code">خصم يصل إلى 65% | استخدم الكود "BLACK"</span>
-      </div>
-      <div class="top-banner-right">
-        <div class="countdown">
-          <span>تنتهي العروض خلال</span>
-          <div class="countdown-timer">
-            <span class="timer-box"><span id="minutes">15</span></span>
-            <span class="timer-separator">:</span>
-            <span class="timer-box"><span id="seconds">29</span></span>
-          </div>
+      <div class="top-banner-contact-right">
+        {# Currency/Language/Login - Icon only #}
+        <div class="header-buttons">
+          {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
+              <button type="button" onclick="salla.event.dispatch('localization::open')" class="btn--rounded-gray basis-0">
+                  <span>{{ user.language.name }}</span>
+                  <span class="mx-1.5">|</span> <span>{{ currency.symbol }}</span>
+              </button>
+              <salla-localization-modal></salla-localization-modal>
+          {% endif %}
         </div>
-        <span class="close-banner"><i class="fas fa-times"></i></span>
+        {# Login - Icon only #}
+        {% if user.type=='user' %}
+          <salla-user-menu avatar-only show-header></salla-user-menu>
+        {% else %}
+          <button class="header-btn login-btn-icon" aria-label="تسجيل الدخول" onclick="salla.event.dispatch('login::open')">
+            <i class="sicon-user-circle login-icon"></i>
+          </button>
+        {% endif %}
+        {# Cart - Next to login #}
+        <salla-cart-summary class="cart-link ml-2 rtl:ml-[unset] rtl:mr-2">
+          <i slot="icon" class="fas fa-shopping-cart cart-icon"></i>
+        </salla-cart-summary>
       </div>
+    </div>
+  </div>
+  
+  {# Section 2: Promotional Banner with Timer #}
+  <div class="top-banner-promo">
+    <div class="container">
+      <div class="top-banner-promo-content">
+        <span class="sale-text">تخفيضات ما قبل الجمعة السوداء : خصم يصل إلى 65% | استخدم الكود "BLACK"</span>
+        <span class="offer-expires">تنتهي العروض خلال</span>
+        <div class="countdown-timer">
+          <span class="timer-box"><span id="minutes">15</span></span>
+          <span class="timer-separator">:</span>
+          <span class="timer-box"><span id="seconds">29</span></span>
+        </div>
+      </div>
+      <span class="close-banner"><i class="fas fa-times"></i></span>
     </div>
   </div>
   
@@ -99,20 +126,10 @@
               </button>
           {% endif %}
 
-                      {# Login/User Menu - Match reference with fa-user icon style #}
+                      {# Login/User Menu - Icon only in main nav (moved to top banner) #}
                       {% if user.type=='user' %}
                         <salla-user-menu avatar-only show-header></salla-user-menu>
-                      {% else %}
-                          <button class="header-btn login-btn" aria-label="تسجيل الدخول" onclick="salla.event.dispatch('login::open')">
-                            <i class="sicon-user-circle login-icon"></i>
-                            <span>تسجيل الدخول</span>
-                          </button>
                       {% endif %}
-                      
-                      {# Cart - Match reference design with Font Awesome shopping cart icon - Close to login #}
-                      <salla-cart-summary class="cart-link ml-2 rtl:ml-[unset] rtl:mr-2">
-                        <i slot="icon" class="fas fa-shopping-cart cart-icon"></i>
-                      </salla-cart-summary>
                   </div>
               </div>
               

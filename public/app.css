@@ -3273,7 +3273,7 @@ textarea.s-input {
     padding-top: 0.625rem;
     padding-bottom: 0.625rem;
 }
-.top-banner .s-advertisement-content {
+.top-banner-contact .s-advertisement-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -3281,7 +3281,21 @@ textarea.s-input {
   gap: 15px;
 }
 @media (max-width: 1024px) {
-  .top-banner .s-advertisement-content {
+  .top-banner-contact .s-advertisement-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+.top-banner-promo .s-advertisement-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+@media (max-width: 1024px) {
+  .top-banner-promo .s-advertisement-content {
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -30536,81 +30550,162 @@ input[type=radio].sr-only:checked ~ div.radio-images__badge {
 .radio-images input[type=radio]:disabled + label {
   opacity: 0.45;
 }
-/* Top Banner - Promotional Banner - Light Blue Design */
-.top-banner {
-  background-color: #e8f4f8 !important;
-  color: #111111 !important;
-  padding: 12px 0 !important;
+/* Top Banner - Two Section Design: Contact Info + Promotional Banner */
+/* Section 1: Contact Information - Dark Blue Background */
+.top-banner-contact {
+  background-color: #023a6b !important;
+  color: #ffffff !important;
+  padding: 10px 0 !important;
   font-size: 14px !important;
   width: 100% !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
-.top-banner .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 15px;
+.top-banner-contact .container {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 15px !important;
 }
-.top-banner .top-banner-left {
+.top-banner-contact .top-banner-contact-left {
   display: flex !important;
   align-items: center !important;
   gap: 20px !important;
   flex-wrap: wrap !important;
 }
-.top-banner .top-banner-left span {
+.top-banner-contact .top-banner-contact-left span {
   display: flex !important;
   align-items: center !important;
-  gap: 5px !important;
+  gap: 8px !important;
   white-space: nowrap !important;
-  color: #111111 !important;
+  color: #ffffff !important;
 }
-.top-banner .top-banner-left span i {
-  font-size: 14px !important;
-  color: #111111 !important;
+.top-banner-contact .top-banner-contact-left span i {
+  font-size: 16px !important;
+  color: #f29f05 !important;
 }
-.top-banner .top-banner-center {
-  text-align: center !important;
+.top-banner-contact .top-banner-contact-left span u {
+  -webkit-text-decoration: underline !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+}
+.top-banner-contact .top-banner-contact-right {
   display: flex !important;
   align-items: center !important;
   gap: 10px !important;
   flex-wrap: wrap !important;
-  justify-content: center !important;
 }
-.top-banner .top-banner-center .sale-text {
-  font-weight: bold !important;
-  white-space: nowrap !important;
+.top-banner-contact .top-banner-contact-right .header-buttons .btn--rounded-gray {
+  background-color: #ffffff !important;
   color: #111111 !important;
-}
-.top-banner .top-banner-center .sale-code {
-  color: #f29f05 !important;
-  white-space: nowrap !important;
-  font-weight: bold !important;
-}
-.top-banner .top-banner-right {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-.top-banner .top-banner-right .countdown {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.top-banner .top-banner-right .countdown > span:first-child {
-  color: #666666 !important;
-}
-.top-banner .top-banner-right .countdown > span:first-child {
-  white-space: nowrap;
-}
-.top-banner .top-banner-right .countdown .countdown-timer {
+  border: none !important;
+  padding: 6px 12px !important;
+  border-radius: 3px !important;
+  font-size: 13px !important;
   display: flex !important;
   align-items: center !important;
   gap: 5px !important;
 }
-.top-banner .top-banner-right .countdown .countdown-timer .timer-box {
+.top-banner-contact .top-banner-contact-right .header-buttons .btn--rounded-gray span {
+  color: #111111 !important;
+}
+.top-banner-contact .top-banner-contact-right .header-buttons .btn--rounded-gray span u {
+  -webkit-text-decoration: underline !important;
+  text-decoration: underline !important;
+}
+.top-banner-contact .top-banner-contact-right .login-btn-icon {
+  background-color: #ffffff !important;
+  border: none !important;
+  color: #111111 !important;
+  padding: 8px 10px !important;
+  border-radius: 3px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  transition: all 0.3s !important;
+}
+.top-banner-contact .top-banner-contact-right .login-btn-icon:hover {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+.top-banner-contact .top-banner-contact-right .login-btn-icon i, .top-banner-contact .top-banner-contact-right .login-btn-icon .login-icon {
+  font-size: 18px !important;
+  color: #111111 !important;
+  margin: 0 !important;
+}
+.top-banner-contact .top-banner-contact-right .login-btn-icon span {
+  display: none !important;
+}
+.top-banner-contact .top-banner-contact-right salla-cart-summary.cart-link {
+  color: #ffffff !important;
+  margin-left: 5px !important;
+  margin-right: 0 !important;
+}
+.top-banner-contact .top-banner-contact-right salla-cart-summary.cart-link .s-cart-summary-wrapper {
+  color: #ffffff !important;
+  gap: 4px !important;
+}
+.top-banner-contact .top-banner-contact-right salla-cart-summary.cart-link .cart-icon,
+.top-banner-contact .top-banner-contact-right salla-cart-summary.cart-link i[slot=icon] {
+  color: #ffffff !important;
+  font-size: 18px !important;
+}
+.top-banner-contact .top-banner-contact-right salla-cart-summary.cart-link .s-cart-summary-count {
+  color: #ffffff !important;
+  margin-left: 2px !important;
+}
+@media (max-width: 1024px) {
+  .top-banner-contact .container {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .top-banner-contact .top-banner-contact-left,
+  .top-banner-contact .top-banner-contact-right {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+}
+/* Section 2: Promotional Banner - Light Blue Background */
+.top-banner-promo {
+  background-color: #e8f4f8 !important;
+  color: #111111 !important;
+  padding: 10px 0 !important;
+  font-size: 14px !important;
+  width: 100% !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+.top-banner-promo .container {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 15px !important;
+}
+.top-banner-promo .top-banner-promo-content {
+  display: flex !important;
+  align-items: center !important;
+  gap: 15px !important;
+  flex-wrap: wrap !important;
+  flex: 1 !important;
+}
+.top-banner-promo .top-banner-promo-content .sale-text {
+  font-weight: bold !important;
+  white-space: nowrap !important;
+  color: #111111 !important;
+}
+.top-banner-promo .top-banner-promo-content .offer-expires {
+  color: #666666 !important;
+  white-space: nowrap !important;
+}
+.top-banner-promo .top-banner-promo-content .countdown-timer {
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+}
+.top-banner-promo .top-banner-promo-content .countdown-timer .timer-box {
   background-color: #bf3617 !important;
   color: #ffffff !important;
   padding: 5px 10px !important;
@@ -30621,51 +30716,50 @@ input[type=radio].sr-only:checked ~ div.radio-images__badge {
   display: inline-block !important;
   font-size: 14px !important;
 }
-.top-banner .top-banner-right .countdown .countdown-timer .timer-separator {
+.top-banner-promo .top-banner-promo-content .countdown-timer .timer-separator {
   color: #111111 !important;
   font-weight: bold !important;
   font-size: 16px !important;
 }
-.top-banner .top-banner-right .close-banner {
+.top-banner-promo .close-banner {
   cursor: pointer !important;
   font-size: 18px !important;
   display: flex !important;
   align-items: center !important;
   transition: opacity 0.3s !important;
   color: #111111 !important;
+  padding: 5px !important;
 }
-.top-banner .top-banner-right .close-banner:hover {
+.top-banner-promo .close-banner:hover {
   opacity: 0.7 !important;
 }
-.top-banner .top-banner-right .close-banner i {
+.top-banner-promo .close-banner i {
   color: #111111 !important;
 }
 @media (max-width: 1024px) {
-  .top-banner .container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  .top-banner-promo .container {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
   }
-  .top-banner .top-banner-left,
-  .top-banner .top-banner-center,
-  .top-banner .top-banner-right {
-    justify-content: center;
-    width: 100%;
+  .top-banner-promo .top-banner-promo-content {
+    justify-content: center !important;
+    width: 100% !important;
   }
 }
 @media (max-width: 640px) {
-  .top-banner {
-    font-size: 12px;
-    padding: 8px 0;
+  .top-banner-promo {
+    font-size: 12px !important;
+    padding: 8px 0 !important;
   }
-  .top-banner .top-banner-left {
-    flex-direction: column;
-    gap: 10px;
+  .top-banner-promo .top-banner-promo-content {
+    flex-direction: column !important;
+    gap: 10px !important;
   }
-  .top-banner .countdown-timer .timer-box {
-    padding: 4px 8px;
-    font-size: 12px;
-    min-width: 25px;
+  .top-banner-promo .countdown-timer .timer-box {
+    padding: 4px 8px !important;
+    font-size: 12px !important;
+    min-width: 30px !important;
   }
 }
 /* Remove white space between header and content */
@@ -31236,43 +31330,6 @@ main#main-content,
     margin-left: 9px;
     margin-right: 0;
     margin-right: initial;
-}
-.main-nav-container .login-btn,
-.main-nav-container .header-btn.login-btn {
-  background-color: transparent !important;
-  border: 1px solid #ffffff !important;
-  color: #ffffff !important;
-  padding: 8px 15px !important;
-  border-radius: 3px !important;
-  display: flex !important;
-}
-.main-nav-container .login-btn,
-.main-nav-container .header-btn.login-btn {
-  transition: all 0.3s;
-  cursor: pointer;
-  align-items: center;
-  gap: 5px;
-  font-size: 14px;
-  font-weight: normal;
-}
-.main-nav-container .login-btn:hover,
-.main-nav-container .header-btn.login-btn:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-.main-nav-container .login-btn .login-icon,
-.main-nav-container .login-btn i,
-.main-nav-container .header-btn.login-btn .login-icon,
-.main-nav-container .header-btn.login-btn i {
-  font-size: 16px !important;
-  color: #ffffff !important;
-  display: inline-block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-.main-nav-container .login-btn span,
-.main-nav-container .header-btn.login-btn span {
-  color: #ffffff !important;
-  display: inline-block !important;
 }
 .main-nav-container salla-cart-summary.cart-link {
   color: #ffffff !important;
@@ -35545,7 +35602,7 @@ model-viewer[style*=width]:before {
         max-width: 1280px;
     }
 }
-.top-banner .s-comments-product .s-comments-container {
+.top-banner-contact .s-comments-product .s-comments-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35553,7 +35610,21 @@ model-viewer[style*=width]:before {
   gap: 15px;
 }
 @media (max-width: 1024px) {
-  .top-banner .s-comments-product .s-comments-container {
+  .top-banner-contact .s-comments-product .s-comments-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+.top-banner-promo .s-comments-product .s-comments-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+@media (max-width: 1024px) {
+  .top-banner-promo .s-comments-product .s-comments-container {
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -38154,17 +38225,17 @@ salla-quantity-input[max="1"] .s-quantity-input-button {
   content: "" !important;
   position: absolute !important;
   top: 0 !important;
-  left: 0 !important;
+  right: 0 !important;
   width: 45% !important;
   bottom: 0 !important;
-  background: linear-gradient(to right, rgba(26, 26, 26, 0.6) 0%, rgba(26, 26, 26, 0.2) 50%, transparent 100%) !important;
+  background: linear-gradient(to left, rgba(26, 26, 26, 0.6) 0%, rgba(26, 26, 26, 0.2) 50%, transparent 100%) !important;
   z-index: 1 !important;
   pointer-events: none !important;
 }
 @media (max-width: 768px) {
   .brake-banner::before {
     width: 100% !important;
-    background: linear-gradient(to right, rgba(26, 26, 26, 0.7) 0%, rgba(26, 26, 26, 0.4) 100%) !important;
+    background: linear-gradient(to left, rgba(26, 26, 26, 0.7) 0%, rgba(26, 26, 26, 0.4) 100%) !important;
   }
 }
 .brake-banner .banner-content {
@@ -38172,8 +38243,9 @@ salla-quantity-input[max="1"] .s-quantity-input-button {
   z-index: 10 !important;
   flex: 0 0 50% !important;
   max-width: 50% !important;
-  padding-right: 20px !important;
-  margin-right: auto !important;
+  padding-left: 20px !important;
+  margin-left: auto !important;
+  order: 2 !important;
 }
 .brake-banner .banner-content h2 {
   color: #f29f05 !important;
@@ -38253,7 +38325,8 @@ salla-quantity-input[max="1"] .s-quantity-input-button {
 }
 .brake-banner .banner-image {
   position: absolute !important;
-  right: -20px !important;
+  left: -20px !important;
+  right: auto !important;
   bottom: -30px !important;
   top: auto !important;
   width: 50% !important;
@@ -38261,8 +38334,13 @@ salla-quantity-input[max="1"] .s-quantity-input-button {
   z-index: 1 !important;
   display: flex !important;
   align-items: flex-end !important;
-  justify-content: flex-end !important;
+  justify-content: flex-start !important;
   padding: 0 !important;
+  order: 1 !important;
+}
+.brake-banner .banner-image[style*=right] {
+  right: auto !important;
+  left: -20px !important;
 }
 .brake-banner .banner-image img {
   width: auto !important;
