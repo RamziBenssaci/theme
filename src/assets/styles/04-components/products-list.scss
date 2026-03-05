@@ -62,7 +62,7 @@
   }
 }
 
-/* Product Card - Vertical Layout */
+/* Product Card - Vertical Layout with Button at Bottom */
 .s-block--latest-products .s-product-card-entry {
   background-color: #fff !important;
   border-radius: 6px !important;
@@ -71,7 +71,7 @@
   box-shadow: none !important;
   position: relative !important;
   display: flex !important;
-  flex-direction: column !important; // Vertical layout
+  flex-direction: column !important;
   align-items: stretch !important;
   overflow: hidden !important;
   height: auto !important;
@@ -86,7 +86,7 @@
   top: 8px !important;
   border-radius: 4px !important;
   padding: 4px 6px !important;
-  z-index: 19 !important; // Below wishlist button
+  z-index: 19 !important;
   text-align: center !important;
   color: #000 !important;
   font-size: 10px !important;
@@ -107,13 +107,13 @@
 
 /* Badge positioning for multiple badges */
 .s-block--latest-products .s-product-card-entry .s-product-card-promotion-title + .s-product-card-promotion-title {
-  top: 40px !important; // Stack vertically
+  top: 40px !important;
   background-color: #bf3617 !important;
   color: #fff !important;
 }
 
 .s-block--latest-products .s-product-card-entry .s-product-card-promotion-title + .s-product-card-promotion-title + .s-product-card-promotion-title {
-  top: 72px !important; // Stack vertically
+  top: 72px !important;
   background-color: #28a745 !important;
   color: #fff !important;
 }
@@ -129,7 +129,7 @@
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  height: 200px !important; // Keep reasonable height
+  height: 200px !important;
   min-height: 200px !important;
   position: relative !important;
   flex-shrink: 0 !important;
@@ -216,11 +216,11 @@
   }
 }
 
-/* Wishlist Button - Top-right corner of image, circular background */
+/* Wishlist Button - Top-right corner of image container */
 .s-block--latest-products .s-product-card-wishlist-btn {
   position: absolute !important;
   top: 8px !important;
-  right: 8px !important; // Top-right corner of image
+  right: 8px !important;
   z-index: 20 !important;
   display: inline-flex !important;
   align-items: center !important;
@@ -229,10 +229,10 @@
   height: 32px !important;
   margin: 0 !important;
   padding: 0 !important;
-  background-color: rgba(255, 255, 255, 0.9) !important; // White translucent background
+  background-color: rgba(255, 255, 255, 0.9) !important;
   border: none !important;
-  border-radius: 50% !important; // Circular
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important; // Subtle shadow
+  border-radius: 50% !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
   transition: all 0.3s ease !important;
   backdrop-filter: blur(4px) !important;
   
@@ -265,7 +265,7 @@
     box-shadow: none !important;
     
     &:hover {
-      color: #bf3617 !important; // Red on hover
+      color: #bf3617 !important;
       background-color: transparent !important;
     }
     
@@ -353,7 +353,7 @@
   font-weight: 700 !important;
   color: #bf3617 !important;
   margin-top: 0 !important;
-  margin-bottom: 12px !important; // Space before button
+  margin-bottom: 12px !important;
   display: inline-flex !important;
   width: 100% !important;
   align-items: center !important;
@@ -383,19 +383,18 @@
 .s-block--latest-products .s-product-card-content salla-button[fill="outline"],
 .s-block--latest-products .s-product-card-content .s-product-card-actions salla-button,
 .s-block--latest-products .s-product-card-content-footer salla-add-product-button,
-.s-block--latest-products .s-product-card-actions salla-add-product-button,
-.s-block--latest-products .s-product-card-content-footer salla-add-product-button {
+.s-block--latest-products .s-product-card-actions salla-add-product-button {
   position: relative !important;
-  margin-top: auto !important; // Push to bottom
+  margin-top: auto !important;
   margin-bottom: 0 !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
   text-align: center !important;
-  width: 100% !important; // Full width
+  width: 100% !important;
   font-size: 13px !important;
   font-weight: 600 !important;
-  background-color: #034c8c !important; // Blue background
-  padding: 8px 16px !important; // Small, elegant padding
+  background-color: #034c8c !important;
+  padding: 8px 16px !important;
   color: #ffffff !important;
   border: none !important;
   border-radius: 6px !important;
@@ -403,7 +402,7 @@
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  min-height: 36px !important; // Small, elegant height
+  min-height: 36px !important;
   height: 36px !important;
   transition: all 0.3s ease !important;
   box-shadow: 0 2px 4px rgba(3, 76, 140, 0.2) !important;
@@ -429,7 +428,7 @@
   &:hover button,
   &:hover .s-button {
     color: #ffffff !important;
-    background-color: #023a6b !important; // Darker blue on hover
+    background-color: #023a6b !important;
     box-shadow: 0 3px 6px rgba(3, 76, 140, 0.3) !important;
     transform: translateY(-1px) !important;
   }
@@ -482,7 +481,7 @@
 /* Product Actions Wrapper - Bottom of card, full width */
 .s-block--latest-products .s-product-card-actions,
 .s-block--latest-products .s-product-card-content-footer {
-  margin-top: auto !important; // Push to bottom
+  margin-top: auto !important;
   margin-bottom: 0 !important;
   text-align: center !important;
   display: flex !important;
