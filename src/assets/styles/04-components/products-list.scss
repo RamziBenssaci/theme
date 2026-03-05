@@ -271,7 +271,8 @@
     i,
     svg,
     [class*="icon"],
-    [class*="heart"] {
+    [class*="heart"],
+    .sicon-heart {
       font-size: 16px !important;
       color: #333333 !important;
       transition: color 0.3s ease !important;
@@ -281,9 +282,10 @@
       width: 16px !important;
       height: 16px !important;
       position: absolute !important;
-      top: 50% !important;
+      top: 48% !important; // Slightly up
       left: 50% !important;
       transform: translate(-50%, -50%) !important;
+      text-align: center !important;
     }
   }
   
@@ -443,7 +445,11 @@
   }
   
   /* Hide ALL Salla's default icons and arrows - EXTREMELY aggressive targeting */
-  * {
+  // Target all possible arrow/icon elements at every level (but NOT the button's ::after)
+  salla-add-product-button *,
+  salla-button *,
+  button *,
+  .s-button * {
     i,
     .sicon,
     [class*="icon"],
@@ -452,8 +458,11 @@
     [class*="Arrow"],
     [class*="chevron"],
     [class*="Chevron"],
+    [class*="caret"],
     [data-icon],
-    [slot="icon"] {
+    [slot="icon"],
+    ::before,
+    ::after {
       display: none !important;
       visibility: hidden !important;
       opacity: 0 !important;
@@ -466,10 +475,70 @@
       padding: 0 !important;
       position: absolute !important;
       left: -9999px !important;
+      pointer-events: none !important;
     }
   }
   
-  salla-add-product-button,
+  // Specifically target salla-add-product-button and its children
+  salla-add-product-button {
+    i,
+    .sicon,
+    [class*="icon"],
+    svg,
+    [class*="arrow"],
+    [class*="Arrow"],
+    [class*="chevron"],
+    [class*="Chevron"],
+    [class*="caret"],
+    [data-icon],
+    [slot="icon"],
+    ::before,
+    ::after {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+      font-size: 0 !important;
+      line-height: 0 !important;
+      content: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      position: absolute !important;
+      left: -9999px !important;
+      pointer-events: none !important;
+    }
+    
+    // Target nested elements
+    * {
+      i,
+      .sicon,
+      [class*="icon"],
+      svg,
+      [class*="arrow"],
+      [class*="Arrow"],
+      [class*="chevron"],
+      [class*="Chevron"],
+      [class*="caret"],
+      ::before,
+      ::after {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        font-size: 0 !important;
+        line-height: 0 !important;
+        content: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        pointer-events: none !important;
+      }
+    }
+  }
+  
   salla-button,
   button,
   .s-button {
@@ -481,17 +550,11 @@
     [class*="Arrow"],
     [class*="chevron"],
     [class*="Chevron"],
+    [class*="caret"],
     [data-icon],
     [slot="icon"],
-    * i,
-    * .sicon,
-    * [class*="icon"],
-    * svg,
-    * [class*="arrow"],
-    * [class*="Arrow"],
-    * [class*="chevron"],
-    * [class*="Chevron"],
-    ::before {
+    ::before,
+    ::after {
       display: none !important;
       visibility: hidden !important;
       opacity: 0 !important;
@@ -504,31 +567,40 @@
       padding: 0 !important;
       position: absolute !important;
       left: -9999px !important;
+      pointer-events: none !important;
+    }
+    
+    // Target nested elements
+    * {
+      i,
+      .sicon,
+      [class*="icon"],
+      svg,
+      [class*="arrow"],
+      [class*="Arrow"],
+      [class*="chevron"],
+      [class*="Chevron"],
+      [class*="caret"],
+      ::before,
+      ::after {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        font-size: 0 !important;
+        line-height: 0 !important;
+        content: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        pointer-events: none !important;
+      }
     }
   }
   
-  // Hide any nested button content that might have arrows
-  button *,
-  .s-button * {
-    i,
-    .sicon,
-    [class*="icon"],
-    svg,
-    [class*="arrow"],
-    [class*="Arrow"],
-    [class*="chevron"],
-    [class*="Chevron"] {
-      display: none !important;
-      visibility: hidden !important;
-      opacity: 0 !important;
-      width: 0 !important;
-      height: 0 !important;
-      font-size: 0 !important;
-      line-height: 0 !important;
-    }
-  }
-  
-  // Single arrow after text - ONLY this arrow should show
+  // Single arrow after text - ONLY this arrow should show (must be after all hide rules)
   &::after {
     content: "→" !important;
     display: inline-block !important;
@@ -539,7 +611,13 @@
     transition: transform 0.3s ease !important;
     font-weight: normal !important;
     position: relative !important;
-    z-index: 1 !important;
+    z-index: 10 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: auto !important;
+    height: auto !important;
+    left: auto !important;
+    pointer-events: none !important;
   }
   
   &:hover::after {
