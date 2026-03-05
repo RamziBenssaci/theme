@@ -38,11 +38,28 @@
   text-align: center !important;
   padding: 0 !important;
   
-  i {
+  i,
+  i.fas,
+  i[class*="fa-"] {
     font-size: 40px !important;
     color: #ffffff !important;
     margin-bottom: 15px !important;
     display: block !important;
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: auto !important;
+    height: auto !important;
+    
+    // Ensure Font Awesome icons are loaded
+    &::before {
+      font-family: "Font Awesome 6 Free" !important;
+      font-weight: 900 !important;
+      display: inline-block !important;
+    }
   }
   
   h3 {
