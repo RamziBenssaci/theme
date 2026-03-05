@@ -36841,19 +36841,20 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
 .s-block--latest-products .s-product-card-entry .s-product-card-wishlist-btn salla-button [class*=icon],
 .s-block--latest-products .s-product-card-entry .s-product-card-wishlist-btn salla-button [class*=heart],
 .s-block--latest-products .s-product-card-entry .s-product-card-wishlist-btn salla-button .sicon-heart {
-  font-size: 16px !important;
+  font-size: 14px !important;
   color: #333333 !important;
   transition: color 0.3s ease !important;
   display: block !important;
-  margin: 0 auto !important;
+  margin: 0 !important;
   line-height: 1 !important;
-  width: 16px !important;
-  height: 16px !important;
+  width: 14px !important;
+  height: 14px !important;
   position: absolute !important;
-  top: calc(50% - 1px) !important;
-  left: calc(50% + 0.5px) !important;
+  top: 50% !important;
+  left: 50% !important;
   transform: translate(-50%, -50%) !important;
   text-align: center !important;
+  vertical-align: middle !important;
 }
 .s-block--latest-products .s-product-card-entry .s-product-card-wishlist-btn.s-product-card-wishlist-added {
   background-color: rgba(255, 255, 255, 0.95) !important;
@@ -36964,19 +36965,19 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   margin-right: 0 !important;
   text-align: center !important;
   width: 100% !important;
-  font-size: 13px !important;
+  font-size: 12px !important;
   font-weight: 600 !important;
   background-color: #034c8c !important;
-  padding: 8px 12px !important;
+  padding: 6px 12px !important;
   color: #ffffff !important;
   border: none !important;
-  border-radius: 6px !important;
+  border-radius: 4px !important;
   cursor: pointer !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  min-height: 36px !important;
-  height: auto !important;
+  min-height: 28px !important;
+  height: 28px !important;
   transition: all 0.3s ease !important;
   box-shadow: 0 2px 4px rgba(3, 76, 140, 0.2) !important;
   overflow: visible !important;
@@ -36994,16 +36995,16 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   color: #ffffff !important;
   border: none !important;
   padding: 0 8px !important;
-  font-size: 13px !important;
+  font-size: 12px !important;
   font-weight: 600 !important;
   text-align: center !important;
   width: 100% !important;
-  min-height: 36px !important;
-  height: 36px !important;
+  min-height: 28px !important;
+  height: 28px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 6px !important;
+  gap: 4px !important;
   overflow: visible !important;
   white-space: nowrap !important;
 }
@@ -37022,6 +37023,8 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   max-width: none !important;
   width: auto !important;
   flex-shrink: 0 !important;
+  font-size: 12px !important;
+  line-height: 1.2 !important;
 }
 .s-block--latest-products .s-product-card-content salla-add-product-button:hover, .s-block--latest-products .s-product-card-content salla-add-product-button:hover button, .s-block--latest-products .s-product-card-content salla-add-product-button:hover .s-button,
 .s-block--latest-products .s-product-card-content salla-button[fill=outline]:hover,
