@@ -1,6 +1,6 @@
 /* Navigation Row 2 - NO background, menu in one line - HALF HEIGHT */
 .main-nav-row-2 {
-  background-color: #034c8c !important; // Same color always, no change when sticky
+  background-color: #ffffff !important; // White background
   padding: 5px 0 !important; // Cut to half to remove white space
   margin-bottom: 0 !important;
   margin-top: 0 !important;
@@ -8,9 +8,9 @@
   height: auto !important;
   transition: all 0.3s ease !important;
   
-  // Sticky state when scrolling - keep same color as default
+  // Sticky state when scrolling - keep white background
   &.sticky-nav-row {
-    background-color: #034c8c !important; // Same as default, no color change
+    background-color: #ffffff !important; // White background when sticky
     box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
     position: fixed !important;
     top: 0 !important;
@@ -83,25 +83,28 @@
     min-height: auto !important;
     height: auto !important;
     
-    // Hide mobile menu nav on desktop (it's already hidden via menus.scss, but ensure it)
+    // Hide mobile menu nav on desktop completely
     .mobile-menu {
-      .mobile-menu-list {
-        // Mobile menu list is inside .mobile-menu which is hidden on desktop
-        // This is fine, no need to override
+      display: none !important; // Hide entire mobile menu on desktop
+      
+      @media (max-width: 1023px) {
+        display: block !important; // Show on mobile only
       }
     }
     
-    // Show desktop menu list on desktop
+    // Show desktop menu list on desktop only
     .desktop-menu-list {
       display: flex !important;
+      list-style: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
       
       @media (max-width: 1023px) {
         display: none !important; // Hide on mobile
       }
     }
     
-    // Override .main-menu flex-wrap from menus.scss
-    .main-menu,
+    // Override .main-menu flex-wrap from menus.scss - only for desktop menu
     ul.desktop-menu-list {
       display: flex !important;
       align-items: baseline !important;
@@ -145,8 +148,9 @@
       }
     }
     
+    // Menu links - visible on white background
     a {
-      color: #111 !important;
+      color: #111111 !important; // Dark text on white background
       text-decoration: none !important;
       font-weight: 500;
       padding: 0;
@@ -160,6 +164,13 @@
       &.active {
         color: #bf3617 !important;
         text-decoration: underline !important;
+      }
+    }
+    
+    // Ensure menu items are visible
+    li {
+      a {
+        color: #111111 !important;
       }
     }
   }

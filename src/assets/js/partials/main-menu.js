@@ -107,13 +107,24 @@ class NavigationMenu extends HTMLElement {
     }
 
     /**
-    * Get the menus
+    * Get the menus - Desktop only, no duplication
     * @returns {String}
     */
     getMenus() {
         // Only render desktop menu items to avoid duplication
-        // Mobile menu is handled separately in the mobile-menu nav
-        return this.menus.map((menu) => `
+        // Filter out duplicates by checking if menu was already processed
+        const seenIds = new Set();
+        return this.menus
+            .filter((menu) => {
+                // Use menu ID, URL, or title to detect duplicates
+                const identifier = menu.id || menu.url || menu.title || JSON.stringify(menu);
+                if (seenIds.has(identifier)) {
+                    return false; // Skip duplicate
+                }
+                seenIds.add(identifier);
+                return true;
+            })
+            .map((menu) => `
             ${this.getDesktopMenu(menu, true)}
         `).join('\n');
     }
@@ -123,7 +134,18 @@ class NavigationMenu extends HTMLElement {
     * @returns {String}
     */
     getMobileMenus() {
-        return this.menus.map((menu) => `
+        // Filter duplicates for mobile menu too
+        const seenIds = new Set();
+        return this.menus
+            .filter((menu) => {
+                const identifier = menu.id || menu.url || menu.title || JSON.stringify(menu);
+                if (seenIds.has(identifier)) {
+                    return false;
+                }
+                seenIds.add(identifier);
+                return true;
+            })
+            .map((menu) => `
             ${this.getMobileMenu(menu, this.displayAllText)}
         `).join('\n');
     }
