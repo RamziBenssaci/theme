@@ -64,8 +64,8 @@
     z-index: 10 !important; // Higher z-index to appear above image
     flex: 0 0 50% !important;
     max-width: 50% !important;
-    padding-left: 20px !important; // Changed from padding-right
-    margin-left: auto !important; // Push content to right side
+    padding-right: 20px !important; // Text on left side
+    margin-right: auto !important; // Keep content on left
     
     h2 {
       color: #f29f05 !important; // var(--primary-orange)
@@ -151,7 +151,7 @@
   
   .banner-image {
     position: absolute !important;
-    left: -20px !important; // Changed from right to left - Extend outside for 3D effect
+    right: -20px !important; // Image on right side - Extend outside for 3D effect
     bottom: -30px !important; // Position lower and extend outside
     top: auto !important;
     width: 50% !important;
@@ -159,7 +159,7 @@
     z-index: 1 !important; // Below text content
     display: flex !important;
     align-items: flex-end !important; // Align to bottom
-    justify-content: flex-start !important; // Changed from flex-end to flex-start
+    justify-content: flex-end !important; // Align to right
     padding: 0 !important;
     
     img {
