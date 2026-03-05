@@ -450,6 +450,22 @@ main#main-content,
       background-color: rgba(255, 255, 255, 0.15) !important;
     }
     
+    // Add cart icon directly via pseudo-element on the wrapper
+    &::before {
+      content: "\f07a" !important; // Font Awesome shopping cart icon
+      font-family: "Font Awesome 6 Free" !important;
+      font-weight: 900 !important;
+      font-size: 22px !important; // Nice size white cart icon
+      color: #ffffff !important;
+      display: inline-block !important;
+      width: 22px !important;
+      height: 22px !important;
+      line-height: 22px !important;
+      margin-left: 0 !important;
+      margin-right: 8px !important;
+      flex-shrink: 0 !important;
+    }
+    
     .s-cart-summary-wrapper {
       color: #ffffff !important;
       text-decoration: none !important;
@@ -458,112 +474,39 @@ main#main-content,
       gap: 8px !important;
       font-size: 14px;
       padding: 0 !important;
+      margin-left: 0 !important;
     }
     
-    // Cart icon container - ensure it displays properly
+    // Hide default icon container if it exists
     .s-cart-summary-icon {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      width: 24px !important;
-      height: 24px !important;
-      position: relative !important;
-      flex-shrink: 0 !important;
-      
-      // All possible icon elements
-      i,
-      svg,
-      [class*="icon"],
-      [class*="cart"],
-      [class*="sicon"] {
-        color: #ffffff !important;
-        font-size: 20px !important;
-        width: 20px !important;
-        height: 20px !important;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        font-family: "Font Awesome 6 Free" !important;
-        font-weight: 900 !important;
-        line-height: 20px !important;
-      }
+      display: none !important;
     }
     
-    // Cart icon slot styling - ensure Font Awesome icon displays
+    // Hide any slot icons since we're using pseudo-element
     i[slot="icon"],
-    i.fa-shopping-cart,
-    i.fas.fa-shopping-cart,
     [slot="icon"],
-    slot[name="icon"]::slotted(*) {
-      color: #ffffff !important;
-      font-size: 20px !important;
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      width: 20px !important;
-      height: 20px !important;
-      font-family: "Font Awesome 6 Free" !important;
-      font-weight: 900 !important;
-      line-height: 20px !important;
-      
-      // Ensure Font Awesome shopping cart icon
-      &::before {
-        content: "\f07a" !important; // Font Awesome shopping cart
-        font-family: "Font Awesome 6 Free" !important;
-        font-weight: 900 !important;
-        display: inline-block !important;
-      }
+    slot[name="icon"] {
+      display: none !important;
     }
     
-    // Force icon display in icon container
-    .s-cart-summary-icon i,
-    .s-cart-summary-icon svg,
-    .s-cart-summary-icon [class*="icon"] {
-      &::before {
-        content: "\f07a" !important; // Font Awesome shopping cart
-        font-family: "Font Awesome 6 Free" !important;
-        font-weight: 900 !important;
-        display: inline-block !important;
-        font-size: 20px !important;
-        color: #ffffff !important;
-        width: 20px !important;
-        height: 20px !important;
-        line-height: 20px !important;
-      }
-    }
-    
-    // If icon slot is empty, add icon via wrapper
-    .s-cart-summary-wrapper:not(:has(i[slot="icon"]))::before {
-      content: "\f07a" !important; // Font Awesome shopping cart
-      font-family: "Font Awesome 6 Free" !important;
-      font-weight: 900 !important;
-      font-size: 20px !important;
-      color: #ffffff !important;
-      display: inline-block !important;
-      width: 20px !important;
-      height: 20px !important;
-      line-height: 20px !important;
-      margin-right: 8px !important;
-    }
-    
-    // Red notification badge - positioned on top right of icon
+    // Red notification badge - positioned on top right of cart icon
     .s-cart-summary-count {
       position: absolute !important;
-      top: -8px !important;
-      right: -8px !important;
+      top: 2px !important;
+      right: 2px !important;
       background-color: #bf3617 !important; // Red badge
       color: #ffffff !important;
       border-radius: 50% !important;
-      width: 20px !important;
-      height: 20px !important;
+      width: 18px !important;
+      height: 18px !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      font-size: 11px !important;
+      font-size: 10px !important;
       font-weight: bold !important;
       padding: 0 !important;
       margin: 0 !important;
-      min-width: 20px !important;
+      min-width: 18px !important;
       border: 2px solid #034c8c !important; // Dark blue border
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
       z-index: 10 !important;
