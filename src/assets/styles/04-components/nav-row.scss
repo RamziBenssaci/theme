@@ -1,6 +1,6 @@
 /* Navigation Row 2 - NO background, menu in one line - HALF HEIGHT */
 .main-nav-row-2 {
-  background-color: #ffffff !important; // White background
+  background-color: transparent;
   padding: 5px 0 !important; // Cut to half to remove white space
   margin-bottom: 0 !important;
   margin-top: 0 !important;
@@ -8,16 +8,14 @@
   height: auto !important;
   transition: all 0.3s ease !important;
   
-  // Sticky state when scrolling - keep white background
+  // Sticky state when scrolling - keep same color
   &.sticky-nav-row {
-    background-color: #ffffff !important; // White background when sticky
+    background-color: #034c8c !important; // Same color as normal state
     box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 30 !important;
   }
+  
+  // Ensure background color stays the same (no color change)
+  background-color: #034c8c !important;
   
   .container {
     display: flex;
@@ -83,29 +81,32 @@
     min-height: auto !important;
     height: auto !important;
     
-    // Hide mobile menu nav on desktop completely
-    .mobile-menu {
-      display: none !important; // Hide entire mobile menu on desktop
-      
-      @media (max-width: 1023px) {
-        display: block !important; // Show on mobile only
+    // Hide mobile menu items on desktop (prevent duplicates)
+    // Mobile menu items have class "lg:hidden" and "text-sm font-bold"
+    // Hide them completely on desktop screens
+    @media (min-width: 1024px) {
+      .main-menu > li[class*="lg:hidden"],
+      .main-menu > li.text-sm,
+      .main-menu > li.font-bold:not(.root-level) {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
     }
     
-    // Show desktop menu list on desktop only
-    .desktop-menu-list {
-      display: flex !important;
-      list-style: none !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      
-      @media (max-width: 1023px) {
-        display: none !important; // Hide on mobile
+    // Only show desktop menu items (root-level items) on desktop
+    @media (min-width: 1024px) {
+      .main-menu > li.root-level {
+        display: inline-block !important;
       }
     }
     
-    // Override .main-menu flex-wrap from menus.scss - only for desktop menu
-    ul.desktop-menu-list {
+    // Override .main-menu flex-wrap from menus.scss
+    .main-menu,
+    ul {
       display: flex !important;
       align-items: baseline !important;
       justify-content: center !important;
@@ -148,9 +149,8 @@
       }
     }
     
-    // Menu links - visible on white background
     a {
-      color: #111111 !important; // Dark text on white background
+      color: #111 !important;
       text-decoration: none !important;
       font-weight: 500;
       padding: 0;
@@ -164,13 +164,6 @@
       &.active {
         color: #bf3617 !important;
         text-decoration: underline !important;
-      }
-    }
-    
-    // Ensure menu items are visible
-    li {
-      a {
-        color: #111111 !important;
       }
     }
   }
