@@ -61,7 +61,7 @@
   
   .banner-content {
     position: relative !important;
-    z-index: 2 !important;
+    z-index: 10 !important; // Higher z-index to appear above image
     flex: 0 0 50% !important;
     max-width: 50% !important;
     padding-right: 20px !important;
@@ -155,7 +155,7 @@
     top: auto !important;
     width: 50% !important;
     max-width: 55% !important; // Allow it to be slightly larger
-    z-index: 3 !important; // Above overlay
+    z-index: 1 !important; // Below text content
     display: flex !important;
     align-items: flex-end !important; // Align to bottom
     justify-content: flex-end !important;
