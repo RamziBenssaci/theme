@@ -8,14 +8,11 @@
   height: auto !important;
   transition: all 0.3s ease !important;
   
-  // Sticky state when scrolling - keep same color
+  // Sticky state when scrolling - keep same background color
   &.sticky-nav-row {
-    background-color: #034c8c !important; // Same color as normal state
+    background-color: transparent !important; // Keep same as non-sticky
     box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
   }
-  
-  // Ensure background color stays the same (no color change)
-  background-color: #034c8c !important;
   
   .container {
     display: flex;
@@ -81,32 +78,13 @@
     min-height: auto !important;
     height: auto !important;
     
-    // Hide mobile menu items on desktop (prevent duplicates)
-    // Mobile menu items have class "lg:hidden" and "text-sm font-bold"
-    // Hide them completely on desktop screens
-    @media (min-width: 1024px) {
-      .main-menu > li[class*="lg:hidden"],
-      .main-menu > li.text-sm,
-      .main-menu > li.font-bold:not(.root-level) {
-        display: none !important;
-        visibility: hidden !important;
-        height: 0 !important;
-        overflow: hidden !important;
-        margin: 0 !important;
-        padding: 0 !important;
-      }
+    // Hide mobile menu in desktop view
+    #mobile-menu {
+      display: none !important;
     }
     
-    // Only show desktop menu items (root-level items) on desktop
-    @media (min-width: 1024px) {
-      .main-menu > li.root-level {
-        display: inline-block !important;
-      }
-    }
-    
-    // Override .main-menu flex-wrap from menus.scss
-    .main-menu,
-    ul {
+    // Show desktop menu
+    .desktop-menu {
       display: flex !important;
       align-items: baseline !important;
       justify-content: center !important;
@@ -121,6 +99,12 @@
       max-width: none !important;
       flex-direction: row !important;
       vertical-align: baseline;
+    }
+    
+    // Override .main-menu flex-wrap from menus.scss (for mobile)
+    .main-menu:not(.desktop-menu),
+    ul:not(.desktop-menu) {
+      display: none !important; // Hide mobile menu in nav row
     }
     
     li {
