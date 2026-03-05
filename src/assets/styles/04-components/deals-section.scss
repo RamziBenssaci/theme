@@ -380,64 +380,97 @@
   margin-right: 8px !important;
 }
 
-/* Add to Cart Button */
+/* Add to Cart Button - Same style as Latest Products section */
 .deals-section .s-product-card-content salla-add-product-button,
 .deals-section .s-product-card-content salla-button[fill="outline"],
 .deals-section .s-product-card-content .s-product-card-actions salla-button,
 .deals-section .s-product-card-content-footer salla-add-product-button {
   position: relative !important;
-  margin-top: 4px !important;
+  margin-top: auto !important;
   margin-bottom: 0 !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  text-align: left !important;
-  width: fit-content !important;
-  font-size: 15px !important;
-  font-weight: 700 !important;
-  background-color: transparent !important;
-  padding: 0 !important;
-  color: #034c8c !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  text-align: center !important;
+  width: 100% !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  background-color: #034c8c !important;
+  padding: 6px 12px !important;
+  color: #ffffff !important;
   border: none !important;
+  border-radius: 4px !important;
   cursor: pointer !important;
-  display: inline-flex !important;
+  display: flex !important;
   align-items: center !important;
-  min-height: auto !important;
-  height: auto !important;
+  justify-content: center !important;
+  min-height: 28px !important;
+  height: 28px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 4px rgba(3, 76, 140, 0.2) !important;
+  overflow: visible !important;
+  white-space: nowrap !important;
   
   button,
   .s-button {
     background-color: transparent !important;
-    color: #034c8c !important;
+    color: #ffffff !important;
     border: none !important;
-    padding: 0 !important;
-    font-size: 15px !important;
-    font-weight: 700 !important;
-    text-align: left !important;
-    width: fit-content !important;
-    min-height: auto !important;
-    height: auto !important;
+    padding: 0 8px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    width: 100% !important;
+    min-height: 28px !important;
+    height: 28px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    overflow: visible !important;
+    white-space: nowrap !important;
+    
+    // Ensure span text shows fully
+    span {
+      display: inline-block !important;
+      white-space: nowrap !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      max-width: none !important;
+      width: auto !important;
+      flex-shrink: 0 !important;
+      font-size: 12px !important;
+      line-height: 1.2 !important;
+    }
   }
   
   &:hover,
   &:hover button,
   &:hover .s-button {
-    color: #023a6b !important;
-    background-color: transparent !important;
+    color: #ffffff !important;
+    background-color: #023a6b !important;
+    box-shadow: 0 3px 6px rgba(3, 76, 140, 0.3) !important;
+    transform: translateY(-1px) !important;
   }
   
-  /* Hide ALL Salla's default icons and arrows - Very aggressive targeting */
-  salla-add-product-button,
-  salla-button {
+  /* Hide ALL Salla's default icons and arrows - EXTREMELY aggressive targeting */
+  // Target all possible arrow/icon elements at every level (but NOT the button's ::after)
+  salla-add-product-button *,
+  salla-button *,
+  button *,
+  .s-button * {
     i,
     .sicon,
     [class*="icon"],
     svg,
     [class*="arrow"],
     [class*="Arrow"],
-    * i,
-    * .sicon,
-    * [class*="icon"],
-    * svg {
+    [class*="chevron"],
+    [class*="Chevron"],
+    [class*="caret"],
+    [data-icon],
+    [slot="icon"],
+    ::before,
+    ::after {
       display: none !important;
       visibility: hidden !important;
       opacity: 0 !important;
@@ -445,11 +478,92 @@
       height: 0 !important;
       font-size: 0 !important;
       line-height: 0 !important;
+      content: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      position: absolute !important;
+      left: -9999px !important;
+      pointer-events: none !important;
     }
   }
   
-  salla-add-product-button button,
-  salla-button button,
+  // Specifically target salla-add-product-button and its children - EXTREME targeting
+  salla-add-product-button {
+    // Hide ALL icons/arrows in button and nested elements
+    i,
+    .sicon,
+    [class*="icon"],
+    svg,
+    [class*="arrow"],
+    [class*="Arrow"],
+    [class*="chevron"],
+    [class*="Chevron"],
+    [class*="caret"],
+    [data-icon],
+    [slot="icon"],
+    ::before {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+      font-size: 0 !important;
+      line-height: 0 !important;
+      content: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      position: absolute !important;
+      left: -9999px !important;
+      pointer-events: none !important;
+    }
+    
+    // Target ALL nested elements at any depth
+    *,
+    * *,
+    * * * {
+      i,
+      .sicon,
+      [class*="icon"],
+      svg,
+      [class*="arrow"],
+      [class*="Arrow"],
+      [class*="chevron"],
+      [class*="Chevron"],
+      [class*="caret"],
+      ::before {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        font-size: 0 !important;
+        line-height: 0 !important;
+        content: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        pointer-events: none !important;
+      }
+    }
+    
+    // Ensure span text is visible (not hidden)
+    span {
+      display: inline-block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: relative !important;
+      left: auto !important;
+      width: auto !important;
+      height: auto !important;
+      font-size: 12px !important;
+      line-height: normal !important;
+      white-space: nowrap !important;
+      overflow: visible !important;
+    }
+  }
+  
+  salla-button,
   button,
   .s-button {
     i,
@@ -458,10 +572,13 @@
     svg,
     [class*="arrow"],
     [class*="Arrow"],
-    * i,
-    * .sicon,
-    * [class*="icon"],
-    * svg {
+    [class*="chevron"],
+    [class*="Chevron"],
+    [class*="caret"],
+    [data-icon],
+    [slot="icon"],
+    ::before,
+    ::after {
       display: none !important;
       visibility: hidden !important;
       opacity: 0 !important;
@@ -469,26 +586,66 @@
       height: 0 !important;
       font-size: 0 !important;
       line-height: 0 !important;
+      content: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      position: absolute !important;
+      left: -9999px !important;
+      pointer-events: none !important;
+    }
+    
+    // Target nested elements
+    * {
+      i,
+      .sicon,
+      [class*="icon"],
+      svg,
+      [class*="arrow"],
+      [class*="Arrow"],
+      [class*="chevron"],
+      [class*="Chevron"],
+      [class*="caret"],
+      ::before,
+      ::after {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        font-size: 0 !important;
+        line-height: 0 !important;
+        content: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        pointer-events: none !important;
+      }
     }
   }
   
+  // Single arrow after text - ONLY this arrow should show (must be after all hide rules)
   &::after {
-    content: "" !important;
-    width: 14px !important;
-    height: 14px !important;
+    content: "→" !important;
     display: inline-block !important;
-    margin-left: 8px !important;
-    vertical-align: middle !important;
-    transition: all 0.2s ease-out !important;
-    background-color: #034c8c !important;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M7 0L5.5 1.5L9.5 5.5H0V8.5H9.5L5.5 12.5L7 14L14 7L7 0Z'/%3E%3C/svg%3E") no-repeat 50% 50% !important;
-    -webkit-mask-size: 100% !important;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M7 0L5.5 1.5L9.5 5.5H0V8.5H9.5L5.5 12.5L7 14L14 7L7 0Z'/%3E%3C/svg%3E") no-repeat 50% 50% !important;
-    mask-size: 100% !important;
+    font-size: 16px !important;
+    line-height: 1 !important;
+    color: #ffffff !important;
+    margin-left: 6px !important;
+    transition: transform 0.3s ease !important;
+    font-weight: normal !important;
+    position: relative !important;
+    z-index: 10 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: auto !important;
+    height: auto !important;
+    left: auto !important;
+    pointer-events: none !important;
   }
   
   &:hover::after {
-    background-color: #023a6b !important;
+    transform: translateX(2px) !important;
   }
 }
 
@@ -528,11 +685,22 @@
   --s-button-min-height: auto !important;
 }
 
-/* Product Actions Wrapper */
+/* Product Actions Wrapper - Bottom of card, full width */
 .deals-section .s-product-card-actions,
 .deals-section .s-product-card-content-footer {
-  margin-top: 4px !important;
+  margin-top: auto !important;
   margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-  text-align: left !important;
+  text-align: center !important;
+  display: flex !important;
+  align-items: stretch !important;
+  gap: 0 !important;
+  justify-content: stretch !important;
+  width: 100% !important;
+  
+  // Ensure add to cart button is visible and styled
+  salla-add-product-button {
+    display: flex !important;
+    width: 100% !important;
+    order: 1 !important;
+  }
 }
