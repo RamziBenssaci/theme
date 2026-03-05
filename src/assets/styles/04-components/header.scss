@@ -431,52 +431,105 @@ main#main-content,
   
   // Login button removed from main nav (moved to top banner)
   
-  // Cart summary styling - EXACT match to reference (Font Awesome shopping cart icon + "Cart 0 items" text)
-  // Align cart with login button
+  // Cart summary styling - Main Header
   salla-cart-summary.cart-link {
     color: #ffffff !important;
     text-decoration: none !important;
     display: flex !important;
     align-items: center !important;
-    margin-right: 15px !important; // Add space on the right to prevent text from being hidden
+    margin-right: 15px !important;
+    position: relative !important;
+    min-width: auto !important;
+    min-height: auto !important;
     
     .s-cart-summary-wrapper {
       color: #ffffff !important;
       text-decoration: none !important;
       display: flex !important;
-      align-items: center;
-      gap: 4px !important; // Reduced gap to bring count closer to icon
+      align-items: center !important;
+      gap: 6px !important;
       font-size: 14px;
-      padding-right: 0 !important;
+      padding: 0 !important;
     }
     
+    // Cart icon container - ensure it displays properly
     .s-cart-summary-icon {
       display: flex !important;
-      align-items: center;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 24px !important;
+      height: 24px !important;
+      position: relative !important;
+      flex-shrink: 0 !important;
       
-      i, svg {
+      // All possible icon elements
+      i,
+      svg,
+      [class*="icon"],
+      [class*="cart"],
+      [class*="sicon"] {
         color: #ffffff !important;
         font-size: 20px !important;
         width: 20px !important;
         height: 20px !important;
         display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        font-family: "Font Awesome 6 Free" !important;
+        font-weight: 900 !important;
+        line-height: 20px !important;
+      }
+      
+      // Salla icon classes - replace with Font Awesome
+      .sicon-cart,
+      [class*="sicon-cart"] {
+        &::before {
+          content: "\f07a" !important; // Font Awesome shopping cart
+          font-family: "Font Awesome 6 Free" !important;
+          font-weight: 900 !important;
+        }
       }
     }
     
-    // Cart icon slot styling - Font Awesome shopping cart
+    // Cart icon slot styling - ensure Font Awesome icon
     .cart-icon,
     i[slot="icon"],
     i.fa-shopping-cart,
-    i.fas.fa-shopping-cart {
+    i.fas.fa-shopping-cart,
+    i.sicon-cart,
+    [slot="icon"] {
       color: #ffffff !important;
       font-size: 20px !important;
-      display: inline-block !important;
+      display: block !important;
       visibility: visible !important;
       opacity: 1 !important;
       width: 20px !important;
       height: 20px !important;
       font-family: "Font Awesome 6 Free" !important;
       font-weight: 900 !important;
+      line-height: 20px !important;
+      
+      // Replace any icon with Font Awesome shopping cart
+      &::before {
+        content: "\f07a" !important; // Font Awesome shopping cart
+        font-family: "Font Awesome 6 Free" !important;
+        font-weight: 900 !important;
+        display: inline-block !important;
+      }
+    }
+    
+    // If no icon found, add one via pseudo-element
+    .s-cart-summary-wrapper:not(:has(.s-cart-summary-icon))::before {
+      content: "\f07a" !important; // Font Awesome shopping cart
+      font-family: "Font Awesome 6 Free" !important;
+      font-weight: 900 !important;
+      font-size: 20px !important;
+      color: #ffffff !important;
+      display: inline-block !important;
+      width: 20px !important;
+      height: 20px !important;
+      line-height: 20px !important;
+      margin-right: 6px !important;
     }
     
     .s-cart-summary-total {
@@ -492,7 +545,7 @@ main#main-content,
       display: inline !important;
       background: transparent !important;
       color: #ffffff !important;
-      margin-left: 2px !important; // Closer to cart icon
+      margin-left: 2px !important;
       margin-right: 0 !important;
       font-size: 14px;
       padding: 0;
@@ -519,9 +572,16 @@ custom-main-menu {
   height: auto !important;
 }
 
-salla-cart-summary {
+// Global cart summary - only apply to non-top-banner carts
+salla-cart-summary:not(.cart-link) {
   min-width: 73px;
-  min-height: 40px
+  min-height: 40px;
+}
+
+// Override for main header cart
+.header-actions-wrapper salla-cart-summary.cart-link {
+  min-width: auto !important;
+  min-height: auto !important;
 }
 salla-user-menu{
   @apply shrink-0;

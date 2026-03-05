@@ -266,16 +266,44 @@
     font-size: 18px !important;
     display: flex !important;
     align-items: center !important;
+    justify-content: center !important;
     transition: opacity 0.3s !important;
     color: #111111 !important;
-    padding: 5px !important;
+    padding: 8px !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    background-color: rgba(0, 0, 0, 0.05) !important;
     
     &:hover {
       opacity: 0.7 !important;
+      background-color: rgba(0, 0, 0, 0.1) !important;
     }
     
     i {
       color: #111111 !important;
+      font-size: 16px !important;
+      display: block !important;
+      width: 16px !important;
+      height: 16px !important;
+      line-height: 16px !important;
+      
+      // Ensure it's an X icon
+      &::before {
+        content: "\f00d" !important; // Font Awesome times/X icon
+        font-family: "Font Awesome 6 Free" !important;
+        font-weight: 900 !important;
+      }
+    }
+    
+    // If no icon element, create one
+    &:not(:has(i))::before {
+      content: "\f00d" !important; // Font Awesome times/X icon
+      font-family: "Font Awesome 6 Free" !important;
+      font-weight: 900 !important;
+      font-size: 16px !important;
+      color: #111111 !important;
+      display: block !important;
     }
   }
   

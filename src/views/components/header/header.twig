@@ -107,19 +107,8 @@
                     </div>
                   </div>
                   
-                  {# Currency/Language/Login/Cart - Right #}
+                  {# Scopes | Branches | Cart - Right #}
                   <div class="flex items-center justify-end gap-3 header-actions-wrapper">
-                      {# Currency & Language #}
-          <div class="header-buttons">
-              {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
-                  <button type="button" onclick="salla.event.dispatch('localization::open')" class="btn--rounded-gray basis-0">
-                      <span>{{ user.language.name }}</span>
-                      <span class="mx-1.5">|</span> <span>{{ currency.symbol }}</span>
-                  </button>
-                  <salla-localization-modal></salla-localization-modal>
-              {% endif %}
-          </div>
-
           {# Scopes | Branches #}
           {% if store.scope %}
               <button class="btn--rounded-gray"
@@ -132,6 +121,9 @@
                       {% if user.type=='user' %}
                         <salla-user-menu avatar-only show-header></salla-user-menu>
                       {% endif %}
+                      
+                      {# Cart - Main Header #}
+                      <salla-cart-summary class="cart-link ml-2 rtl:ml-[unset] rtl:mr-2"></salla-cart-summary>
                   </div>
               </div>
               
