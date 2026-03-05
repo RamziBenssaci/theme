@@ -38158,7 +38158,8 @@ salla-quantity-input[max="1"] .s-quantity-input-button {
   z-index: 10 !important;
   flex: 0 0 50% !important;
   max-width: 50% !important;
-  padding-right: 20px !important;
+  padding-left: 20px !important;
+  margin-left: auto !important;
 }
 .brake-banner .banner-content h2 {
   color: #f29f05 !important;
