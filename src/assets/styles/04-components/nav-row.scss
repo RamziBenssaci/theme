@@ -1,6 +1,6 @@
 /* Navigation Row 2 - NO background, menu in one line - HALF HEIGHT */
 .main-nav-row-2 {
-  background-color: transparent;
+  background-color: #034c8c !important; // Same color always, no change when sticky
   padding: 5px 0 !important; // Cut to half to remove white space
   margin-bottom: 0 !important;
   margin-top: 0 !important;
@@ -8,10 +8,15 @@
   height: auto !important;
   transition: all 0.3s ease !important;
   
-  // Sticky state when scrolling
+  // Sticky state when scrolling - keep same color as default
   &.sticky-nav-row {
-    background-color: #034c8c !important;
+    background-color: #034c8c !important; // Same as default, no color change
     box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 30 !important;
   }
   
   .container {
@@ -78,9 +83,26 @@
     min-height: auto !important;
     height: auto !important;
     
+    // Hide mobile menu nav on desktop (it's already hidden via menus.scss, but ensure it)
+    .mobile-menu {
+      .mobile-menu-list {
+        // Mobile menu list is inside .mobile-menu which is hidden on desktop
+        // This is fine, no need to override
+      }
+    }
+    
+    // Show desktop menu list on desktop
+    .desktop-menu-list {
+      display: flex !important;
+      
+      @media (max-width: 1023px) {
+        display: none !important; // Hide on mobile
+      }
+    }
+    
     // Override .main-menu flex-wrap from menus.scss
     .main-menu,
-    ul {
+    ul.desktop-menu-list {
       display: flex !important;
       align-items: baseline !important;
       justify-content: center !important;

@@ -212,7 +212,7 @@ isElementLoaded(selector){
         navRow2.style.left = '0';
         navRow2.style.right = '0';
         navRow2.style.zIndex = '30';
-        navRow2.style.backgroundColor = '#034c8c';
+        // Don't change backgroundColor - keep it the same (#034c8c)
         navRow2.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
       } else {
         navRow2.classList.remove('sticky-nav-row');
@@ -221,7 +221,7 @@ isElementLoaded(selector){
         navRow2.style.left = '';
         navRow2.style.right = '';
         navRow2.style.zIndex = '';
-        navRow2.style.backgroundColor = '';
+        // Don't remove backgroundColor - keep it the same
         navRow2.style.boxShadow = '';
       }
     }, { passive: true });

@@ -111,9 +111,20 @@ class NavigationMenu extends HTMLElement {
     * @returns {String}
     */
     getMenus() {
+        // Only render desktop menu items to avoid duplication
+        // Mobile menu is handled separately in the mobile-menu nav
+        return this.menus.map((menu) => `
+            ${this.getDesktopMenu(menu, true)}
+        `).join('\n');
+    }
+    
+    /**
+    * Get mobile menus separately
+    * @returns {String}
+    */
+    getMobileMenus() {
         return this.menus.map((menu) => `
             ${this.getMobileMenu(menu, this.displayAllText)}
-            ${this.getDesktopMenu(menu, true)}
         `).join('\n');
     }
 
@@ -254,9 +265,10 @@ class NavigationMenu extends HTMLElement {
     render() {
         this.innerHTML =  `
         <nav id="mobile-menu" class="mobile-menu">
-            <ul class="main-menu">${this.getMenus()}</ul>
+            <ul class="main-menu mobile-menu-list">${this.getMobileMenus()}</ul>
             <button class="btn--close close-mobile-menu sicon-cancel lg:hidden"></button>
         </nav>
+        <ul class="main-menu desktop-menu-list">${this.getMenus()}</ul>
         <button class="btn--close-sm close-mobile-menu sicon-cancel hidden"></button>`;
     }
 }

@@ -32,6 +32,19 @@
       i {
         font-size: 16px !important;
         color: #f29f05 !important; // Orange icons
+        font-family: "Font Awesome 6 Free" !important;
+        font-weight: 900 !important;
+        display: inline-block !important;
+        width: 16px !important;
+        height: 16px !important;
+        line-height: 16px !important;
+        
+        // Ensure Font Awesome phone icon displays
+        &.fa-phone::before {
+          content: "\f095" !important; // Font Awesome phone icon
+          font-family: "Font Awesome 6 Free" !important;
+          font-weight: 900 !important;
+        }
       }
       
       u {
