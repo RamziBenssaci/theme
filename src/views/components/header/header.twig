@@ -33,10 +33,6 @@
             <i class="sicon-user-circle login-icon"></i>
           </button>
         {% endif %}
-        {# Cart - Next to login #}
-        <salla-cart-summary class="cart-link ml-2 rtl:ml-[unset] rtl:mr-2">
-          <i slot="icon" class="fas fa-shopping-cart cart-icon"></i>
-        </salla-cart-summary>
       </div>
     </div>
   </div>
@@ -122,8 +118,10 @@
                         <salla-user-menu avatar-only show-header></salla-user-menu>
                       {% endif %}
                       
-                      {# Cart - Main Header #}
-                      <salla-cart-summary class="cart-link ml-2 rtl:ml-[unset] rtl:mr-2"></salla-cart-summary>
+                      {# Cart - Main Header - Professional Design #}
+                      <salla-cart-summary class="cart-link-main ml-2 rtl:ml-[unset] rtl:mr-2">
+                        <i slot="icon" class="fas fa-shopping-cart"></i>
+                      </salla-cart-summary>
                   </div>
               </div>
               

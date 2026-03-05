@@ -431,8 +431,8 @@ main#main-content,
   
   // Login button removed from main nav (moved to top banner)
   
-  // Cart summary styling - Main Header
-  salla-cart-summary.cart-link {
+  // Cart summary styling - Main Header - Professional Design
+  salla-cart-summary.cart-link-main {
     color: #ffffff !important;
     text-decoration: none !important;
     display: flex !important;
@@ -441,13 +441,21 @@ main#main-content,
     position: relative !important;
     min-width: auto !important;
     min-height: auto !important;
+    padding: 8px 12px !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 5px !important;
+    transition: all 0.3s ease !important;
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.15) !important;
+    }
     
     .s-cart-summary-wrapper {
       color: #ffffff !important;
       text-decoration: none !important;
       display: flex !important;
       align-items: center !important;
-      gap: 6px !important;
+      gap: 8px !important;
       font-size: 14px;
       padding: 0 !important;
     }
@@ -479,25 +487,14 @@ main#main-content,
         font-weight: 900 !important;
         line-height: 20px !important;
       }
-      
-      // Salla icon classes - replace with Font Awesome
-      .sicon-cart,
-      [class*="sicon-cart"] {
-        &::before {
-          content: "\f07a" !important; // Font Awesome shopping cart
-          font-family: "Font Awesome 6 Free" !important;
-          font-weight: 900 !important;
-        }
-      }
     }
     
-    // Cart icon slot styling - ensure Font Awesome icon
-    .cart-icon,
+    // Cart icon slot styling - ensure Font Awesome icon displays
     i[slot="icon"],
     i.fa-shopping-cart,
     i.fas.fa-shopping-cart,
-    i.sicon-cart,
-    [slot="icon"] {
+    [slot="icon"],
+    slot[name="icon"]::slotted(*) {
       color: #ffffff !important;
       font-size: 20px !important;
       display: block !important;
@@ -509,7 +506,7 @@ main#main-content,
       font-weight: 900 !important;
       line-height: 20px !important;
       
-      // Replace any icon with Font Awesome shopping cart
+      // Ensure Font Awesome shopping cart icon
       &::before {
         content: "\f07a" !important; // Font Awesome shopping cart
         font-family: "Font Awesome 6 Free" !important;
@@ -518,8 +515,25 @@ main#main-content,
       }
     }
     
-    // If no icon found, add one via pseudo-element
-    .s-cart-summary-wrapper:not(:has(.s-cart-summary-icon))::before {
+    // Force icon display in icon container
+    .s-cart-summary-icon i,
+    .s-cart-summary-icon svg,
+    .s-cart-summary-icon [class*="icon"] {
+      &::before {
+        content: "\f07a" !important; // Font Awesome shopping cart
+        font-family: "Font Awesome 6 Free" !important;
+        font-weight: 900 !important;
+        display: inline-block !important;
+        font-size: 20px !important;
+        color: #ffffff !important;
+        width: 20px !important;
+        height: 20px !important;
+        line-height: 20px !important;
+      }
+    }
+    
+    // If icon slot is empty, add icon via wrapper
+    .s-cart-summary-wrapper:not(:has(i[slot="icon"]))::before {
       content: "\f07a" !important; // Font Awesome shopping cart
       font-family: "Font Awesome 6 Free" !important;
       font-weight: 900 !important;
@@ -529,29 +543,44 @@ main#main-content,
       width: 20px !important;
       height: 20px !important;
       line-height: 20px !important;
-      margin-right: 6px !important;
+      margin-right: 8px !important;
     }
     
+    // Red notification badge - positioned on top right of icon
+    .s-cart-summary-count {
+      position: absolute !important;
+      top: -8px !important;
+      right: -8px !important;
+      background-color: #bf3617 !important; // Red badge
+      color: #ffffff !important;
+      border-radius: 50% !important;
+      width: 20px !important;
+      height: 20px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 11px !important;
+      font-weight: bold !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      min-width: 20px !important;
+      border: 2px solid #034c8c !important; // Dark blue border
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+      z-index: 10 !important;
+    }
+    
+    // Cart total/price - show next to icon
     .s-cart-summary-total {
       color: #ffffff !important;
-      font-weight: normal !important;
-      font-size: 14px;
-      margin-left: 0;
+      font-weight: 600 !important;
+      font-size: 14px !important;
+      margin-left: 0 !important;
+      white-space: nowrap !important;
     }
     
-    // Style count to show as "Cart 0 items" - Closer to cart icon
-    .s-cart-summary-count {
-      position: static !important;
-      display: inline !important;
-      background: transparent !important;
-      color: #ffffff !important;
-      margin-left: 2px !important;
-      margin-right: 0 !important;
-      font-size: 14px;
-      padding: 0;
-      width: auto;
-      height: auto;
-      border-radius: 0;
+    // Hide any unwanted text
+    .s-cart-summary-text {
+      display: none !important;
     }
   }
 }
@@ -572,14 +601,14 @@ custom-main-menu {
   height: auto !important;
 }
 
-// Global cart summary - only apply to non-top-banner carts
-salla-cart-summary:not(.cart-link) {
+// Global cart summary - only apply to non-main-header carts
+salla-cart-summary:not(.cart-link-main) {
   min-width: 73px;
   min-height: 40px;
 }
 
 // Override for main header cart
-.header-actions-wrapper salla-cart-summary.cart-link {
+.header-actions-wrapper salla-cart-summary.cart-link-main {
   min-width: auto !important;
   min-height: auto !important;
 }
@@ -587,13 +616,15 @@ salla-user-menu{
   @apply shrink-0;
 }
 
-// cart summary
-.s-cart-summary-total{
-  @apply text-white font-[600];
-}
+// cart summary - global styles (not for main header)
+salla-cart-summary:not(.cart-link-main) {
+  .s-cart-summary-total{
+    @apply text-white font-[600];
+  }
 
-.s-cart-summary-count{
-  @apply -top-0.5 ltr:-left-1.5 rtl:-right-1.5 bg-red-800;
+  .s-cart-summary-count{
+    @apply -top-0.5 ltr:-left-1.5 rtl:-right-1.5 bg-red-800;
+  }
 }
 
 #nav-cart{
