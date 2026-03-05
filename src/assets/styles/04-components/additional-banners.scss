@@ -33,7 +33,7 @@
   border-radius: 10px !important;
   min-height: 400px !important;
   display: flex !important;
-  flex-direction: row !important;
+  flex-direction: row !important; // Normal order: content left, image right
   align-items: center !important;
   justify-content: space-between !important;
   overflow: visible !important; // Changed to visible for 3D effect
@@ -41,21 +41,21 @@
   background-position: center !important;
   background-repeat: no-repeat !important;
   
-  // Dark overlay only on right side for text readability - more subtle
+  // Dark overlay only on left side for text readability - more subtle
   &::before {
     content: '' !important;
     position: absolute !important;
     top: 0 !important;
-    right: 0 !important;
-    width: 45% !important; // Reduced width to not darken the whole right side
+    left: 0 !important;
+    width: 45% !important; // Reduced width to not darken the whole left side
     bottom: 0 !important;
-    background: linear-gradient(to left, rgba(26, 26, 26, 0.6) 0%, rgba(26, 26, 26, 0.2) 50%, transparent 100%) !important;
+    background: linear-gradient(to right, rgba(26, 26, 26, 0.6) 0%, rgba(26, 26, 26, 0.2) 50%, transparent 100%) !important;
     z-index: 1 !important;
     pointer-events: none !important;
     
     @media (max-width: 768px) {
       width: 100% !important;
-      background: linear-gradient(to left, rgba(26, 26, 26, 0.7) 0%, rgba(26, 26, 26, 0.4) 100%) !important;
+      background: linear-gradient(to right, rgba(26, 26, 26, 0.7) 0%, rgba(26, 26, 26, 0.4) 100%) !important;
     }
   }
   
@@ -64,8 +64,8 @@
     z-index: 10 !important; // Higher z-index to appear above image
     flex: 0 0 50% !important;
     max-width: 50% !important;
-    padding-left: 20px !important; // Text on right side
-    margin-left: auto !important; // Push content to right
+    padding-right: 20px !important; // Text on left side
+    margin-right: auto !important; // Keep content on left
     
     h2 {
       color: #f29f05 !important; // var(--primary-orange)
@@ -151,7 +151,7 @@
   
   .banner-image {
     position: absolute !important;
-    left: -20px !important; // Image on left side - Extend outside for 3D effect
+    right: -20px !important; // Image on RIGHT side - Extend outside for 3D effect
     bottom: -30px !important; // Position lower and extend outside
     top: auto !important;
     width: 50% !important;
@@ -159,7 +159,7 @@
     z-index: 1 !important; // Below text content
     display: flex !important;
     align-items: flex-end !important; // Align to bottom
-    justify-content: flex-start !important; // Align to left
+    justify-content: flex-end !important; // Align to right
     padding: 0 !important;
     
     img {

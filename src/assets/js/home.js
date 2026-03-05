@@ -90,47 +90,33 @@ class Home extends BasePage {
     }
 
     /**
-     * Initialize countdown timer for top banner
+     * Initialize countdown timer for top banner - Only minutes and seconds
      */
     initTopBannerCountdown() {
-        const hoursEl = document.getElementById('hours');
         const minutesEl = document.getElementById('minutes');
         const secondsEl = document.getElementById('seconds');
-        const millisecondsEl = document.getElementById('milliseconds');
         
-        if (!hoursEl || !minutesEl || !secondsEl || !millisecondsEl) return;
+        if (!minutesEl || !secondsEl) return;
 
-        let hours = parseInt(hoursEl.textContent || '09', 10);
         let minutes = parseInt(minutesEl.textContent || '15', 10);
         let seconds = parseInt(secondsEl.textContent || '29', 10);
-        let milliseconds = parseInt(millisecondsEl.textContent || '14', 10);
 
         const updateTimer = () => {
-            milliseconds--;
-            if (milliseconds < 0) {
-                milliseconds = 99;
-                seconds--;
-                if (seconds < 0) {
-                    seconds = 59;
-                    minutes--;
-                    if (minutes < 0) {
-                        minutes = 59;
-                        hours--;
-                        if (hours < 0) {
-                            hours = 23;
-                        }
-                    }
+            seconds--;
+            if (seconds < 0) {
+                seconds = 59;
+                minutes--;
+                if (minutes < 0) {
+                    minutes = 59;
                 }
             }
 
-            hoursEl.textContent = String(hours).padStart(2, '0');
             minutesEl.textContent = String(minutes).padStart(2, '0');
             secondsEl.textContent = String(seconds).padStart(2, '0');
-            millisecondsEl.textContent = String(milliseconds).padStart(2, '0');
         };
 
-        // Update every 10ms for milliseconds
-        setInterval(updateTimer, 10);
+        // Update every second
+        setInterval(updateTimer, 1000);
     }
 
     /**
