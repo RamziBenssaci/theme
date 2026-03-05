@@ -127,7 +127,7 @@
   min-height: 100px !important;
   position: relative !important;
   flex-shrink: 0 !important;
-  overflow: hidden !important;
+  overflow: visible !important; // Allow heart icon to overlay
   
   img {
     max-width: 100% !important;
@@ -293,7 +293,6 @@
   flex-grow: 1 !important;
   justify-content: space-between !important;
   min-width: 0 !important;
-  position: relative !important;
 }
 
 /* Product Title - Compact */
@@ -412,6 +411,7 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    gap: 6px !important;
   }
   
   &:hover,
