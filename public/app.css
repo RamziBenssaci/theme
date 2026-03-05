@@ -36868,8 +36868,7 @@ salla-quantity-input[max="1"] .s-quantity-input-button {
   font-size: 14px !important;
   line-height: 18px !important;
   font-weight: 700 !important;
-  margin-bottom: 6px !important;
-  margin-top: 0 !important;
+  margin-bottom: 4px !important;
   min-height: auto !important;
   max-height: 36px !important;
   overflow: hidden !important;
@@ -36951,10 +36950,10 @@ salla-quantity-input[max="1"] .s-quantity-input-button {
   margin-right: 0 !important;
   text-align: center !important;
   width: 100% !important;
-  font-size: 14px !important;
+  font-size: 13px !important;
   font-weight: 600 !important;
   background-color: #034c8c !important;
-  padding: 10px 16px !important;
+  padding: 8px 16px !important;
   color: #ffffff !important;
   border: none !important;
   border-radius: 6px !important;
@@ -36962,8 +36961,8 @@ salla-quantity-input[max="1"] .s-quantity-input-button {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  min-height: 40px !important;
-  height: auto !important;
+  min-height: 36px !important;
+  height: 36px !important;
   transition: all 0.3s ease !important;
   box-shadow: 0 2px 4px rgba(3, 76, 140, 0.2) !important;
 }
@@ -36983,12 +36982,12 @@ salla-quantity-input[max="1"] .s-quantity-input-button {
   color: #ffffff !important;
   border: none !important;
   padding: 0 !important;
-  font-size: 14px !important;
+  font-size: 13px !important;
   font-weight: 600 !important;
   text-align: center !important;
   width: 100% !important;
-  min-height: 40px !important;
-  height: auto !important;
+  min-height: 36px !important;
+  height: 36px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
