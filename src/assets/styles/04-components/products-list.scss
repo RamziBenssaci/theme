@@ -62,7 +62,7 @@
   }
 }
 
-/* Product Card - Vertical Layout with Button at Bottom */
+/* Product Card - Horizontal Layout */
 .s-block--latest-products .s-product-card-entry {
   background-color: #fff !important;
   border-radius: 6px !important;
@@ -71,22 +71,22 @@
   box-shadow: none !important;
   position: relative !important;
   display: flex !important;
-  flex-direction: column !important;
-  align-items: stretch !important;
+  flex-direction: row !important;
+  align-items: center !important;
   overflow: hidden !important;
   height: auto !important;
-  min-height: auto !important;
-  gap: 0 !important;
+  min-height: 120px !important;
+  gap: 12px !important;
 }
 
-/* Product Badges - Top-left of image */
+/* Product Badges - Repositioned for horizontal layout */
 .s-block--latest-products .s-product-card-entry .s-product-card-promotion-title {
   position: absolute !important;
   left: 8px !important;
   top: 8px !important;
   border-radius: 4px !important;
   padding: 4px 6px !important;
-  z-index: 19 !important;
+  z-index: 17 !important;
   text-align: center !important;
   color: #000 !important;
   font-size: 10px !important;
@@ -98,44 +98,36 @@
   align-items: center !important;
   width: fit-content !important;
   background-color: #ffc107 !important;
-  
-  // Position relative to image container
-  .s-product-card-image & {
-    position: absolute !important;
-  }
 }
 
 /* Badge positioning for multiple badges */
 .s-block--latest-products .s-product-card-entry .s-product-card-promotion-title + .s-product-card-promotion-title {
-  top: 40px !important;
+  left: 48px !important;
   background-color: #bf3617 !important;
   color: #fff !important;
 }
 
 .s-block--latest-products .s-product-card-entry .s-product-card-promotion-title + .s-product-card-promotion-title + .s-product-card-promotion-title {
-  top: 72px !important;
+  left: 88px !important;
   background-color: #28a745 !important;
   color: #fff !important;
 }
 
-/* Product Image - Top of Card with Gallery */
+/* Product Image - Side Layout with Gallery */
 .s-block--latest-products .s-product-card-image {
-  width: 100% !important;
-  min-width: 100% !important;
-  max-width: 100% !important;
+  width: 120px !important;
+  min-width: 120px !important;
+  max-width: 120px !important;
   padding: 0 !important;
   margin: 0 !important;
-  margin-bottom: 12px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  height: 200px !important;
-  min-height: 200px !important;
+  height: 100px !important;
+  min-height: 100px !important;
   position: relative !important;
   flex-shrink: 0 !important;
   overflow: hidden !important;
-  border-radius: 4px !important;
-  background-color: #f8f8f8 !important;
   
   img {
     max-width: 100% !important;
@@ -216,7 +208,7 @@
   }
 }
 
-/* Wishlist Button - Top-right corner of image container */
+/* Wishlist Button - Top-right corner of image container, overlaying image */
 .s-block--latest-products .s-product-card-wishlist-btn {
   position: absolute !important;
   top: 8px !important;
@@ -292,7 +284,7 @@
   }
 }
 
-/* Product Content - Vertical flex, button at bottom */
+/* Product Content - Compact */
 .s-block--latest-products .s-product-card-content {
   padding: 0 !important;
   text-align: left !important;
@@ -301,8 +293,7 @@
   flex-grow: 1 !important;
   justify-content: space-between !important;
   min-width: 0 !important;
-  min-height: 0 !important;
-  gap: 8px !important;
+  position: relative !important;
 }
 
 /* Product Title - Compact */
@@ -352,8 +343,8 @@
   font-size: 16px !important;
   font-weight: 700 !important;
   color: #bf3617 !important;
-  margin-top: 0 !important;
-  margin-bottom: 12px !important;
+  margin-top: 4px !important;
+  margin-bottom: 0 !important;
   display: inline-flex !important;
   width: 100% !important;
   align-items: center !important;
@@ -378,12 +369,11 @@
   margin-right: 6px !important;
 }
 
-/* Add to Cart Button - Bottom of card, full width, no arrows */
+/* Add to Cart Button - Bottom of card, full width, single arrow */
 .s-block--latest-products .s-product-card-content salla-add-product-button,
 .s-block--latest-products .s-product-card-content salla-button[fill="outline"],
 .s-block--latest-products .s-product-card-content .s-product-card-actions salla-button,
-.s-block--latest-products .s-product-card-content-footer salla-add-product-button,
-.s-block--latest-products .s-product-card-actions salla-add-product-button {
+.s-block--latest-products .s-product-card-content-footer salla-add-product-button {
   position: relative !important;
   margin-top: auto !important;
   margin-bottom: 0 !important;
@@ -448,8 +438,7 @@
     * .sicon,
     * [class*="icon"],
     * svg,
-    ::before,
-    ::after {
+    ::before {
       display: none !important;
       visibility: hidden !important;
       opacity: 0 !important;
@@ -463,11 +452,20 @@
     }
   }
   
-  // NO arrow - clean button text only
-  &::after,
-  &::before {
-    display: none !important;
-    content: none !important;
+  // Single arrow after text
+  &::after {
+    content: "→" !important;
+    display: inline-block !important;
+    font-size: 16px !important;
+    line-height: 1 !important;
+    color: #ffffff !important;
+    margin-left: 6px !important;
+    transition: transform 0.3s ease !important;
+    font-weight: normal !important;
+  }
+  
+  &:hover::after {
+    transform: translateX(2px) !important;
   }
 }
 
