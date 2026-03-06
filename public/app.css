@@ -1115,11 +1115,11 @@ input:where([type='file']):focus{
 .flow-root{
     display: flow-root;
 }
-.grid{
-    display: grid;
-}
 .\!grid{
     display: grid !important;
+}
+.grid{
+    display: grid;
 }
 .\!hidden{
     display: none !important;

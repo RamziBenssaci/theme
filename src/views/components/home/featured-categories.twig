@@ -8,6 +8,10 @@
         <h4 class="section-title">{{ trans('blocks.home.featured_categories') }}</h4>
         <div class="categories-grid" id="featured-categories-grid-{{ position }}">
             {# Categories will be populated by JavaScript from menu items #}
+            {# Fallback: Show loading message #}
+            <div class="categories-loading" style="text-align: center; padding: 20px; color: #999;">
+                جاري التحميل...
+            </div>
         </div>
     </div>
 </section>
@@ -16,111 +20,218 @@
 (function() {
     'use strict';
     
-    console.log('[FeaturedCategories] Initializing menu-based component...');
-    
-    // Wait for Salla and menu to be ready
-    if (typeof salla === 'undefined') {
-        console.error('[FeaturedCategories] Salla not available');
-        return;
+    try {
+        console.log('[FeaturedCategories] ===== INITIALIZING =====');
+        console.log('[FeaturedCategories] Component position: {{ position }}');
+        
+        // Safe check for Salla
+        if (typeof salla === 'undefined') {
+            console.error('[FeaturedCategories] ERROR: Salla object not available');
+            showErrorMessage('Salla not available');
+            return;
+        }
+        
+        console.log('[FeaturedCategories] Salla object found');
+        
+        // Safe initialization with error handling
+        salla.onReady()
+            .then(() => {
+                console.log('[FeaturedCategories] Salla.onReady() resolved');
+                
+                try {
+                    if (typeof salla.lang !== 'undefined' && salla.lang.onLoaded) {
+                        console.log('[FeaturedCategories] Waiting for language...');
+                        return salla.lang.onLoaded();
+                    }
+                    console.log('[FeaturedCategories] Language already loaded');
+                    return Promise.resolve();
+                } catch (error) {
+                    console.warn('[FeaturedCategories] Language loading error (non-critical):', error);
+                    return Promise.resolve(); // Continue even if language fails
+                }
+            })
+            .then(() => {
+                console.log('[FeaturedCategories] Checking API availability...');
+                
+                try {
+                    // Check if API is available
+                    if (typeof salla.api === 'undefined') {
+                        throw new Error('salla.api is undefined');
+                    }
+                    
+                    if (typeof salla.api.component === 'undefined') {
+                        throw new Error('salla.api.component is undefined');
+                    }
+                    
+                    if (typeof salla.api.component.getMenus !== 'function') {
+                        throw new Error('salla.api.component.getMenus is not a function');
+                    }
+                    
+                    console.log('[FeaturedCategories] API available, fetching menus...');
+                    
+                    // Get menu items from the navigation menu component
+                    return salla.api.component.getMenus()
+                        .then((response) => {
+                            console.log('[FeaturedCategories] API response received:', response);
+                            
+                            try {
+                                const data = response.data || response;
+                                console.log('[FeaturedCategories] Extracted data:', data);
+                                
+                                if (!data) {
+                                    throw new Error('No data in response');
+                                }
+                                
+                                if (!Array.isArray(data)) {
+                                    throw new Error('Data is not an array. Type: ' + typeof data);
+                                }
+                                
+                                if (data.length === 0) {
+                                    console.warn('[FeaturedCategories] Menu data is empty');
+                                    showErrorMessage('No categories found');
+                                    return;
+                                }
+                                
+                                console.log('[FeaturedCategories] Found', data.length, 'menu items');
+                                
+                                // Get root-level menu items (categories)
+                                const rootCategories = data.filter(menu => {
+                                    try {
+                                        const isRoot = !menu.parent_id || menu.parent_id === 0 || menu.parent_id === null;
+                                        console.log(`[FeaturedCategories] Menu: "${menu.title || menu.name || 'unnamed'}" - parent_id: ${menu.parent_id}, isRoot: ${isRoot}, image: ${menu.image || 'NONE'}`);
+                                        return isRoot;
+                                    } catch (error) {
+                                        console.warn('[FeaturedCategories] Error filtering menu item:', error);
+                                        return false;
+                                    }
+                                });
+                                
+                                console.log('[FeaturedCategories] Root categories found:', rootCategories.length);
+                                
+                                if (rootCategories.length === 0) {
+                                    console.warn('[FeaturedCategories] No root categories, showing all items');
+                                    rootCategories.push(...data.slice(0, 6));
+                                }
+                                
+                                // Limit to first 6
+                                const categoriesToShow = rootCategories.slice(0, 6);
+                                console.log('[FeaturedCategories] Categories to display:', categoriesToShow.length);
+                                
+                                // Get the grid container
+                                const grid = document.getElementById('featured-categories-grid-{{ position }}');
+                                if (!grid) {
+                                    throw new Error('Grid container not found in DOM');
+                                }
+                                
+                                console.log('[FeaturedCategories] Grid container found');
+                                
+                                // Clear and populate
+                                grid.innerHTML = '';
+                                
+                                const placeholderImage = (typeof salla !== 'undefined' && salla.url && salla.url.asset) 
+                                    ? salla.url.asset('images/placeholder.png') 
+                                    : '/images/placeholder.png';
+                                
+                                console.log('[FeaturedCategories] Placeholder image:', placeholderImage);
+                                
+                                categoriesToShow.forEach((category, index) => {
+                                    try {
+                                        console.log(`[FeaturedCategories] ===== Category ${index + 1} =====`);
+                                        console.log(`[FeaturedCategories] Full category object:`, JSON.stringify(category, null, 2));
+                                        console.log(`[FeaturedCategories] Title: ${category.title || category.name || 'NONE'}`);
+                                        console.log(`[FeaturedCategories] URL: ${category.url || category.link || 'NONE'}`);
+                                        console.log(`[FeaturedCategories] Image: ${category.image || 'NONE'}`);
+                                        console.log(`[FeaturedCategories] Image type: ${typeof category.image}`);
+                                        
+                                        const categoryItem = document.createElement('div');
+                                        categoryItem.className = 'category-item';
+                                        
+                                        const categoryLink = document.createElement('a');
+                                        const categoryUrl = category.url || category.link || '#';
+                                        categoryLink.href = categoryUrl;
+                                        categoryLink.setAttribute('aria-label', category.title || category.name || 'Category');
+                                        
+                                        const categoryIcon = document.createElement('div');
+                                        categoryIcon.className = 'category-icon';
+                                        
+                                        const categoryImage = document.createElement('img');
+                                        // Use menu item image directly
+                                        const imageUrl = category.image || placeholderImage;
+                                        categoryImage.src = imageUrl;
+                                        categoryImage.alt = category.title || category.name || 'Category';
+                                        categoryImage.loading = 'lazy';
+                                        
+                                        console.log(`[FeaturedCategories] Image URL set to: ${imageUrl}`);
+                                        
+                                        categoryImage.onerror = function() {
+                                            console.warn(`[FeaturedCategories] Image failed to load: ${imageUrl}`);
+                                            console.warn(`[FeaturedCategories] Using placeholder: ${placeholderImage}`);
+                                            this.src = placeholderImage;
+                                        };
+                                        
+                                        categoryImage.onload = function() {
+                                            console.log(`[FeaturedCategories] ✓ Image loaded successfully: ${imageUrl}`);
+                                        };
+                                        
+                                        categoryIcon.appendChild(categoryImage);
+                                        
+                                        const categoryTitle = document.createElement('h3');
+                                        categoryTitle.textContent = category.title || category.name || 'Category';
+                                        
+                                        categoryLink.appendChild(categoryIcon);
+                                        categoryLink.appendChild(categoryTitle);
+                                        categoryItem.appendChild(categoryLink);
+                                        grid.appendChild(categoryItem);
+                                        
+                                        console.log(`[FeaturedCategories] ✓ Category ${index + 1} rendered`);
+                                    } catch (error) {
+                                        console.error(`[FeaturedCategories] ERROR rendering category ${index + 1}:`, error);
+                                        console.error('[FeaturedCategories] Error stack:', error.stack);
+                                        // Continue with next category
+                                    }
+                                });
+                                
+                                console.log('[FeaturedCategories] ✓ All categories rendered successfully');
+                            } catch (error) {
+                                console.error('[FeaturedCategories] ERROR processing menu data:', error);
+                                console.error('[FeaturedCategories] Error stack:', error.stack);
+                                showErrorMessage('Error processing categories: ' + error.message);
+                            }
+                        })
+                        .catch((error) => {
+                            console.error('[FeaturedCategories] ERROR fetching menus:', error);
+                            console.error('[FeaturedCategories] Error stack:', error.stack);
+                            showErrorMessage('Failed to load categories: ' + error.message);
+                        });
+                } catch (error) {
+                    console.error('[FeaturedCategories] ERROR in API check:', error);
+                    console.error('[FeaturedCategories] Error stack:', error.stack);
+                    showErrorMessage('API not available: ' + error.message);
+                }
+            })
+            .catch((error) => {
+                console.error('[FeaturedCategories] ERROR in initialization chain:', error);
+                console.error('[FeaturedCategories] Error stack:', error.stack);
+                showErrorMessage('Initialization error: ' + error.message);
+            });
+    } catch (error) {
+        console.error('[FeaturedCategories] FATAL ERROR:', error);
+        console.error('[FeaturedCategories] Error stack:', error.stack);
+        showErrorMessage('Fatal error: ' + error.message);
     }
     
-    salla.onReady()
-        .then(() => {
-            if (typeof salla.lang !== 'undefined' && salla.lang.onLoaded) {
-                return salla.lang.onLoaded();
+    /**
+     * Show error message in the grid
+     */
+    function showErrorMessage(message) {
+        try {
+            const grid = document.getElementById('featured-categories-grid-{{ position }}');
+            if (grid) {
+                grid.innerHTML = '<div style="text-align: center; padding: 20px; color: #999;">' + message + '</div>';
             }
-            return Promise.resolve();
-        })
-        .then(() => {
-            // Get menu items from the navigation menu component
-            return salla.api.component.getMenus()
-                .then(({ data }) => {
-                    console.log('[FeaturedCategories] Menu data received:', data);
-                    
-                    if (!data || !Array.isArray(data) || data.length === 0) {
-                        console.warn('[FeaturedCategories] No menu data available');
-                        return;
-                    }
-                    
-                    // Get root-level menu items (categories)
-                    const rootCategories = data.filter(menu => {
-                        const isRoot = !menu.parent_id || menu.parent_id === 0 || menu.parent_id === null;
-                        console.log(`[FeaturedCategories] Menu: "${menu.title || menu.name}" - parent_id: ${menu.parent_id}, isRoot: ${isRoot}, image: ${menu.image || 'none'}`);
-                        return isRoot;
-                    });
-                    
-                    console.log('[FeaturedCategories] Root categories found:', rootCategories.length);
-                    
-                    // Limit to first 6
-                    const categoriesToShow = rootCategories.slice(0, 6);
-                    console.log('[FeaturedCategories] Categories to display:', categoriesToShow.length);
-                    
-                    // Get the grid container
-                    const grid = document.getElementById('featured-categories-grid-{{ position }}');
-                    if (!grid) {
-                        console.error('[FeaturedCategories] Grid container not found');
-                        return;
-                    }
-                    
-                    // Clear and populate
-                    grid.innerHTML = '';
-                    
-                    const placeholderImage = salla.url?.asset ? salla.url.asset('images/placeholder.png') : '/images/placeholder.png';
-                    
-                    categoriesToShow.forEach((category, index) => {
-                        console.log(`[FeaturedCategories] Rendering category ${index + 1}:`, category);
-                        console.log(`  - Title: ${category.title || category.name}`);
-                        console.log(`  - URL: ${category.url || category.link}`);
-                        console.log(`  - Image: ${category.image || 'NONE'}`);
-                        console.log(`  - Full object:`, JSON.stringify(category, null, 2));
-                        
-                        const categoryItem = document.createElement('div');
-                        categoryItem.className = 'category-item';
-                        
-                        const categoryLink = document.createElement('a');
-                        categoryLink.href = category.url || category.link || '#';
-                        categoryLink.setAttribute('aria-label', category.title || category.name || 'Category');
-                        
-                        const categoryIcon = document.createElement('div');
-                        categoryIcon.className = 'category-icon';
-                        
-                        const categoryImage = document.createElement('img');
-                        // Use menu item image directly
-                        const imageUrl = category.image || placeholderImage;
-                        categoryImage.src = imageUrl;
-                        categoryImage.alt = category.title || category.name || 'Category';
-                        categoryImage.loading = 'lazy';
-                        
-                        console.log(`[FeaturedCategories] Setting image for "${category.title || category.name}": ${imageUrl}`);
-                        
-                        categoryImage.onerror = function() {
-                            console.warn(`[FeaturedCategories] Image failed to load: ${imageUrl}, using placeholder`);
-                            this.src = placeholderImage;
-                        };
-                        
-                        categoryImage.onload = function() {
-                            console.log(`[FeaturedCategories] ✓ Image loaded: ${imageUrl}`);
-                        };
-                        
-                        categoryIcon.appendChild(categoryImage);
-                        
-                        const categoryTitle = document.createElement('h3');
-                        categoryTitle.textContent = category.title || category.name || 'Category';
-                        
-                        categoryLink.appendChild(categoryIcon);
-                        categoryLink.appendChild(categoryTitle);
-                        categoryItem.appendChild(categoryLink);
-                        grid.appendChild(categoryItem);
-                    });
-                    
-                    console.log('[FeaturedCategories] ✓ All categories rendered');
-                })
-                .catch((error) => {
-                    console.error('[FeaturedCategories] Error:', error);
-                });
-        })
-        .catch((error) => {
-            console.error('[FeaturedCategories] Initialization error:', error);
-        });
+        } catch (error) {
+            console.error('[FeaturedCategories] Error showing error message:', error);
+        }
+    }
 })();
 </script>
