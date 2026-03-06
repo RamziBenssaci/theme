@@ -1,10 +1,65 @@
 {
   "blocks": {
     "header": {
-      "cart": "السلة"
+      "cart": "السلة",
+      "contact_info": "اتصل بنا من 8 صباحاً - 10 مساءً / 6668 5555 8464",
+      "login": "تسجيل الدخول",
+      "all_categories": "جميع الفئات",
+      "select_category": "اختر الفئة"
     },
-    "appBanner": {
-      "download_now": "حمله الان"
+    "promo": {
+      "black_friday_sale": "تخفيضات ما قبل الجمعة السوداء : خصم يصل إلى 65% | استخدم الكود \"BLACK\"",
+      "offer_expires": "تنتهي العروض خلال"
+    },
+    "hero": {
+      "battery_starters": "مشغلات البطاريات",
+      "start_batteries_seconds": "شغّل البطاريات في ثوانٍ",
+      "shop_now": "تسوق الآن",
+      "from_price": "من 49.99 دولار",
+      "choose_car": "اختر سيارتك",
+      "brand": "العلامة التجارية",
+      "model": "الموديل",
+      "year": "السنة",
+      "engine": "المحرك",
+      "trim": "الفئة",
+      "search": "بحث",
+      "or": "أو",
+      "search_by_vin": "البحث برقم الشاصي"
+    },
+    "banners": {
+      "top_brands": "أفضل العلامات التجارية",
+      "batteries": "البطاريات",
+      "stay_charged": "ابق مشحوناً!",
+      "tires_wheels": "الإطارات والعجلات",
+      "stay_safe": "ابق آمناً على الطريق!",
+      "buy_3_get_1": "اشتري 3 واحصل على 1 مجاناً",
+      "big_sales": "تخفيضات كبيرة",
+      "buy_1_get_1": "اشتري 1 واحصل على 1",
+      "free": "مجاناً",
+      "brake_system": "نظام الفرامل",
+      "we_cover_you": "نحن نغطيك",
+      "great_values_always": "قيم رائعة. دائماً.",
+      "springs": "الزنبركات"
+    },
+    "home": {
+      "deals_of_week": "عروض الأسبوع!",
+      "latest_products": "أحدث المنتجات"
+    },
+    "manufacturers": {
+      "featured_manufacturers": "العلامات التجارية المميزة"
+    },
+    "footer": {
+      "pages_links": "روابط الصفحات",
+      "expert_service": "خدمة خبيرة",
+      "expert_service_desc": "فريقنا الودود متاح على مدار الأسبوع.",
+      "amazing_value": "قيمة مذهلة",
+      "amazing_value_desc": "العلامات التجارية التي تفضلها، بأسعار تناسبك.",
+      "fast_free_shipping": "شحن سريع ومجاني",
+      "fast_free_shipping_desc": "الشحن يتم بسرعة، والتوصيل خلال 1-3 أيام.",
+      "unbeatable_selection": "اختيار لا يُقاوم",
+      "unbeatable_selection_desc": "كل ما تريده لسيارتك، في مكان واحد.",
+      "newsletter_text": "ما بداخلنا: وصولات جديدة، عروض حصرية، أخبار الشاحنات والمزيد!",
+      "email_placeholder": "البريد الإلكتروني"
     }
   },
   "pages": {

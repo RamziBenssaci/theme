@@ -12,7 +12,7 @@
   <div class="top-banner-contact">
     <div class="container">
       <div class="top-banner-contact-left">
-        <span><i class="fas fa-phone"></i> اتصل بنا من 8 صباحاً - 10 مساءً / 6668 5555 8464</span>
+        <span><i class="fas fa-phone"></i> {{ trans('blocks.header.contact_info') }}</span>
       </div>
       <div class="top-banner-contact-right">
         {# Currency/Language/Login - Icon only #}
@@ -29,7 +29,7 @@
         {% if user.type=='user' %}
           <salla-user-menu avatar-only show-header></salla-user-menu>
         {% else %}
-          <button class="header-btn login-btn-icon" aria-label="تسجيل الدخول" onclick="salla.event.dispatch('login::open')">
+          <button class="header-btn login-btn-icon" aria-label="{{ trans('blocks.header.login') }}" onclick="salla.event.dispatch('login::open')">
             <i class="sicon-user-circle login-icon"></i>
           </button>
         {% endif %}
@@ -41,8 +41,8 @@
   <div class="top-banner-promo">
     <div class="container">
       <div class="top-banner-promo-content">
-        <span class="sale-text">تخفيضات ما قبل الجمعة السوداء : خصم يصل إلى 65% | استخدم الكود "BLACK"</span>
-        <span class="offer-expires">تنتهي العروض خلال</span>
+        <span class="sale-text">{{ trans('blocks.promo.black_friday_sale') }}</span>
+        <span class="offer-expires">{{ trans('blocks.promo.offer_expires') }}</span>
         <div class="countdown-timer">
           <span class="timer-box"><span id="days">09</span></span>
           <span class="timer-separator">:</span>
@@ -88,7 +88,7 @@
                     <div class="search-wrapper">
                       <div class="search-category-wrapper">
                         <select class="search-category">
-                          <option>اختر الفئة</option>
+                          <option>{{ trans('blocks.header.select_category') }}</option>
                         </select>
                       </div>
                       <salla-search inline height="48"></salla-search>
@@ -133,9 +133,9 @@
       <div class="container">
           <div class="flex items-center">
               {# All Categories Button - Left #}
-              <a href="#mobile-menu" class="all-categories-btn mburger mburger--collapse" aria-label="جميع الفئات">
+              <a href="#mobile-menu" class="all-categories-btn mburger mburger--collapse" aria-label="{{ trans('blocks.header.all_categories') }}">
                   <i class="sicon-menu rtl:ml-2 ltr:mr-2"></i>
-                  <span>جميع الفئات</span>
+                  <span>{{ trans('blocks.header.all_categories') }}</span>
                   <i class="sicon-sar rtl:mr-2 ltr:ml-2"></i>
               </a>
               

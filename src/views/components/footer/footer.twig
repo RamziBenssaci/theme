@@ -2,7 +2,7 @@
 <section class="featured-manufacturers">
     <div class="container">
         <div class="section-header">
-            <h4 class="section-title">العلامات التجارية المميزة</h4>
+            <h4 class="section-title">{{ trans('blocks.manufacturers.featured_manufacturers') }}</h4>
             <div class="manufacturers-nav">
                 <button class="nav-arrow manufacturers-prev"><i class="fas fa-chevron-right"></i></button>
                 <button class="nav-arrow manufacturers-next"><i class="fas fa-chevron-left"></i></button>
@@ -43,15 +43,15 @@
         <div class="banner-grid-2">
             <div class="promo-banner brake-banner" style="background-image: url('https://enovathemes.com/mobex/wp-content/uploads/banner4-back.webp'); background-size: cover; background-position: center;">
                 <div class="banner-image">
-                    <img src="https://enovathemes.com/mobex/wp-content/uploads/banner9-img.webp" alt="نظام الفرامل">
+                    <img src="https://enovathemes.com/mobex/wp-content/uploads/banner9-img.webp" alt="{{ trans('blocks.banners.brake_system') }}">
                 </div>
                 <div class="banner-content">
-                    <span class="banner-badge">أفضل العلامات التجارية</span>
-                    <h2>نظام الفرامل</h2>
-                    <p>نحن نغطيك</p>
-                    <p class="banner-subtitle">قيم رائعة. دائماً.</p>
+                    <span class="banner-badge">{{ trans('blocks.banners.top_brands') }}</span>
+                    <h2>{{ trans('blocks.banners.brake_system') }}</h2>
+                    <p>{{ trans('blocks.banners.we_cover_you') }}</p>
+                    <p class="banner-subtitle">{{ trans('blocks.banners.great_values_always') }}</p>
                     <div class="banner-buttons">
-                        <button class="banner-btn">تسوق الآن <i class="fas fa-arrow-right"></i></button>
+                        <button class="banner-btn">{{ trans('blocks.hero.shop_now') }} <i class="fas fa-arrow-right"></i></button>
                     </div>
                 </div>
             </div>
@@ -65,23 +65,23 @@
         <div class="footer-features">
             <div class="footer-feature">
                 <i class="fas fa-headset"></i>
-                <h3>خدمة خبيرة</h3>
-                <p>فريقنا الودود متاح على مدار الأسبوع.</p>
+                <h3>{{ trans('blocks.footer.expert_service') }}</h3>
+                <p>{{ trans('blocks.footer.expert_service_desc') }}</p>
             </div>
             <div class="footer-feature">
                 <i class="fas fa-hand-holding-usd"></i>
-                <h3>قيمة مذهلة</h3>
-                <p>العلامات التجارية التي تفضلها، بأسعار تناسبك.</p>
+                <h3>{{ trans('blocks.footer.amazing_value') }}</h3>
+                <p>{{ trans('blocks.footer.amazing_value_desc') }}</p>
             </div>
             <div class="footer-feature">
                 <i class="fas fa-truck"></i>
-                <h3>شحن سريع ومجاني</h3>
-                <p>الشحن يتم بسرعة، والتوصيل خلال 1-3 أيام.</p>
+                <h3>{{ trans('blocks.footer.fast_free_shipping') }}</h3>
+                <p>{{ trans('blocks.footer.fast_free_shipping_desc') }}</p>
             </div>
             <div class="footer-feature">
                 <i class="fas fa-box"></i>
-                <h3>اختيار لا يُقاوم</h3>
-                <p>كل ما تريده لسيارتك، في مكان واحد.</p>
+                <h3>{{ trans('blocks.footer.unbeatable_selection') }}</h3>
+                <p>{{ trans('blocks.footer.unbeatable_selection_desc') }}</p>
             </div>
         </div>
     </div>
@@ -107,9 +107,9 @@
 				</div>
 
 				<div class="newsletter">
-					<p>ما بداخلنا: وصولات جديدة، عروض حصرية، أخبار الشاحنات والمزيد!</p>
+					<p>{{ trans('blocks.footer.newsletter_text') }}</p>
 					<div class="newsletter-form">
-						<input type="email" placeholder="البريد الإلكتروني">
+						<input type="email" placeholder="{{ trans('blocks.footer.email_placeholder') }}">
 						<button type="submit"><i class="fas fa-arrow-left"></i></button>
 					</div>
 				</div>

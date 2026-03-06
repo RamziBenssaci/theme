@@ -1,10 +1,65 @@
 {
   "blocks": {
     "header": {
-      "cart": "Cart"
+      "cart": "Cart",
+      "contact_info": "Call us between 8 AM - 10 PM / 6668 5555 8464",
+      "login": "Login",
+      "all_categories": "All Categories",
+      "select_category": "Select category"
     },
-    "appBanner": {
-      "download_now": "download now"
+    "promo": {
+      "black_friday_sale": "Pre-Black Friday Sale: Up to 65% Off | Use code \"BLACK\"",
+      "offer_expires": "Offer expires in"
+    },
+    "hero": {
+      "battery_starters": "Battery Starters",
+      "start_batteries_seconds": "Start batteries in seconds",
+      "shop_now": "Shop now",
+      "from_price": "From $49.99",
+      "choose_car": "Choose your car",
+      "brand": "Brand",
+      "model": "Model",
+      "year": "Year",
+      "engine": "Engine",
+      "trim": "Trim",
+      "search": "Search",
+      "or": "OR",
+      "search_by_vin": "Search by VIN"
+    },
+    "banners": {
+      "top_brands": "Top Brands",
+      "batteries": "Batteries",
+      "stay_charged": "Stay charged up!",
+      "tires_wheels": "Tires & Wheels",
+      "stay_safe": "Stay safe on road!",
+      "buy_3_get_1": "Buy 3 Get 1 For Free",
+      "big_sales": "Big sale",
+      "buy_1_get_1": "BUY 1 GET 1",
+      "free": "FREE",
+      "brake_system": "Brake System",
+      "we_cover_you": "We've got you covered",
+      "great_values_always": "Great values. Always.",
+      "springs": "Springs"
+    },
+    "home": {
+      "deals_of_week": "Deals of the week!",
+      "latest_products": "Latest Products"
+    },
+    "manufacturers": {
+      "featured_manufacturers": "Featured Manufacturers"
+    },
+    "footer": {
+      "pages_links": "Pages Links",
+      "expert_service": "Expert Service",
+      "expert_service_desc": "Our friendly team's on hand seven days a week.",
+      "amazing_value": "Amazing Value",
+      "amazing_value_desc": "The brands you prefer, at the prices you crave.",
+      "fast_free_shipping": "Fast & Free Shipping",
+      "fast_free_shipping_desc": "Order ships out in a snap, and delivers in 1-3 days.",
+      "unbeatable_selection": "Unbeatable Selection",
+      "unbeatable_selection_desc": "Everything you want for your car, all in one place.",
+      "newsletter_text": "What's inside: new arrivals, exclusive sales, truck news and more!",
+      "email_placeholder": "Email address"
     }
   },
   "pages": {
