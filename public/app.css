@@ -1118,6 +1118,9 @@ input:where([type='file']):focus{
 .grid{
     display: grid;
 }
+.\!grid{
+    display: grid !important;
+}
 .\!hidden{
     display: none !important;
 }
@@ -32427,13 +32430,66 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
   align-items: center !important;
   gap: 10px !important;
   transition: all 0.3s !important;
+  font-family: inherit !important;
 }
 .banner-btn:hover {
   background-color: #000000 !important;
   color: #ffffff !important;
 }
+.banner-btn:hover i {
+  color: #ffffff !important;
+}
 .banner-btn i {
   font-size: 14px !important;
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free" !important;
+  font-weight: 900 !important;
+  display: inline-block !important;
+  color: #000000 !important;
+  transition: color 0.3s !important;
+  line-height: 1 !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  vertical-align: middle !important;
+}
+.banner-btn i.fa-arrow-right::before, .banner-btn i[class*=arrow-right]::before {
+  content: "\f061" !important;
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free" !important;
+  font-weight: 900 !important;
+  display: inline-block !important;
+}
+.banner-btn .fas,
+.banner-btn .fa,
+.banner-btn .fa-arrow-right,
+.banner-btn [class*=fa-arrow],
+.banner-btn [class*=arrow] {
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free" !important;
+  font-weight: 900 !important;
+  display: inline-block !important;
+  font-style: normal !important;
+  font-feature-settings: normal !important;
+  font-variant: normal !important;
+  text-rendering: auto !important;
+  line-height: 1 !important;
+  color: #000000 !important;
+  transition: color 0.3s !important;
+}
+.banner-btn .fas::before,
+.banner-btn .fa::before,
+.banner-btn .fa-arrow-right::before,
+.banner-btn [class*=fa-arrow]::before,
+.banner-btn [class*=arrow]::before {
+  content: "\f061" !important;
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free" !important;
+  font-weight: 900 !important;
+  display: inline-block !important;
+}
+.banner-btn:not(:has(i.fa-arrow-right::before))::after {
+  content: "→" !important;
+  margin-left: 8px !important;
+  font-size: 16px !important;
+  font-weight: normal !important;
 }
 .banner-image {
   position: absolute !important;

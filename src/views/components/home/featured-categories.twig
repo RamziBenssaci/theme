@@ -1,0 +1,126 @@
+{#
+| Variable        | Type     | Description                    |
+|-----------------|----------|--------------------------------|
+| position        | Int      | Sorting number start from zero |
+#}
+<section class="featured-categories">
+    <div class="container">
+        <h4 class="section-title">{{ trans('blocks.home.featured_categories') }}</h4>
+        <div class="categories-grid" id="featured-categories-grid-{{ position }}">
+            {# Categories will be populated by JavaScript from menu items #}
+        </div>
+    </div>
+</section>
+
+<script>
+(function() {
+    'use strict';
+    
+    console.log('[FeaturedCategories] Initializing menu-based component...');
+    
+    // Wait for Salla and menu to be ready
+    if (typeof salla === 'undefined') {
+        console.error('[FeaturedCategories] Salla not available');
+        return;
+    }
+    
+    salla.onReady()
+        .then(() => {
+            if (typeof salla.lang !== 'undefined' && salla.lang.onLoaded) {
+                return salla.lang.onLoaded();
+            }
+            return Promise.resolve();
+        })
+        .then(() => {
+            // Get menu items from the navigation menu component
+            return salla.api.component.getMenus()
+                .then(({ data }) => {
+                    console.log('[FeaturedCategories] Menu data received:', data);
+                    
+                    if (!data || !Array.isArray(data) || data.length === 0) {
+                        console.warn('[FeaturedCategories] No menu data available');
+                        return;
+                    }
+                    
+                    // Get root-level menu items (categories)
+                    const rootCategories = data.filter(menu => {
+                        const isRoot = !menu.parent_id || menu.parent_id === 0 || menu.parent_id === null;
+                        console.log(`[FeaturedCategories] Menu: "${menu.title || menu.name}" - parent_id: ${menu.parent_id}, isRoot: ${isRoot}, image: ${menu.image || 'none'}`);
+                        return isRoot;
+                    });
+                    
+                    console.log('[FeaturedCategories] Root categories found:', rootCategories.length);
+                    
+                    // Limit to first 6
+                    const categoriesToShow = rootCategories.slice(0, 6);
+                    console.log('[FeaturedCategories] Categories to display:', categoriesToShow.length);
+                    
+                    // Get the grid container
+                    const grid = document.getElementById('featured-categories-grid-{{ position }}');
+                    if (!grid) {
+                        console.error('[FeaturedCategories] Grid container not found');
+                        return;
+                    }
+                    
+                    // Clear and populate
+                    grid.innerHTML = '';
+                    
+                    const placeholderImage = salla.url?.asset ? salla.url.asset('images/placeholder.png') : '/images/placeholder.png';
+                    
+                    categoriesToShow.forEach((category, index) => {
+                        console.log(`[FeaturedCategories] Rendering category ${index + 1}:`, category);
+                        console.log(`  - Title: ${category.title || category.name}`);
+                        console.log(`  - URL: ${category.url || category.link}`);
+                        console.log(`  - Image: ${category.image || 'NONE'}`);
+                        console.log(`  - Full object:`, JSON.stringify(category, null, 2));
+                        
+                        const categoryItem = document.createElement('div');
+                        categoryItem.className = 'category-item';
+                        
+                        const categoryLink = document.createElement('a');
+                        categoryLink.href = category.url || category.link || '#';
+                        categoryLink.setAttribute('aria-label', category.title || category.name || 'Category');
+                        
+                        const categoryIcon = document.createElement('div');
+                        categoryIcon.className = 'category-icon';
+                        
+                        const categoryImage = document.createElement('img');
+                        // Use menu item image directly
+                        const imageUrl = category.image || placeholderImage;
+                        categoryImage.src = imageUrl;
+                        categoryImage.alt = category.title || category.name || 'Category';
+                        categoryImage.loading = 'lazy';
+                        
+                        console.log(`[FeaturedCategories] Setting image for "${category.title || category.name}": ${imageUrl}`);
+                        
+                        categoryImage.onerror = function() {
+                            console.warn(`[FeaturedCategories] Image failed to load: ${imageUrl}, using placeholder`);
+                            this.src = placeholderImage;
+                        };
+                        
+                        categoryImage.onload = function() {
+                            console.log(`[FeaturedCategories] ✓ Image loaded: ${imageUrl}`);
+                        };
+                        
+                        categoryIcon.appendChild(categoryImage);
+                        
+                        const categoryTitle = document.createElement('h3');
+                        categoryTitle.textContent = category.title || category.name || 'Category';
+                        
+                        categoryLink.appendChild(categoryIcon);
+                        categoryLink.appendChild(categoryTitle);
+                        categoryItem.appendChild(categoryLink);
+                        grid.appendChild(categoryItem);
+                    });
+                    
+                    console.log('[FeaturedCategories] ✓ All categories rendered');
+                })
+                .catch((error) => {
+                    console.error('[FeaturedCategories] Error:', error);
+                });
+        })
+        .catch((error) => {
+            console.error('[FeaturedCategories] Initialization error:', error);
+        });
+})();
+</script>

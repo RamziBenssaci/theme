@@ -124,14 +124,75 @@
   align-items: center !important;
   gap: 10px !important;
   transition: all 0.3s !important;
+  font-family: inherit !important;
   
   &:hover {
     background-color: #000000 !important;
     color: #ffffff !important;
+    
+    i {
+      color: #ffffff !important;
+    }
   }
   
   i {
     font-size: 14px !important;
+    font-family: "Font Awesome 6 Free", "Font Awesome 5 Free" !important;
+    font-weight: 900 !important;
+    display: inline-block !important;
+    color: #000000 !important;
+    transition: color 0.3s !important;
+    line-height: 1 !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    vertical-align: middle !important;
+    
+    // Force Font Awesome arrow-right icon
+    &.fa-arrow-right,
+    &[class*="arrow-right"] {
+      &::before {
+        content: "\f061" !important; // Font Awesome arrow-right icon
+        font-family: "Font Awesome 6 Free", "Font Awesome 5 Free" !important;
+        font-weight: 900 !important;
+        display: inline-block !important;
+      }
+    }
+  }
+  
+  // Ensure Font Awesome icons are visible - target all possible selectors
+  .fas,
+  .fa,
+  .fa-arrow-right,
+  [class*="fa-arrow"],
+  [class*="arrow"] {
+    font-family: "Font Awesome 6 Free", "Font Awesome 5 Free" !important;
+    font-weight: 900 !important;
+    display: inline-block !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    text-rendering: auto !important;
+    line-height: 1 !important;
+    color: #000000 !important;
+    transition: color 0.3s !important;
+    
+    &::before {
+      content: "\f061" !important; // Font Awesome arrow-right icon code
+      font-family: "Font Awesome 6 Free", "Font Awesome 5 Free" !important;
+      font-weight: 900 !important;
+      display: inline-block !important;
+    }
+  }
+  
+  // Fallback: If Font Awesome doesn't load, use Unicode arrow
+  &:not(:has(i.fa-arrow-right::before)) {
+    &::after {
+      content: "→" !important;
+      margin-left: 8px !important;
+      font-size: 16px !important;
+      font-weight: normal !important;
+    }
   }
 }
 

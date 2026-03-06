@@ -64,17 +64,8 @@
         </div>
     </section>
     
-    {# Featured Categories Section #}
-    <section class="featured-categories">
-        <div class="container">
-            <h4 class="section-title">{{ trans('blocks.home.featured_categories') }}</h4>
-            <featured-categories>
-                <div class="categories-grid">
-                    {# Categories will be populated by JavaScript #}
-                </div>
-            </featured-categories>
-        </div>
-    </section>
+    {# Featured Categories Section - Using menu items with images #}
+    {% component 'home.featured-categories' with {position: 0} %}
     
     {# Promotional Banners - Top Brands #}
     <section class="promo-banners">
@@ -151,5 +142,4 @@
 {% endblock %}
 {% block scripts %}
     <script defer src="{{ 'home.js' | asset }}"></script>
-    <script defer src="{{ 'featured-categories.js' | asset }}"></script>
 {% endblock %}
