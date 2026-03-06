@@ -4,17 +4,37 @@
  */
 class FeaturedCategories extends HTMLElement {
     connectedCallback() {
+        // Wait for Salla to be ready
+        if (typeof salla === 'undefined') {
+            console.warn('featured-categories: Salla not available');
+            return;
+        }
+
         salla.onReady()
-            .then(() => salla.lang.onLoaded())
             .then(() => {
+                if (typeof salla.lang !== 'undefined' && salla.lang.onLoaded) {
+                    return salla.lang.onLoaded();
+                }
+                return Promise.resolve();
+            })
+            .then(() => {
+                if (typeof salla.api === 'undefined' || typeof salla.api.component === 'undefined' || typeof salla.api.component.getMenus !== 'function') {
+                    console.warn('featured-categories: getMenus API not available');
+                    return;
+                }
                 return salla.api.component.getMenus()
                     .then(({ data }) => {
-                        this.menus = data;
-                        this.render();
+                        if (data && Array.isArray(data)) {
+                            this.menus = data;
+                            this.render();
+                        }
                     })
                     .catch((error) => {
-                        salla.logger.error('featured-categories::Error fetching menus', error);
+                        console.error('featured-categories::Error fetching menus', error);
                     });
+            })
+            .catch((error) => {
+                console.error('featured-categories::Error initializing', error);
             });
     }
 
@@ -85,5 +105,11 @@ class FeaturedCategories extends HTMLElement {
     }
 }
 
-// Register the custom element
-customElements.define('featured-categories', FeaturedCategories);
+// Register the custom element only if not already defined
+if (!customElements.get('featured-categories')) {
+    try {
+        customElements.define('featured-categories', FeaturedCategories);
+    } catch (error) {
+        console.error('featured-categories: Error registering custom element', error);
+    }
+}
