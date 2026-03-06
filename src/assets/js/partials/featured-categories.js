@@ -1,19 +1,21 @@
 /**
  * Featured Categories Component
- * Displays categories in a grid layout using Salla Categories API
+ * Displays menu categories in a grid layout
+ * Uses getMenus() for category names (working) + menu items for images
  * 
  * DEBUG: All console logs are prefixed with [FeaturedCategories] for easy filtering
  */
 class FeaturedCategories extends HTMLElement {
     constructor() {
         super();
-        console.log('[FeaturedCategories] Component constructor called');
-        this.categories = [];
+        console.log('[FeaturedCategories] ===== Component constructor called =====');
+        this.menus = [];
+        this.menuItems = [];
         this.isRendered = false;
     }
 
     connectedCallback() {
-        console.log('[FeaturedCategories] connectedCallback - Component attached to DOM');
+        console.log('[FeaturedCategories] ===== connectedCallback - Component attached to DOM =====');
         
         // Wait for Salla to be ready
         if (typeof salla === 'undefined') {
@@ -36,8 +38,8 @@ class FeaturedCategories extends HTMLElement {
                 return Promise.resolve();
             })
             .then(() => {
-                console.log('[FeaturedCategories] Fetching categories from API...');
-                return this.fetchCategories();
+                console.log('[FeaturedCategories] Fetching menus (for category names - current working method)...');
+                return this.fetchMenusForCategories();
             })
             .catch((error) => {
                 console.error('[FeaturedCategories] ERROR in initialization chain:', error);
@@ -47,170 +49,275 @@ class FeaturedCategories extends HTMLElement {
     }
 
     /**
-     * Fetch categories from Salla Categories API
+     * Fetch menus using getMenus() - This is the method that works for category names
      */
-    async fetchCategories() {
+    async fetchMenusForCategories() {
         try {
-            // Try using Salla API helper
-            if (typeof salla !== 'undefined' && salla.api) {
-                console.log('[FeaturedCategories] Checking available Salla API methods...');
-                console.log('[FeaturedCategories] salla.api keys:', Object.keys(salla.api));
-                
-                // Try salla.api.get if available
-                if (typeof salla.api.get === 'function') {
-                    console.log('[FeaturedCategories] Using salla.api.get()...');
-                    const response = await salla.api.get('categories', { status: 'active' });
-                    console.log('[FeaturedCategories] Categories API response:', response);
-                    return this.processCategoriesResponse(response);
-                }
-                
-                // Try salla.api.categories if available
-                if (salla.api.categories && typeof salla.api.categories.list === 'function') {
-                    console.log('[FeaturedCategories] Using salla.api.categories.list()...');
-                    const response = await salla.api.categories.list({ status: 'active' });
-                    console.log('[FeaturedCategories] Categories API response:', response);
-                    return this.processCategoriesResponse(response);
-                }
+            console.log('[FeaturedCategories] ===== STEP 1: Fetching menus using getMenus() =====');
+            
+            if (typeof salla.api === 'undefined') {
+                console.error('[FeaturedCategories] ERROR: salla.api is undefined');
+                this.showError('Salla API not available');
+                return;
+            }
+            
+            if (typeof salla.api.component === 'undefined') {
+                console.error('[FeaturedCategories] ERROR: salla.api.component is undefined');
+                this.showError('Salla component API not available');
+                return;
+            }
+            
+            if (typeof salla.api.component.getMenus !== 'function') {
+                console.error('[FeaturedCategories] ERROR: salla.api.component.getMenus is not a function');
+                console.log('[FeaturedCategories] Available methods in salla.api.component:', Object.keys(salla.api.component));
+                this.showError('getMenus function not available');
+                return;
             }
 
-            // Fallback: Use fetch to call the Categories API
-            console.log('[FeaturedCategories] Using fetch to call Categories API...');
+            console.log('[FeaturedCategories] Calling salla.api.component.getMenus()...');
+            const response = await salla.api.component.getMenus();
             
-            // Build API URL - try different methods
-            let apiUrl;
-            if (typeof salla !== 'undefined' && salla.url && salla.url.api) {
-                apiUrl = salla.url.api('categories', { status: 'active' });
-            } else if (typeof salla !== 'undefined' && salla.config && salla.config.api) {
-                apiUrl = `${salla.config.api}/categories?status=active`;
-            } else {
-                // Default API endpoint
-                apiUrl = '/api/categories?status=active';
+            console.log('[FeaturedCategories] ===== FULL RESPONSE FROM getMenus() =====');
+            console.log('[FeaturedCategories] Response type:', typeof response);
+            console.log('[FeaturedCategories] Response:', response);
+            console.log('[FeaturedCategories] Response keys:', Object.keys(response || {}));
+            console.log('[FeaturedCategories] Response.data:', response.data);
+            console.log('[FeaturedCategories] Response.data type:', typeof response.data);
+            console.log('[FeaturedCategories] Response.data is array:', Array.isArray(response.data));
+            
+            // Extract data
+            const data = response.data || response;
+            
+            console.log('[FeaturedCategories] ===== EXTRACTED DATA =====');
+            console.log('[FeaturedCategories] Data:', data);
+            console.log('[FeaturedCategories] Data type:', typeof data);
+            console.log('[FeaturedCategories] Data is array:', Array.isArray(data));
+            console.log('[FeaturedCategories] Data length:', data ? data.length : 0);
+            
+            if (!data) {
+                console.error('[FeaturedCategories] ERROR: No data in response');
+                this.showError('No data in API response');
+                return;
             }
+
+            if (!Array.isArray(data)) {
+                console.error('[FeaturedCategories] ERROR: Data is not an array. Type:', typeof data, 'Value:', JSON.stringify(data, null, 2));
+                this.showError('Invalid data format');
+                return;
+            }
+
+            if (data.length === 0) {
+                console.warn('[FeaturedCategories] WARNING: Menu data is empty array');
+                this.showError('No categories found');
+                return;
+            }
+
+            console.log('[FeaturedCategories] ===== DETAILED MENU ITEMS ANALYSIS =====');
+            console.log('[FeaturedCategories] Found', data.length, 'menu items');
             
-            console.log('[FeaturedCategories] API URL:', apiUrl);
-            
-            const response = await fetch(apiUrl, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+            // Log each menu item in detail
+            data.forEach((menu, index) => {
+                console.log(`[FeaturedCategories] ===== MENU ITEM ${index + 1} =====`);
+                console.log(`[FeaturedCategories] Full menu object:`, JSON.stringify(menu, null, 2));
+                console.log(`[FeaturedCategories] Menu keys:`, Object.keys(menu || {}));
+                console.log(`[FeaturedCategories] Menu ID:`, menu.id);
+                console.log(`[FeaturedCategories] Menu title:`, menu.title);
+                console.log(`[FeaturedCategories] Menu name:`, menu.name);
+                console.log(`[FeaturedCategories] Menu url:`, menu.url);
+                console.log(`[FeaturedCategories] Menu link:`, menu.link);
+                console.log(`[FeaturedCategories] Menu parent_id:`, menu.parent_id);
+                console.log(`[FeaturedCategories] Menu image:`, menu.image);
+                console.log(`[FeaturedCategories] Menu image type:`, typeof menu.image);
+                console.log(`[FeaturedCategories] Menu image_url:`, menu.image_url);
+                console.log(`[FeaturedCategories] Menu thumbnail:`, menu.thumbnail);
+                console.log(`[FeaturedCategories] Menu thumbnail_url:`, menu.thumbnail_url);
+                
+                // Check for nested image objects
+                if (menu.image && typeof menu.image === 'object') {
+                    console.log(`[FeaturedCategories] Menu.image is object:`, JSON.stringify(menu.image, null, 2));
+                    console.log(`[FeaturedCategories] Menu.image.url:`, menu.image.url);
+                    console.log(`[FeaturedCategories] Menu.image.alt:`, menu.image.alt);
                 }
+                
+                // Check for icon
+                console.log(`[FeaturedCategories] Menu icon:`, menu.icon);
+                
+                // Check children
+                if (menu.children && Array.isArray(menu.children)) {
+                    console.log(`[FeaturedCategories] Menu has ${menu.children.length} children`);
+                }
+                
+                console.log(`[FeaturedCategories] ===== END MENU ITEM ${index + 1} =====`);
             });
 
-            console.log('[FeaturedCategories] Fetch response status:', response.status);
+            this.menus = data;
             
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const data = await response.json();
-            console.log('[FeaturedCategories] Fetch response data:', data);
-            return this.processCategoriesResponse(data);
+            // Now try to get menu items with images (for the menu component approach)
+            console.log('[FeaturedCategories] ===== STEP 2: Trying to get menu items with images =====');
+            await this.fetchMenuItemsForImages();
+            
+            // Process and render
+            this.processAndRender();
         } catch (error) {
-            console.error('[FeaturedCategories] ERROR fetching categories:', error);
+            console.error('[FeaturedCategories] ERROR fetching menus:', error);
             console.error('[FeaturedCategories] Error stack:', error.stack);
-            
-            // Fallback: Try getting categories from menu items
-            console.log('[FeaturedCategories] Trying fallback: getting categories from menu...');
-            return this.fetchCategoriesFromMenu();
-        }
-    }
-
-    /**
-     * Fallback: Get categories from menu items
-     */
-    async fetchCategoriesFromMenu() {
-        try {
-            if (typeof salla.api === 'undefined' || typeof salla.api.component === 'undefined' || typeof salla.api.component.getMenus !== 'function') {
-                throw new Error('getMenus API not available');
-            }
-
-            console.log('[FeaturedCategories] Fetching menus as fallback...');
-            const response = await salla.api.component.getMenus();
-            console.log('[FeaturedCategories] Menus response:', response);
-            
-            const data = response.data || response;
-            if (data && Array.isArray(data)) {
-                console.log('[FeaturedCategories] Found', data.length, 'menu items');
-                // Convert menu items to category-like format
-                const categories = data
-                    .filter(menu => !menu.parent_id || menu.parent_id === 0)
-                    .slice(0, 6)
-                    .map(menu => ({
-                        id: menu.id,
-                        name: menu.title || menu.name,
-                        image: menu.image || menu.image_url || null,
-                        url: menu.url || menu.link,
-                        parent_id: menu.parent_id || 0
-                    }));
-                
-                console.log('[FeaturedCategories] Converted menu items to categories:', categories);
-                this.categories = categories;
-                this.render();
-            }
-        } catch (error) {
-            console.error('[FeaturedCategories] ERROR in fallback:', error);
             this.showError('Failed to fetch categories: ' + error.message);
         }
     }
 
     /**
-     * Process categories API response
+     * Try to fetch menu items using menu component approach (for images)
      */
-    processCategoriesResponse(response) {
-        console.log('[FeaturedCategories] Processing categories response...');
-        console.log('[FeaturedCategories] Full response object:', JSON.stringify(response, null, 2));
-        
-        const data = response.data || response;
-        console.log('[FeaturedCategories] Extracted data:', data);
-        
-        if (!data) {
-            console.error('[FeaturedCategories] ERROR: No data in response');
-            this.showError('No data in API response');
-            return;
-        }
-
-        if (!Array.isArray(data)) {
-            console.error('[FeaturedCategories] ERROR: Data is not an array. Type:', typeof data, 'Value:', data);
-            this.showError('Invalid data format');
-            return;
-        }
-
-        if (data.length === 0) {
-            console.warn('[FeaturedCategories] WARNING: Categories data is empty array');
-            this.showError('No categories found');
-            return;
-        }
-
-        console.log('[FeaturedCategories] Found', data.length, 'categories in response');
-        
-        // Filter root categories (parent_id === 0) and active status
-        const rootCategories = data.filter(category => {
-            const isRoot = category.parent_id === 0 || category.parent_id === null;
-            const isActive = category.status === 'active';
+    async fetchMenuItemsForImages() {
+        try {
+            console.log('[FeaturedCategories] ===== Attempting to get menu items with images =====');
             
-            console.log(`[FeaturedCategories] Category: "${category.name}" (ID: ${category.id})`);
-            console.log(`  - parent_id: ${category.parent_id} (isRoot: ${isRoot})`);
-            console.log(`  - status: ${category.status} (isActive: ${isActive})`);
-            console.log(`  - image: ${category.image ? category.image : 'NULL/UNDEFINED'}`);
-            console.log(`  - image type: ${typeof category.image}`);
-            console.log(`  - image value:`, category.image);
-            console.log(`  - Full category object:`, JSON.stringify(category, null, 2));
+            // Try to access menu component if it exists in DOM
+            const menuComponent = document.querySelector('custom-main-menu');
+            if (menuComponent) {
+                console.log('[FeaturedCategories] Found custom-main-menu component in DOM');
+                console.log('[FeaturedCategories] Menu component:', menuComponent);
+                console.log('[FeaturedCategories] Menu component menus:', menuComponent.menus);
+                
+                if (menuComponent.menus && Array.isArray(menuComponent.menus)) {
+                    console.log('[FeaturedCategories] Found menus in menu component:', menuComponent.menus.length);
+                    this.menuItems = menuComponent.menus;
+                    
+                    // Log menu items with images
+                    menuComponent.menus.forEach((item, index) => {
+                        console.log(`[FeaturedCategories] Menu Item ${index + 1} from component:`, JSON.stringify(item, null, 2));
+                        console.log(`[FeaturedCategories] Menu Item ${index + 1} image:`, item.image);
+                        console.log(`[FeaturedCategories] Menu Item ${index + 1} image_url:`, item.image_url);
+                    });
+                }
+            } else {
+                console.log('[FeaturedCategories] custom-main-menu component not found in DOM yet');
+            }
             
-            return isRoot && isActive;
+            // Also try to get from salla.api.component.getMenuItems if available
+            if (typeof salla.api.component.getMenuItems === 'function') {
+                console.log('[FeaturedCategories] Trying salla.api.component.getMenuItems()...');
+                const menuItemsResponse = await salla.api.component.getMenuItems();
+                console.log('[FeaturedCategories] Menu items response:', menuItemsResponse);
+                if (menuItemsResponse && menuItemsResponse.data) {
+                    this.menuItems = menuItemsResponse.data;
+                }
+            }
+        } catch (error) {
+            console.warn('[FeaturedCategories] Could not fetch menu items for images:', error);
+            // Not critical, we'll use fallback
+        }
+    }
+
+    /**
+     * Process categories and render
+     */
+    processAndRender() {
+        console.log('[FeaturedCategories] ===== STEP 3: Processing categories =====');
+        
+        if (!this.menus || this.menus.length === 0) {
+            console.warn('[FeaturedCategories] No menus to process');
+            this.showError('No categories available');
+            return;
+        }
+
+        // Get only root-level menu items (the main categories)
+        const rootCategories = this.menus.filter(menu => {
+            const isRoot = !menu.parent_id || menu.parent_id === 0 || menu.parent_id === null;
+            console.log(`[FeaturedCategories] Menu "${menu.title || menu.name}" - parent_id: ${menu.parent_id}, isRoot: ${isRoot}`);
+            return isRoot;
         });
         
-        console.log('[FeaturedCategories] Found', rootCategories.length, 'root active categories');
+        console.log('[FeaturedCategories] Found', rootCategories.length, 'root categories');
         
         if (rootCategories.length === 0) {
-            console.warn('[FeaturedCategories] No root categories found. Showing all active categories instead.');
-            rootCategories.push(...data.filter(cat => cat.status === 'active'));
+            console.warn('[FeaturedCategories] No root categories found. Showing all categories instead.');
+            rootCategories.push(...this.menus);
         }
         
         // Limit to first 6 categories
-        this.categories = rootCategories.slice(0, 6);
-        console.log('[FeaturedCategories] Final categories to display:', this.categories.length);
-        console.log('[FeaturedCategories] Categories data:', JSON.stringify(this.categories, null, 2));
+        const categoriesToShow = rootCategories.slice(0, 6);
+        console.log('[FeaturedCategories] Will display', categoriesToShow.length, 'categories');
+
+        // Match categories with menu items to get images
+        const categoriesWithImages = categoriesToShow.map(category => {
+            console.log(`[FeaturedCategories] ===== Processing category: ${category.title || category.name} =====`);
+            
+            // Try to find matching menu item with image
+            let imageUrl = null;
+            
+            // Method 1: Check if category itself has image
+            if (category.image) {
+                if (typeof category.image === 'string') {
+                    imageUrl = category.image;
+                    console.log(`[FeaturedCategories] Found image in category.image (string):`, imageUrl);
+                } else if (typeof category.image === 'object' && category.image.url) {
+                    imageUrl = category.image.url;
+                    console.log(`[FeaturedCategories] Found image in category.image.url:`, imageUrl);
+                }
+            }
+            
+            // Method 2: Check other image properties
+            if (!imageUrl && category.image_url) {
+                imageUrl = category.image_url;
+                console.log(`[FeaturedCategories] Found image in category.image_url:`, imageUrl);
+            }
+            
+            if (!imageUrl && category.thumbnail) {
+                imageUrl = category.thumbnail;
+                console.log(`[FeaturedCategories] Found image in category.thumbnail:`, imageUrl);
+            }
+            
+            if (!imageUrl && category.thumbnail_url) {
+                imageUrl = category.thumbnail_url;
+                console.log(`[FeaturedCategories] Found image in category.thumbnail_url:`, imageUrl);
+            }
+            
+            // Method 3: Try to match with menu items (menu component approach)
+            if (!imageUrl && this.menuItems && this.menuItems.length > 0) {
+                const matchingMenuItem = this.menuItems.find(item => 
+                    (item.id && item.id === category.id) ||
+                    (item.title && item.title === category.title) ||
+                    (item.name && item.name === category.name) ||
+                    (item.url && item.url === category.url)
+                );
+                
+                if (matchingMenuItem) {
+                    console.log(`[FeaturedCategories] Found matching menu item:`, JSON.stringify(matchingMenuItem, null, 2));
+                    
+                    if (matchingMenuItem.image) {
+                        if (typeof matchingMenuItem.image === 'string') {
+                            imageUrl = matchingMenuItem.image;
+                            console.log(`[FeaturedCategories] Found image in menu item.image (string):`, imageUrl);
+                        } else if (typeof matchingMenuItem.image === 'object' && matchingMenuItem.image.url) {
+                            imageUrl = matchingMenuItem.image.url;
+                            console.log(`[FeaturedCategories] Found image in menu item.image.url:`, imageUrl);
+                        }
+                    }
+                    
+                    if (!imageUrl && matchingMenuItem.image_url) {
+                        imageUrl = matchingMenuItem.image_url;
+                        console.log(`[FeaturedCategories] Found image in menu item.image_url:`, imageUrl);
+                    }
+                } else {
+                    console.log(`[FeaturedCategories] No matching menu item found for category: ${category.title || category.name}`);
+                }
+            }
+            
+            console.log(`[FeaturedCategories] Final image URL for "${category.title || category.name}":`, imageUrl || 'NOT FOUND - will use placeholder');
+            
+            return {
+                id: category.id,
+                name: category.title || category.name || 'Category',
+                url: category.url || category.link || '#',
+                image: imageUrl,
+                parent_id: category.parent_id || 0
+            };
+        });
+
+        this.categories = categoriesWithImages;
+        console.log('[FeaturedCategories] ===== Final categories with images =====');
+        console.log('[FeaturedCategories] Categories:', JSON.stringify(this.categories, null, 2));
         
         this.render();
     }
@@ -245,7 +352,7 @@ class FeaturedCategories extends HTMLElement {
      * Render the featured categories
      */
     render() {
-        console.log('[FeaturedCategories] render() called');
+        console.log('[FeaturedCategories] ===== STEP 4: Rendering categories =====');
         
         if (this.isRendered) {
             console.warn('[FeaturedCategories] Already rendered, skipping...');
@@ -274,54 +381,31 @@ class FeaturedCategories extends HTMLElement {
         // Render each category
         this.categories.forEach((category, index) => {
             try {
-                console.log(`[FeaturedCategories] ===== Rendering category ${index + 1} =====`);
-                console.log(`[FeaturedCategories] Full category object:`, JSON.stringify(category, null, 2));
-                console.log(`[FeaturedCategories] Category ID:`, category.id);
-                console.log(`[FeaturedCategories] Category name:`, category.name);
-                console.log(`[FeaturedCategories] Category URL:`, category.url || category.urls?.customer);
-                
-                // DEBUG: Check image property in detail
-                console.log(`[FeaturedCategories] === IMAGE DEBUG ===`);
-                console.log(`[FeaturedCategories] category.image exists:`, 'image' in category);
-                console.log(`[FeaturedCategories] category.image value:`, category.image);
-                console.log(`[FeaturedCategories] category.image type:`, typeof category.image);
-                console.log(`[FeaturedCategories] category.image === null:`, category.image === null);
-                console.log(`[FeaturedCategories] category.image === undefined:`, category.image === undefined);
-                console.log(`[FeaturedCategories] category.image === '':`, category.image === '');
-                console.log(`[FeaturedCategories] category.image truthy:`, !!category.image);
+                console.log(`[FeaturedCategories] ===== Rendering category ${index + 1}: ${category.name} =====`);
+                console.log(`[FeaturedCategories] Category data:`, JSON.stringify(category, null, 2));
                 
                 const categoryItem = document.createElement('div');
                 categoryItem.className = 'category-item';
                 
                 const categoryLink = document.createElement('a');
-                const categoryUrl = category.url || category.urls?.customer || '#';
-                categoryLink.href = categoryUrl;
+                categoryLink.href = category.url || '#';
                 categoryLink.setAttribute('aria-label', category.name || 'Category');
-                console.log(`[FeaturedCategories] Category ${index + 1} link URL:`, categoryUrl);
+                console.log(`[FeaturedCategories] Category ${index + 1} link URL:`, category.url);
                 
                 const categoryIcon = document.createElement('div');
                 categoryIcon.className = 'category-icon';
                 
                 const categoryImage = document.createElement('img');
                 
-                // Use the image property directly from category (as per API spec)
-                let imageUrl = category.image;
+                // Use image from category, or fallback to placeholder
+                const imageUrl = category.image || placeholderImage;
                 
-                console.log(`[FeaturedCategories] Raw image value:`, imageUrl);
-                
-                // Check if image exists and is valid
-                if (!imageUrl || imageUrl === null || imageUrl === '' || imageUrl === 'null') {
-                    console.warn(`[FeaturedCategories] Category ${index + 1} has no image, using placeholder`);
-                    imageUrl = placeholderImage;
-                } else {
-                    console.log(`[FeaturedCategories] Category ${index + 1} has image:`, imageUrl);
-                }
+                console.log(`[FeaturedCategories] Category ${index + 1} image URL:`, imageUrl);
+                console.log(`[FeaturedCategories] Category ${index + 1} using placeholder:`, !category.image);
                 
                 categoryImage.src = imageUrl;
                 categoryImage.alt = category.name || 'Category';
                 categoryImage.loading = 'lazy';
-                
-                console.log(`[FeaturedCategories] Final image URL set to:`, imageUrl);
                 
                 categoryImage.onerror = function() {
                     console.warn(`[FeaturedCategories] Image failed to load for category ${index + 1}:`, imageUrl);
@@ -345,7 +429,6 @@ class FeaturedCategories extends HTMLElement {
                 categoriesGrid.appendChild(categoryItem);
                 
                 console.log(`[FeaturedCategories] ✓ Category ${index + 1} rendered successfully`);
-                console.log(`[FeaturedCategories] ===== End category ${index + 1} =====`);
             } catch (error) {
                 console.error(`[FeaturedCategories] ERROR rendering category ${index + 1}:`, error);
                 console.error('[FeaturedCategories] Error stack:', error.stack);
@@ -353,7 +436,8 @@ class FeaturedCategories extends HTMLElement {
         });
 
         this.isRendered = true;
-        console.log('[FeaturedCategories] ✓ Render complete! Total categories displayed:', this.categories.length);
+        console.log('[FeaturedCategories] ===== Render complete! Total categories displayed:', this.categories.length);
+        console.log('[FeaturedCategories] ===== END OF COMPONENT =====');
     }
 }
 
