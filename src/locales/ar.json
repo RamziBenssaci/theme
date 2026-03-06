@@ -43,7 +43,8 @@
     },
     "home": {
       "deals_of_week": "عروض الأسبوع!",
-      "latest_products": "أحدث المنتجات"
+      "latest_products": "أحدث المنتجات",
+      "featured_categories": "الفئات المميزة"
     },
     "manufacturers": {
       "featured_manufacturers": "العلامات التجارية المميزة"

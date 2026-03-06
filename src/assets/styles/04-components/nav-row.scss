@@ -17,7 +17,9 @@
   .container {
     display: flex;
     align-items: baseline;
+    justify-content: flex-start; // Start from left
     gap: 40px; // Increased gap to separate button from menu
+    position: relative;
     
     > * {
       display: inline-flex;
@@ -63,10 +65,19 @@
   .nav-menu-wrapper {
     display: flex;
     align-items: center;
-    justify-content: center; // Center the menu items
+    justify-content: center !important; // Force center the menu items
     flex: 1;
     min-width: 0; // Allow flex shrinking
-    margin-left: 20px; // Add space from button
+    margin-left: 0 !important; // Remove margin to allow true centering
+    width: 100%;
+    position: absolute; // Position absolutely to center independently
+    left: 0;
+    right: 0;
+    pointer-events: none; // Allow clicks to pass through to menu items
+    
+    custom-main-menu {
+      pointer-events: auto; // Re-enable pointer events for menu
+    }
   }
   
   // Navigation Menu - Center, ONE LINE, no wrapping - FIXED - HALF HEIGHT

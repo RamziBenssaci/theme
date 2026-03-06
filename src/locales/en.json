@@ -43,7 +43,8 @@
     },
     "home": {
       "deals_of_week": "Deals of the week!",
-      "latest_products": "Latest Products"
+      "latest_products": "Latest Products",
+      "featured_categories": "Featured categories"
     },
     "manufacturers": {
       "featured_manufacturers": "Featured Manufacturers"
