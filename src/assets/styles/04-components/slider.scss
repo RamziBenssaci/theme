@@ -1,5 +1,13 @@
 salla-slider{ 
   @apply block;
+  display: block !important;
+  visibility: visible !important;
+  width: 100% !important;
+  
+  // Mobile responsive
+  @media (max-width: 768px) {
+    @apply px-2;
+  }
   
   &.details-slider{
     .s-slider-container{ 
@@ -25,6 +33,15 @@ salla-slider{
 
   .slide--one-sixth{
     @apply w-1/2 sm:w-2/6 md:w-1/4 lg:w-1/6;
+    display: block !important;
+    visibility: visible !important;
+    flex-shrink: 0;
+    
+    // Mobile responsive adjustments
+    @media (max-width: 480px) {
+      @apply w-1/2;
+      min-width: 140px;
+    }
   }
 
 
@@ -32,6 +49,25 @@ salla-slider{
   .swiper-slide{
     -webkit-transform: translateZ(0);
     -webkit-backface-visibility: hidden;
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  // Ensure swiper wrapper is visible
+  .swiper-wrapper {
+    display: flex !important;
+    visibility: visible !important;
+  }
+
+  // Mobile responsive adjustments for category slider
+  @media (max-width: 768px) {
+    .swiper {
+      @apply px-2;
+    }
+
+    .swiper-slide {
+      @apply flex-shrink-0;
+    }
   }
 }
 
