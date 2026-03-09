@@ -10,15 +10,27 @@ class AllCategoriesDropdown {
         const button = document.getElementById('all-categories-btn');
         const menu = document.getElementById('all-categories-menu');
         
-        if (!button || !menu) return;
+        if (!button || !menu) {
+            console.log('AllCategoriesDropdown: Button or menu not found, retrying...');
+            setTimeout(() => this.init(), 500);
+            return;
+        }
+
+        console.log('AllCategoriesDropdown: Initializing...');
 
         // Wait for Salla to be ready
         if (typeof salla !== 'undefined' && salla.onReady) {
             salla.onReady().then(() => {
-                this.loadCategories();
+                console.log('AllCategoriesDropdown: Salla ready, loading categories...');
                 this.setupEventListeners();
+                this.loadCategories();
+            }).catch(() => {
+                console.log('AllCategoriesDropdown: Salla onReady failed, trying anyway...');
+                this.setupEventListeners();
+                this.loadCategories();
             });
         } else {
+            console.log('AllCategoriesDropdown: Salla not ready, waiting...');
             setTimeout(() => this.init(), 500);
         }
     }
@@ -29,7 +41,23 @@ class AllCategoriesDropdown {
         
         if (!button || !menu) return;
 
-        // Toggle on click
+        // On mobile, open mobile menu instead
+        if (window.innerWidth < 1024) {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Trigger mobile menu
+                const mobileMenuTrigger = document.querySelector('.mburger--collapse');
+                if (mobileMenuTrigger) {
+                    mobileMenuTrigger.click();
+                } else {
+                    // Fallback: navigate to mobile menu
+                    window.location.href = '#mobile-menu';
+                }
+            });
+            return;
+        }
+
+        // Desktop: Toggle on click
         button.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -44,47 +72,83 @@ class AllCategoriesDropdown {
         });
 
         // Hover behavior for desktop
-        if (window.innerWidth >= 1024) {
-            button.addEventListener('mouseenter', () => {
-                if (!this.isOpen) {
-                    this.open();
-                }
-            });
-
-            const dropdown = button.closest('.all-categories-dropdown');
-            if (dropdown) {
-                dropdown.addEventListener('mouseleave', () => {
-                    this.close();
-                });
+        button.addEventListener('mouseenter', () => {
+            if (!this.isOpen) {
+                this.open();
             }
+        });
+
+        const dropdown = button.closest('.all-categories-dropdown');
+        if (dropdown) {
+            dropdown.addEventListener('mouseleave', () => {
+                this.close();
+            });
         }
     }
 
     async loadCategories() {
         const menu = document.getElementById('all-categories-menu');
-        if (!menu) return;
+        if (!menu) {
+            console.log('AllCategoriesDropdown: Menu element not found');
+            return;
+        }
+
+        console.log('AllCategoriesDropdown: Loading categories...');
 
         try {
             // Get categories from menu API
             let categories = [];
             
+            // Wait a bit for menu component to load
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
             // Try to get from menu component first
             const menuElement = document.querySelector('custom-main-menu');
-            if (menuElement && menuElement.menus) {
+            console.log('AllCategoriesDropdown: Menu element found:', !!menuElement);
+            
+            if (menuElement && menuElement.menus && menuElement.menus.length > 0) {
                 categories = menuElement.menus;
+                console.log('AllCategoriesDropdown: Got', categories.length, 'categories from custom-main-menu');
             } else if (typeof salla !== 'undefined' && salla.api && salla.api.component) {
-                const response = await salla.api.component.getMenus();
-                if (response && response.data) {
-                    categories = response.data;
+                console.log('AllCategoriesDropdown: Trying salla.api.component.getMenus()...');
+                try {
+                    const response = await salla.api.component.getMenus();
+                    console.log('AllCategoriesDropdown: getMenus response:', response);
+                    if (response && response.data && response.data.length > 0) {
+                        categories = response.data;
+                        console.log('AllCategoriesDropdown: Got', categories.length, 'categories from API');
+                    }
+                } catch (e) {
+                    console.log('AllCategoriesDropdown: getMenus error:', e);
                 }
             }
 
+            // If still no categories, wait more and try again
+            if (categories.length === 0) {
+                console.log('AllCategoriesDropdown: No categories yet, waiting 1 second...');
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                const menuElement2 = document.querySelector('custom-main-menu');
+                if (menuElement2 && menuElement2.menus && menuElement2.menus.length > 0) {
+                    categories = menuElement2.menus;
+                    console.log('AllCategoriesDropdown: Got', categories.length, 'categories on retry');
+                }
+            }
+
+            if (categories.length === 0) {
+                console.log('AllCategoriesDropdown: No categories found, showing error');
+                menu.innerHTML = '<div class="categories-error">لا توجد فئات متاحة</div>';
+                return;
+            }
+
             // Fetch full category data with images
+            console.log('AllCategoriesDropdown: Enriching', categories.length, 'categories with images...');
             const enrichedCategories = await this.enrichCategoriesWithImages(categories);
             this.categories = enrichedCategories;
+            console.log('AllCategoriesDropdown: Enriched categories:', this.categories.length);
             this.render();
         } catch (error) {
-            console.error('Error loading categories:', error);
+            console.error('AllCategoriesDropdown: Error loading categories:', error);
             menu.innerHTML = '<div class="categories-error">حدث خطأ في تحميل الفئات</div>';
         }
     }
@@ -163,7 +227,18 @@ class AllCategoriesDropdown {
 
     render() {
         const menu = document.getElementById('all-categories-menu');
-        if (!menu || this.categories.length === 0) return;
+        if (!menu) {
+            console.log('AllCategoriesDropdown: Menu not found in render');
+            return;
+        }
+        
+        if (this.categories.length === 0) {
+            console.log('AllCategoriesDropdown: No categories to render');
+            menu.innerHTML = '<div class="categories-error">لا توجد فئات متاحة</div>';
+            return;
+        }
+
+        console.log('AllCategoriesDropdown: Rendering', this.categories.length, 'categories');
 
         let html = '<div class="categories-menu-container">';
         html += '<div class="categories-menu-left">';
@@ -171,12 +246,14 @@ class AllCategoriesDropdown {
         // Left column: Main categories with icons
         this.categories.forEach((category, index) => {
             const isActive = index === 0;
+            const title = category.title || category.name || 'Category';
+            const url = category.url || '#';
             html += `
-                <div class="category-item ${isActive ? 'active' : ''}" data-category-index="${index}">
-                    ${category.image ? `<img src="${category.image}" alt="${category.title}" class="category-icon" />` : `<i class="sicon-menu category-icon-placeholder"></i>`}
-                    <span class="category-name">${category.title}</span>
+                <a href="${url}" class="category-item ${isActive ? 'active' : ''}" data-category-index="${index}">
+                    ${category.image ? `<img src="${category.image}" alt="${title}" class="category-icon" />` : `<i class="sicon-menu category-icon-placeholder"></i>`}
+                    <span class="category-name">${title}</span>
                     ${category.children && category.children.length > 0 ? '<i class="sicon-sar category-arrow"></i>' : ''}
-                </div>
+                </a>
             `;
         });
 
@@ -199,6 +276,7 @@ class AllCategoriesDropdown {
 
         menu.innerHTML = html;
         this.setupCategoryHover();
+        console.log('AllCategoriesDropdown: Categories rendered successfully');
     }
 
     renderSubcategories(children) {
@@ -235,7 +313,8 @@ class AllCategoriesDropdown {
         const panels = document.querySelectorAll('.subcategories-panel');
 
         categoryItems.forEach(item => {
-            item.addEventListener('mouseenter', () => {
+            item.addEventListener('mouseenter', (e) => {
+                e.preventDefault();
                 // Remove active from all
                 categoryItems.forEach(i => i.classList.remove('active'));
                 panels.forEach(p => p.classList.remove('active'));
