@@ -200,72 +200,88 @@
                             const enrichedCategories = menuCategories.map(function(menuCat) {
                                 console.log('--- Processing menu category:', menuCat.name, 'URL:', menuCat.url);
                                 
-                                // Extract category ID from menu URL (format: /category-name/c123456)
-                                let categoryId = null;
-                                if (menuCat.url) {
-                                    const idMatch = menuCat.url.match(/\/c(\d+)/);
-                                    if (idMatch && idMatch[1]) {
-                                        categoryId = idMatch[1];
-                                        console.log('  Extracted category ID from URL:', categoryId);
+                                // First, check if menu item already has an image
+                                let imageUrl = '{{ "images/placeholder.png" | asset }}';
+                                if (menuCat.image) {
+                                    if (typeof menuCat.image === 'string' && menuCat.image.trim() !== '') {
+                                        imageUrl = menuCat.image;
+                                        console.log('  ✓ Using image from menu item:', imageUrl);
+                                    } else if (menuCat.image.url) {
+                                        imageUrl = menuCat.image.url;
+                                        console.log('  ✓ Using image.url from menu item:', imageUrl);
                                     }
                                 }
                                 
-                                // Try to find matching category in API response
-                                const apiCat = apiCategories.find(function(api) {
-                                    // Match by ID (most reliable)
-                                    const idMatch = categoryId && api.id && String(api.id) === String(categoryId);
-                                    // Match by URL
-                                    const urlMatch = api.url && menuCat.url && (api.url === menuCat.url || api.url.includes(menuCat.url) || menuCat.url.includes(api.url));
-                                    // Match by name
-                                    const nameMatch = api.name && menuCat.name && api.name === menuCat.name;
-                                    // Match by slug
-                                    const slugMatch = api.slug && menuCat.url && menuCat.url.includes(api.slug);
-                                    
-                                    if (idMatch || urlMatch || nameMatch || slugMatch) {
-                                        console.log('  ✓ Matched with API category:', api.name || api.id, 'Match type:', idMatch ? 'ID' : (urlMatch ? 'URL' : (nameMatch ? 'Name' : 'Slug')));
-                                        return true;
-                                    }
-                                    return false;
-                                });
-                                
-                                // Get image from API category if found
-                                let imageUrl = '{{ "images/placeholder.png" | asset }}';
-                                if (apiCat) {
-                                    console.log('  API category found, checking for image...');
-                                    console.log('  apiCat.image:', apiCat.image);
-                                    console.log('  apiCat.image_url:', apiCat.image_url);
-                                    console.log('  apiCat.thumbnail:', apiCat.thumbnail);
-                                    console.log('  apiCat.image?.url:', apiCat.image?.url);
-                                    
-                                    // Try different possible image properties
-                                    if (apiCat.image) {
-                                        if (typeof apiCat.image === 'string') {
-                                            imageUrl = apiCat.image;
-                                            console.log('  ✓ Using apiCat.image (string):', imageUrl);
-                                        } else if (apiCat.image.url) {
-                                            imageUrl = apiCat.image.url;
-                                            console.log('  ✓ Using apiCat.image.url:', imageUrl);
-                                        } else if (typeof apiCat.image === 'object') {
-                                            // Try other possible properties
-                                            imageUrl = apiCat.image.original || apiCat.image.medium || apiCat.image.thumb || JSON.stringify(apiCat.image);
-                                            console.log('  ✓ Using apiCat.image (object):', imageUrl);
+                                // If no image from menu, try to get from API
+                                if (imageUrl === '{{ "images/placeholder.png" | asset }}' && apiCategories.length > 0) {
+                                    // Extract category ID from menu URL (format: /category-name/c123456)
+                                    let categoryId = null;
+                                    if (menuCat.url) {
+                                        const idMatch = menuCat.url.match(/\/c(\d+)/);
+                                        if (idMatch && idMatch[1]) {
+                                            categoryId = idMatch[1];
+                                            console.log('  Extracted category ID from URL:', categoryId);
                                         }
-                                    } else if (apiCat.image_url) {
-                                        imageUrl = apiCat.image_url;
-                                        console.log('  ✓ Using apiCat.image_url:', imageUrl);
-                                    } else if (apiCat.thumbnail) {
-                                        if (typeof apiCat.thumbnail === 'string') {
-                                            imageUrl = apiCat.thumbnail;
-                                            console.log('  ✓ Using apiCat.thumbnail (string):', imageUrl);
-                                        } else if (apiCat.thumbnail.url) {
-                                            imageUrl = apiCat.thumbnail.url;
-                                            console.log('  ✓ Using apiCat.thumbnail.url:', imageUrl);
+                                    }
+                                    
+                                    // Try to find matching category in API response
+                                    const apiCat = apiCategories.find(function(api) {
+                                        // Match by ID (most reliable)
+                                        const idMatch = categoryId && api.id && String(api.id) === String(categoryId);
+                                        // Match by URL
+                                        const urlMatch = api.url && menuCat.url && (api.url === menuCat.url || api.url.includes(menuCat.url) || menuCat.url.includes(api.url));
+                                        // Match by name
+                                        const nameMatch = api.name && menuCat.name && api.name === menuCat.name;
+                                        // Match by slug
+                                        const slugMatch = api.slug && menuCat.url && menuCat.url.includes(api.slug);
+                                        
+                                        if (idMatch || urlMatch || nameMatch || slugMatch) {
+                                            console.log('  ✓ Matched with API category:', api.name || api.id, 'Match type:', idMatch ? 'ID' : (urlMatch ? 'URL' : (nameMatch ? 'Name' : 'Slug')));
+                                            return true;
+                                        }
+                                        return false;
+                                    });
+                                    
+                                    // Get image from API category if found
+                                    if (apiCat) {
+                                        console.log('  API category found, checking for image...');
+                                        console.log('  apiCat.image:', apiCat.image);
+                                        console.log('  apiCat.image_url:', apiCat.image_url);
+                                        console.log('  apiCat.thumbnail:', apiCat.thumbnail);
+                                        console.log('  apiCat.image?.url:', apiCat.image?.url);
+                                        
+                                        // Try different possible image properties
+                                        if (apiCat.image) {
+                                            if (typeof apiCat.image === 'string' && apiCat.image.trim() !== '') {
+                                                imageUrl = apiCat.image;
+                                                console.log('  ✓ Using apiCat.image (string):', imageUrl);
+                                            } else if (apiCat.image.url) {
+                                                imageUrl = apiCat.image.url;
+                                                console.log('  ✓ Using apiCat.image.url:', imageUrl);
+                                            } else if (typeof apiCat.image === 'object') {
+                                                // Try other possible properties
+                                                imageUrl = apiCat.image.original || apiCat.image.medium || apiCat.image.thumb || apiCat.image.small || '';
+                                                if (imageUrl) {
+                                                    console.log('  ✓ Using apiCat.image (object):', imageUrl);
+                                                }
+                                            }
+                                        } else if (apiCat.image_url) {
+                                            imageUrl = apiCat.image_url;
+                                            console.log('  ✓ Using apiCat.image_url:', imageUrl);
+                                        } else if (apiCat.thumbnail) {
+                                            if (typeof apiCat.thumbnail === 'string' && apiCat.thumbnail.trim() !== '') {
+                                                imageUrl = apiCat.thumbnail;
+                                                console.log('  ✓ Using apiCat.thumbnail (string):', imageUrl);
+                                            } else if (apiCat.thumbnail.url) {
+                                                imageUrl = apiCat.thumbnail.url;
+                                                console.log('  ✓ Using apiCat.thumbnail.url:', imageUrl);
+                                            }
+                                        } else {
+                                            console.log('  ✗ No image found in API category, using placeholder');
                                         }
                                     } else {
-                                        console.log('  ✗ No image found in API category, using placeholder');
+                                        console.log('  ✗ No matching API category found, using placeholder');
                                     }
-                                } else {
-                                    console.log('  ✗ No matching API category found, using placeholder');
                                 }
                                 
                                 const result = {
@@ -303,9 +319,13 @@
                             console.log('Using', menuItems.length, 'menu items from custom-main-menu');
                             const mapped = menuItems.map(function(item) {
                                 console.log('  Menu item:', item.title || item.name, '- URL:', item.url);
+                                console.log('  Menu item full object:', item);
+                                console.log('  Menu item.image:', item.image);
+                                console.log('  Menu item keys:', Object.keys(item));
                                 return {
                                     name: item.title || item.name,
-                                    url: item.url || '#'
+                                    url: item.url || '#',
+                                    image: item.image || null  // Include image if available
                                 };
                             });
                             callback(mapped);
@@ -325,9 +345,13 @@
                                         console.log('Using', menuItems.length, 'menu items from getMenus API');
                                         const mapped = menuItems.map(function(item) {
                                             console.log('  Menu item:', item.title || item.name, '- URL:', item.url);
+                                            console.log('  Menu item full object:', item);
+                                            console.log('  Menu item.image:', item.image);
+                                            console.log('  Menu item keys:', Object.keys(item));
                                             return {
                                                 name: item.title || item.name,
-                                                url: item.url || '#'
+                                                url: item.url || '#',
+                                                image: item.image || null  // Include image if available
                                             };
                                         });
                                         callback(mapped);
@@ -564,7 +588,7 @@
                     const apiUrl = 'https://api.salla.dev/store/v1';
                     console.log('Fetching categories by IDs:', categoryIds);
                     
-                    // Fetch all categories and filter by IDs
+                    // First try: Fetch all categories and filter by IDs
                     fetch(apiUrl + '/categories?limit=100')
                         .then(function(res) {
                             if (!res.ok) {
@@ -586,11 +610,73 @@
                                 console.log('First matched category:', JSON.stringify(matchedCategories[0], null, 2));
                             }
                             
-                            callback(matchedCategories);
+                            // If we got matches, return them
+                            if (matchedCategories.length > 0) {
+                                callback(matchedCategories);
+                                return;
+                            }
+                            
+                            // If no matches, try fetching individual categories
+                            console.log('No matches in bulk fetch, trying individual category fetches...');
+                            const fetchPromises = categoryIds.map(function(id) {
+                                return fetch(apiUrl + '/categories/' + id)
+                                    .then(function(res) {
+                                        if (!res.ok) {
+                                            return null;
+                                        }
+                                        return res.json();
+                                    })
+                                    .then(function(data) {
+                                        return (data && data.data) ? data.data : data;
+                                    })
+                                    .catch(function() {
+                                        return null;
+                                    });
+                            });
+                            
+                            Promise.all(fetchPromises)
+                                .then(function(results) {
+                                    const validCategories = results.filter(function(cat) {
+                                        return cat !== null;
+                                    });
+                                    console.log('Fetched', validCategories.length, 'individual categories');
+                                    if (validCategories.length > 0) {
+                                        console.log('First individual category:', JSON.stringify(validCategories[0], null, 2));
+                                    }
+                                    callback(validCategories);
+                                });
                         })
                         .catch(function(err) {
                             console.log('✗ Failed to fetch categories by ID:', err);
-                            callback([]);
+                            // Try individual fetches as last resort
+                            console.log('Trying individual category fetches as fallback...');
+                            const fetchPromises = categoryIds.map(function(id) {
+                                return fetch('https://api.salla.dev/store/v1/categories/' + id)
+                                    .then(function(res) {
+                                        if (!res.ok) {
+                                            return null;
+                                        }
+                                        return res.json();
+                                    })
+                                    .then(function(data) {
+                                        return (data && data.data) ? data.data : data;
+                                    })
+                                    .catch(function() {
+                                        return null;
+                                    });
+                            });
+                            
+                            Promise.all(fetchPromises)
+                                .then(function(results) {
+                                    const validCategories = results.filter(function(cat) {
+                                        return cat !== null;
+                                    });
+                                    console.log('Fetched', validCategories.length, 'individual categories (fallback)');
+                                    callback(validCategories);
+                                })
+                                .catch(function() {
+                                    callback([]);
+                                });
                         });
                 }
                 
