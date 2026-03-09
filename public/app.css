@@ -37023,6 +37023,7 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+<<<<<<< HEAD
   gap: 4px !important;
   overflow: visible !important;
   white-space: nowrap !important;
@@ -37044,6 +37045,9 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   flex-shrink: 0 !important;
   font-size: 12px !important;
   line-height: 1.2 !important;
+=======
+  gap: 6px !important;
+>>>>>>> fce6dfa (update)
 }
 .s-block--latest-products .s-product-card-content salla-add-product-button:hover, .s-block--latest-products .s-product-card-content salla-add-product-button:hover button, .s-block--latest-products .s-product-card-content salla-add-product-button:hover .s-button,
 .s-block--latest-products .s-product-card-content salla-button[fill=outline]:hover,
