@@ -88,8 +88,9 @@
         <nav class="breadcrumbs w-full py-5">
             <salla-breadcrumb></salla-breadcrumb>
         </nav>
-        <div class="flex flex-col items-start md:flex-row" id="product-{{ product.id }}">
-            <div class="sidebar md:sticky top-24 w-full md:!w-2/4 rtl:ml-8 ltr:mr-8 pb-8 md:pb-16 overflow-hidden shrink-0">
+        <section class="product-section">
+            <div class="product-layout" id="product-{{ product.id }}">
+            <div class="product-gallery sidebar">
                 {% set has_many_images = product.images|length > 1 %}
                 <salla-slider
                         id="details-slider-{{ product.id }}"
@@ -180,9 +181,13 @@
                 </salla-slider>
             </div>
 
-            <div class="main-content md:sticky md:overflow-hidden top-24 w-full md:w-2/4 md:pb-16">
+            <div class="product-info main-content">
 
                 {% hook 'product:single.description.start' %}
+
+                {% if product.is_on_sale %}
+                    <span class="product-badge sale">Sale</span>
+                {% endif %}
 
                 {% if product.brand.name %}
                     <div class="product-brand mb-5 w-12">
@@ -195,7 +200,7 @@
                     </div>
                 {% endif %}
 
-                <h1 class="text-xl md:text-2xl leading-10 font-bold mb-6 text-gray-800">{{ product.name }}</h1>
+                <h1 class="product-title text-xl md:text-2xl leading-10 font-bold mb-6 text-gray-800">{{ product.name }}</h1>
 
                 {% if product.subtitle %}
                     <h2 class="product-entry__sub-title text-sm text-gray-500 leading-6 mb-2.5">
@@ -286,15 +291,24 @@
                         {% endif %}
                     </div>
                 {% endif %}
-                {% if product.sku %}
-                    <div class="mb-4 flex justify-between sm:grid sm:grid-cols-3 bg-white rounded-md px-4 py-2">
-                        <div class="flex items-center">
-                            <i class="sicon-barcode mx-1"></i>
-                            {{ trans('pages.products.sku') }}
-                        </div>
-                        <div class="text-unicode">{{ product.sku }}</div>
-                    </div>
-                {% endif %}
+                <div class="product-specs">
+                    {% if product.sku %}
+                        <p><strong>SKU:</strong> {{ product.sku }}</p>
+                    {% endif %}
+                    {% if product.brand.name %}
+                        <p><strong>Brand:</strong> {{ product.brand.name }}</p>
+                    {% endif %}
+                    {% if product.category.name %}
+                        <p><strong>Category:</strong> <a href="{{ product.category.url }}">{{ product.category.name }}</a></p>
+                    {% endif %}
+                    <p><strong>Availability:</strong> 
+                        {% if product.is_available %}
+                            <span class="in-stock">In Stock</span>
+                        {% else %}
+                            <span class="text-red-600">{{ trans('pages.products.out_of_stock') }}</span>
+                        {% endif %}
+                    </p>
+                </div>
                 {% hook 'product:single.description' %}
 
                 {# Installment Methods #}
@@ -421,6 +435,7 @@
             </div>
         </div>
         <salla-offer></salla-offer>
+        </section>
     </div>
 
     {# Comments Area #}

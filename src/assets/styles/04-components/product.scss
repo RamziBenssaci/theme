@@ -408,3 +408,187 @@ salla-quantity-input[max='1']{
     @apply cursor-not-allowed
   }
 }
+
+// Product Page Layout - Matching Reference Design
+.product-section {
+  padding: 40px 0 !important;
+}
+
+.product-layout {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 40px !important;
+  margin-bottom: 60px !important;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+// Product Gallery
+.sidebar {
+  position: sticky !important;
+  top: 20px !important;
+  height: fit-content !important;
+  
+  .details-slider {
+    margin-bottom: 15px !important;
+    border-radius: 5px !important;
+    overflow: hidden !important;
+  }
+  
+  // Thumbnail styling
+  .slide--one-fourth {
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 5px !important;
+    border: 2px solid transparent !important;
+    opacity: 0.7 !important;
+    cursor: pointer !important;
+    transition: all 0.3s !important;
+    
+    &:hover,
+    &.swiper-slide-thumb-active {
+      border-color: var(--color-primary) !important;
+      opacity: 1 !important;
+    }
+  }
+}
+
+// Product Info Section
+.main-content {
+  position: sticky !important;
+  top: 20px !important;
+  height: fit-content !important;
+  
+  h1 {
+    font-size: 28px !important;
+    margin-bottom: 15px !important;
+    font-weight: bold !important;
+  }
+  
+  // Rating
+  salla-rating-stars {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+  }
+  
+  // Price Section
+  .flex.whitespace-nowrap.gap-4 {
+    margin-bottom: 20px !important;
+    
+    p {
+      font-size: 32px !important;
+      font-weight: bold !important;
+    }
+    
+    span.text-gray-500 {
+      font-size: 20px !important;
+    }
+  }
+  
+  // Description
+  .product__description {
+    margin-bottom: 25px !important;
+    line-height: 1.8 !important;
+  }
+  
+  // Product Specs (SKU, Brand, etc.)
+  .mb-4.flex.justify-between {
+    background-color: #f5f5f5 !important;
+    padding: 20px !important;
+    border-radius: 5px !important;
+    margin-bottom: 25px !important;
+    
+    p {
+      margin-bottom: 10px !important;
+    }
+  }
+  
+  // Quantity Selector
+  .sticky-product-bar__quantity {
+    margin-bottom: 20px !important;
+    
+    label {
+      display: block !important;
+      margin-bottom: 10px !important;
+      font-weight: 500 !important;
+    }
+  }
+  
+  // Product Actions
+  .sticky-product-bar {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+    
+    salla-add-product-button {
+      width: 100% !important;
+      padding: 15px !important;
+      font-size: 16px !important;
+      font-weight: bold !important;
+    }
+  }
+}
+
+// Product Badge
+.product-badge {
+  display: inline-block !important;
+  padding: 5px 15px !important;
+  background-color: var(--color-primary) !important;
+  color: white !important;
+  border-radius: 4px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  margin-bottom: 15px !important;
+  
+  &.sale {
+    background-color: #dc3545 !important;
+  }
+}
+
+// Breadcrumbs
+.breadcrumbs {
+  padding: 20px 0 !important;
+  background-color: #f5f5f5 !important;
+  margin-bottom: 0 !important;
+}
+
+// Product Tabs (if using Salla tabs component)
+.s-tabs-header {
+  display: flex !important;
+  gap: 10px !important;
+  border-bottom: 2px solid #eee !important;
+  margin-bottom: 30px !important;
+  margin-top: 60px !important;
+  
+  button {
+    padding: 15px 25px !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid transparent !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    color: #666 !important;
+    margin-bottom: -2px !important;
+    
+    &.active,
+    &[aria-selected="true"] {
+      color: var(--color-primary) !important;
+      border-bottom-color: var(--color-primary) !important;
+    }
+  }
+}
+
+// Related Products
+.related-products {
+  margin-top: 60px !important;
+  
+  h2 {
+    margin-bottom: 30px !important;
+    font-size: 24px !important;
+  }
+}
