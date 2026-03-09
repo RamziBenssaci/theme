@@ -43641,19 +43641,25 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
 .banners-grid-layout {
   display: grid !important;
   grid-template-columns: 2fr 1fr !important;
-  grid-template-rows: auto auto auto !important;
+  grid-template-rows: auto auto !important;
   grid-gap: 20px !important;
   gap: 20px !important;
 }
 .banners-grid-layout .promo-banner-large:first-child {
-  grid-row: 1/3 !important;
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+.banners-grid-layout .promo-banner-small:first-of-type {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
 }
 .banners-grid-layout .promo-banner-medium {
   grid-column: 1 !important;
+  grid-row: 2 !important;
 }
 .banners-grid-layout .promo-banner-large:last-child {
   grid-column: 2 !important;
-  grid-row: 3 !important;
+  grid-row: 2 !important;
 }
 @media (max-width: 1024px) {
   .banners-grid-layout {
@@ -43661,6 +43667,7 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     grid-template-rows: auto !important;
   }
   .banners-grid-layout .promo-banner-large:first-child,
+  .banners-grid-layout .promo-banner-small:first-of-type,
   .banners-grid-layout .promo-banner-medium,
   .banners-grid-layout .promo-banner-large:last-child {
     grid-column: 1 !important;
