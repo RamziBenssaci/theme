@@ -178,36 +178,95 @@
                 function tryLoad() {
                     // First, get menu categories (header categories)
                     getMenuCategories(function(menuCategories) {
+                        console.log('=== MENU CATEGORIES ===');
+                        console.log('Found', menuCategories.length, 'menu categories:', menuCategories);
+                        
                         // Then fetch all categories from API to get images
                         fetchCategoriesWithImages(function(apiCategories) {
+                            console.log('=== API CATEGORIES ===');
+                            console.log('Found', apiCategories.length, 'API categories');
+                            
+                            // Log first API category structure to see what properties exist
+                            if (apiCategories.length > 0) {
+                                console.log('Sample API category structure:', apiCategories[0]);
+                                console.log('Sample API category keys:', Object.keys(apiCategories[0]));
+                                if (apiCategories[0].image) {
+                                    console.log('Sample category.image type:', typeof apiCategories[0].image);
+                                    console.log('Sample category.image value:', apiCategories[0].image);
+                                }
+                            }
+                            
                             // Match menu categories with API categories to get images
                             const enrichedCategories = menuCategories.map(function(menuCat) {
+                                console.log('--- Processing menu category:', menuCat.name, 'URL:', menuCat.url);
+                                
                                 // Try to find matching category in API response
                                 const apiCat = apiCategories.find(function(api) {
                                     // Match by URL or name
-                                    return (api.url && menuCat.url && api.url === menuCat.url) ||
-                                           (api.name && menuCat.name && api.name === menuCat.name) ||
-                                           (api.slug && menuCat.url && menuCat.url.includes(api.slug));
+                                    const urlMatch = api.url && menuCat.url && api.url === menuCat.url;
+                                    const nameMatch = api.name && menuCat.name && api.name === menuCat.name;
+                                    const slugMatch = api.slug && menuCat.url && menuCat.url.includes(api.slug);
+                                    
+                                    if (urlMatch || nameMatch || slugMatch) {
+                                        console.log('  ✓ Matched with API category:', api.name || api.id);
+                                        return true;
+                                    }
+                                    return false;
                                 });
                                 
                                 // Get image from API category if found
                                 let imageUrl = '{{ "images/placeholder.png" | asset }}';
                                 if (apiCat) {
+                                    console.log('  API category found, checking for image...');
+                                    console.log('  apiCat.image:', apiCat.image);
+                                    console.log('  apiCat.image_url:', apiCat.image_url);
+                                    console.log('  apiCat.thumbnail:', apiCat.thumbnail);
+                                    console.log('  apiCat.image?.url:', apiCat.image?.url);
+                                    
                                     // Try different possible image properties
                                     if (apiCat.image) {
-                                        imageUrl = (typeof apiCat.image === 'string') ? apiCat.image : (apiCat.image.url || apiCat.image);
+                                        if (typeof apiCat.image === 'string') {
+                                            imageUrl = apiCat.image;
+                                            console.log('  ✓ Using apiCat.image (string):', imageUrl);
+                                        } else if (apiCat.image.url) {
+                                            imageUrl = apiCat.image.url;
+                                            console.log('  ✓ Using apiCat.image.url:', imageUrl);
+                                        } else if (typeof apiCat.image === 'object') {
+                                            // Try other possible properties
+                                            imageUrl = apiCat.image.original || apiCat.image.medium || apiCat.image.thumb || JSON.stringify(apiCat.image);
+                                            console.log('  ✓ Using apiCat.image (object):', imageUrl);
+                                        }
                                     } else if (apiCat.image_url) {
                                         imageUrl = apiCat.image_url;
+                                        console.log('  ✓ Using apiCat.image_url:', imageUrl);
                                     } else if (apiCat.thumbnail) {
-                                        imageUrl = (typeof apiCat.thumbnail === 'string') ? apiCat.thumbnail : (apiCat.thumbnail.url || apiCat.thumbnail);
+                                        if (typeof apiCat.thumbnail === 'string') {
+                                            imageUrl = apiCat.thumbnail;
+                                            console.log('  ✓ Using apiCat.thumbnail (string):', imageUrl);
+                                        } else if (apiCat.thumbnail.url) {
+                                            imageUrl = apiCat.thumbnail.url;
+                                            console.log('  ✓ Using apiCat.thumbnail.url:', imageUrl);
+                                        }
+                                    } else {
+                                        console.log('  ✗ No image found in API category, using placeholder');
                                     }
+                                } else {
+                                    console.log('  ✗ No matching API category found, using placeholder');
                                 }
                                 
-                                return {
+                                const result = {
                                     name: menuCat.name || menuCat.title,
                                     url: menuCat.url || '#',
                                     image: imageUrl
                                 };
+                                console.log('  Final category:', result);
+                                return result;
+                            });
+                            
+                            console.log('=== ENRICHED CATEGORIES ===');
+                            console.log('Total categories to render:', enrichedCategories.length);
+                            enrichedCategories.forEach(function(cat, idx) {
+                                console.log('Category', idx + 1, ':', cat.name, '- Image:', cat.image);
                             });
                             
                             if (enrichedCategories.length > 0) {
@@ -220,36 +279,48 @@
                 }
                 
                 function getMenuCategories(callback) {
+                    console.log('=== GETTING MENU CATEGORIES ===');
                     const menuElement = document.querySelector('custom-main-menu');
+                    console.log('Menu element found:', !!menuElement);
                     if (menuElement && menuElement.menus && menuElement.menus.length > 0) {
+                        console.log('Found', menuElement.menus.length, 'menu items in custom-main-menu');
                         const menuItems = menuElement.menus.slice(0, 12);
                         if (menuItems.length > 0) {
-                            callback(menuItems.map(function(item) {
+                            console.log('Using', menuItems.length, 'menu items from custom-main-menu');
+                            const mapped = menuItems.map(function(item) {
+                                console.log('  Menu item:', item.title || item.name, '- URL:', item.url);
                                 return {
                                     name: item.title || item.name,
                                     url: item.url || '#'
                                 };
-                            }));
+                            });
+                            callback(mapped);
                             return;
                         }
                     }
                     
                     // Try salla.api.component.getMenus
                     if (typeof salla !== 'undefined' && salla.api && salla.api.component) {
+                        console.log('Trying salla.api.component.getMenus()...');
                         salla.api.component.getMenus()
                             .then(function(response) {
+                                console.log('getMenus response:', response);
                                 if (response && response.data && response.data.length > 0) {
                                     const menuItems = response.data.slice(0, 12);
                                     if (menuItems.length > 0) {
-                                        callback(menuItems.map(function(item) {
+                                        console.log('Using', menuItems.length, 'menu items from getMenus API');
+                                        const mapped = menuItems.map(function(item) {
+                                            console.log('  Menu item:', item.title || item.name, '- URL:', item.url);
                                             return {
                                                 name: item.title || item.name,
                                                 url: item.url || '#'
                                             };
-                                        }));
+                                        });
+                                        callback(mapped);
                                         return;
                                     }
                                 }
+                                console.log('No menu items found, using fallback categories');
                                 // Fallback to placeholder categories
                                 callback([
                                     {name: 'غيارات', url: '#'},
@@ -261,7 +332,7 @@
                                 ]);
                             })
                             .catch(function(err) {
-                                console.log('Menu API error:', err);
+                                console.log('✗ Menu API error:', err);
                                 callback([
                                     {name: 'غيارات', url: '#'},
                                     {name: 'تخفيضات', url: '#'},
@@ -272,19 +343,25 @@
                                 ]);
                             });
                     } else {
+                        console.log('salla.api.component not available, waiting for menu element...');
                         // Wait a bit for menu to load
                         setTimeout(function() {
                             const menuEl = document.querySelector('custom-main-menu');
+                            console.log('Menu element after timeout:', !!menuEl);
                             if (menuEl && menuEl.menus && menuEl.menus.length > 0) {
                                 const menuItems = menuEl.menus.slice(0, 12);
                                 if (menuItems.length > 0) {
-                                    callback(menuItems.map(function(item) {
+                                    console.log('Using', menuItems.length, 'menu items after timeout');
+                                    const mapped = menuItems.map(function(item) {
+                                        console.log('  Menu item:', item.title || item.name, '- URL:', item.url);
                                         return {
                                             name: item.title || item.name,
                                             url: item.url || '#'
                                         };
-                                    }));
+                                    });
+                                    callback(mapped);
                                 } else {
+                                    console.log('No menu items after timeout, using fallback');
                                     callback([
                                         {name: 'غيارات', url: '#'},
                                         {name: 'تخفيضات', url: '#'},
@@ -295,6 +372,7 @@
                                     ]);
                                 }
                             } else {
+                                console.log('No menu element after timeout, using fallback');
                                 callback([
                                     {name: 'غيارات', url: '#'},
                                     {name: 'تخفيضات', url: '#'},
@@ -309,40 +387,69 @@
                 }
                 
                 function fetchCategoriesWithImages(callback) {
+                    console.log('=== FETCHING CATEGORIES FROM API ===');
                     // Try salla.api.get first (recommended method)
                     if (typeof salla !== 'undefined' && salla.api && salla.api.get) {
+                        console.log('Using salla.api.get to fetch categories...');
                         salla.api.get('/categories', {limit: 50})
                             .then(function(response) {
-                                console.log('Categories API response:', response);
+                                console.log('salla.api.get response type:', typeof response);
+                                console.log('salla.api.get response:', response);
+                                console.log('response.data:', response?.data);
+                                console.log('response.data type:', typeof response?.data);
+                                console.log('Is array?', Array.isArray(response));
+                                console.log('Is response.data array?', Array.isArray(response?.data));
+                                
                                 const categories = (response && response.data) ? response.data : (Array.isArray(response) ? response : []);
+                                console.log('Extracted categories count:', categories.length);
+                                if (categories.length > 0) {
+                                    console.log('First category full object:', JSON.stringify(categories[0], null, 2));
+                                }
                                 callback(categories);
                             })
                             .catch(function(err) {
-                                console.log('Salla API categories error:', err);
+                                console.log('✗ Salla API categories error:', err);
+                                console.log('Error details:', JSON.stringify(err, null, 2));
                                 // Try fetch as fallback
                                 tryFetchCategories(callback);
                             });
                     } else {
+                        console.log('salla.api.get not available, using fetch fallback');
                         // Use fetch as fallback
                         tryFetchCategories(callback);
                     }
                 }
                 
                 function tryFetchCategories(callback) {
+                    console.log('=== TRYING FETCH METHOD ===');
                     const apiUrl = (typeof salla !== 'undefined' && salla.config) ? salla.config.get('api_url') : (window.store && window.store.api ? window.store.api : '');
+                    console.log('API URL:', apiUrl);
                     if (apiUrl) {
-                        fetch(apiUrl + '/categories?limit=50')
-                            .then(function(res) { return res.json(); })
+                        const fetchUrl = apiUrl + '/categories?limit=50';
+                        console.log('Fetching from:', fetchUrl);
+                        fetch(fetchUrl)
+                            .then(function(res) { 
+                                console.log('Fetch response status:', res.status);
+                                return res.json(); 
+                            })
                             .then(function(data) {
+                                console.log('Fetch categories response type:', typeof data);
                                 console.log('Fetch categories response:', data);
+                                console.log('data.data:', data?.data);
                                 const categories = (data && data.data) ? data.data : (Array.isArray(data) ? data : []);
+                                console.log('Extracted categories count:', categories.length);
+                                if (categories.length > 0) {
+                                    console.log('First category full object:', JSON.stringify(categories[0], null, 2));
+                                }
                                 callback(categories);
                             })
                             .catch(function(err) {
-                                console.log('Fetch categories failed:', err);
+                                console.log('✗ Fetch categories failed:', err);
+                                console.log('Error details:', JSON.stringify(err, null, 2));
                                 callback([]);
                             });
                     } else {
+                        console.log('✗ No API URL available');
                         callback([]);
                     }
                 }
@@ -389,14 +496,22 @@
                     waitForSliderReady(function() {
                         let html = '';
                         const placeholderImg = '{{ "images/placeholder.png" | asset }}';
-                        categories.forEach(function(category) {
+                        console.log('=== RENDERING CATEGORIES ===');
+                        console.log('Placeholder image URL:', placeholderImg);
+                        categories.forEach(function(category, index) {
                             // Use real image from category, or fallback to placeholder
-                            const img = (category.image && category.image !== placeholderImg) ? category.image : placeholderImg;
+                            const img = (category.image && category.image !== placeholderImg && category.image.trim() !== '') ? category.image : placeholderImg;
                             const url = (category.url || category.link || '#');
                             const name = (category.name || category.title || 'Category');
                             
+                            console.log('Rendering category', index + 1, ':', name);
+                            console.log('  - Image URL:', img);
+                            console.log('  - Is placeholder?', img === placeholderImg);
+                            console.log('  - Category object:', category);
+                            
                             html += '<div class="swiper-slide slide--one-sixth" style="display: block !important; visibility: visible !important; opacity: 1 !important; flex-shrink: 0 !important;"><a href="' + url + '" class="slide--cat-entry" style="display: flex !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; height: 144px !important;"><img src="' + img + '" class="w-16 h-16 object-cover rounded-full mb-2.5" width="64" height="64" alt="' + name + '" style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 64px !important; height: 64px !important; max-width: 64px !important; max-height: 64px !important;"/><h2 style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 0 !important; padding: 0 !important;">' + name + '</h2></a></div>';
                         });
+                        console.log('Total HTML length:', html.length);
                         
                         // Clear loading message and add categories to slot
                         container.innerHTML = html;
