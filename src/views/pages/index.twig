@@ -269,58 +269,131 @@
                     }
                     
                     console.log('Rendering categories:', categories.length);
-                    let html = '';
-                    categories.forEach(function(category) {
-                        const img = (category.image || category.image_url || category.thumbnail || '{{ "images/placeholder.png" | asset }}');
-                        const url = (category.url || category.link || category.slug ? '/categories/' + category.slug : '#');
-                        const name = (category.name || category.title || 'Category');
-                        
-                        html += '<div class="swiper-slide slide--one-sixth" style="display: block !important; visibility: visible !important; opacity: 1 !important; flex-shrink: 0 !important;"><a href="' + url + '" class="slide--cat-entry" style="display: flex !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; height: 144px !important;"><img src="' + img + '" class="w-16 h-16 object-cover rounded-full mb-2.5" width="64" height="64" alt="' + name + '" style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 64px !important; height: 64px !important; max-width: 64px !important; max-height: 64px !important;"/><h2 style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 0 !important; padding: 0 !important;">' + name + '</h2></a></div>';
-                    });
                     
-                    container.innerHTML = html;
-                    container.style.display = 'flex';
-                    container.style.visibility = 'visible';
-                    container.style.opacity = '1';
-                    container.style.minHeight = '150px';
+                    // Wait for slider to be ready
+                    const slider = document.getElementById('featured-categories-slider');
+                    if (!slider) {
+                        console.log('Slider not found, retrying...');
+                        setTimeout(function() { renderCategories(categories); }, 200);
+                        return;
+                    }
                     
-                    console.log('Categories rendered, updating slider...');
-                    
-                    // Force slider update multiple times
-                    setTimeout(function() {
-                        const slider = document.getElementById('featured-categories-slider');
-                        if (slider) {
-                            console.log('Slider found, updating...');
-                            if (slider.update) {
-                                slider.update();
-                                console.log('Slider updated');
-                            }
-                            if (slider.refresh) {
-                                slider.refresh();
-                            }
-                            // Trigger events
-                            try {
-                                slider.dispatchEvent(new Event('update'));
-                                slider.dispatchEvent(new CustomEvent('swiper-update'));
-                            } catch(e) {}
-                            
-                            // Also try to access swiper instance
-                            if (slider.swiper) {
-                                slider.swiper.update();
-                                slider.swiper.updateSlides();
-                            }
+                    // Wait for slider to be hydrated/ready
+                    function waitForSliderReady(callback) {
+                        if (slider.swiper || slider.shadowRoot || slider.update) {
+                            callback();
                         } else {
-                            console.log('Slider not found!');
+                            setTimeout(function() { waitForSliderReady(callback); }, 100);
                         }
-                    }, 500);
+                    }
                     
-                    setTimeout(function() {
-                        const slider = document.getElementById('featured-categories-slider');
-                        if (slider && slider.update) {
-                            slider.update();
+                    waitForSliderReady(function() {
+                        let html = '';
+                        categories.forEach(function(category) {
+                            const img = (category.image || category.image_url || category.thumbnail || '{{ "images/placeholder.png" | asset }}');
+                            const url = (category.url || category.link || (category.slug ? '/categories/' + category.slug : '#'));
+                            const name = (category.name || category.title || 'Category');
+                            
+                            html += '<div class="swiper-slide slide--one-sixth" style="display: block !important; visibility: visible !important; opacity: 1 !important; flex-shrink: 0 !important;"><a href="' + url + '" class="slide--cat-entry" style="display: flex !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; height: 144px !important;"><img src="' + img + '" class="w-16 h-16 object-cover rounded-full mb-2.5" width="64" height="64" alt="' + name + '" style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 64px !important; height: 64px !important; max-width: 64px !important; max-height: 64px !important;"/><h2 style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 0 !important; padding: 0 !important;">' + name + '</h2></a></div>';
+                        });
+                        
+                        // Clear loading message and add categories
+                        container.innerHTML = html;
+                        container.style.display = 'flex';
+                        container.style.visibility = 'visible';
+                        container.style.opacity = '1';
+                        container.style.minHeight = '150px';
+                        
+                        console.log('Categories HTML inserted, length:', html.length);
+                        
+                        // Also try to inject directly into swiper-wrapper as fallback
+                        setTimeout(function() {
+                            const wrapper = slider.querySelector('.swiper-wrapper');
+                            if (wrapper && wrapper.children.length === 0) {
+                                console.log('Found empty swiper-wrapper, injecting directly');
+                                wrapper.innerHTML = html;
+                            }
+                        }, 100);
+                        
+                        // Make sure slides are visible and check if they're actually in DOM
+                        setTimeout(function() {
+                            const slides = container.querySelectorAll('.swiper-slide');
+                            const wrapperSlides = slider.querySelectorAll('.swiper-wrapper .swiper-slide');
+                            console.log('Slides in container:', slides.length);
+                            console.log('Slides in wrapper:', wrapperSlides.length);
+                            
+                            const allSlides = slides.length > 0 ? slides : wrapperSlides;
+                            
+                            if (allSlides.length > 0) {
+                                allSlides.forEach(function(slide) {
+                                    slide.style.display = 'block';
+                                    slide.style.visibility = 'visible';
+                                    slide.style.opacity = '1';
+                                });
+                                console.log('Made', allSlides.length, 'slides visible');
+                            } else {
+                                console.error('NO SLIDES FOUND ANYWHERE!');
+                            }
+                        }, 150);
+                        
+                        console.log('Categories rendered, updating slider...');
+                        
+                        // Force slider update - salla-slider needs special handling
+                        function updateSlider() {
+                            const sliderEl = document.getElementById('featured-categories-slider');
+                            if (!sliderEl) {
+                                console.log('Slider not found!');
+                                return;
+                            }
+                            
+                            console.log('Slider found, updating...');
+                            
+                            // Method 1: Try update method
+                            if (typeof sliderEl.update === 'function') {
+                                sliderEl.update();
+                                console.log('Slider updated via update()');
+                            }
+                            
+                            // Method 2: Try refresh
+                            if (typeof sliderEl.refresh === 'function') {
+                                sliderEl.refresh();
+                            }
+                            
+                            // Method 3: Access internal swiper
+                            if (sliderEl.swiper) {
+                                sliderEl.swiper.update();
+                                sliderEl.swiper.updateSlides();
+                                sliderEl.swiper.updateSlidesClasses();
+                                console.log('Swiper instance updated');
+                            }
+                            
+                            // Method 4: Trigger custom events
+                            try {
+                                sliderEl.dispatchEvent(new Event('update'));
+                                sliderEl.dispatchEvent(new CustomEvent('swiper-update'));
+                                sliderEl.dispatchEvent(new CustomEvent('content-changed'));
+                            } catch(e) {
+                                console.log('Event dispatch error:', e);
+                            }
+                            
+                            // Method 5: Wait for component to be ready and force update
+                            if (sliderEl.updateComplete) {
+                                sliderEl.updateComplete.then(function() {
+                                    if (sliderEl.swiper) {
+                                        sliderEl.swiper.update();
+                                    }
+                                });
+                            }
                         }
-                    }, 1000);
-                }
+                        
+                        // Try multiple times with delays
+                        setTimeout(updateSlider, 100);
+                        setTimeout(updateSlider, 300);
+                        setTimeout(updateSlider, 500);
+                        setTimeout(updateSlider, 1000);
+                        setTimeout(updateSlider, 2000);
+                    }); // Close waitForSliderReady callback
+                } // Close renderCategories function
                 
                 // Start loading
                 if (typeof salla !== 'undefined') {
