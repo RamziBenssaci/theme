@@ -139,16 +139,17 @@
   
   .banner-image-small {
     position: absolute !important;
-    right: 15px !important;
-    bottom: 15px !important;
+    right: 0 !important;
+    bottom: 0 !important;
     width: 50% !important;
     height: 50% !important;
     max-width: none !important;
+    max-height: none !important;
     z-index: 10 !important;
-    transform: scale(1.08) !important;
     display: flex !important;
     align-items: flex-end !important;
     justify-content: flex-end !important;
+    padding: 0 !important;
     
     img {
       width: 100% !important;
@@ -156,6 +157,7 @@
       max-width: 100% !important;
       max-height: 100% !important;
       object-fit: contain !important;
+      object-position: bottom right !important;
       filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.4)) !important;
     }
     
@@ -167,7 +169,6 @@
       height: auto !important;
       max-width: 100% !important;
       margin-top: 20px !important;
-      transform: scale(1) !important;
       
       img {
         height: auto !important;

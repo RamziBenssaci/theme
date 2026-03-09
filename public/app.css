@@ -43759,16 +43759,17 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
 }
 .promo-banner-large .banner-image-small {
   position: absolute !important;
-  right: 15px !important;
-  bottom: 15px !important;
+  right: 0 !important;
+  bottom: 0 !important;
   width: 50% !important;
   height: 50% !important;
   max-width: none !important;
+  max-height: none !important;
   z-index: 10 !important;
-  transform: scale(1.08) !important;
   display: flex !important;
   align-items: flex-end !important;
   justify-content: flex-end !important;
+  padding: 0 !important;
 }
 .promo-banner-large .banner-image-small img {
   width: 100% !important;
@@ -43777,6 +43778,8 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   max-height: 100% !important;
   -o-object-fit: contain !important;
      object-fit: contain !important;
+  -o-object-position: bottom right !important;
+     object-position: bottom right !important;
   filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.4)) !important;
 }
 @media (max-width: 768px) {
@@ -43788,7 +43791,6 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     height: auto !important;
     max-width: 100% !important;
     margin-top: 20px !important;
-    transform: scale(1) !important;
   }
   .promo-banner-large .banner-image-small img {
     height: auto !important;
