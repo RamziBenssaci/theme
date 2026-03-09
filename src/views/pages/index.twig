@@ -174,57 +174,84 @@
                     return;
                 }
 
-                // Try multiple API methods
+                // Try menu first (header categories), then API
                 function tryLoad() {
-                    // Method 1: Try salla.api.get
-                    if (typeof salla !== 'undefined' && salla.api && salla.api.get) {
-                        salla.api.get('/categories', { limit: 12 })
-                            .then(function(response) {
-                                console.log('Categories API response:', response);
-                                if (response && response.data) {
-                                    const categories = response.data.data || response.data || [];
-                                    if (categories.length > 0) {
-                                        renderCategories(categories);
-                                        return;
-                                    }
-                                }
-                                // Fallback: Try menu system
-                                tryMenuCategories();
-                            })
-                            .catch(function(err) {
-                                console.log('API error, trying menu:', err);
-                                tryMenuCategories();
-                            });
-                    } else {
-                        // Wait for Salla to load
-                        if (attempts < maxAttempts) {
-                            setTimeout(tryLoad, 300);
-                        } else {
-                            tryMenuCategories();
-                        }
-                    }
+                    // Method 1: Try menu system FIRST (header categories)
+                    tryMenuCategories();
                 }
                 
                 function tryMenuCategories() {
-                    // Method 2: Try to get from menu
+                    // Method 2: Get ALL categories from header menu (no filtering)
                     const menuElement = document.querySelector('custom-main-menu');
-                    if (menuElement && menuElement.menu) {
-                        const menuItems = menuElement.menu.filter(function(item) {
-                            return item.type === 'category' || item.url && item.url.includes('/categories/');
-                        }).slice(0, 12);
+                    if (menuElement && menuElement.menus && menuElement.menus.length > 0) {
+                        // Get ALL top-level menu items (these are the header categories)
+                        const menuItems = menuElement.menus.slice(0, 12);
                         
                         if (menuItems.length > 0) {
+                            console.log('Found', menuItems.length, 'categories from menu element');
                             renderCategories(menuItems.map(function(item) {
                                 return {
-                                    name: item.title,
-                                    url: item.url,
-                                    image: item.image || null
+                                    name: item.title || item.name,
+                                    url: item.url || '#',
+                                    image: '{{ "images/placeholder.png" | asset }}'
                                 };
                             }));
                             return;
                         }
                     }
                     
+                    // Also try salla.api.component.getMenus
+                    if (typeof salla !== 'undefined' && salla.api && salla.api.component) {
+                        salla.api.component.getMenus()
+                            .then(function(response) {
+                                if (response && response.data && response.data.length > 0) {
+                                    // Get ALL menu items (header categories)
+                                    const menuItems = response.data.slice(0, 12);
+                                    
+                                    if (menuItems.length > 0) {
+                                        console.log('Found', menuItems.length, 'categories from API menu');
+                                        renderCategories(menuItems.map(function(item) {
+                                            return {
+                                                name: item.title || item.name,
+                                                url: item.url || '#',
+                                                image: '{{ "images/placeholder.png" | asset }}'
+                                            };
+                                        }));
+                                        return;
+                                    }
+                                }
+                                // If no menu categories, show placeholders
+                                showPlaceholderCategories();
+                            })
+                            .catch(function(err) {
+                                console.log('Menu API error:', err);
+                                showPlaceholderCategories();
+                            });
+                    } else {
+                        // Wait a bit for menu to load
+                        setTimeout(function() {
+                            const menuEl = document.querySelector('custom-main-menu');
+                            if (menuEl && menuEl.menus && menuEl.menus.length > 0) {
+                                const menuItems = menuEl.menus.slice(0, 12);
+                                if (menuItems.length > 0) {
+                                    renderCategories(menuItems.map(function(item) {
+                                        return {
+                                            name: item.title || item.name,
+                                            url: item.url || '#',
+                                            image: '{{ "images/placeholder.png" | asset }}'
+                                        };
+                                    }));
+                                } else {
+                                    showPlaceholderCategories();
+                                }
+                            } else {
+                                showPlaceholderCategories();
+                            }
+                        }, 1000);
+                    }
+                }
+                
+                function tryApiCategories() {
                     // Method 3: Use fetch directly with store API
                     const apiUrl = (typeof salla !== 'undefined' && salla.config) ? salla.config.get('api_url') : (window.store && window.store.api ? window.store.api : '');
                     if (apiUrl) {
@@ -233,9 +260,23 @@
                             .then(function(data) {
                                 console.log('Fetch response:', data);
                                 if (data && data.data && data.data.length > 0) {
-                                    renderCategories(data.data);
+                                    renderCategories(data.data.map(function(cat) {
+                                        return {
+                                            name: cat.name || cat.title,
+                                            url: cat.url || (cat.slug ? '/categories/' + cat.slug : '#'),
+                                            image: '{{ "images/placeholder.png" | asset }}'
+                                        };
+                                    }));
                                 } else if (data && Array.isArray(data) && data.length > 0) {
-                                    renderCategories(data);
+                                    renderCategories(data.map(function(cat) {
+                                        return {
+                                            name: cat.name || cat.title,
+                                            url: cat.url || (cat.slug ? '/categories/' + cat.slug : '#'),
+                                            image: '{{ "images/placeholder.png" | asset }}'
+                                        };
+                                    }));
+                                } else {
+                                    showPlaceholderCategories();
                                 }
                             })
                             .catch(function(err) {
@@ -249,14 +290,14 @@
                 }
                 
                 function showPlaceholderCategories() {
-                    // Show at least something so user knows section exists
+                    // Use the actual category names from header
                     const placeholderCategories = [
-                        {name: 'فئة 1', url: '#', image: '{{ "images/placeholder.png" | asset }}'},
-                        {name: 'فئة 2', url: '#', image: '{{ "images/placeholder.png" | asset }}'},
-                        {name: 'فئة 3', url: '#', image: '{{ "images/placeholder.png" | asset }}'},
-                        {name: 'فئة 4', url: '#', image: '{{ "images/placeholder.png" | asset }}'},
-                        {name: 'فئة 5', url: '#', image: '{{ "images/placeholder.png" | asset }}'},
-                        {name: 'فئة 6', url: '#', image: '{{ "images/placeholder.png" | asset }}'}
+                        {name: 'غيارات', url: '#', image: '{{ "images/placeholder.png" | asset }}'},
+                        {name: 'تخفيضات', url: '#', image: '{{ "images/placeholder.png" | asset }}'},
+                        {name: 'الفساتين', url: '#', image: '{{ "images/placeholder.png" | asset }}'},
+                        {name: 'البلايز', url: '#', image: '{{ "images/placeholder.png" | asset }}'},
+                        {name: 'التنانير', url: '#', image: '{{ "images/placeholder.png" | asset }}'},
+                        {name: 'الجاكيتات', url: '#', image: '{{ "images/placeholder.png" | asset }}'}
                     ];
                     renderCategories(placeholderCategories);
                 }
@@ -290,8 +331,9 @@
                     waitForSliderReady(function() {
                         let html = '';
                         categories.forEach(function(category) {
-                            const img = (category.image || category.image_url || category.thumbnail || '{{ "images/placeholder.png" | asset }}');
-                            const url = (category.url || category.link || (category.slug ? '/categories/' + category.slug : '#'));
+                            // Always use placeholder image for now
+                            const img = '{{ "images/placeholder.png" | asset }}';
+                            const url = (category.url || category.link || '#');
                             const name = (category.name || category.title || 'Category');
                             
                             html += '<div class="swiper-slide slide--one-sixth" style="display: block !important; visibility: visible !important; opacity: 1 !important; flex-shrink: 0 !important;"><a href="' + url + '" class="slide--cat-entry" style="display: flex !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; height: 144px !important;"><img src="' + img + '" class="w-16 h-16 object-cover rounded-full mb-2.5" width="64" height="64" alt="' + name + '" style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 64px !important; height: 64px !important; max-width: 64px !important; max-height: 64px !important;"/><h2 style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 0 !important; padding: 0 !important;">' + name + '</h2></a></div>';
