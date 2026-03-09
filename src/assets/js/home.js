@@ -9,6 +9,7 @@ class Home extends BasePage {
         this.initFeaturedTabs();
         this.initDealsSection();
         this.initTopBannerCountdown();
+        this.initFeaturedCategories();
         
         // Initialize product image gallery
         new ProductImageGallery();
@@ -341,6 +342,50 @@ class Home extends BasePage {
                 subtree: true
             });
         }
+    }
+
+    /**
+     * Initialize Featured Categories Section
+     */
+    initFeaturedCategories() {
+        const categoriesContainer = document.getElementById('categories-slider-items');
+        if (!categoriesContainer) return;
+
+        // Get categories from Salla API
+        salla.api.get('/categories', { limit: 12 })
+            .then(response => {
+                if (response.data && response.data.data && response.data.data.length > 0) {
+                    const categories = response.data.data;
+                    let html = '';
+                    categories.forEach(category => {
+                        const imageUrl = category.image || salla.url.asset('images/placeholder.png');
+                        const categoryUrl = category.url || '#';
+                        const categoryName = category.name || '';
+                        
+                        html += `
+                            <div class="swiper-slide slide--one-sixth">
+                                <a href="${categoryUrl}" class="slide--cat-entry">
+                                    <img src="${imageUrl}" class="w-16 h-16 object-cover rounded-full mb-2.5" width="64" height="64" alt="${categoryName}" loading="lazy"/>
+                                    <h2>${categoryName}</h2>
+                                </a>
+                            </div>
+                        `;
+                    });
+                    
+                    categoriesContainer.innerHTML = html;
+                    
+                    // Reinitialize slider
+                    const slider = document.getElementById('featured-categories-slider');
+                    if (slider && typeof slider.update === 'function') {
+                        setTimeout(() => {
+                            slider.update();
+                        }, 100);
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error loading categories:', error);
+            });
     }
 }
 

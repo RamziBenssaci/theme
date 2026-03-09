@@ -105,6 +105,24 @@
         </div>
     </section>
     
+    {# Featured Categories Section - Directly Added #}
+    {% hook 'home:categories.start' %}
+    <section class="s-block s-block--categories">
+        <div class="container">
+            <div class="s-block__title">
+                <div class="right-side">
+                    <h2>فئات مميزة</h2>
+                </div>
+            </div>
+            <salla-slider type="carousel" controls-outer show-controls="true" id="featured-categories-slider">
+                <div slot="items" id="categories-slider-items">
+                    {# Categories will be loaded via JavaScript #}
+                </div>
+            </salla-slider>
+        </div>
+    </section>
+    {% hook 'home:categories.end' %}
+    
     {% component home %}
     
     {# Deals of the Week Section #}
