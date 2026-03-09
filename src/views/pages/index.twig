@@ -113,9 +113,10 @@
                     <h2 style="display: block !important; visibility: visible !important;">فئات مميزة</h2>
                 </div>
             </div>
-            <salla-slider type="carousel" controls-outer show-controls="true" id="featured-categories-slider" style="display: block !important; visibility: visible !important; width: 100% !important;">
-                <div slot="items" id="categories-slider-items" style="display: flex !important; visibility: visible !important;">
+            <salla-slider type="carousel" controls-outer show-controls="true" id="featured-categories-slider" style="display: block !important; visibility: visible !important; width: 100% !important; min-height: 200px !important;">
+                <div slot="items" id="categories-slider-items" style="display: flex !important; visibility: visible !important; min-height: 150px !important;">
                     {# Categories will be loaded here #}
+                    <div style="width: 100%; text-align: center; padding: 20px; color: #999;">جاري تحميل الفئات...</div>
                 </div>
             </salla-slider>
         </div>
@@ -156,54 +157,194 @@
 {% block scripts %}
     <script defer src="{{ 'home.js' | asset }}"></script>
     <script>
-        // Load categories directly when page loads
+        // Run immediately, don't wait
+        console.log('Categories script starting...');
+        // Load categories - Multiple attempts to ensure it works
         (function() {
+            let attempts = 0;
+            const maxAttempts = 20;
+            
             function loadCategories() {
+                attempts++;
                 const container = document.getElementById('categories-slider-items');
+                
                 if (!container) {
-                    setTimeout(loadCategories, 100);
+                    if (attempts < maxAttempts) {
+                        setTimeout(loadCategories, 200);
+                    }
                     return;
                 }
 
-                // Use Salla API to get categories
-                if (typeof salla !== 'undefined' && salla.api) {
-                    salla.api.get('/categories', { limit: 12 })
-                        .then(response => {
-                            if (response && response.data && response.data.data && response.data.data.length > 0) {
-                                let html = '';
-                                response.data.data.forEach(function(category) {
-                                    const img = category.image || '{{ "images/placeholder.png" | asset }}';
-                                    const url = category.url || '#';
-                                    const name = category.name || '';
-                                    html += '<div class="swiper-slide slide--one-sixth" style="display: block !important; visibility: visible !important;"><a href="' + url + '" class="slide--cat-entry" style="display: flex !important; visibility: visible !important;"><img src="' + img + '" class="w-16 h-16 object-cover rounded-full mb-2.5" width="64" height="64" alt="' + name + '" style="display: block !important; visibility: visible !important; width: 64px !important; height: 64px !important;"/><h2 style="display: block !important; visibility: visible !important;">' + name + '</h2></a></div>';
-                                });
-                                container.innerHTML = html;
-                                
-                                // Update slider
-                                const slider = document.getElementById('featured-categories-slider');
-                                if (slider && slider.update) {
-                                    setTimeout(function() { slider.update(); }, 200);
+                // Try multiple API methods
+                function tryLoad() {
+                    // Method 1: Try salla.api.get
+                    if (typeof salla !== 'undefined' && salla.api && salla.api.get) {
+                        salla.api.get('/categories', { limit: 12 })
+                            .then(function(response) {
+                                console.log('Categories API response:', response);
+                                if (response && response.data) {
+                                    const categories = response.data.data || response.data || [];
+                                    if (categories.length > 0) {
+                                        renderCategories(categories);
+                                        return;
+                                    }
                                 }
+                                // Fallback: Try menu system
+                                tryMenuCategories();
+                            })
+                            .catch(function(err) {
+                                console.log('API error, trying menu:', err);
+                                tryMenuCategories();
+                            });
+                    } else {
+                        // Wait for Salla to load
+                        if (attempts < maxAttempts) {
+                            setTimeout(tryLoad, 300);
+                        } else {
+                            tryMenuCategories();
+                        }
+                    }
+                }
+                
+                function tryMenuCategories() {
+                    // Method 2: Try to get from menu
+                    const menuElement = document.querySelector('custom-main-menu');
+                    if (menuElement && menuElement.menu) {
+                        const menuItems = menuElement.menu.filter(function(item) {
+                            return item.type === 'category' || item.url && item.url.includes('/categories/');
+                        }).slice(0, 12);
+                        
+                        if (menuItems.length > 0) {
+                            renderCategories(menuItems.map(function(item) {
+                                return {
+                                    name: item.title,
+                                    url: item.url,
+                                    image: item.image || null
+                                };
+                            }));
+                            return;
+                        }
+                    }
+                    
+                    // Method 3: Use fetch directly with store API
+                    const apiUrl = (typeof salla !== 'undefined' && salla.config) ? salla.config.get('api_url') : (window.store && window.store.api ? window.store.api : '');
+                    if (apiUrl) {
+                        fetch(apiUrl + '/categories?limit=12')
+                            .then(function(res) { return res.json(); })
+                            .then(function(data) {
+                                console.log('Fetch response:', data);
+                                if (data && data.data && data.data.length > 0) {
+                                    renderCategories(data.data);
+                                } else if (data && Array.isArray(data) && data.length > 0) {
+                                    renderCategories(data);
+                                }
+                            })
+                            .catch(function(err) {
+                                console.log('Fetch failed:', err);
+                                // Last resort: show placeholder categories
+                                showPlaceholderCategories();
+                            });
+                    } else {
+                        showPlaceholderCategories();
+                    }
+                }
+                
+                function showPlaceholderCategories() {
+                    // Show at least something so user knows section exists
+                    const placeholderCategories = [
+                        {name: 'فئة 1', url: '#', image: '{{ "images/placeholder.png" | asset }}'},
+                        {name: 'فئة 2', url: '#', image: '{{ "images/placeholder.png" | asset }}'},
+                        {name: 'فئة 3', url: '#', image: '{{ "images/placeholder.png" | asset }}'},
+                        {name: 'فئة 4', url: '#', image: '{{ "images/placeholder.png" | asset }}'},
+                        {name: 'فئة 5', url: '#', image: '{{ "images/placeholder.png" | asset }}'},
+                        {name: 'فئة 6', url: '#', image: '{{ "images/placeholder.png" | asset }}'}
+                    ];
+                    renderCategories(placeholderCategories);
+                }
+                }
+                
+                function renderCategories(categories) {
+                    if (!categories || categories.length === 0) {
+                        console.log('No categories found');
+                        container.innerHTML = '<div style="width: 100%; text-align: center; padding: 40px; color: #999;">لا توجد فئات متاحة</div>';
+                        return;
+                    }
+                    
+                    console.log('Rendering categories:', categories.length);
+                    let html = '';
+                    categories.forEach(function(category) {
+                        const img = (category.image || category.image_url || category.thumbnail || '{{ "images/placeholder.png" | asset }}');
+                        const url = (category.url || category.link || category.slug ? '/categories/' + category.slug : '#');
+                        const name = (category.name || category.title || 'Category');
+                        
+                        html += '<div class="swiper-slide slide--one-sixth" style="display: block !important; visibility: visible !important; opacity: 1 !important; flex-shrink: 0 !important;"><a href="' + url + '" class="slide--cat-entry" style="display: flex !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; height: 144px !important;"><img src="' + img + '" class="w-16 h-16 object-cover rounded-full mb-2.5" width="64" height="64" alt="' + name + '" style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 64px !important; height: 64px !important; max-width: 64px !important; max-height: 64px !important;"/><h2 style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 0 !important; padding: 0 !important;">' + name + '</h2></a></div>';
+                    });
+                    
+                    container.innerHTML = html;
+                    container.style.display = 'flex';
+                    container.style.visibility = 'visible';
+                    container.style.opacity = '1';
+                    container.style.minHeight = '150px';
+                    
+                    console.log('Categories rendered, updating slider...');
+                    
+                    // Force slider update multiple times
+                    setTimeout(function() {
+                        const slider = document.getElementById('featured-categories-slider');
+                        if (slider) {
+                            console.log('Slider found, updating...');
+                            if (slider.update) {
+                                slider.update();
+                                console.log('Slider updated');
                             }
-                        })
-                        .catch(function(err) {
-                            console.log('Categories loading...', err);
-                        });
+                            if (slider.refresh) {
+                                slider.refresh();
+                            }
+                            // Trigger events
+                            try {
+                                slider.dispatchEvent(new Event('update'));
+                                slider.dispatchEvent(new CustomEvent('swiper-update'));
+                            } catch(e) {}
+                            
+                            // Also try to access swiper instance
+                            if (slider.swiper) {
+                                slider.swiper.update();
+                                slider.swiper.updateSlides();
+                            }
+                        } else {
+                            console.log('Slider not found!');
+                        }
+                    }, 500);
+                    
+                    setTimeout(function() {
+                        const slider = document.getElementById('featured-categories-slider');
+                        if (slider && slider.update) {
+                            slider.update();
+                        }
+                    }, 1000);
+                }
+                
+                // Start loading
+                if (typeof salla !== 'undefined') {
+                    salla.onReady().then(tryLoad).catch(tryLoad);
                 } else {
-                    setTimeout(loadCategories, 200);
+                    if (attempts < maxAttempts) {
+                        setTimeout(loadCategories, 300);
+                    } else {
+                        tryLoad();
+                    }
                 }
             }
             
+            // Start immediately and also on DOM ready
+            loadCategories();
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', loadCategories);
-            } else {
-                loadCategories();
             }
             
-            // Also try when Salla is ready
-            if (typeof salla !== 'undefined') {
-                salla.onReady().then(loadCategories);
-            }
+            // Also try after a delay
+            setTimeout(loadCategories, 1000);
+            setTimeout(loadCategories, 2000);
         })();
     </script>
 {% endblock %}
