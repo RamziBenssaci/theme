@@ -1,10 +1,29 @@
 {
   "blocks": {
     "header": {
-      "cart": "Cart"
+      "cart": "Cart",
+      "contact_us": "Contact us from 8 AM - 10 PM / 6668 5555 8464",
+      "login": "Login",
+      "choose_category": "Choose Category",
+      "all_categories": "All Categories",
+      "featured_categories": "Featured Categories"
     },
     "appBanner": {
       "download_now": "download now"
+    },
+    "home": {
+      "choose_your_car": "Choose Your Car",
+      "brand": "Brand",
+      "model": "Model",
+      "year": "Year",
+      "engine": "Engine",
+      "trim": "Trim",
+      "search": "Search",
+      "or": "OR",
+      "search_by_vin": "Search by VIN",
+      "loading": "Loading...",
+      "no_categories": "No categories available",
+      "no_subcategories": "No subcategories"
     }
   },
   "pages": {

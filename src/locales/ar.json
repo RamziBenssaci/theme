@@ -1,10 +1,29 @@
 {
   "blocks": {
     "header": {
-      "cart": "السلة"
+      "cart": "السلة",
+      "contact_us": "اتصل بنا من 8 صباحاً - 10 مساءً / 6668 5555 8464",
+      "login": "تسجيل الدخول",
+      "choose_category": "اختر الفئة",
+      "all_categories": "جميع الفئات",
+      "featured_categories": "فئات مميزة"
     },
     "appBanner": {
       "download_now": "حمله الان"
+    },
+    "home": {
+      "choose_your_car": "اختر سيارتك",
+      "brand": "العلامة",
+      "model": "الموديل",
+      "year": "السنة",
+      "engine": "المحرك",
+      "trim": "الفئة",
+      "search": "بحث",
+      "or": "أو",
+      "search_by_vin": "البحث برقم الشاصي",
+      "loading": "جاري التحميل...",
+      "no_categories": "لا توجد فئات متاحة",
+      "no_subcategories": "لا توجد تصنيفات فرعية"
     }
   },
   "pages": {

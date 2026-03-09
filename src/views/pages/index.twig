@@ -28,31 +28,31 @@
         {# Vehicle Filter - Fixed in Hero Banner #}
         <div class="hero-vehicle-filter">
             <div class="vehicle-filter-form">
-                <h5>اختر سيارتك</h5>
+                <h5>{{ trans('blocks.home.choose_your_car') }}</h5>
                 <div class="vehicle-filter-fields">
-                    <select class="vehicle-select">
-                        <option>العلامة التجارية</option>
+                    <select class="vehicle-select" id="vehicle-brand">
+                        <option value="">{{ trans('blocks.home.brand') }}</option>
                     </select>
-                    <select class="vehicle-select">
-                        <option>الموديل</option>
+                    <select class="vehicle-select" id="vehicle-model">
+                        <option value="">{{ trans('blocks.home.model') }}</option>
                     </select>
-                    <select class="vehicle-select">
-                        <option>السنة</option>
+                    <select class="vehicle-select" id="vehicle-year">
+                        <option value="">{{ trans('blocks.home.year') }}</option>
                     </select>
-                    <select class="vehicle-select">
-                        <option>المحرك</option>
+                    <select class="vehicle-select" id="vehicle-engine">
+                        <option value="">{{ trans('blocks.home.engine') }}</option>
                     </select>
-                    <select class="vehicle-select">
-                        <option>الفئة</option>
+                    <select class="vehicle-select" id="vehicle-trim">
+                        <option value="">{{ trans('blocks.home.trim') }}</option>
                     </select>
-                    <button class="vehicle-search-btn">بحث</button>
+                    <button type="button" class="vehicle-search-btn" id="vehicle-search-btn">{{ trans('blocks.home.search') }}</button>
                 </div>
                 <div class="vehicle-filter-or">
-                    <span>أو</span>
+                    <span>{{ trans('blocks.home.or') }}</span>
                 </div>
                 <div class="vehicle-filter-vin">
-                    <input type="text" class="vin-input" placeholder="البحث برقم الشاصي">
-                    <button class="vin-search-btn">بحث</button>
+                    <input type="text" class="vin-input" placeholder="{{ trans('blocks.home.search_by_vin') }}">
+                    <button class="vin-search-btn">{{ trans('blocks.home.search') }}</button>
                 </div>
             </div>
         </div>
@@ -110,7 +110,7 @@
         <div class="container" style="display: block !important; visibility: visible !important; width: 100% !important;">
             <div class="s-block__title" style="display: block !important; visibility: visible !important;">
                 <div class="right-side">
-                    <h2 style="display: block !important; visibility: visible !important;">فئات مميزة</h2>
+                    <h2 style="display: block !important; visibility: visible !important;">{{ trans('blocks.header.featured_categories') }}</h2>
                 </div>
             </div>
             <salla-slider type="carousel" controls-outer show-controls="true" id="featured-categories-slider" style="display: block !important; visibility: visible !important; width: 100% !important; min-height: 200px !important;">
@@ -696,7 +696,7 @@
                 function renderCategories(categories) {
                     if (!categories || categories.length === 0) {
                         console.log('No categories found');
-                        container.innerHTML = '<div style="width: 100%; text-align: center; padding: 40px; color: #999;">لا توجد فئات متاحة</div>';
+                        container.innerHTML = '<div style="width: 100%; text-align: center; padding: 40px; color: #999;">' + (typeof salla !== 'undefined' && salla.lang ? salla.lang.get('blocks.home.no_categories') : 'لا توجد فئات متاحة') + '</div>';
                         return;
                     }
                     

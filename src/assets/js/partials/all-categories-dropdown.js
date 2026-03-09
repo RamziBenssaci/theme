@@ -137,7 +137,8 @@ class AllCategoriesDropdown {
 
             if (categories.length === 0) {
                 console.log('AllCategoriesDropdown: No categories found, showing error');
-                menu.innerHTML = '<div class="categories-error">لا توجد فئات متاحة</div>';
+                const errorText = (typeof salla !== 'undefined' && salla.lang) ? salla.lang.get('blocks.home.no_categories') : 'لا توجد فئات متاحة';
+                menu.innerHTML = '<div class="categories-error">' + errorText + '</div>';
                 return;
             }
 
@@ -234,7 +235,8 @@ class AllCategoriesDropdown {
         
         if (this.categories.length === 0) {
             console.log('AllCategoriesDropdown: No categories to render');
-            menu.innerHTML = '<div class="categories-error">لا توجد فئات متاحة</div>';
+            const errorText = (typeof salla !== 'undefined' && salla.lang) ? salla.lang.get('blocks.home.no_categories') : 'لا توجد فئات متاحة';
+            menu.innerHTML = '<div class="categories-error">' + errorText + '</div>';
             return;
         }
 
@@ -264,9 +266,10 @@ class AllCategoriesDropdown {
         
         this.categories.forEach((category, index) => {
             const isActive = index === 0;
+            const noSubcategoriesText = (typeof salla !== 'undefined' && salla.lang) ? salla.lang.get('blocks.home.no_subcategories') : 'لا توجد تصنيفات فرعية';
             html += `
                 <div class="subcategories-panel ${isActive ? 'active' : ''}" data-panel-index="${index}">
-                    ${category.children && category.children.length > 0 ? this.renderSubcategories(category.children) : '<div class="no-subcategories">لا توجد تصنيفات فرعية</div>'}
+                    ${category.children && category.children.length > 0 ? this.renderSubcategories(category.children) : '<div class="no-subcategories">' + noSubcategoriesText + '</div>'}
                 </div>
             `;
         });
@@ -280,7 +283,8 @@ class AllCategoriesDropdown {
     }
 
     renderSubcategories(children) {
-        if (!children || children.length === 0) return '<div class="no-subcategories">لا توجد تصنيفات فرعية</div>';
+        const noSubcategoriesText = (typeof salla !== 'undefined' && salla.lang) ? salla.lang.get('blocks.home.no_subcategories') : 'لا توجد تصنيفات فرعية';
+        if (!children || children.length === 0) return '<div class="no-subcategories">' + noSubcategoriesText + '</div>';
 
         let html = '';
         const columns = 3; // Number of columns
