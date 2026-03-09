@@ -3,10 +3,37 @@ salla-slider{
   display: block !important;
   visibility: visible !important;
   width: 100% !important;
+  opacity: 1 !important;
+  
+  // Ensure swiper container is visible
+  .swiper {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    overflow: visible !important;
+  }
+
+  .swiper-wrapper {
+    display: flex !important;
+    visibility: visible !important;
+    width: 100% !important;
+  }
   
   // Mobile responsive
   @media (max-width: 768px) {
     @apply px-2;
+    
+    .swiper {
+      padding-left: 0.5rem !important;
+      padding-right: 0.5rem !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .swiper {
+      padding-left: 0.25rem !important;
+      padding-right: 0.25rem !important;
+    }
   }
   
   &.details-slider{
@@ -36,11 +63,20 @@ salla-slider{
     display: block !important;
     visibility: visible !important;
     flex-shrink: 0;
+    opacity: 1 !important;
+    height: auto !important;
     
     // Mobile responsive adjustments
-    @media (max-width: 480px) {
+    @media (max-width: 640px) {
       @apply w-1/2;
       min-width: 140px;
+      max-width: 50%;
+    }
+
+    @media (max-width: 480px) {
+      @apply w-1/2;
+      min-width: 130px;
+      max-width: 50%;
     }
   }
 

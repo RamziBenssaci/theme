@@ -301,19 +301,37 @@
 */
 .slide--cat-entry {
   @apply bg-white rounded-md h-36 p-3 text-center flex flex-col items-center justify-center transition duration-500 hover:shadow-default hover:text-gray-500 border border-gray-100;
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 144px !important;
 
   i {
     @apply inline-block text-primary text-icon-lg mb-4;
+    display: inline-block !important;
+    visibility: visible !important;
   }
 
   h2 {
     @apply font-bold text-sm;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   img {
     @apply w-16 h-16 object-cover rounded-full mb-2.5;
     display: block !important;
     visibility: visible !important;
+    opacity: 1 !important;
+    width: 64px !important;
+    height: 64px !important;
+    max-width: 64px !important;
+    max-height: 64px !important;
   }
 }
 
@@ -357,9 +375,27 @@
     @apply relative overflow-hidden;
     display: block !important;
     visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    min-height: 100px !important;
 
     &__title{
       @apply font-bold text-base sm:text-lg sm:mb-4 relative z-1 min-h-[28px];
+    }
+
+    // Ensure container is visible
+    .container {
+      display: block !important;
+      visibility: visible !important;
+      width: 100% !important;
+    }
+
+    // Ensure slider is visible
+    salla-slider {
+      display: block !important;
+      visibility: visible !important;
+      width: 100% !important;
+      opacity: 1 !important;
     }
 
     // Mobile responsive styles
@@ -368,32 +404,61 @@
       
       .container {
         @apply px-4;
+        max-width: 100% !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
       }
 
       .slide--cat-entry {
         @apply h-32 p-2.5;
+        min-height: 120px !important;
         
         img {
           @apply w-14 h-14 mb-2;
+          display: block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
         }
         
         h2 {
           @apply text-xs;
+          display: block !important;
         }
+      }
+
+      .swiper-wrapper {
+        display: flex !important;
+        visibility: visible !important;
+      }
+
+      .swiper-slide {
+        display: block !important;
+        visibility: visible !important;
+        flex-shrink: 0 !important;
       }
     }
 
     @media (max-width: 480px) {
       .slide--cat-entry {
         @apply h-28 p-2;
+        min-height: 100px !important;
         
         img {
           @apply w-12 h-12 mb-1.5;
+          display: block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
         }
         
         h2 {
           @apply text-xs leading-tight;
+          display: block !important;
         }
+      }
+
+      .swiper {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
       }
     }
   }
