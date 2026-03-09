@@ -24,15 +24,29 @@
       align-items: baseline;
       vertical-align: baseline;
     }
+
+    // Ensure spacing between button and menu
+    > .flex.items-center {
+      gap: 40px !important;
+      
+      @media (max-width: 1024px) {
+        gap: 25px !important;
+      }
+    }
   }
 
   // Add space between categories button and menu
   .all-categories-dropdown {
-    margin-right: 30px;
+    margin-right: 40px !important;
     
     @media (max-width: 1024px) {
-      margin-right: 20px;
+      margin-right: 25px !important;
     }
+  }
+
+  // Also add margin to nav menu wrapper for extra spacing
+  .nav-menu-wrapper {
+    margin-left: 0 !important; // Reset any existing margin
   }
   
   // All Categories Button - Left (same line as menu, aligned vertically with menu items) - HALF HEIGHT
