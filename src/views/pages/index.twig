@@ -174,58 +174,102 @@
                     return;
                 }
 
-                // Try menu first (header categories), then API
+                // Try to get categories with images from API
                 function tryLoad() {
-                    // Method 1: Try menu system FIRST (header categories)
-                    tryMenuCategories();
+                    // First, get menu categories (header categories)
+                    getMenuCategories(function(menuCategories) {
+                        // Then fetch all categories from API to get images
+                        fetchCategoriesWithImages(function(apiCategories) {
+                            // Match menu categories with API categories to get images
+                            const enrichedCategories = menuCategories.map(function(menuCat) {
+                                // Try to find matching category in API response
+                                const apiCat = apiCategories.find(function(api) {
+                                    // Match by URL or name
+                                    return (api.url && menuCat.url && api.url === menuCat.url) ||
+                                           (api.name && menuCat.name && api.name === menuCat.name) ||
+                                           (api.slug && menuCat.url && menuCat.url.includes(api.slug));
+                                });
+                                
+                                // Get image from API category if found
+                                let imageUrl = '{{ "images/placeholder.png" | asset }}';
+                                if (apiCat) {
+                                    // Try different possible image properties
+                                    if (apiCat.image) {
+                                        imageUrl = (typeof apiCat.image === 'string') ? apiCat.image : (apiCat.image.url || apiCat.image);
+                                    } else if (apiCat.image_url) {
+                                        imageUrl = apiCat.image_url;
+                                    } else if (apiCat.thumbnail) {
+                                        imageUrl = (typeof apiCat.thumbnail === 'string') ? apiCat.thumbnail : (apiCat.thumbnail.url || apiCat.thumbnail);
+                                    }
+                                }
+                                
+                                return {
+                                    name: menuCat.name || menuCat.title,
+                                    url: menuCat.url || '#',
+                                    image: imageUrl
+                                };
+                            });
+                            
+                            if (enrichedCategories.length > 0) {
+                                renderCategories(enrichedCategories);
+                            } else {
+                                showPlaceholderCategories();
+                            }
+                        });
+                    });
                 }
                 
-                function tryMenuCategories() {
-                    // Method 2: Get ALL categories from header menu (no filtering)
+                function getMenuCategories(callback) {
                     const menuElement = document.querySelector('custom-main-menu');
                     if (menuElement && menuElement.menus && menuElement.menus.length > 0) {
-                        // Get ALL top-level menu items (these are the header categories)
                         const menuItems = menuElement.menus.slice(0, 12);
-                        
                         if (menuItems.length > 0) {
-                            console.log('Found', menuItems.length, 'categories from menu element');
-                            renderCategories(menuItems.map(function(item) {
+                            callback(menuItems.map(function(item) {
                                 return {
                                     name: item.title || item.name,
-                                    url: item.url || '#',
-                                    image: '{{ "images/placeholder.png" | asset }}'
+                                    url: item.url || '#'
                                 };
                             }));
                             return;
                         }
                     }
                     
-                    // Also try salla.api.component.getMenus
+                    // Try salla.api.component.getMenus
                     if (typeof salla !== 'undefined' && salla.api && salla.api.component) {
                         salla.api.component.getMenus()
                             .then(function(response) {
                                 if (response && response.data && response.data.length > 0) {
-                                    // Get ALL menu items (header categories)
                                     const menuItems = response.data.slice(0, 12);
-                                    
                                     if (menuItems.length > 0) {
-                                        console.log('Found', menuItems.length, 'categories from API menu');
-                                        renderCategories(menuItems.map(function(item) {
+                                        callback(menuItems.map(function(item) {
                                             return {
                                                 name: item.title || item.name,
-                                                url: item.url || '#',
-                                                image: '{{ "images/placeholder.png" | asset }}'
+                                                url: item.url || '#'
                                             };
                                         }));
                                         return;
                                     }
                                 }
-                                // If no menu categories, show placeholders
-                                showPlaceholderCategories();
+                                // Fallback to placeholder categories
+                                callback([
+                                    {name: 'غيارات', url: '#'},
+                                    {name: 'تخفيضات', url: '#'},
+                                    {name: 'الفساتين', url: '#'},
+                                    {name: 'البلايز', url: '#'},
+                                    {name: 'التنانير', url: '#'},
+                                    {name: 'الجاكيتات', url: '#'}
+                                ]);
                             })
                             .catch(function(err) {
                                 console.log('Menu API error:', err);
-                                showPlaceholderCategories();
+                                callback([
+                                    {name: 'غيارات', url: '#'},
+                                    {name: 'تخفيضات', url: '#'},
+                                    {name: 'الفساتين', url: '#'},
+                                    {name: 'البلايز', url: '#'},
+                                    {name: 'التنانير', url: '#'},
+                                    {name: 'الجاكيتات', url: '#'}
+                                ]);
                             });
                     } else {
                         // Wait a bit for menu to load
@@ -234,58 +278,72 @@
                             if (menuEl && menuEl.menus && menuEl.menus.length > 0) {
                                 const menuItems = menuEl.menus.slice(0, 12);
                                 if (menuItems.length > 0) {
-                                    renderCategories(menuItems.map(function(item) {
+                                    callback(menuItems.map(function(item) {
                                         return {
                                             name: item.title || item.name,
-                                            url: item.url || '#',
-                                            image: '{{ "images/placeholder.png" | asset }}'
+                                            url: item.url || '#'
                                         };
                                     }));
                                 } else {
-                                    showPlaceholderCategories();
+                                    callback([
+                                        {name: 'غيارات', url: '#'},
+                                        {name: 'تخفيضات', url: '#'},
+                                        {name: 'الفساتين', url: '#'},
+                                        {name: 'البلايز', url: '#'},
+                                        {name: 'التنانير', url: '#'},
+                                        {name: 'الجاكيتات', url: '#'}
+                                    ]);
                                 }
                             } else {
-                                showPlaceholderCategories();
+                                callback([
+                                    {name: 'غيارات', url: '#'},
+                                    {name: 'تخفيضات', url: '#'},
+                                    {name: 'الفساتين', url: '#'},
+                                    {name: 'البلايز', url: '#'},
+                                    {name: 'التنانير', url: '#'},
+                                    {name: 'الجاكيتات', url: '#'}
+                                ]);
                             }
                         }, 1000);
                     }
                 }
                 
-                function tryApiCategories() {
-                    // Method 3: Use fetch directly with store API
-                    const apiUrl = (typeof salla !== 'undefined' && salla.config) ? salla.config.get('api_url') : (window.store && window.store.api ? window.store.api : '');
-                    if (apiUrl) {
-                        fetch(apiUrl + '/categories?limit=12')
-                            .then(function(res) { return res.json(); })
-                            .then(function(data) {
-                                console.log('Fetch response:', data);
-                                if (data && data.data && data.data.length > 0) {
-                                    renderCategories(data.data.map(function(cat) {
-                                        return {
-                                            name: cat.name || cat.title,
-                                            url: cat.url || (cat.slug ? '/categories/' + cat.slug : '#'),
-                                            image: '{{ "images/placeholder.png" | asset }}'
-                                        };
-                                    }));
-                                } else if (data && Array.isArray(data) && data.length > 0) {
-                                    renderCategories(data.map(function(cat) {
-                                        return {
-                                            name: cat.name || cat.title,
-                                            url: cat.url || (cat.slug ? '/categories/' + cat.slug : '#'),
-                                            image: '{{ "images/placeholder.png" | asset }}'
-                                        };
-                                    }));
-                                } else {
-                                    showPlaceholderCategories();
-                                }
+                function fetchCategoriesWithImages(callback) {
+                    // Try salla.api.get first (recommended method)
+                    if (typeof salla !== 'undefined' && salla.api && salla.api.get) {
+                        salla.api.get('/categories', {limit: 50})
+                            .then(function(response) {
+                                console.log('Categories API response:', response);
+                                const categories = (response && response.data) ? response.data : (Array.isArray(response) ? response : []);
+                                callback(categories);
                             })
                             .catch(function(err) {
-                                console.log('Fetch failed:', err);
-                                // Last resort: show placeholder categories
-                                showPlaceholderCategories();
+                                console.log('Salla API categories error:', err);
+                                // Try fetch as fallback
+                                tryFetchCategories(callback);
                             });
                     } else {
-                        showPlaceholderCategories();
+                        // Use fetch as fallback
+                        tryFetchCategories(callback);
+                    }
+                }
+                
+                function tryFetchCategories(callback) {
+                    const apiUrl = (typeof salla !== 'undefined' && salla.config) ? salla.config.get('api_url') : (window.store && window.store.api ? window.store.api : '');
+                    if (apiUrl) {
+                        fetch(apiUrl + '/categories?limit=50')
+                            .then(function(res) { return res.json(); })
+                            .then(function(data) {
+                                console.log('Fetch categories response:', data);
+                                const categories = (data && data.data) ? data.data : (Array.isArray(data) ? data : []);
+                                callback(categories);
+                            })
+                            .catch(function(err) {
+                                console.log('Fetch categories failed:', err);
+                                callback([]);
+                            });
+                    } else {
+                        callback([]);
                     }
                 }
                 
@@ -330,9 +388,10 @@
                     
                     waitForSliderReady(function() {
                         let html = '';
+                        const placeholderImg = '{{ "images/placeholder.png" | asset }}';
                         categories.forEach(function(category) {
-                            // Always use placeholder image for now
-                            const img = '{{ "images/placeholder.png" | asset }}';
+                            // Use real image from category, or fallback to placeholder
+                            const img = (category.image && category.image !== placeholderImg) ? category.image : placeholderImg;
                             const url = (category.url || category.link || '#');
                             const name = (category.name || category.title || 'Category');
                             
