@@ -157,10 +157,9 @@
 {% block scripts %}
     <script defer src="{{ 'home.js' | asset }}"></script>
     <script>
-        // Run immediately, don't wait
-        console.log('Categories script starting...');
         // Load categories - Multiple attempts to ensure it works
         (function() {
+            'use strict';
             let attempts = 0;
             const maxAttempts = 20;
             
@@ -260,7 +259,6 @@
                         {name: 'فئة 6', url: '#', image: '{{ "images/placeholder.png" | asset }}'}
                     ];
                     renderCategories(placeholderCategories);
-                }
                 }
                 
                 function renderCategories(categories) {
