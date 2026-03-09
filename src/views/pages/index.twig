@@ -200,15 +200,29 @@
                             const enrichedCategories = menuCategories.map(function(menuCat) {
                                 console.log('--- Processing menu category:', menuCat.name, 'URL:', menuCat.url);
                                 
+                                // Extract category ID from menu URL (format: /category-name/c123456)
+                                let categoryId = null;
+                                if (menuCat.url) {
+                                    const idMatch = menuCat.url.match(/\/c(\d+)/);
+                                    if (idMatch && idMatch[1]) {
+                                        categoryId = idMatch[1];
+                                        console.log('  Extracted category ID from URL:', categoryId);
+                                    }
+                                }
+                                
                                 // Try to find matching category in API response
                                 const apiCat = apiCategories.find(function(api) {
-                                    // Match by URL or name
-                                    const urlMatch = api.url && menuCat.url && api.url === menuCat.url;
+                                    // Match by ID (most reliable)
+                                    const idMatch = categoryId && api.id && String(api.id) === String(categoryId);
+                                    // Match by URL
+                                    const urlMatch = api.url && menuCat.url && (api.url === menuCat.url || api.url.includes(menuCat.url) || menuCat.url.includes(api.url));
+                                    // Match by name
                                     const nameMatch = api.name && menuCat.name && api.name === menuCat.name;
+                                    // Match by slug
                                     const slugMatch = api.slug && menuCat.url && menuCat.url.includes(api.slug);
                                     
-                                    if (urlMatch || nameMatch || slugMatch) {
-                                        console.log('  ✓ Matched with API category:', api.name || api.id);
+                                    if (idMatch || urlMatch || nameMatch || slugMatch) {
+                                        console.log('  ✓ Matched with API category:', api.name || api.id, 'Match type:', idMatch ? 'ID' : (urlMatch ? 'URL' : (nameMatch ? 'Name' : 'Slug')));
                                         return true;
                                     }
                                     return false;
@@ -388,48 +402,111 @@
                 
                 function fetchCategoriesWithImages(callback) {
                     console.log('=== FETCHING CATEGORIES FROM API ===');
-                    // Try salla.api.get first (recommended method)
-                    if (typeof salla !== 'undefined' && salla.api && salla.api.get) {
-                        console.log('Using salla.api.get to fetch categories...');
-                        salla.api.get('/categories', {limit: 50})
-                            .then(function(response) {
-                                console.log('salla.api.get response type:', typeof response);
-                                console.log('salla.api.get response:', response);
-                                console.log('response.data:', response?.data);
-                                console.log('response.data type:', typeof response?.data);
-                                console.log('Is array?', Array.isArray(response));
-                                console.log('Is response.data array?', Array.isArray(response?.data));
-                                
-                                const categories = (response && response.data) ? response.data : (Array.isArray(response) ? response : []);
-                                console.log('Extracted categories count:', categories.length);
-                                if (categories.length > 0) {
-                                    console.log('First category full object:', JSON.stringify(categories[0], null, 2));
+                    
+                    // Wait for salla to be ready
+                    function tryFetch() {
+                        // Try salla.api.get first (recommended method)
+                        if (typeof salla !== 'undefined' && salla.api && salla.api.get) {
+                            console.log('Using salla.api.get to fetch categories...');
+                            salla.api.get('/categories', {limit: 50})
+                                .then(function(response) {
+                                    console.log('salla.api.get response type:', typeof response);
+                                    console.log('salla.api.get response:', response);
+                                    console.log('response.data:', response?.data);
+                                    console.log('response.data type:', typeof response?.data);
+                                    console.log('Is array?', Array.isArray(response));
+                                    console.log('Is response.data array?', Array.isArray(response?.data));
+                                    
+                                    const categories = (response && response.data) ? response.data : (Array.isArray(response) ? response : []);
+                                    console.log('Extracted categories count:', categories.length);
+                                    if (categories.length > 0) {
+                                        console.log('First category full object:', JSON.stringify(categories[0], null, 2));
+                                    }
+                                    callback(categories);
+                                })
+                                .catch(function(err) {
+                                    console.log('✗ Salla API categories error:', err);
+                                    console.log('Error details:', JSON.stringify(err, null, 2));
+                                    // Try fetch as fallback
+                                    tryFetchCategories(callback);
+                                });
+                        } else {
+                            console.log('salla.api.get not available yet, waiting...');
+                            // Wait a bit and try again
+                            setTimeout(function() {
+                                if (typeof salla !== 'undefined' && salla.api && salla.api.get) {
+                                    tryFetch();
+                                } else {
+                                    console.log('salla.api.get still not available, using fetch fallback');
+                                    tryFetchCategories(callback);
                                 }
-                                callback(categories);
-                            })
-                            .catch(function(err) {
-                                console.log('✗ Salla API categories error:', err);
-                                console.log('Error details:', JSON.stringify(err, null, 2));
-                                // Try fetch as fallback
-                                tryFetchCategories(callback);
-                            });
+                            }, 500);
+                        }
+                    }
+                    
+                    // Wait for salla to be ready
+                    if (typeof salla !== 'undefined' && salla.onReady) {
+                        salla.onReady().then(function() {
+                            console.log('Salla is ready, fetching categories...');
+                            tryFetch();
+                        }).catch(function() {
+                            console.log('Salla onReady failed, trying fetch directly...');
+                            tryFetchCategories(callback);
+                        });
                     } else {
-                        console.log('salla.api.get not available, using fetch fallback');
-                        // Use fetch as fallback
-                        tryFetchCategories(callback);
+                        // If salla not available, wait a bit then try
+                        setTimeout(function() {
+                            tryFetch();
+                        }, 1000);
                     }
                 }
                 
                 function tryFetchCategories(callback) {
                     console.log('=== TRYING FETCH METHOD ===');
-                    const apiUrl = (typeof salla !== 'undefined' && salla.config) ? salla.config.get('api_url') : (window.store && window.store.api ? window.store.api : '');
-                    console.log('API URL:', apiUrl);
+                    
+                    // Try multiple ways to get API URL
+                    let apiUrl = '';
+                    
+                    if (typeof salla !== 'undefined' && salla.config) {
+                        try {
+                            apiUrl = salla.config.get('api_url');
+                            console.log('API URL from salla.config:', apiUrl);
+                        } catch(e) {
+                            console.log('Error getting API URL from salla.config:', e);
+                        }
+                    }
+                    
+                    if (!apiUrl && window.store && window.store.api) {
+                        apiUrl = window.store.api;
+                        console.log('API URL from window.store.api:', apiUrl);
+                    }
+                    
+                    if (!apiUrl && typeof salla !== 'undefined' && salla.config && salla.config.api_url) {
+                        apiUrl = salla.config.api_url;
+                        console.log('API URL from salla.config.api_url:', apiUrl);
+                    }
+                    
+                    // Try to construct from current location
+                    if (!apiUrl) {
+                        // Extract store domain and construct API URL
+                        const hostname = window.location.hostname;
+                        if (hostname.includes('salla.dev') || hostname.includes('salla.design')) {
+                            apiUrl = 'https://api.salla.dev/store/v1';
+                            console.log('Constructed API URL:', apiUrl);
+                        }
+                    }
+                    
+                    console.log('Final API URL:', apiUrl);
+                    
                     if (apiUrl) {
                         const fetchUrl = apiUrl + '/categories?limit=50';
                         console.log('Fetching from:', fetchUrl);
                         fetch(fetchUrl)
                             .then(function(res) { 
                                 console.log('Fetch response status:', res.status);
+                                if (!res.ok) {
+                                    throw new Error('HTTP ' + res.status);
+                                }
                                 return res.json(); 
                             })
                             .then(function(data) {
@@ -446,12 +523,75 @@
                             .catch(function(err) {
                                 console.log('✗ Fetch categories failed:', err);
                                 console.log('Error details:', JSON.stringify(err, null, 2));
-                                callback([]);
+                                // Try fetching by individual category IDs from URLs
+                                tryFetchByCategoryIds(callback);
                             });
                     } else {
-                        console.log('✗ No API URL available');
-                        callback([]);
+                        console.log('✗ No API URL available, trying to fetch by category IDs');
+                        tryFetchByCategoryIds(callback);
                     }
+                }
+                
+                function tryFetchByCategoryIds(callback) {
+                    console.log('=== TRYING TO FETCH BY CATEGORY IDs ===');
+                    // Extract category IDs from menu URLs
+                    const menuElement = document.querySelector('custom-main-menu');
+                    if (!menuElement || !menuElement.menus) {
+                        console.log('No menu element to extract IDs from');
+                        callback([]);
+                        return;
+                    }
+                    
+                    const categoryIds = [];
+                    menuElement.menus.forEach(function(item) {
+                        if (item.url) {
+                            // Extract category ID from URL like: /غيارات/c509159371
+                            const match = item.url.match(/\/c(\d+)/);
+                            if (match && match[1]) {
+                                categoryIds.push(match[1]);
+                                console.log('Extracted category ID:', match[1], 'from URL:', item.url);
+                            }
+                        }
+                    });
+                    
+                    if (categoryIds.length === 0) {
+                        console.log('No category IDs found in URLs');
+                        callback([]);
+                        return;
+                    }
+                    
+                    // Try to fetch categories by ID
+                    const apiUrl = 'https://api.salla.dev/store/v1';
+                    console.log('Fetching categories by IDs:', categoryIds);
+                    
+                    // Fetch all categories and filter by IDs
+                    fetch(apiUrl + '/categories?limit=100')
+                        .then(function(res) {
+                            if (!res.ok) {
+                                throw new Error('HTTP ' + res.status);
+                            }
+                            return res.json();
+                        })
+                        .then(function(data) {
+                            const allCategories = (data && data.data) ? data.data : (Array.isArray(data) ? data : []);
+                            console.log('Fetched', allCategories.length, 'total categories');
+                            
+                            // Filter by IDs
+                            const matchedCategories = allCategories.filter(function(cat) {
+                                return categoryIds.includes(String(cat.id));
+                            });
+                            
+                            console.log('Matched', matchedCategories.length, 'categories by ID');
+                            if (matchedCategories.length > 0) {
+                                console.log('First matched category:', JSON.stringify(matchedCategories[0], null, 2));
+                            }
+                            
+                            callback(matchedCategories);
+                        })
+                        .catch(function(err) {
+                            console.log('✗ Failed to fetch categories by ID:', err);
+                            callback([]);
+                        });
                 }
                 
                 function showPlaceholderCategories() {
