@@ -41,8 +41,8 @@
   <div class="top-banner-promo">
     <div class="container">
       <div class="top-banner-promo-content">
-        <span class="sale-text">تخفيضات ما قبل الجمعة السوداء : خصم يصل إلى 65% | استخدم الكود "BLACK"</span>
-        <span class="offer-expires">تنتهي العروض خلال</span>
+        <span class="sale-text">{{ trans('blocks.header.pre_black_friday_sale') }}</span>
+        <span class="offer-expires">{{ trans('blocks.header.offer_ends_in') }}</span>
         <div class="countdown-timer">
           <span class="timer-box"><span id="days">09</span></span>
           <span class="timer-separator">:</span>
@@ -135,9 +135,9 @@
               {# All Categories Button with Dropdown - Left #}
               <div class="all-categories-dropdown">
                   <button class="all-categories-btn" aria-label="{{ trans('blocks.header.all_categories') }}" id="all-categories-btn">
-                      <i class="sicon-menu rtl:ml-2 ltr:mr-2"></i>
+                  <i class="sicon-menu rtl:ml-2 ltr:mr-2"></i>
                       <span>{{ trans('blocks.header.all_categories') }}</span>
-                      <i class="sicon-sar rtl:mr-2 ltr:ml-2"></i>
+                  <i class="sicon-sar rtl:mr-2 ltr:ml-2"></i>
                   </button>
                   <div class="all-categories-menu" id="all-categories-menu">
                       <div class="categories-loading">{{ trans('blocks.home.loading') }}</div>

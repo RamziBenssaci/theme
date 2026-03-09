@@ -16,12 +16,12 @@
                 </div>
                 <div class="hero-content">
                     <div class="hero-text">
-                        <h2>مشغلات البطاريات</h2>
-                        <p>شغّل البطاريات في ثوانٍ</p>
-                        <button class="shop-now-btn">تسوق الآن <i class="fas fa-arrow-right"></i></button>
+                        <h2>{{ trans('blocks.home.battery_starters') }}</h2>
+                        <p>{{ trans('blocks.home.start_batteries_seconds') }}</p>
+                        <button class="shop-now-btn">{{ trans('blocks.home.shop_now') }} <i class="fas fa-arrow-right"></i></button>
                     </div>
                 </div>
-                <div class="price-badge">من 49.99 دولار</div>
+                <div class="price-badge">{{ trans('blocks.home.from_price') }}</div>
             </div>
         </div>
         
@@ -70,35 +70,35 @@
             <div class="banner-grid">
                 <div class="promo-banner batteries-banner">
                     <div class="banner-content">
-                        <span class="banner-badge">أفضل العلامات التجارية</span>
-                        <h2>البطاريات</h2>
-                        <p>ابق مشحوناً!</p>
-                        <button class="banner-btn">تسوق الآن <i class="fas fa-arrow-right"></i></button>
+                        <span class="banner-badge">{{ trans('blocks.home.best_brands') }}</span>
+                        <h2>{{ trans('blocks.home.batteries') }}</h2>
+                        <p>{{ trans('blocks.home.stay_charged') }}</p>
+                        <button class="banner-btn">{{ trans('blocks.home.shop_now') }} <i class="fas fa-arrow-right"></i></button>
                     </div>
                     <div class="banner-image">
-                        <img src="{{ 'images/battery.png'|asset }}" alt="البطاريات" onerror="this.src='{{ 'images/placeholder.png'|asset }}'">
+                        <img src="{{ 'images/battery.png'|asset }}" alt="{{ trans('blocks.home.batteries') }}" onerror="this.src='{{ 'images/placeholder.png'|asset }}'">
                     </div>
                 </div>
                 <div class="promo-banner tires-banner">
                     <div class="banner-content">
-                        <span class="banner-badge green">اشتري 3 واحصل على 1 مجاناً</span>
-                        <h2>الإطارات والعجلات</h2>
-                        <p>ابق آمناً على الطريق!</p>
-                        <button class="banner-btn">تسوق الآن <i class="fas fa-arrow-right"></i></button>
+                        <span class="banner-badge green">{{ trans('blocks.home.buy_3_get_1_free') }}</span>
+                        <h2>{{ trans('blocks.home.tires_wheels') }}</h2>
+                        <p>{{ trans('blocks.home.stay_safe_road') }}</p>
+                        <button class="banner-btn">{{ trans('blocks.home.shop_now') }} <i class="fas fa-arrow-right"></i></button>
                     </div>
                     <div class="banner-image">
-                        <img src="https://enovathemes.com/mobex/wp-content/uploads/banner7-img.webp" alt="الإطارات">
+                        <img src="https://enovathemes.com/mobex/wp-content/uploads/banner7-img.webp" alt="{{ trans('blocks.home.tires_wheels') }}">
                     </div>
                 </div>
                 <div class="promo-banner springs-banner">
                     <div class="banner-content">
-                        <span class="banner-badge yellow">تخفيضات كبيرة</span>
-                        <h2>اشتري 1 واحصل على 1</h2>
-                        <p>مجاناً</p>
-                        <button class="banner-btn">تسوق الآن <i class="fas fa-arrow-right"></i></button>
+                        <span class="banner-badge yellow">{{ trans('blocks.home.big_discounts') }}</span>
+                        <h2>{{ trans('blocks.home.buy_1_get_1') }}</h2>
+                        <p>{{ trans('blocks.home.free') }}</p>
+                        <button class="banner-btn">{{ trans('blocks.home.shop_now') }} <i class="fas fa-arrow-right"></i></button>
                     </div>
                     <div class="banner-image">
-                        <img src="https://enovathemes.com/mobex/wp-content/uploads/banner8-img.webp" alt="الزنبركات">
+                        <img src="https://enovathemes.com/mobex/wp-content/uploads/banner8-img.webp" alt="{{ trans('blocks.home.springs') }}">
                     </div>
                 </div>
             </div>
@@ -116,7 +116,7 @@
             <salla-slider type="carousel" controls-outer show-controls="true" id="featured-categories-slider" style="display: block !important; visibility: visible !important; width: 100% !important; min-height: 200px !important;">
                 <div slot="items" id="categories-slider-items" style="display: flex !important; visibility: visible !important; min-height: 150px !important;">
                     {# Categories will be loaded here #}
-                    <div style="width: 100%; text-align: center; padding: 20px; color: #999;">جاري تحميل الفئات...</div>
+                    <div style="width: 100%; text-align: center; padding: 20px; color: #999;">{{ trans('blocks.home.loading') }}</div>
                 </div>
             </salla-slider>
         </div>
@@ -128,7 +128,7 @@
     <section class="deals-section">
         <div class="container">
             <div class="deals-header">
-                <h2>عروض الأسبوع!</h2>
+                <h2>{{ trans('blocks.home.deals_of_week') }}</h2>
                 <div class="deals-countdown">
                     <span class="timer-box">09</span>
                     <span class="timer-separator">:</span>

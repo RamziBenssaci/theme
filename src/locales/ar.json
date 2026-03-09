@@ -6,7 +6,9 @@
       "login": "تسجيل الدخول",
       "choose_category": "اختر الفئة",
       "all_categories": "جميع الفئات",
-      "featured_categories": "فئات مميزة"
+      "featured_categories": "فئات مميزة",
+      "pre_black_friday_sale": "تخفيضات ما قبل الجمعة السوداء : خصم يصل إلى 65% | استخدم الكود \"BLACK\"",
+      "offer_ends_in": "تنتهي العروض خلال"
     },
     "appBanner": {
       "download_now": "حمله الان"
@@ -23,7 +25,22 @@
       "search_by_vin": "البحث برقم الشاصي",
       "loading": "جاري التحميل...",
       "no_categories": "لا توجد فئات متاحة",
-      "no_subcategories": "لا توجد تصنيفات فرعية"
+      "no_subcategories": "لا توجد تصنيفات فرعية",
+      "battery_starters": "مشغلات البطاريات",
+      "start_batteries_seconds": "شغّل البطاريات في ثوانٍ",
+      "shop_now": "تسوق الآن",
+      "from_price": "من 49.99 دولار",
+      "best_brands": "أفضل العلامات التجارية",
+      "batteries": "البطاريات",
+      "stay_charged": "ابق مشحوناً!",
+      "buy_3_get_1_free": "اشتري 3 واحصل على 1 مجاناً",
+      "tires_wheels": "الإطارات والعجلات",
+      "stay_safe_road": "ابق آمناً على الطريق!",
+      "big_discounts": "تخفيضات كبيرة",
+      "buy_1_get_1": "اشتري 1 واحصل على 1",
+      "free": "مجاناً",
+      "springs": "الزنبركات",
+      "deals_of_week": "عروض الأسبوع!"
     }
   },
   "pages": {
