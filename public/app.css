@@ -3619,6 +3619,7 @@ textarea.s-input{
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  overflow: visible;
 }
 .footer-features-section .s-advertisement-content {
   max-width: 1200px;
@@ -40967,6 +40968,7 @@ model-viewer[style*=width]:before{
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  overflow: visible;
 }
 .footer-features-section .s-comments-product .s-comments-container {
   max-width: 1200px;
@@ -43632,11 +43634,13 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
 .promotional-banners-grid {
   padding: 60px 0 !important;
   background-color: #f5f5f5 !important;
+  overflow: visible !important;
 }
 .promotional-banners-grid .container {
   max-width: 1200px !important;
   margin: 0 auto !important;
   padding: 0 20px !important;
+  overflow: visible !important;
 }
 .banners-grid-layout {
   display: grid !important;
@@ -43679,7 +43683,7 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   position: relative !important;
   min-height: 500px !important;
   border-radius: 10px !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
@@ -43755,18 +43759,20 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
 }
 .promo-banner-large .banner-image-small {
   position: absolute !important;
-  right: 20px !important;
-  bottom: 0 !important;
-  width: 35% !important;
-  max-width: 250px !important;
-  z-index: 1 !important;
+  right: -30px !important;
+  bottom: -20px !important;
+  width: 45% !important;
+  max-width: 320px !important;
+  z-index: 10 !important;
+  transform: scale(1.1) !important;
 }
 .promo-banner-large .banner-image-small img {
   width: 100% !important;
   height: auto !important;
-  max-height: 220px !important;
+  max-height: 280px !important;
   -o-object-fit: contain !important;
      object-fit: contain !important;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4)) !important;
 }
 @media (max-width: 768px) {
   .promo-banner-large .banner-image-small {
@@ -43776,9 +43782,11 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     width: 100% !important;
     max-width: 100% !important;
     margin-top: 20px !important;
+    transform: scale(1) !important;
   }
   .promo-banner-large .banner-image-small img {
-    max-height: 180px !important;
+    max-height: 200px !important;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3)) !important;
   }
 }
 /* Small Banner (Right Column) */
@@ -43786,7 +43794,7 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   position: relative !important;
   min-height: 240px !important;
   border-radius: 10px !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
@@ -43805,18 +43813,35 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
 }
 .promo-banner-small .banner-image-small {
   position: absolute !important;
-  right: 20px !important;
-  bottom: 0 !important;
-  width: 40% !important;
-  max-width: 200px !important;
-  z-index: 1 !important;
+  right: -20px !important;
+  bottom: -15px !important;
+  width: 45% !important;
+  max-width: 240px !important;
+  z-index: 10 !important;
+  transform: scale(1.1) !important;
 }
 .promo-banner-small .banner-image-small img {
   width: 100% !important;
   height: auto !important;
-  max-height: 180px !important;
+  max-height: 220px !important;
   -o-object-fit: contain !important;
      object-fit: contain !important;
+  filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.35)) !important;
+}
+@media (max-width: 768px) {
+  .promo-banner-small .banner-image-small {
+    position: relative !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 20px !important;
+    transform: scale(1) !important;
+  }
+  .promo-banner-small .banner-image-small img {
+    max-height: 180px !important;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3)) !important;
+  }
 }
 .promo-banner-small .banner-content-wrapper {
   position: relative !important;
@@ -43860,7 +43885,7 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   position: relative !important;
   min-height: 200px !important;
   border-radius: 10px !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
@@ -43915,18 +43940,20 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
 }
 .promo-banner-medium .banner-image-small {
   position: absolute !important;
-  right: 20px !important;
-  bottom: 0 !important;
-  width: 40% !important;
-  max-width: 280px !important;
-  z-index: 1 !important;
+  right: -25px !important;
+  bottom: -15px !important;
+  width: 50% !important;
+  max-width: 300px !important;
+  z-index: 10 !important;
+  transform: scale(1.15) !important;
 }
 .promo-banner-medium .banner-image-small img {
   width: 100% !important;
   height: auto !important;
-  max-height: 250px !important;
+  max-height: 300px !important;
   -o-object-fit: contain !important;
      object-fit: contain !important;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4)) !important;
 }
 @media (max-width: 768px) {
   .promo-banner-medium .banner-image-small {
@@ -43936,9 +43963,11 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     width: 100% !important;
     max-width: 100% !important;
     margin-top: 20px !important;
+    transform: scale(1) !important;
   }
   .promo-banner-medium .banner-image-small img {
     max-height: 200px !important;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3)) !important;
   }
 }
 /* Badges */
