@@ -88,9 +88,8 @@
         <nav class="breadcrumbs w-full py-5">
             <salla-breadcrumb></salla-breadcrumb>
         </nav>
-        <section class="product-section">
-            <div class="product-layout" id="product-{{ product.id }}">
-            <div class="product-gallery sidebar">
+        <div class="flex flex-col items-start md:flex-row" id="product-{{ product.id }}">
+            <div class="sidebar md:sticky top-24 w-full md:!w-2/4 rtl:ml-8 ltr:mr-8 pb-8 md:pb-16 overflow-hidden shrink-0">
                 {% set has_many_images = product.images|length > 1 %}
                 <salla-slider
                         id="details-slider-{{ product.id }}"
@@ -181,12 +180,12 @@
                 </salla-slider>
             </div>
 
-            <div class="product-info main-content">
+            <div class="main-content md:sticky md:overflow-hidden top-24 w-full md:w-2/4 md:pb-16">
 
                 {% hook 'product:single.description.start' %}
 
                 {% if product.is_on_sale %}
-                    <span class="product-badge sale">Sale</span>
+                    <span class="product-badge sale mb-3 inline-block">Sale</span>
                 {% endif %}
 
                 {% if product.brand.name %}
@@ -435,7 +434,6 @@
             </div>
         </div>
         <salla-offer></salla-offer>
-        </section>
     </div>
 
     {# Comments Area #}
