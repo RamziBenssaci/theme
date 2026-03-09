@@ -142,14 +142,19 @@
     right: 15px !important;
     bottom: 15px !important;
     width: 50% !important;
-    max-width: 350px !important;
+    height: 50% !important;
+    max-width: none !important;
     z-index: 10 !important;
     transform: scale(1.08) !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: flex-end !important;
     
     img {
       width: 100% !important;
-      height: auto !important;
-      max-height: 320px !important;
+      height: 100% !important;
+      max-width: 100% !important;
+      max-height: 100% !important;
       object-fit: contain !important;
       filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.4)) !important;
     }
@@ -159,11 +164,13 @@
       right: auto !important;
       bottom: auto !important;
       width: 100% !important;
+      height: auto !important;
       max-width: 100% !important;
       margin-top: 20px !important;
       transform: scale(1) !important;
       
       img {
+        height: auto !important;
         max-height: 220px !important;
         filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3)) !important;
       }
