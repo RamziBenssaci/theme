@@ -43759,20 +43759,20 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
 }
 .promo-banner-large .banner-image-small {
   position: absolute !important;
-  right: -30px !important;
-  bottom: -20px !important;
-  width: 45% !important;
-  max-width: 320px !important;
+  right: 15px !important;
+  bottom: 15px !important;
+  width: 50% !important;
+  max-width: 350px !important;
   z-index: 10 !important;
-  transform: scale(1.1) !important;
+  transform: scale(1.08) !important;
 }
 .promo-banner-large .banner-image-small img {
   width: 100% !important;
   height: auto !important;
-  max-height: 280px !important;
+  max-height: 320px !important;
   -o-object-fit: contain !important;
      object-fit: contain !important;
-  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4)) !important;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.4)) !important;
 }
 @media (max-width: 768px) {
   .promo-banner-large .banner-image-small {
@@ -43785,7 +43785,7 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     transform: scale(1) !important;
   }
   .promo-banner-large .banner-image-small img {
-    max-height: 200px !important;
+    max-height: 220px !important;
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3)) !important;
   }
 }
@@ -43813,20 +43813,20 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
 }
 .promo-banner-small .banner-image-small {
   position: absolute !important;
-  right: -20px !important;
-  bottom: -15px !important;
-  width: 45% !important;
-  max-width: 240px !important;
+  right: 10px !important;
+  bottom: 10px !important;
+  width: 42% !important;
+  max-width: 220px !important;
   z-index: 10 !important;
-  transform: scale(1.1) !important;
+  transform: scale(1.05) !important;
 }
 .promo-banner-small .banner-image-small img {
   width: 100% !important;
   height: auto !important;
-  max-height: 220px !important;
+  max-height: 200px !important;
   -o-object-fit: contain !important;
      object-fit: contain !important;
-  filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.35)) !important;
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.35)) !important;
 }
 @media (max-width: 768px) {
   .promo-banner-small .banner-image-small {
@@ -43883,14 +43883,14 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
 /* Medium Banner */
 .promo-banner-medium {
   position: relative !important;
-  min-height: 200px !important;
+  min-height: 250px !important;
   border-radius: 10px !important;
   overflow: visible !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
   display: flex !important;
-  align-items: center !important;
+  align-items: flex-start !important;
   padding: 30px !important;
 }
 .promo-banner-medium .banner-overlay {
@@ -43906,18 +43906,27 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   position: relative !important;
   z-index: 2 !important;
   color: #ffffff !important;
-  width: 100% !important;
+  width: 55% !important;
+  padding-top: 0 !important;
+}
+.promo-banner-medium .transmission-badge {
+  position: absolute !important;
+  top: 20px !important;
+  left: 20px !important;
+  z-index: 15 !important;
+  margin-bottom: 0 !important;
 }
 .promo-banner-medium .banner-title {
   font-size: 28px !important;
   font-weight: bold !important;
   color: #ffffff !important;
-  margin: 10px 0 8px 0 !important;
+  margin: 50px 0 8px 0 !important;
   line-height: 1.2 !important;
 }
 @media (max-width: 768px) {
   .promo-banner-medium .banner-title {
     font-size: 24px !important;
+    margin-top: 40px !important;
   }
 }
 .promo-banner-medium .banner-description {
@@ -43940,20 +43949,20 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
 }
 .promo-banner-medium .banner-image-small {
   position: absolute !important;
-  right: -25px !important;
-  bottom: -15px !important;
-  width: 50% !important;
-  max-width: 300px !important;
+  right: 10px !important;
+  bottom: 10px !important;
+  width: 45% !important;
+  max-width: 280px !important;
   z-index: 10 !important;
-  transform: scale(1.15) !important;
+  transform: scale(1.05) !important;
 }
 .promo-banner-medium .banner-image-small img {
   width: 100% !important;
   height: auto !important;
-  max-height: 300px !important;
+  max-height: 260px !important;
   -o-object-fit: contain !important;
      object-fit: contain !important;
-  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4)) !important;
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.35)) !important;
 }
 @media (max-width: 768px) {
   .promo-banner-medium .banner-image-small {
