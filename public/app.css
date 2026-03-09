@@ -31830,6 +31830,14 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   align-items: baseline;
   vertical-align: baseline;
 }
+.main-nav-row-2 .all-categories-dropdown {
+  margin-right: 30px;
+}
+@media (max-width: 1024px) {
+  .main-nav-row-2 .all-categories-dropdown {
+    margin-right: 20px;
+  }
+}
 .main-nav-row-2 .all-categories-btn {
   padding: 4px 12px !important;
   height: auto !important;

@@ -25,6 +25,15 @@
       vertical-align: baseline;
     }
   }
+
+  // Add space between categories button and menu
+  .all-categories-dropdown {
+    margin-right: 30px;
+    
+    @media (max-width: 1024px) {
+      margin-right: 20px;
+    }
+  }
   
   // All Categories Button - Left (same line as menu, aligned vertically with menu items) - HALF HEIGHT
   .all-categories-btn {
