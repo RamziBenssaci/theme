@@ -132,12 +132,22 @@
   <nav class="main-nav-row-2">
       <div class="container">
           <div class="flex items-center">
-              {# All Categories Button - Left #}
-              <a href="#mobile-menu" class="all-categories-btn mburger mburger--collapse" aria-label="جميع الفئات">
-                  <i class="sicon-menu rtl:ml-2 ltr:mr-2"></i>
-                  <span>جميع الفئات</span>
-                  <i class="sicon-sar rtl:mr-2 ltr:ml-2"></i>
-              </a>
+              {# All Categories Button with Dropdown - Left #}
+              <div class="all-categories-dropdown">
+                  <a href="#mobile-menu" class="all-categories-btn mburger mburger--collapse lg:!block !hidden" aria-label="جميع الفئات">
+                      <i class="sicon-menu rtl:ml-2 ltr:mr-2"></i>
+                      <span>جميع الفئات</span>
+                      <i class="sicon-sar rtl:mr-2 ltr:ml-2"></i>
+                  </a>
+                  <button class="all-categories-btn !hidden lg:!inline-flex" aria-label="جميع الفئات" id="all-categories-btn">
+                      <i class="sicon-menu rtl:ml-2 ltr:mr-2"></i>
+                      <span>جميع الفئات</span>
+                      <i class="sicon-sar rtl:mr-2 ltr:ml-2"></i>
+                  </button>
+                  <div class="all-categories-menu !hidden lg:!block" id="all-categories-menu">
+                      <div class="categories-loading">جاري التحميل...</div>
+                  </div>
+              </div>
               
               {# Navigation Menu - Center (same line as button) #}
               <div class="flex-1 flex justify-center nav-menu-wrapper">

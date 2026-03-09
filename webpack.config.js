@@ -13,6 +13,7 @@ module.exports = {
         home    : asset('js/home.js'),
         'product-card' : asset('js/partials/product-card.js'),
         'main-menu' : asset('js/partials/main-menu.js'),
+        'all-categories-dropdown' : asset('js/partials/all-categories-dropdown.js'),
         'wishlist-card': asset('js/partials/wishlist-card.js'),
         'add-product-toast': asset('js/partials/add-product-toast.js'),
         'digital-files': asset('js/partials/digital-files.js'),
