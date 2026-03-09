@@ -177,6 +177,29 @@
       }
     }
   }
+  
+  // Specific styling for Care Care Kit banner (4th banner)
+  &.care-kit-banner {
+    height: 500px !important; // Set explicit height for percentage calculation
+    
+    .banner-image-small {
+      width: 50% !important;
+      height: 50% !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      box-sizing: border-box !important;
+      
+      img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        display: block !important;
+        box-sizing: border-box !important;
+      }
+    }
+  }
 }
 
 /* Small Banner (Right Column) */

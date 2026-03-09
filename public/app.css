@@ -43798,6 +43798,26 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3)) !important;
   }
 }
+.promo-banner-large.care-kit-banner {
+  height: 500px !important;
+}
+.promo-banner-large.care-kit-banner .banner-image-small {
+  width: 50% !important;
+  height: 50% !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+.promo-banner-large.care-kit-banner .banner-image-small img {
+  width: 100% !important;
+  height: 100% !important;
+  -o-object-fit: contain !important;
+     object-fit: contain !important;
+  display: block !important;
+  box-sizing: border-box !important;
+}
 /* Small Banner (Right Column) */
 .promo-banner-small {
   position: relative !important;
