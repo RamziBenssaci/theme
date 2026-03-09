@@ -36693,7 +36693,7 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   min-height: 100px !important;
   position: relative !important;
   flex-shrink: 0 !important;
-  overflow: hidden !important;
+  overflow: visible !important;
 }
 .s-block--latest-products .s-product-card-image img {
   max-width: 100% !important;
@@ -36853,7 +36853,6 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   flex-grow: 1 !important;
   justify-content: space-between !important;
   min-width: 0 !important;
-  position: relative !important;
 }
 /* Product Title - Compact */
 .s-block--latest-products .s-product-card-content h3,
@@ -36979,6 +36978,7 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  gap: 6px !important;
 }
 .s-block--latest-products .s-product-card-content salla-add-product-button:hover, .s-block--latest-products .s-product-card-content salla-add-product-button:hover button, .s-block--latest-products .s-product-card-content salla-add-product-button:hover .s-button,
 .s-block--latest-products .s-product-card-content salla-button[fill=outline]:hover,
