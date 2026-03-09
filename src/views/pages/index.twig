@@ -105,6 +105,22 @@
         </div>
     </section>
     
+    {# Featured Categories Section - Directly Added #}
+    <section class="s-block s-block--categories" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin-top: 2rem !important; margin-bottom: 2rem !important;">
+        <div class="container" style="display: block !important; visibility: visible !important; width: 100% !important;">
+            <div class="s-block__title" style="display: block !important; visibility: visible !important;">
+                <div class="right-side">
+                    <h2 style="display: block !important; visibility: visible !important;">فئات مميزة</h2>
+                </div>
+            </div>
+            <salla-slider type="carousel" controls-outer show-controls="true" id="featured-categories-slider" style="display: block !important; visibility: visible !important; width: 100% !important;">
+                <div slot="items" id="categories-slider-items" style="display: flex !important; visibility: visible !important;">
+                    {# Categories will be loaded here #}
+                </div>
+            </salla-slider>
+        </div>
+    </section>
+    
     {% component home %}
     
     {# Deals of the Week Section #}
@@ -139,4 +155,55 @@
 {% endblock %}
 {% block scripts %}
     <script defer src="{{ 'home.js' | asset }}"></script>
+    <script>
+        // Load categories directly when page loads
+        (function() {
+            function loadCategories() {
+                const container = document.getElementById('categories-slider-items');
+                if (!container) {
+                    setTimeout(loadCategories, 100);
+                    return;
+                }
+
+                // Use Salla API to get categories
+                if (typeof salla !== 'undefined' && salla.api) {
+                    salla.api.get('/categories', { limit: 12 })
+                        .then(response => {
+                            if (response && response.data && response.data.data && response.data.data.length > 0) {
+                                let html = '';
+                                response.data.data.forEach(function(category) {
+                                    const img = category.image || '{{ "images/placeholder.png" | asset }}';
+                                    const url = category.url || '#';
+                                    const name = category.name || '';
+                                    html += '<div class="swiper-slide slide--one-sixth" style="display: block !important; visibility: visible !important;"><a href="' + url + '" class="slide--cat-entry" style="display: flex !important; visibility: visible !important;"><img src="' + img + '" class="w-16 h-16 object-cover rounded-full mb-2.5" width="64" height="64" alt="' + name + '" style="display: block !important; visibility: visible !important; width: 64px !important; height: 64px !important;"/><h2 style="display: block !important; visibility: visible !important;">' + name + '</h2></a></div>';
+                                });
+                                container.innerHTML = html;
+                                
+                                // Update slider
+                                const slider = document.getElementById('featured-categories-slider');
+                                if (slider && slider.update) {
+                                    setTimeout(function() { slider.update(); }, 200);
+                                }
+                            }
+                        })
+                        .catch(function(err) {
+                            console.log('Categories loading...', err);
+                        });
+                } else {
+                    setTimeout(loadCategories, 200);
+                }
+            }
+            
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', loadCategories);
+            } else {
+                loadCategories();
+            }
+            
+            // Also try when Salla is ready
+            if (typeof salla !== 'undefined') {
+                salla.onReady().then(loadCategories);
+            }
+        })();
+    </script>
 {% endblock %}
