@@ -297,7 +297,7 @@
                             html += '<div class="swiper-slide slide--one-sixth" style="display: block !important; visibility: visible !important; opacity: 1 !important; flex-shrink: 0 !important;"><a href="' + url + '" class="slide--cat-entry" style="display: flex !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; height: 144px !important;"><img src="' + img + '" class="w-16 h-16 object-cover rounded-full mb-2.5" width="64" height="64" alt="' + name + '" style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 64px !important; height: 64px !important; max-width: 64px !important; max-height: 64px !important;"/><h2 style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 0 !important; padding: 0 !important;">' + name + '</h2></a></div>';
                         });
                         
-                        // Clear loading message and add categories
+                        // Clear loading message and add categories to slot
                         container.innerHTML = html;
                         container.style.display = 'flex';
                         container.style.visibility = 'visible';
@@ -306,35 +306,42 @@
                         
                         console.log('Categories HTML inserted, length:', html.length);
                         
-                        // Also try to inject directly into swiper-wrapper as fallback
+                        // CRITICAL: Move slides from slot to swiper-wrapper directly
                         setTimeout(function() {
                             const wrapper = slider.querySelector('.swiper-wrapper');
-                            if (wrapper && wrapper.children.length === 0) {
-                                console.log('Found empty swiper-wrapper, injecting directly');
-                                wrapper.innerHTML = html;
-                            }
-                        }, 100);
-                        
-                        // Make sure slides are visible and check if they're actually in DOM
-                        setTimeout(function() {
                             const slides = container.querySelectorAll('.swiper-slide');
-                            const wrapperSlides = slider.querySelectorAll('.swiper-wrapper .swiper-slide');
+                            
+                            console.log('Wrapper found:', !!wrapper);
                             console.log('Slides in container:', slides.length);
-                            console.log('Slides in wrapper:', wrapperSlides.length);
                             
-                            const allSlides = slides.length > 0 ? slides : wrapperSlides;
-                            
-                            if (allSlides.length > 0) {
-                                allSlides.forEach(function(slide) {
+                            if (wrapper && slides.length > 0) {
+                                // Clear wrapper first
+                                wrapper.innerHTML = '';
+                                
+                                // Move each slide from slot to wrapper
+                                slides.forEach(function(slide) {
                                     slide.style.display = 'block';
                                     slide.style.visibility = 'visible';
                                     slide.style.opacity = '1';
+                                    wrapper.appendChild(slide);
                                 });
-                                console.log('Made', allSlides.length, 'slides visible');
-                            } else {
-                                console.error('NO SLIDES FOUND ANYWHERE!');
+                                
+                                console.log('Moved', slides.length, 'slides to wrapper');
+                                console.log('Wrapper now has', wrapper.children.length, 'children');
+                                
+                                // Update slider immediately after moving slides
+                                if (slider.swiper) {
+                                    slider.swiper.update();
+                                    slider.swiper.updateSlides();
+                                    slider.swiper.updateSlidesClasses();
+                                    console.log('Swiper updated after moving slides');
+                                }
+                                
+                                if (typeof slider.update === 'function') {
+                                    slider.update();
+                                }
                             }
-                        }, 150);
+                        }, 200);
                         
                         console.log('Categories rendered, updating slider...');
                         
