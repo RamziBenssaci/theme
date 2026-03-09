@@ -31,6 +31,21 @@
   }
 }
 
+/* Featured Categories - Centered Title */
+.s-block--categories {
+  .s-block__title {
+    @apply justify-center !important;
+    
+    .right-side {
+      @apply w-full text-center !important;
+      
+      h2 {
+        @apply text-center w-full !important;
+      }
+    }
+  }
+}
+
 /*
   Main slider
 */

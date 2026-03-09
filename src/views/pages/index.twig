@@ -14,11 +14,11 @@
                 <div class="hero-image">
                     <img src="{{ 'images/slider.png'|asset }}" alt="Hero Banner" onerror="this.src='{{ 'images/placeholder.png'|asset }}'">
                 </div>
-                <div class="hero-content">
+                    <div class="hero-content">
                     <div class="hero-text">
                         <h2>{{ trans('blocks.home.battery_starters') }}</h2>
                         <p>{{ trans('blocks.home.start_batteries_seconds') }}</p>
-                        <button class="shop-now-btn">{{ trans('blocks.home.shop_now') }} <i class="fas fa-arrow-right"></i></button>
+                        <a href="/products" class="shop-now-btn">{{ trans('blocks.home.shop_now') }} <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="price-badge">{{ trans('blocks.home.from_price') }}</div>
@@ -73,7 +73,7 @@
                         <span class="banner-badge">{{ trans('blocks.home.best_brands') }}</span>
                         <h2>{{ trans('blocks.home.batteries') }}</h2>
                         <p>{{ trans('blocks.home.stay_charged') }}</p>
-                        <button class="banner-btn">{{ trans('blocks.home.shop_now') }} <i class="fas fa-arrow-right"></i></button>
+                        <a href="/products" class="banner-btn">{{ trans('blocks.home.shop_now') }} <i class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="banner-image">
                         <img src="{{ 'images/battery.png'|asset }}" alt="{{ trans('blocks.home.batteries') }}" onerror="this.src='{{ 'images/placeholder.png'|asset }}'">
@@ -84,7 +84,7 @@
                         <span class="banner-badge green">{{ trans('blocks.home.buy_3_get_1_free') }}</span>
                         <h2>{{ trans('blocks.home.tires_wheels') }}</h2>
                         <p>{{ trans('blocks.home.stay_safe_road') }}</p>
-                        <button class="banner-btn">{{ trans('blocks.home.shop_now') }} <i class="fas fa-arrow-right"></i></button>
+                        <a href="/products" class="banner-btn">{{ trans('blocks.home.shop_now') }} <i class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="banner-image">
                         <img src="https://enovathemes.com/mobex/wp-content/uploads/banner7-img.webp" alt="{{ trans('blocks.home.tires_wheels') }}">
@@ -95,7 +95,7 @@
                         <span class="banner-badge yellow">{{ trans('blocks.home.big_discounts') }}</span>
                         <h2>{{ trans('blocks.home.buy_1_get_1') }}</h2>
                         <p>{{ trans('blocks.home.free') }}</p>
-                        <button class="banner-btn">{{ trans('blocks.home.shop_now') }} <i class="fas fa-arrow-right"></i></button>
+                        <a href="/products" class="banner-btn">{{ trans('blocks.home.shop_now') }} <i class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="banner-image">
                         <img src="https://enovathemes.com/mobex/wp-content/uploads/banner8-img.webp" alt="{{ trans('blocks.home.springs') }}">
@@ -108,9 +108,9 @@
     {# Featured Categories Section - Directly Added #}
     <section class="s-block s-block--categories" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin-top: 2rem !important; margin-bottom: 2rem !important;">
         <div class="container" style="display: block !important; visibility: visible !important; width: 100% !important;">
-            <div class="s-block__title" style="display: block !important; visibility: visible !important;">
-                <div class="right-side">
-                    <h2 style="display: block !important; visibility: visible !important;">{{ trans('blocks.header.featured_categories') }}</h2>
+            <div class="s-block__title" style="display: block !important; visibility: visible !important; justify-content: center !important; text-align: center !important;">
+                <div class="right-side" style="width: 100% !important; text-align: center !important;">
+                    <h2 style="display: block !important; visibility: visible !important; text-align: center !important; width: 100% !important;">{{ trans('blocks.header.featured_categories') }}</h2>
                 </div>
             </div>
             <salla-slider type="carousel" controls-outer show-controls="true" id="featured-categories-slider" style="display: block !important; visibility: visible !important; width: 100% !important; min-height: 200px !important;">

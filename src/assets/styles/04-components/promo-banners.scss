@@ -104,10 +104,12 @@
   align-items: center !important;
   gap: 10px !important;
   transition: all 0.3s !important;
+  text-decoration: none !important;
   
   &:hover {
     background-color: #000000 !important;
     color: #ffffff !important;
+    text-decoration: none !important;
   }
   
   i {
