@@ -40,7 +40,24 @@
       "buy_1_get_1": "Buy 1 Get 1",
       "free": "Free",
       "springs": "Springs",
-      "deals_of_week": "Deals of the Week!"
+      "deals_of_week": "Deals of the Week!",
+      "brake_system": "Brake System",
+      "we_got_you_covered": "We Got You Covered",
+      "great_value_always": "Great Value. Always.",
+      "expert_service": "Expert Service",
+      "friendly_team_available": "Our friendly team is available all week.",
+      "amazing_value": "Amazing Value",
+      "brands_you_love": "The brands you prefer, at the prices you crave.",
+      "fast_free_shipping": "Fast & Free Shipping",
+      "shipping_fast_delivery": "Shipping is fast, delivery in 1-3 days.",
+      "irresistible_selection": "Irresistible Selection",
+      "everything_for_car": "Everything for your car, in one place.",
+      "newsletter_text": "What's inside: New arrivals, exclusive offers, truck news & more!",
+      "email_placeholder": "Email",
+      "featured_brands": "Best Brands"
+    },
+    "footer": {
+      "demo_store": "Demo Store"
     }
   },
   "pages": {

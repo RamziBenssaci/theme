@@ -40,7 +40,24 @@
       "buy_1_get_1": "اشتري 1 واحصل على 1",
       "free": "مجاناً",
       "springs": "الزنبركات",
-      "deals_of_week": "عروض الأسبوع!"
+      "deals_of_week": "عروض الأسبوع!",
+      "brake_system": "نظام الفرامل",
+      "we_got_you_covered": "نحن نغطيك",
+      "great_value_always": "قيم رائعة. دائماً.",
+      "expert_service": "خدمة خبيرة",
+      "friendly_team_available": "فريقنا الودود متاح على مدار الأسبوع.",
+      "amazing_value": "قيمة مذهلة",
+      "brands_you_love": "العلامات التجارية التي تفضلها، بأسعار تناسبك.",
+      "fast_free_shipping": "شحن سريع ومجاني",
+      "shipping_fast_delivery": "الشحن يتم بسرعة، والتوصيل خلال 1-3 أيام.",
+      "irresistible_selection": "اختيار لا يُقاوم",
+      "everything_for_car": "كل ما تريده لسيارتك، في مكان واحد.",
+      "newsletter_text": "ما بداخلنا: وصولات جديدة، عروض حصرية، أخبار الشاحنات والمزيد!",
+      "email_placeholder": "البريد الإلكتروني",
+      "featured_brands": "أفضل العلامات التجارية"
+    },
+    "footer": {
+      "demo_store": "متجر تجريبي"
     }
   },
   "pages": {
