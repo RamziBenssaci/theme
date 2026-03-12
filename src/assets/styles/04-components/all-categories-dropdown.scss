@@ -37,7 +37,10 @@
     }
 
     .all-categories-menu {
-        @apply absolute top-full rtl:right-0 ltr:left-0;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: auto;
         width: 900px;
         max-width: 90vw;
         background: #ffffff;
@@ -51,6 +54,20 @@
         z-index: 1000;
         max-height: 80vh;
         overflow: hidden;
+
+        // LTR positioning
+        [dir="ltr"] &,
+        html:not([dir="rtl"]) & {
+            right: auto;
+            left: 0;
+        }
+
+        // RTL positioning
+        [dir="rtl"] &,
+        html[dir="rtl"] & {
+            right: 0;
+            left: auto;
+        }
 
         &.open {
             opacity: 1;
@@ -69,15 +86,35 @@
             display: flex;
             height: 100%;
             max-height: 80vh;
+            flex-direction: row;
+            
+            // RTL: reverse column order
+            [dir="rtl"] &,
+            html[dir="rtl"] & {
+                flex-direction: row-reverse;
+            }
         }
 
         // Left column: Main categories
         .categories-menu-left {
             width: 280px;
             background: #f8f9fa;
-            @apply rtl:border-l ltr:border-r border-solid border-gray-200;
             overflow-y: auto;
             max-height: 80vh;
+
+            // LTR: border on right (separates from right column)
+            [dir="ltr"] &,
+            html:not([dir="rtl"]) & {
+                border-right: 1px solid #e9ecef;
+                border-left: none;
+            }
+
+            // RTL: border on left (separates from right column which is now on left due to row-reverse)
+            [dir="rtl"] &,
+            html[dir="rtl"] & {
+                border-left: 1px solid #e9ecef;
+                border-right: none;
+            }
 
             .category-item {
                 display: flex;
@@ -94,9 +131,25 @@
                 &.active {
                     background: #ffffff;
                     color: #f29f05;
-                    @apply rtl:border-l-4 ltr:border-r-4 border-solid;
-                    border-color: #f29f05;
                     text-decoration: none;
+                }
+
+                // LTR: active border on right
+                [dir="ltr"] &:hover,
+                [dir="ltr"] &.active,
+                html:not([dir="rtl"]) &:hover,
+                html:not([dir="rtl"]) &.active {
+                    border-right: 3px solid #f29f05;
+                    border-left: none;
+                }
+
+                // RTL: active border on left
+                [dir="rtl"] &:hover,
+                [dir="rtl"] &.active,
+                html[dir="rtl"] &:hover,
+                html[dir="rtl"] &.active {
+                    border-left: 3px solid #f29f05;
+                    border-right: none;
                 }
 
                 .category-icon {
@@ -131,11 +184,6 @@
                     font-size: 12px;
                     color: #999;
                     flex-shrink: 0;
-                }
-                
-                // RTL: Flip arrow direction
-                html[dir="rtl"] & .category-arrow {
-                    transform: scaleX(-1);
                 }
 
                 &.active {
@@ -189,10 +237,20 @@
                         text-decoration: none;
                         color: #333;
 
-                        &:hover {
+                        // LTR: translate right on hover
+                        [dir="ltr"] &:hover,
+                        html:not([dir="rtl"]) &:hover {
                             background: #f8f9fa;
                             color: #f29f05;
-                            @apply ltr:-translate-x-1 rtl:translate-x-1;
+                            transform: translateX(3px);
+                        }
+
+                        // RTL: translate left on hover
+                        [dir="rtl"] &:hover,
+                        html[dir="rtl"] &:hover {
+                            background: #f8f9fa;
+                            color: #f29f05;
+                            transform: translateX(-3px);
                         }
 
                         .subcategory-image {

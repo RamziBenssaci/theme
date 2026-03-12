@@ -15,7 +15,8 @@
   }
   
   .container {
-    @apply flex items-baseline;
+    display: flex;
+    align-items: baseline;
     gap: 20px;
     
     > * {
@@ -36,10 +37,26 @@
 
   // Add space between categories button and menu
   .all-categories-dropdown {
-    @apply rtl:ml-10 ltr:mr-10;
+    // LTR: margin on right
+    [dir="ltr"] &,
+    html:not([dir="rtl"]) & {
+      margin-right: 40px !important;
+      margin-left: 0 !important;
+      
+      @media (max-width: 1024px) {
+        margin-right: 25px !important;
+      }
+    }
     
-    @media (max-width: 1024px) {
-      @apply rtl:ml-6 ltr:mr-6;
+    // RTL: margin on left
+    [dir="rtl"] &,
+    html[dir="rtl"] & {
+      margin-left: 40px !important;
+      margin-right: 0 !important;
+      
+      @media (max-width: 1024px) {
+        margin-left: 25px !important;
+      }
     }
   }
 
@@ -83,7 +100,9 @@
   
   // Nav menu wrapper - ensures menu is on same line
   .nav-menu-wrapper {
-    @apply flex items-center flex-1;
+    display: flex;
+    align-items: center;
+    flex: 1;
     min-width: 0; // Allow flex shrinking
   }
   
