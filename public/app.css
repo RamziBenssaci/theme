@@ -43643,39 +43643,19 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
     display: flex !important;
     align-items: center !important;
     order: 1 !important;
-    position: relative !important;
-    padding-left: 10px !important;
-    margin-left: 0 !important;
   }
   .main-nav-container > div:first-child .mburger {
-    position: absolute !important;
-    right: -45px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 32px !important;
-    height: 32px !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    background-color: transparent !important;
-    border: none !important;
-    z-index: 10 !important;
-  }
-  .main-nav-container > div:first-child .mburger i {
-    font-size: 24px !important;
-    color: #ffffff !important;
+    display: none !important;
   }
   .main-nav-container > div:first-child .navbar-brand {
     margin: 0 !important;
   }
   .main-nav-container > div:first-child .navbar-brand .mobex-logo .mobex-title {
-    font-size: 20px !important;
+    font-size: 22px !important;
     letter-spacing: 0.5px !important;
   }
   .main-nav-container > div:first-child .navbar-brand .mobex-logo .mobex-subtitle {
-    font-size: 9px !important;
+    font-size: 10px !important;
     margin-top: 1px !important;
   }
   .main-nav-container .header-actions-wrapper {
