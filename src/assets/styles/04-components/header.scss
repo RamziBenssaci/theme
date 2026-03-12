@@ -1163,8 +1163,25 @@ salla-cart-summary:not(.cart-link-main) {
       }
     }
     
-    // Hide All Categories section on mobile
+    // Hide All Categories section on mobile (completely hide the navigation row 2)
     .main-nav-row-2 {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      overflow: hidden !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    // Also hide any dropdown menus from All Categories
+    .all-categories-dropdown,
+    .all-categories-menu,
+    .all-categories-btn {
+      display: none !important;
+    }
+    
+    // Hide custom main menu on mobile
+    custom-main-menu {
       display: none !important;
     }
   }
@@ -1178,41 +1195,55 @@ salla-cart-summary:not(.cart-link-main) {
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background-color: rgba(0, 0, 0, 0.5) !important;
+  background-color: rgba(0, 0, 0, 0.6) !important;
   z-index: 9999 !important;
   overflow-y: auto !important;
   -webkit-overflow-scrolling: touch !important;
+  padding: 0 !important;
   
   &.active {
     display: flex !important;
-    align-items: flex-start !important;
+    align-items: center !important;
     justify-content: center !important;
-    padding: 20px 15px !important;
+    padding: 15px !important;
   }
   
   .vehicle-filter-modal-content {
     background-color: #ffffff !important;
-    border-radius: 12px !important;
+    border-radius: 16px !important;
     width: 100% !important;
-    max-width: 500px !important;
-    max-height: 90vh !important;
+    max-width: 100% !important;
+    max-height: 85vh !important;
     overflow-y: auto !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+    overflow-x: hidden !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
     position: relative !important;
-    margin-top: auto !important;
-    margin-bottom: auto !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    
+    @media (max-width: 480px) {
+      max-height: 90vh !important;
+      border-radius: 12px !important;
+    }
     
     .vehicle-filter-modal-header {
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
-      padding: 20px !important;
+      padding: 18px 20px !important;
       border-bottom: 1px solid #e0e0e0 !important;
       position: sticky !important;
       top: 0 !important;
       background-color: #ffffff !important;
       z-index: 10 !important;
-      border-radius: 12px 12px 0 0 !important;
+      border-radius: 16px 16px 0 0 !important;
+      flex-shrink: 0 !important;
+      
+      @media (max-width: 480px) {
+        padding: 16px !important;
+        border-radius: 12px 12px 0 0 !important;
+      }
       
       h5 {
         font-size: 18px !important;
@@ -1223,9 +1254,18 @@ salla-cart-summary:not(.cart-link-main) {
         align-items: center !important;
         gap: 8px !important;
         
+        @media (max-width: 480px) {
+          font-size: 16px !important;
+          gap: 6px !important;
+        }
+        
         i {
           font-size: 20px !important;
           color: #034c8c !important;
+          
+          @media (max-width: 480px) {
+            font-size: 18px !important;
+          }
         }
       }
       
@@ -1236,78 +1276,126 @@ salla-cart-summary:not(.cart-link-main) {
         color: #666 !important;
         cursor: pointer !important;
         padding: 0 !important;
-        width: 32px !important;
-        height: 32px !important;
+        width: 36px !important;
+        height: 36px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
         border-radius: 50% !important;
         transition: background-color 0.3s !important;
+        flex-shrink: 0 !important;
         
-        &:hover {
+        @media (max-width: 480px) {
+          width: 32px !important;
+          height: 32px !important;
+        }
+        
+        &:hover,
+        &:active {
           background-color: #f5f5f5 !important;
         }
         
         i {
           font-size: 20px !important;
+          
+          @media (max-width: 480px) {
+            font-size: 18px !important;
+          }
         }
       }
     }
     
     .vehicle-filter-modal-body {
       padding: 20px !important;
+      flex: 1 !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      
+      @media (max-width: 480px) {
+        padding: 16px !important;
+      }
       
       .vehicle-filter-form {
+        width: 100% !important;
+        
         .vehicle-filter-fields {
           display: flex !important;
           flex-direction: column !important;
-          gap: 12px !important;
-          margin-bottom: 16px !important;
+          gap: 14px !important;
+          margin-bottom: 18px !important;
+          width: 100% !important;
+          
+          @media (max-width: 480px) {
+            gap: 12px !important;
+            margin-bottom: 16px !important;
+          }
         }
         
         .vehicle-select {
-          padding: 14px !important;
+          padding: 14px 16px !important;
           border: 1px solid #e0e0e0 !important;
-          border-radius: 8px !important;
+          border-radius: 10px !important;
           font-size: 15px !important;
           background-color: #ffffff !important;
           cursor: pointer !important;
-          height: 50px !important;
+          height: 52px !important;
           width: 100% !important;
           box-sizing: border-box !important;
           appearance: none !important;
           -webkit-appearance: none !important;
           -moz-appearance: none !important;
-          transition: border-color 0.3s !important;
+          transition: all 0.3s !important;
+          
+          @media (max-width: 480px) {
+            padding: 12px 14px !important;
+            font-size: 14px !important;
+            height: 48px !important;
+            border-radius: 8px !important;
+          }
           
           &:focus {
             border-color: #034c8c !important;
             outline: none !important;
+            box-shadow: 0 0 0 3px rgba(3, 76, 140, 0.1) !important;
           }
         }
         
         .vehicle-search-btn {
-          padding: 14px !important;
+          padding: 14px 16px !important;
           background-color: #f29f05 !important;
           color: #000000 !important;
           border: none !important;
-          border-radius: 8px !important;
+          border-radius: 10px !important;
           cursor: pointer !important;
           font-weight: 600 !important;
-          font-size: 15px !important;
-          height: 50px !important;
+          font-size: 16px !important;
+          height: 52px !important;
           width: 100% !important;
-          transition: background-color 0.3s !important;
+          transition: all 0.3s !important;
           
-          &:hover {
+          @media (max-width: 480px) {
+            padding: 12px 14px !important;
+            font-size: 15px !important;
+            height: 48px !important;
+            border-radius: 8px !important;
+          }
+          
+          &:hover,
+          &:active {
             background-color: #e68f04 !important;
+            transform: translateY(-1px) !important;
+            box-shadow: 0 4px 8px rgba(242, 159, 5, 0.3) !important;
           }
         }
         
         .vehicle-filter-or {
           text-align: center !important;
-          margin: 16px 0 !important;
+          margin: 20px 0 !important;
           position: relative !important;
+          
+          @media (max-width: 480px) {
+            margin: 16px 0 !important;
+          }
           
           &::before,
           &::after {
@@ -1329,35 +1417,53 @@ salla-cart-summary:not(.cart-link-main) {
           
           span {
             background-color: #ffffff !important;
-            padding: 0 12px !important;
+            padding: 0 14px !important;
             font-weight: 700 !important;
-            color: #444 !important;
+            color: #666 !important;
             position: relative !important;
             z-index: 1 !important;
             display: inline-block !important;
             font-size: 14px !important;
+            
+            @media (max-width: 480px) {
+              font-size: 13px !important;
+              padding: 0 12px !important;
+            }
           }
         }
         
         .vehicle-filter-vin {
           display: flex !important;
           flex-direction: column !important;
-          gap: 12px !important;
+          gap: 14px !important;
+          width: 100% !important;
+          
+          @media (max-width: 480px) {
+            gap: 12px !important;
+          }
         }
         
         .vin-input {
-          padding: 14px !important;
+          padding: 14px 16px !important;
           border: 1px solid #e0e0e0 !important;
-          border-radius: 8px !important;
+          border-radius: 10px !important;
           font-size: 15px !important;
-          height: 50px !important;
+          height: 52px !important;
           width: 100% !important;
           box-sizing: border-box !important;
-          transition: border-color 0.3s !important;
+          transition: all 0.3s !important;
+          
+          @media (max-width: 480px) {
+            padding: 12px 14px !important;
+            font-size: 14px !important;
+            height: 48px !important;
+            border-radius: 8px !important;
+          }
           
           &:focus {
             border-color: #034c8c !important;
             outline: none !important;
+            box-shadow: 0 0 0 3px rgba(3, 76, 140, 0.1) !important;
           }
           
           &::placeholder {
@@ -1366,20 +1472,30 @@ salla-cart-summary:not(.cart-link-main) {
         }
         
         .vin-search-btn {
-          padding: 14px !important;
+          padding: 14px 16px !important;
           background-color: #034c8c !important;
           color: #ffffff !important;
           border: none !important;
-          border-radius: 8px !important;
+          border-radius: 10px !important;
           cursor: pointer !important;
           font-weight: 600 !important;
-          font-size: 15px !important;
-          height: 50px !important;
+          font-size: 16px !important;
+          height: 52px !important;
           width: 100% !important;
-          transition: background-color 0.3s !important;
+          transition: all 0.3s !important;
           
-          &:hover {
+          @media (max-width: 480px) {
+            padding: 12px 14px !important;
+            font-size: 15px !important;
+            height: 48px !important;
+            border-radius: 8px !important;
+          }
+          
+          &:hover,
+          &:active {
             background-color: #023a6b !important;
+            transform: translateY(-1px) !important;
+            box-shadow: 0 4px 8px rgba(3, 76, 140, 0.3) !important;
           }
         }
       }
