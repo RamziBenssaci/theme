@@ -44180,6 +44180,21 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
     display: none !important;
   }
 }
+@media (max-width: 768px) {
+  .vehicle-filter-toggle-btn {
+    display: flex !important;
+    pointer-events: auto !important;
+    z-index: 100 !important;
+    position: relative !important;
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+  .vehicle-filter-modal.active {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
 /* Navigation Row 2 - NO background, menu in one line - HALF HEIGHT */
 .main-nav-row-2 {
   padding: 5px 0 !important;
@@ -44716,6 +44731,21 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
   }
   section.hero-section .hero-vehicle-filter .vehicle-search-btn {
     grid-column: span 1 !important;
+  }
+}
+@media (max-width: 768px) {
+  section.hero-section {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 0 !important;
+  }
+  section.hero-section * {
+    display: none !important;
+    visibility: hidden !important;
   }
 }
 /* Promotional Banners */
