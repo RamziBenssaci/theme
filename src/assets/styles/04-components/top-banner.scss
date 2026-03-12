@@ -172,17 +172,20 @@
       
       .header-buttons {
         .btn--rounded-gray {
-          padding: 2px 4px !important; // Even smaller padding
-          font-size: 8px !important; // Smaller font
-          gap: 1px !important; // Reduced gap
-          line-height: 1.1 !important;
+          padding: 4px 6px !important; // Match login button height
+          font-size: 9px !important; // Slightly larger for readability
+          gap: 2px !important;
+          line-height: 1.2 !important;
           white-space: nowrap !important;
-          min-height: auto !important;
-          height: auto !important;
+          height: 24px !important; // Match login button height
+          min-height: 24px !important;
+          display: inline-flex !important; // Make it inline
+          align-items: center !important;
+          vertical-align: middle !important;
           
           span {
-            font-size: 8px !important;
-            line-height: 1.1 !important;
+            font-size: 9px !important;
+            line-height: 1.2 !important;
           }
         }
       }
@@ -192,6 +195,8 @@
         width: 24px !important; // Reduced from 36px
         height: 24px !important; // Reduced from 36px
         min-width: 24px !important;
+        display: inline-flex !important; // Make it inline
+        vertical-align: middle !important;
         
         i, .login-icon {
           font-size: 12px !important; // Reduced from 18px
@@ -277,39 +282,44 @@
     }
   }
   
-  // Mobile: Make promotional banner more compact
+  // Mobile: Make promotional banner more compact and fit on one line
   @media (max-width: 768px) {
     padding: 4px 0 !important; // Reduced from 10px
-    font-size: 10px !important; // Reduced from 14px
+    font-size: 9px !important; // Reduced from 14px
     
     .container {
-      gap: 8px !important; // Reduced from 15px
+      gap: 6px !important; // Reduced from 15px
+      flex-wrap: nowrap !important; // Prevent wrapping
     }
     
     .top-banner-promo-content {
-      gap: 8px !important; // Reduced from 15px
-      flex-wrap: wrap !important;
+      gap: 4px !important; // Reduced from 15px
+      flex-wrap: nowrap !important; // Keep on one line
+      align-items: center !important;
       
       .sale-text {
-        font-size: 10px !important; // Smaller text
+        font-size: 8px !important; // Smaller text
+        white-space: nowrap !important;
       }
       
       .offer-expires {
-        font-size: 9px !important; // Smaller text
+        font-size: 7px !important; // Smaller text
+        white-space: nowrap !important;
       }
       
       .countdown-timer {
-        gap: 3px !important; // Reduced from 5px
+        gap: 2px !important; // Reduced from 5px
+        flex-shrink: 0 !important; // Don't shrink timer
         
         .timer-box {
-          padding: 3px 6px !important; // Reduced from 5px 10px
-          font-size: 10px !important; // Reduced from 14px
-          min-width: 24px !important; // Reduced from 35px
-          line-height: 1.2 !important;
+          padding: 2px 4px !important; // Reduced from 5px 10px
+          font-size: 8px !important; // Reduced from 14px
+          min-width: 18px !important; // Reduced from 35px
+          line-height: 1.1 !important;
         }
         
         .timer-separator {
-          font-size: 10px !important; // Reduced from 16px
+          font-size: 8px !important; // Reduced from 16px
         }
       }
     }
@@ -317,36 +327,39 @@
   
   @media (max-width: 640px) {
     padding: 3px 0 !important; // Even smaller padding
-    font-size: 9px !important; // Smaller base font
+    font-size: 8px !important; // Smaller base font
     
     .container {
-      gap: 6px !important;
+      gap: 4px !important;
+      flex-wrap: nowrap !important;
     }
     
     .top-banner-promo-content {
-      flex-direction: row !important; // Keep in row if possible
-      gap: 6px !important; // Reduced gap
-      flex-wrap: wrap !important;
+      flex-direction: row !important; // Keep in row
+      gap: 3px !important; // Reduced gap
+      flex-wrap: nowrap !important; // Force one line
+      align-items: center !important;
       
       .sale-text {
-        font-size: 9px !important;
+        font-size: 7px !important;
       }
       
       .offer-expires {
-        font-size: 8px !important;
+        font-size: 6px !important;
       }
       
       .countdown-timer {
-        gap: 2px !important;
+        gap: 1px !important;
         
         .timer-box {
-          padding: 2px 5px !important;
-          font-size: 9px !important;
-          min-width: 20px !important;
+          padding: 1px 3px !important;
+          font-size: 7px !important;
+          min-width: 16px !important;
+          line-height: 1.1 !important;
         }
         
         .timer-separator {
-          font-size: 9px !important;
+          font-size: 7px !important;
         }
       }
     }

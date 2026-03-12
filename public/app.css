@@ -3601,12 +3601,14 @@ textarea.s-input{
 }
 @media (max-width: 768px) {
   .top-banner-promo .s-advertisement-content {
-    gap: 8px;
+    gap: 6px;
+    flex-wrap: nowrap;
   }
 }
 @media (max-width: 640px) {
   .top-banner-promo .s-advertisement-content {
-    gap: 6px;
+    gap: 4px;
+    flex-wrap: nowrap;
   }
 }
 .main-nav-container .s-advertisement-content > div.flex.items-stretch {
@@ -42291,23 +42293,28 @@ input[type=radio].sr-only:checked ~ div.radio-images__badge {
     align-items: center !important;
   }
   .top-banner-contact .top-banner-contact-right .header-buttons .btn--rounded-gray {
-    padding: 2px 4px !important;
-    font-size: 8px !important;
-    gap: 1px !important;
-    line-height: 1.1 !important;
+    padding: 4px 6px !important;
+    font-size: 9px !important;
+    gap: 2px !important;
+    line-height: 1.2 !important;
     white-space: nowrap !important;
-    min-height: auto !important;
-    height: auto !important;
+    height: 24px !important;
+    min-height: 24px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    vertical-align: middle !important;
   }
   .top-banner-contact .top-banner-contact-right .header-buttons .btn--rounded-gray span {
-    font-size: 8px !important;
-    line-height: 1.1 !important;
+    font-size: 9px !important;
+    line-height: 1.2 !important;
   }
   .top-banner-contact .top-banner-contact-right .login-btn-icon {
     padding: 4px !important;
     width: 24px !important;
     height: 24px !important;
     min-width: 24px !important;
+    display: inline-flex !important;
+    vertical-align: middle !important;
   }
   .top-banner-contact .top-banner-contact-right .login-btn-icon i, .top-banner-contact .top-banner-contact-right .login-btn-icon .login-icon {
     font-size: 12px !important;
@@ -42381,63 +42388,71 @@ input[type=radio].sr-only:checked ~ div.radio-images__badge {
 @media (max-width: 768px) {
   .top-banner-promo {
     padding: 4px 0 !important;
-    font-size: 10px !important;
-  }
-  .top-banner-promo .container {
-    gap: 8px !important;
-  }
-  .top-banner-promo .top-banner-promo-content {
-    gap: 8px !important;
-    flex-wrap: wrap !important;
-  }
-  .top-banner-promo .top-banner-promo-content .sale-text {
-    font-size: 10px !important;
-  }
-  .top-banner-promo .top-banner-promo-content .offer-expires {
     font-size: 9px !important;
   }
+  .top-banner-promo .container {
+    gap: 6px !important;
+    flex-wrap: nowrap !important;
+  }
+  .top-banner-promo .top-banner-promo-content {
+    gap: 4px !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+  }
+  .top-banner-promo .top-banner-promo-content .sale-text {
+    font-size: 8px !important;
+    white-space: nowrap !important;
+  }
+  .top-banner-promo .top-banner-promo-content .offer-expires {
+    font-size: 7px !important;
+    white-space: nowrap !important;
+  }
   .top-banner-promo .top-banner-promo-content .countdown-timer {
-    gap: 3px !important;
+    gap: 2px !important;
+    flex-shrink: 0 !important;
   }
   .top-banner-promo .top-banner-promo-content .countdown-timer .timer-box {
-    padding: 3px 6px !important;
-    font-size: 10px !important;
-    min-width: 24px !important;
-    line-height: 1.2 !important;
+    padding: 2px 4px !important;
+    font-size: 8px !important;
+    min-width: 18px !important;
+    line-height: 1.1 !important;
   }
   .top-banner-promo .top-banner-promo-content .countdown-timer .timer-separator {
-    font-size: 10px !important;
+    font-size: 8px !important;
   }
 }
 @media (max-width: 640px) {
   .top-banner-promo {
     padding: 3px 0 !important;
-    font-size: 9px !important;
+    font-size: 8px !important;
   }
   .top-banner-promo .container {
-    gap: 6px !important;
+    gap: 4px !important;
+    flex-wrap: nowrap !important;
   }
   .top-banner-promo .top-banner-promo-content {
     flex-direction: row !important;
-    gap: 6px !important;
-    flex-wrap: wrap !important;
+    gap: 3px !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
   }
   .top-banner-promo .top-banner-promo-content .sale-text {
-    font-size: 9px !important;
+    font-size: 7px !important;
   }
   .top-banner-promo .top-banner-promo-content .offer-expires {
-    font-size: 8px !important;
+    font-size: 6px !important;
   }
   .top-banner-promo .top-banner-promo-content .countdown-timer {
-    gap: 2px !important;
+    gap: 1px !important;
   }
   .top-banner-promo .top-banner-promo-content .countdown-timer .timer-box {
-    padding: 2px 5px !important;
-    font-size: 9px !important;
-    min-width: 20px !important;
+    padding: 1px 3px !important;
+    font-size: 7px !important;
+    min-width: 16px !important;
+    line-height: 1.1 !important;
   }
   .top-banner-promo .top-banner-promo-content .countdown-timer .timer-separator {
-    font-size: 9px !important;
+    font-size: 7px !important;
   }
 }
 /* Remove white space between header and content */
@@ -48283,12 +48298,14 @@ model-viewer[style*=width]:before{
 }
 @media (max-width: 768px) {
   .top-banner-promo .s-comments-product .s-comments-container {
-    gap: 8px;
+    gap: 6px;
+    flex-wrap: nowrap;
   }
 }
 @media (max-width: 640px) {
   .top-banner-promo .s-comments-product .s-comments-container {
-    gap: 6px;
+    gap: 4px;
+    flex-wrap: nowrap;
   }
 }
 .main-nav-container .s-comments-product .s-comments-container > div.flex.items-stretch {
