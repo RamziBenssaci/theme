@@ -43771,6 +43771,8 @@ section.hero-section .shop-now-btn:hover {
 }
 section.hero-section .shop-now-btn i {
   font-size: 14px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
 }
 section.hero-section .hero-slide .price-badge {
   position: absolute !important;
@@ -44102,6 +44104,8 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
 }
 .banner-btn i {
   font-size: 14px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
 }
 .banner-image {
   position: absolute !important;
@@ -51556,6 +51560,8 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
 }
 .banner-btn-white i {
   font-size: 12px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
 }
 .banner-btn-chat {
   background-color: #007bff !important;
@@ -51581,6 +51587,8 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
 }
 .banner-btn-chat i {
   font-size: 14px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
 }
 /* Responsive */
 @media (max-width: 1024px) {
