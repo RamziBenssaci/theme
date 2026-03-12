@@ -953,10 +953,11 @@ salla-cart-summary:not(.cart-link-main) {
     
     .main-nav-row-1 {
       display: flex !important;
-      flex-wrap: wrap !important; // Allow wrapping for search bar below
+      flex-direction: row !important; // Horizontal layout for first row
+      flex-wrap: wrap !important; // Allow search bar to wrap below
       gap: 0 !important;
       align-items: center !important;
-      justify-content: space-between !important;
+      justify-content: flex-start !important; // Align all items to the left
       padding: 8px 15px !important; // Container padding
       width: 100% !important;
       max-width: 100% !important;
@@ -967,17 +968,17 @@ salla-cart-summary:not(.cart-link-main) {
       position: relative !important;
     }
     
-    // Logo section - top left
+    // Logo section - first item, aligned left
     .main-nav-row-1 > div:first-child {
-      flex: 0 1 auto !important;
+      flex: 0 0 auto !important;
       display: flex !important;
       align-items: center !important;
       order: 1 !important;
-      min-width: 0 !important; // Allow shrinking
-      overflow: visible !important; // Allow hamburger to overflow
-      position: relative !important;
+      min-width: 0 !important;
+      overflow: hidden !important;
+      margin-right: 12px !important; // Gap after logo
       
-      // Hide hamburger from logo section (it will be positioned next to cart)
+      // Hide hamburger menu on mobile (not needed in this layout)
       .mburger {
         display: none !important;
       }
@@ -1009,29 +1010,30 @@ salla-cart-summary:not(.cart-link-main) {
       }
     }
     
-    // Header actions - top right: cart, menu (inline)
+    // Header actions - contains Cart and Login, aligned left after logo
     .main-nav-row-1 .header-actions-wrapper {
       display: flex !important;
       align-items: center !important;
-      gap: 6px !important; // Minimal gap between cart and menu
+      gap: 12px !important; // Space between Cart and Login
       flex: 0 0 auto !important;
-      order: 2 !important;
+      order: 2 !important; // Second in row (after logo)
       margin: 0 !important;
       padding: 0 !important;
       flex-shrink: 0 !important;
-      position: relative !important;
+      justify-content: flex-start !important; // Align items to the left
       
       // Hide scopes/branches button on mobile
       .btn--rounded-gray {
         display: none !important;
       }
       
-      // Hide user menu on mobile (if shown)
+      // Show login/user menu on mobile (next to cart)
       salla-user-menu {
-        display: none !important;
+        display: flex !important; // Show login/user menu
+        flex-shrink: 0 !important;
       }
       
-      // Cart styling for mobile - top right
+      // Cart styling for mobile - aligned left after logo
       salla-cart-summary.cart-link-main {
         padding: 0 !important;
         margin: 0 !important;
@@ -1059,58 +1061,27 @@ salla-cart-summary:not(.cart-link-main) {
           font-size: 11px !important;
           top: -4px !important;
           right: -4px !important;
-          background-color: #f29f05 !important; // Orange badge
+          background-color: #f29f05 !important;
           border: none !important;
           box-shadow: none !important;
         }
         
         .s-cart-summary-total {
-          display: none !important; // Hide total on mobile
+          display: none !important;
         }
       }
     }
     
-    // Position hamburger menu next to cart icon (from logo section, positioned absolutely)
-    // Layout: [Logo] ... [Cart] [Menu] where Menu is rightmost
-    .main-nav-row-1 > div:first-child .mburger {
-      position: absolute !important;
-      right: 15px !important; // Position at container right edge (rightmost position)
-      top: 50% !important;
-      transform: translateY(-50%) !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      width: 32px !important;
-      height: 32px !important;
-      padding: 0 !important;
-      margin: 0 !important;
-      background-color: transparent !important;
-      border: none !important;
-      z-index: 10 !important;
-      flex-shrink: 0 !important;
-      
-      i {
-        font-size: 24px !important;
-        color: #ffffff !important;
-      }
-    }
-    
-    // Adjust header-actions-wrapper margin so cart appears left of hamburger menu
-    // Hamburger is at right: 15px, so cart should be at right: 53px (15px + 32px hamburger + 6px gap)
-    .main-nav-row-1 .header-actions-wrapper {
-      margin-right: 53px !important; // Space for hamburger (32px) + gap (6px) + container padding (15px)
-    }
-    
-    // Search bar - below logo/cart/menu, wider but less than container
+    // Search bar - below logo/cart/login row, full width
     .main-nav-row-1 .header-search {
-      order: 3 !important;
-      width: calc(100% - 30px) !important; // Wider but less than container (15px margin on each side)
-      max-width: calc(100% - 30px) !important;
+      order: 3 !important; // Third item, wraps to new line
+      width: 100% !important; // Full width
+      max-width: 100% !important;
       min-width: 0 !important;
-      margin: 10px auto 0 auto !important; // Center with auto margins
+      margin: 10px 0 0 0 !important; // Top margin to separate from first row
       padding: 0 !important;
       box-sizing: border-box !important;
-      flex: 1 1 100% !important;
+      flex: 1 1 100% !important; // Take full width when wrapped
       overflow: hidden !important;
       
       .search-wrapper {

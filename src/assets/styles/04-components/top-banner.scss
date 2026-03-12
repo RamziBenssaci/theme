@@ -282,84 +282,149 @@
     }
   }
   
-  // Mobile: Make promotional banner more compact and fit on one line
+  // Mobile: Make promotional banner more compact and responsive
   @media (max-width: 768px) {
-    padding: 4px 0 !important; // Reduced from 10px
-    font-size: 9px !important; // Reduced from 14px
+    padding: 6px 0 !important;
+    font-size: 11px !important;
     
     .container {
-      gap: 6px !important; // Reduced from 15px
-      flex-wrap: nowrap !important; // Prevent wrapping
+      gap: 8px !important;
+      flex-wrap: wrap !important; // Allow wrapping if needed
+      padding: 0 10px !important; // Add horizontal padding
     }
     
     .top-banner-promo-content {
-      gap: 4px !important; // Reduced from 15px
-      flex-wrap: nowrap !important; // Keep on one line
+      gap: 6px !important;
+      flex-wrap: wrap !important; // Allow wrapping for better responsiveness
       align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
       
       .sale-text {
-        font-size: 8px !important; // Smaller text
+        font-size: 10px !important;
         white-space: nowrap !important;
+        flex-shrink: 0 !important;
       }
       
       .offer-expires {
-        font-size: 7px !important; // Smaller text
+        font-size: 9px !important;
         white-space: nowrap !important;
+        flex-shrink: 0 !important;
       }
       
       .countdown-timer {
-        gap: 2px !important; // Reduced from 5px
-        flex-shrink: 0 !important; // Don't shrink timer
+        gap: 3px !important;
+        flex-shrink: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        flex-wrap: nowrap !important; // Keep timer boxes together
         
         .timer-box {
-          padding: 2px 4px !important; // Reduced from 5px 10px
-          font-size: 8px !important; // Reduced from 14px
-          min-width: 18px !important; // Reduced from 35px
-          line-height: 1.1 !important;
+          padding: 4px 6px !important;
+          font-size: 11px !important;
+          min-width: 28px !important;
+          max-width: 35px !important;
+          line-height: 1.2 !important;
+          text-align: center !important;
+          box-sizing: border-box !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          
+          span {
+            display: block !important;
+            width: 100% !important;
+            text-align: center !important;
+          }
         }
         
         .timer-separator {
-          font-size: 8px !important; // Reduced from 16px
+          font-size: 12px !important;
+          padding: 0 2px !important;
+          flex-shrink: 0 !important;
         }
       }
     }
   }
   
   @media (max-width: 640px) {
-    padding: 3px 0 !important; // Even smaller padding
-    font-size: 8px !important; // Smaller base font
+    padding: 5px 0 !important;
+    font-size: 10px !important;
     
     .container {
-      gap: 4px !important;
-      flex-wrap: nowrap !important;
+      gap: 6px !important;
+      flex-wrap: wrap !important;
+      padding: 0 8px !important;
     }
     
     .top-banner-promo-content {
-      flex-direction: row !important; // Keep in row
-      gap: 3px !important; // Reduced gap
-      flex-wrap: nowrap !important; // Force one line
+      gap: 5px !important;
+      flex-wrap: wrap !important;
       align-items: center !important;
+      justify-content: center !important;
       
       .sale-text {
-        font-size: 7px !important;
+        font-size: 9px !important;
       }
       
       .offer-expires {
-        font-size: 6px !important;
+        font-size: 8px !important;
       }
       
       .countdown-timer {
-        gap: 1px !important;
+        gap: 2px !important;
         
         .timer-box {
-          padding: 1px 3px !important;
-          font-size: 7px !important;
-          min-width: 16px !important;
-          line-height: 1.1 !important;
+          padding: 3px 5px !important;
+          font-size: 10px !important;
+          min-width: 24px !important;
+          max-width: 30px !important;
+          line-height: 1.2 !important;
         }
         
         .timer-separator {
-          font-size: 7px !important;
+          font-size: 10px !important;
+          padding: 0 1px !important;
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 480px) {
+    padding: 4px 0 !important;
+    font-size: 9px !important;
+    
+    .container {
+      gap: 4px !important;
+      padding: 0 6px !important;
+    }
+    
+    .top-banner-promo-content {
+      gap: 4px !important;
+      flex-direction: column !important; // Stack vertically on very small screens
+      align-items: center !important;
+      
+      .sale-text {
+        font-size: 8px !important;
+      }
+      
+      .offer-expires {
+        font-size: 7px !important;
+      }
+      
+      .countdown-timer {
+        gap: 2px !important;
+        justify-content: center !important;
+        
+        .timer-box {
+          padding: 3px 4px !important;
+          font-size: 9px !important;
+          min-width: 22px !important;
+          max-width: 28px !important;
+        }
+        
+        .timer-separator {
+          font-size: 9px !important;
         }
       }
     }
