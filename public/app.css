@@ -44406,12 +44406,17 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
 section.hero-section {
   position: relative !important;
   padding: 0 !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   min-height: 500px !important;
   width: 100% !important;
   margin: 0 !important;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+}
+@media (min-width: 769px) {
+  section.hero-section {
+    overflow: visible !important;
+  }
 }
 section.hero-section .hero-section-mobile-slider {
   display: none !important;
@@ -44421,11 +44426,62 @@ section.hero-section .hero-section-mobile-slider {
     display: block !important;
   }
 }
+section.hero-section .hero-overlay-images-right-desktop {
+  position: absolute !important;
+  right: -10px !important;
+  bottom: -20px !important;
+  top: auto !important;
+  left: auto !important;
+  z-index: 2 !important;
+  display: none !important;
+}
+@media (min-width: 769px) {
+  section.hero-section .hero-overlay-images-right-desktop {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    justify-content: flex-end !important;
+    gap: 5px !important;
+    pointer-events: none !important;
+  }
+}
+section.hero-section .hero-overlay-images-right-desktop .hero-overlay-image {
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: flex-end !important;
+}
+section.hero-section .hero-overlay-images-right-desktop .hero-overlay-image img {
+  width: auto !important;
+  max-width: 35% !important;
+  max-height: 40% !important;
+  height: auto !important;
+  display: block !important;
+  -o-object-fit: contain !important;
+     object-fit: contain !important;
+  -o-object-position: bottom right !important;
+     object-position: bottom right !important;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3)) !important;
+}
+section.hero-section .hero-overlay-images-right-desktop .hero-overlay-image-2 {
+  order: 1 !important;
+}
+section.hero-section .hero-overlay-images-right-desktop .hero-overlay-image-2 img {
+  max-width: 30% !important;
+  max-height: 35% !important;
+}
+section.hero-section .hero-overlay-images-right-desktop .hero-overlay-image-1 {
+  order: 2 !important;
+}
+section.hero-section .hero-overlay-images-right-desktop .hero-overlay-image-1 img {
+  max-width: 40% !important;
+  max-height: 45% !important;
+}
 section.hero-section .hero-slider {
   width: 100% !important;
   height: 100% !important;
   position: relative !important;
   min-height: 500px !important;
+  overflow: visible !important;
 }
 section.hero-section .hero-slide {
   width: 100% !important;
@@ -44433,6 +44489,7 @@ section.hero-section .hero-slide {
   display: none !important;
   min-height: 500px !important;
   position: relative !important;
+  overflow: visible !important;
 }
 section.hero-section .hero-slide.active {
   display: block !important;
@@ -44904,6 +44961,20 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
 @media (max-width: 768px) {
   .hero-section-mobile-slider .hero-text .shop-now-btn {
     pointer-events: auto !important;
+  }
+  .hero-section-mobile-slider .price-badge {
+    position: absolute !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 4 !important;
+    font-size: 16px !important;
+    padding: 8px 16px !important;
+    background-color: #bf3617 !important;
+    color: #ffffff !important;
+    border-radius: 6px !important;
+    font-weight: bold !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
   }
 }
 /* Promotional Banners */
