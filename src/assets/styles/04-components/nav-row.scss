@@ -15,8 +15,7 @@
   }
   
   .container {
-    display: flex;
-    align-items: baseline;
+    @apply flex items-baseline;
     gap: 20px;
     
     > * {
@@ -37,10 +36,10 @@
 
   // Add space between categories button and menu
   .all-categories-dropdown {
-    margin-right: 40px !important;
+    @apply rtl:ml-10 ltr:mr-10;
     
     @media (max-width: 1024px) {
-      margin-right: 25px !important;
+      @apply rtl:ml-6 ltr:mr-6;
     }
   }
 
@@ -84,9 +83,7 @@
   
   // Nav menu wrapper - ensures menu is on same line
   .nav-menu-wrapper {
-    display: flex;
-    align-items: center;
-    flex: 1;
+    @apply flex items-center flex-1;
     min-width: 0; // Allow flex shrinking
   }
   
