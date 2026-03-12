@@ -43636,8 +43636,8 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
     box-sizing: border-box !important;
   }
   .main-nav-container .main-nav-row-1 {
+    display: flex !important;
     flex-wrap: wrap !important;
-    gap: 0 !important;
     align-items: center !important;
     justify-content: space-between !important;
     padding: 8px 10px !important;
@@ -43647,13 +43647,14 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
     min-height: auto !important;
     overflow-x: hidden !important;
     margin: 0 !important;
+    gap: 0 !important;
   }
   .main-nav-container > div:first-child {
-    flex: 0 0 auto !important;
     display: flex !important;
     align-items: center !important;
+    flex: 0 0 auto !important;
     order: 1 !important;
-    max-width: calc(100% - 80px) !important;
+    max-width: calc(100% - 70px) !important;
     overflow: hidden !important;
   }
   .main-nav-container > div:first-child .mburger {
@@ -43747,6 +43748,10 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   .main-nav-container .main-nav-row-1 > div:first-child .mburger i {
     font-size: 22px !important;
     color: #ffffff !important;
+  }
+  .main-nav-container .header-actions-wrapper::after {
+    content: "";
+    display: none;
   }
   .main-nav-container .header-search {
     order: 3 !important;

@@ -952,29 +952,32 @@ salla-cart-summary:not(.cart-link-main) {
     }
     
     .main-nav-row-1 {
+      display: flex !important;
       flex-wrap: wrap !important; // Allow wrapping for search bar below
       gap: 0 !important;
       align-items: center !important;
       justify-content: space-between !important;
-      padding: 8px 10px !important; // Compact padding
+      padding: 8px 15px !important; // Container padding
       width: 100% !important;
       max-width: 100% !important;
       box-sizing: border-box !important;
       min-height: auto !important;
       overflow-x: hidden !important;
       margin: 0 !important;
+      position: relative !important;
     }
     
-    // Logo section - left side
-    > div:first-child {
-      flex: 0 0 auto !important;
+    // Logo section - top left
+    .main-nav-row-1 > div:first-child {
+      flex: 0 1 auto !important;
       display: flex !important;
       align-items: center !important;
       order: 1 !important;
-      max-width: calc(100% - 80px) !important; // Leave space for cart and menu
-      overflow: hidden !important;
+      min-width: 0 !important; // Allow shrinking
+      overflow: visible !important; // Allow hamburger to overflow
+      position: relative !important;
       
-      // Hide hamburger from logo section (it will be in header-actions)
+      // Hide hamburger from logo section (it will be positioned next to cart)
       .mburger {
         display: none !important;
       }
@@ -983,6 +986,8 @@ salla-cart-summary:not(.cart-link-main) {
         margin: 0 !important;
         max-width: 100% !important;
         overflow: hidden !important;
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
         
         .mobex-logo {
           .mobex-title {
@@ -1004,16 +1009,17 @@ salla-cart-summary:not(.cart-link-main) {
       }
     }
     
-    // Header actions - right side: cart, menu (inline with logo)
-    .header-actions-wrapper {
+    // Header actions - top right: cart, menu (inline)
+    .main-nav-row-1 .header-actions-wrapper {
       display: flex !important;
       align-items: center !important;
-      gap: 8px !important; // Small gap between cart and menu
+      gap: 6px !important; // Minimal gap between cart and menu
       flex: 0 0 auto !important;
       order: 2 !important;
       margin: 0 !important;
       padding: 0 !important;
       flex-shrink: 0 !important;
+      position: relative !important;
       
       // Hide scopes/branches button on mobile
       .btn--rounded-gray {
@@ -1025,7 +1031,7 @@ salla-cart-summary:not(.cart-link-main) {
         display: none !important;
       }
       
-      // Cart styling for mobile
+      // Cart styling for mobile - top right
       salla-cart-summary.cart-link-main {
         padding: 0 !important;
         margin: 0 !important;
@@ -1038,19 +1044,19 @@ salla-cart-summary:not(.cart-link-main) {
         flex-shrink: 0 !important;
         
         &::before {
-          font-size: 20px !important; // Slightly smaller cart icon
-          width: 20px !important;
-          height: 20px !important;
-          line-height: 20px !important;
+          font-size: 22px !important;
+          width: 22px !important;
+          height: 22px !important;
+          line-height: 22px !important;
           margin-right: 0 !important;
           color: #ffffff !important;
         }
         
         .s-cart-summary-count {
-          width: 16px !important; // Smaller badge
-          height: 16px !important;
-          min-width: 16px !important;
-          font-size: 10px !important;
+          width: 18px !important;
+          height: 18px !important;
+          min-width: 18px !important;
+          font-size: 11px !important;
           top: -4px !important;
           right: -4px !important;
           background-color: #f29f05 !important; // Orange badge
@@ -1064,40 +1070,45 @@ salla-cart-summary:not(.cart-link-main) {
       }
     }
     
-    // Position hamburger menu relative to main-nav-row-1 (after cart)
-    .main-nav-row-1 {
-      > div:first-child .mburger {
-        position: absolute !important;
-        right: 10px !important; // Position on right side of row, after cart
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        width: 28px !important; // Smaller
-        height: 28px !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        background-color: transparent !important;
-        border: none !important;
-        z-index: 10 !important;
-        flex-shrink: 0 !important;
-        
-        i {
-          font-size: 22px !important; // Slightly smaller
-          color: #ffffff !important;
-        }
+    // Position hamburger menu next to cart icon (from logo section, positioned absolutely)
+    // Layout: [Logo] ... [Cart] [Menu] where Menu is rightmost
+    .main-nav-row-1 > div:first-child .mburger {
+      position: absolute !important;
+      right: 15px !important; // Position at container right edge (rightmost position)
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 32px !important;
+      height: 32px !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      background-color: transparent !important;
+      border: none !important;
+      z-index: 10 !important;
+      flex-shrink: 0 !important;
+      
+      i {
+        font-size: 24px !important;
+        color: #ffffff !important;
       }
     }
     
-    // Search bar - below logo section in its own line
-    .header-search {
+    // Adjust header-actions-wrapper margin so cart appears left of hamburger menu
+    // Hamburger is at right: 15px, so cart should be at right: 53px (15px + 32px hamburger + 6px gap)
+    .main-nav-row-1 .header-actions-wrapper {
+      margin-right: 53px !important; // Space for hamburger (32px) + gap (6px) + container padding (15px)
+    }
+    
+    // Search bar - below logo/cart/menu, wider but less than container
+    .main-nav-row-1 .header-search {
       order: 3 !important;
-      width: 100% !important;
-      max-width: 100% !important;
+      width: calc(100% - 30px) !important; // Wider but less than container (15px margin on each side)
+      max-width: calc(100% - 30px) !important;
       min-width: 0 !important;
-      margin: 8px 0 0 0 !important;
-      padding: 0 10px !important; // Match container padding
+      margin: 10px auto 0 auto !important; // Center with auto margins
+      padding: 0 !important;
       box-sizing: border-box !important;
       flex: 1 1 100% !important;
       overflow: hidden !important;
@@ -1107,10 +1118,10 @@ salla-cart-summary:not(.cart-link-main) {
         max-width: 100% !important;
         display: flex !important;
         align-items: stretch !important;
-        height: 36px !important; // More compact height
-        border-radius: 6px !important; // Elegant rounded corners
+        height: 40px !important; // Compact height
+        border-radius: 8px !important; // Elegant rounded corners
         overflow: hidden !important;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important; // Subtle shadow
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important; // Subtle shadow
         box-sizing: border-box !important;
         
         // Hide category dropdown on mobile
@@ -1121,16 +1132,16 @@ salla-cart-summary:not(.cart-link-main) {
         salla-search {
           width: 100% !important;
           flex: 1 !important;
-          height: 36px !important;
+          height: 40px !important;
           min-width: 0 !important;
           max-width: 100% !important;
           overflow: hidden !important;
           
           .s-search-input {
-            height: 36px !important;
-            padding: 8px 12px !important; // Compact padding
-            font-size: 13px !important; // Slightly smaller font
-            border-radius: 6px 0 0 6px !important;
+            height: 40px !important;
+            padding: 10px 15px !important;
+            font-size: 14px !important;
+            border-radius: 8px 0 0 8px !important;
             border: 1px solid #e0e0e0 !important;
             border-right: none !important;
             box-sizing: border-box !important;
@@ -1140,16 +1151,16 @@ salla-cart-summary:not(.cart-link-main) {
         }
         
         .search-submit-btn {
-          width: 40px !important; // More compact button
-          height: 36px !important;
+          width: 45px !important;
+          height: 40px !important;
           flex-shrink: 0 !important;
-          border-radius: 0 6px 6px 0 !important;
+          border-radius: 0 8px 8px 0 !important;
           padding: 0 !important;
           box-sizing: border-box !important;
           
           svg {
-            width: 16px !important; // Smaller icon
-            height: 16px !important;
+            width: 18px !important;
+            height: 18px !important;
           }
         }
       }
