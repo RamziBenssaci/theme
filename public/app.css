@@ -43854,14 +43854,20 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
     overflow: hidden !important;
     margin: 0 !important;
     padding: 0 !important;
+    opacity: 0 !important;
   }
   .main-nav-container .all-categories-dropdown,
   .main-nav-container .all-categories-menu,
-  .main-nav-container .all-categories-btn {
+  .main-nav-container .all-categories-btn,
+  .main-nav-container .nav-menu-wrapper {
     display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
   }
   .main-nav-container custom-main-menu {
     display: none !important;
+    visibility: hidden !important;
   }
 }
 .vehicle-filter-modal {
@@ -44365,6 +44371,21 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
 .main-nav-row-2 *.main-menu li {
   display: inline-block !important;
   flex-shrink: 0 !important;
+}
+@media (max-width: 768px) {
+  .main-nav-row-2 {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 0 !important;
+  }
+  .main-nav-row-2 * {
+    display: none !important;
+    visibility: hidden !important;
+  }
 }
 /* Hero Section - High specificity to override Salla styles */
 section.hero-section {

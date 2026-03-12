@@ -320,27 +320,35 @@ isElementLoaded(selector){
   }
 
   initVehicleFilterModal() {
-    const toggleBtn = document.getElementById('vehicle-filter-toggle-btn');
-    const modal = document.getElementById('vehicle-filter-modal');
-    const closeBtn = document.getElementById('vehicle-filter-close-btn');
-    const searchBtn = document.getElementById('vehicle-filter-search-btn');
-    const vinSearchBtn = document.getElementById('vehicle-filter-vin-search-btn');
+    // Wait for DOM to be ready
+    const initModal = () => {
+      const toggleBtn = document.getElementById('vehicle-filter-toggle-btn');
+      const modal = document.getElementById('vehicle-filter-modal');
+      const closeBtn = document.getElementById('vehicle-filter-close-btn');
+      const searchBtn = document.getElementById('vehicle-filter-search-btn');
+      const vinSearchBtn = document.getElementById('vehicle-filter-vin-search-btn');
 
-    if (!toggleBtn || !modal) return;
+      if (!toggleBtn || !modal) {
+        return;
+      }
 
-    // Open modal
-    toggleBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
+      // Open modal
+      toggleBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+      });
 
-    // Close modal
-    const closeModal = () => {
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-    };
+      // Close modal
+      const closeModal = () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+      };
 
     if (closeBtn) {
       closeBtn.addEventListener('click', closeModal);
@@ -389,6 +397,15 @@ isElementLoaded(selector){
         const encodedQuery = encodeURIComponent(vin);
         window.location.href = `/search?q=${encodedQuery}`;
       });
+    }
+    };
+
+    // Initialize immediately if DOM is ready, otherwise wait
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initModal);
+    } else {
+      // DOM is already ready, but wait a bit for Salla components
+      setTimeout(initModal, 100);
     }
   }
 }

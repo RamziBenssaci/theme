@@ -1171,18 +1171,24 @@ salla-cart-summary:not(.cart-link-main) {
       overflow: hidden !important;
       margin: 0 !important;
       padding: 0 !important;
+      opacity: 0 !important;
     }
     
     // Also hide any dropdown menus from All Categories
     .all-categories-dropdown,
     .all-categories-menu,
-    .all-categories-btn {
+    .all-categories-btn,
+    .nav-menu-wrapper {
       display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      overflow: hidden !important;
     }
     
     // Hide custom main menu on mobile
-    custom-main-menu {
+      custom-main-menu {
       display: none !important;
+      visibility: hidden !important;
     }
   }
 }
@@ -1511,5 +1517,25 @@ salla-cart-summary:not(.cart-link-main) {
   
   .vehicle-filter-modal {
     display: none !important;
+  }
+}
+
+// Mobile: Ensure filter button is visible and clickable, modal works
+@media (max-width: 768px) {
+  .vehicle-filter-toggle-btn {
+    display: flex !important;
+    pointer-events: auto !important;
+    z-index: 100 !important;
+    position: relative !important;
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+  
+  .vehicle-filter-modal {
+    &.active {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
   }
 }
