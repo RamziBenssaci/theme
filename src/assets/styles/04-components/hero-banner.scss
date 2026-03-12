@@ -48,8 +48,6 @@ section.hero-section {
       
       img {
         width: auto !important;
-        max-width: 35% !important;
-        max-height: 40% !important;
         height: auto !important;
         display: block !important;
         object-fit: contain !important;
@@ -58,23 +56,25 @@ section.hero-section {
       }
     }
     
-    // First image (asset-2) on top - smaller
+    // First image (asset-2) on top - bigger on desktop
     .hero-overlay-image-2 {
       order: 1 !important;
       
       img {
-        max-width: 30% !important;
-        max-height: 35% !important;
+        width: 600px !important;
+        max-width: none !important;
+        max-height: none !important;
       }
     }
     
-    // Second image (asset-1) below - slightly larger
+    // Second image (asset-1) below - bigger on desktop
     .hero-overlay-image-1 {
       order: 2 !important;
       
       img {
-        max-width: 40% !important;
-        max-height: 45% !important;
+        width: 700px !important;
+        max-width: none !important;
+        max-height: none !important;
       }
     }
   }
@@ -109,12 +109,23 @@ section.hero-section {
       height: 100% !important;
       z-index: 0 !important;
       
+      @media (min-width: 769px) {
+        background-image: url('https://enovathemes.com/mobex/wp-content/uploads/slide-1.webp') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+      }
+      
       img {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important;
         object-position: center !important;
         display: block !important;
+        
+        @media (min-width: 769px) {
+          opacity: 0 !important; // Hide the original image on desktop, use background instead
+        }
       }
     }
   }
@@ -568,20 +579,30 @@ section.hero-section .hero-vehicle-filter {
       // First image (asset-2) on top - smaller
       .hero-overlay-image-2 {
         order: 1 !important;
+        width: 900px !important;
+        margin-bottom: -250px !important;
+        z-index: 300 !important;
+        margin-right: -70px !important;
+        opacity: 0.6 !important;
         
         img {
-          max-width: 30% !important;
-          max-height: 35% !important;
+          width: 900px !important;
+          max-width: none !important;
+          max-height: none !important;
+          height: auto !important;
         }
       }
       
       // Second image (asset-1) below - slightly larger
       .hero-overlay-image-1 {
         order: 2 !important;
+        width: 450px !important;
         
         img {
-          max-width: 40% !important;
-          max-height: 45% !important;
+          width: 450px !important;
+          max-width: none !important;
+          max-height: none !important;
+          height: auto !important;
         }
       }
     }
