@@ -14,6 +14,17 @@
                 <div class="hero-image">
                     <img src="{{ 'images/slider.png'|asset }}" alt="Hero Banner" onerror="this.src='{{ 'images/placeholder.png'|asset }}'">
                 </div>
+                {# Desktop Overlay Images - Right Side #}
+                <div class="hero-overlay-images-right-desktop">
+                    {# Second image on top #}
+                    <div class="hero-overlay-image hero-overlay-image-2">
+                        <img src="https://enovathemes.com/mobex/wp-content/uploads/slider-asset-2.webp" alt="Hero Asset 2">
+                    </div>
+                    {# First image below #}
+                    <div class="hero-overlay-image hero-overlay-image-1">
+                        <img src="https://enovathemes.com/mobex/wp-content/uploads/slider-asset-1.webp" alt="Hero Asset 1">
+                    </div>
+                </div>
                 <div class="hero-content">
                     <div class="hero-text">
                         <h2>{{ trans('blocks.home.battery_starters') }}</h2>
@@ -44,6 +55,7 @@
                     <a href="{{ link('/') }}" class="shop-now-btn">{{ trans('blocks.home.shop_now') }} <i class="sicon-sar"></i></a>
                 </div>
             </div>
+            <div class="price-badge">{{ trans('blocks.home.from_price') }}</div>
         </div>
         
         {# Vehicle Filter - Fixed in Hero Banner #}

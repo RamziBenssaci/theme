@@ -2,12 +2,16 @@
 section.hero-section {
   position: relative !important;
   padding: 0 !important;
-  overflow: hidden !important;
+  overflow: visible !important; // Allow overlay images to extend outside
   min-height: 500px !important;
   width: 100% !important;
   margin: 0 !important;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+  
+  @media (min-width: 769px) {
+    overflow: visible !important; // Desktop: allow images to extend
+  }
   
   // Hide mobile slider on desktop
   .hero-section-mobile-slider {
@@ -18,11 +22,69 @@ section.hero-section {
     }
   }
   
+  // Desktop: Add overlay images to hero section
+  .hero-overlay-images-right-desktop {
+    position: absolute !important;
+    right: -10px !important;
+    bottom: -20px !important;
+    top: auto !important;
+    left: auto !important;
+    z-index: 2 !important;
+    display: none !important; // Hidden on mobile
+    
+    @media (min-width: 769px) {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-end !important;
+      justify-content: flex-end !important;
+      gap: 5px !important;
+      pointer-events: none !important;
+    }
+    
+    .hero-overlay-image {
+      display: flex !important;
+      align-items: flex-end !important;
+      justify-content: flex-end !important;
+      
+      img {
+        width: auto !important;
+        max-width: 35% !important;
+        max-height: 40% !important;
+        height: auto !important;
+        display: block !important;
+        object-fit: contain !important;
+        object-position: bottom right !important;
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3)) !important;
+      }
+    }
+    
+    // First image (asset-2) on top - smaller
+    .hero-overlay-image-2 {
+      order: 1 !important;
+      
+      img {
+        max-width: 30% !important;
+        max-height: 35% !important;
+      }
+    }
+    
+    // Second image (asset-1) below - slightly larger
+    .hero-overlay-image-1 {
+      order: 2 !important;
+      
+      img {
+        max-width: 40% !important;
+        max-height: 45% !important;
+      }
+    }
+  }
+  
   .hero-slider {
     width: 100% !important;
     height: 100% !important;
     position: relative !important;
     min-height: 500px !important;
+    overflow: visible !important; // Allow overlay images to extend
   }
   
   .hero-slide {
@@ -31,6 +93,7 @@ section.hero-section {
     display: none !important;
     min-height: 500px !important;
     position: relative !important;
+    overflow: visible !important; // Allow overlay images to extend
     
     &.active {
       display: block !important;
@@ -569,6 +632,22 @@ section.hero-section .hero-vehicle-filter {
       .shop-now-btn {
         pointer-events: auto !important;
       }
+    }
+    
+    // Price badge on mobile
+    .price-badge {
+      position: absolute !important;
+      bottom: 20px !important;
+      right: 20px !important;
+      z-index: 4 !important;
+      font-size: 16px !important;
+      padding: 8px 16px !important;
+      background-color: #bf3617 !important;
+      color: #ffffff !important;
+      border-radius: 6px !important;
+      font-weight: bold !important;
+      display: inline-block !important;
+      white-space: nowrap !important;
     }
   }
 }
