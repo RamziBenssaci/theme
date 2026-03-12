@@ -22,7 +22,7 @@ class App extends AppHelpers {
     this.initiateModals();
     this.initiateCollapse();
     this.initAttachWishlistListeners();
-    this.initiateVehicleFilterModal();
+    this.initVehicleFilterModal();
     
     // Ensure #more-menu-dropdown exists before running changeMenuDirection
     const menuDirInterval = setInterval(() => {
@@ -289,78 +289,6 @@ isElementLoaded(selector){
       });
   }
 
-  initiateVehicleFilterModal() {
-    const toggleBtn = document.getElementById('vehicle-filter-toggle-btn');
-    const vehicleFilter = document.querySelector('.hero-vehicle-filter');
-    
-    if (!toggleBtn || !vehicleFilter) return;
-
-    // Create modal overlay
-    let modal = document.querySelector('.vehicle-filter-modal');
-    if (!modal) {
-      modal = document.createElement('div');
-      modal.className = 'vehicle-filter-modal';
-      
-      const modalContent = document.createElement('div');
-      modalContent.className = 'vehicle-filter-modal-content';
-      
-      const closeBtn = document.createElement('button');
-      closeBtn.type = 'button';
-      closeBtn.className = 'vehicle-filter-modal-close';
-      closeBtn.setAttribute('aria-label', 'Close');
-      closeBtn.innerHTML = '<i class="sicon-close"></i>';
-      
-      // Clone vehicle filter form
-      const vehicleFilterForm = vehicleFilter.querySelector('.vehicle-filter-form');
-      if (vehicleFilterForm) {
-        const clonedForm = vehicleFilterForm.cloneNode(true);
-        modalContent.appendChild(closeBtn);
-        modalContent.appendChild(clonedForm);
-      }
-      
-      modal.appendChild(modalContent);
-      document.body.appendChild(modal);
-    }
-
-    const closeBtn = modal.querySelector('.vehicle-filter-modal-close');
-
-    // Toggle modal on button click (only on mobile)
-    toggleBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      if (window.innerWidth <= 768) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-    });
-
-    // Close modal on close button click
-    if (closeBtn) {
-      closeBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-    }
-
-    // Close modal on overlay click
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
-
-    // Close modal on ESC key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('active')) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
-  }
-
 
   /**
    * Workaround for seeking to simplify & clean, There are three ways to use this method:
@@ -389,6 +317,79 @@ isElementLoaded(selector){
     salla.cart.event.onItemAdded((response, prodId) => {
       app.element('salla-cart-summary').animateToCart(app.element(`#product-${prodId} img`));
     });
+  }
+
+  initVehicleFilterModal() {
+    const toggleBtn = document.getElementById('vehicle-filter-toggle-btn');
+    const modal = document.getElementById('vehicle-filter-modal');
+    const closeBtn = document.getElementById('vehicle-filter-close-btn');
+    const searchBtn = document.getElementById('vehicle-filter-search-btn');
+    const vinSearchBtn = document.getElementById('vehicle-filter-vin-search-btn');
+
+    if (!toggleBtn || !modal) return;
+
+    // Open modal
+    toggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    // Close modal
+    const closeModal = () => {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeModal);
+    }
+
+    // Close on backdrop click
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Close on ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+
+    // Handle search button click (sync with main form if exists)
+    if (searchBtn) {
+      searchBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const brand = document.getElementById('vehicle-filter-brand')?.value || '';
+        const model = document.getElementById('vehicle-filter-model')?.value || '';
+        const year = document.getElementById('vehicle-filter-year')?.value || '';
+        const engine = document.getElementById('vehicle-filter-engine')?.value || '';
+        const trim = document.getElementById('vehicle-filter-trim')?.value || '';
+
+        const values = [brand, model, year, engine, trim].filter(v => v && v.trim() !== '');
+        if (values.length === 0) return;
+
+        const searchQuery = values.join(' ');
+        const encodedQuery = encodeURIComponent(searchQuery);
+        window.location.href = `/search?q=${encodedQuery}`;
+      });
+    }
+
+    // Handle VIN search button click
+    if (vinSearchBtn) {
+      vinSearchBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const vin = document.getElementById('vehicle-filter-vin')?.value || '';
+        if (!vin.trim()) return;
+
+        const encodedQuery = encodeURIComponent(vin);
+        window.location.href = `/search?q=${encodedQuery}`;
+      });
+    }
   }
 }
 

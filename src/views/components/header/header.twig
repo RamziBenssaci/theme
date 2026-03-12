@@ -92,16 +92,16 @@
                         </select>
                       </div>
                       <salla-search inline height="48"></salla-search>
-                      {# Car filter icon button (mobile only) #}
-                      <button type="button" class="vehicle-filter-toggle-btn" id="vehicle-filter-toggle-btn" aria-label="Choose Your Car">
-                        <i class="sicon-car"></i>
-                      </button>
                       {# Red search button at the end #}
                       <button type="button" class="search-submit-btn" onclick="document.querySelector('.s-search-input')?.closest('salla-search')?.querySelector('button[type=\"submit\"]')?.click() || document.querySelector('.s-search-input')?.form?.requestSubmit()">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                           <title>search</title>
                           <path fill="#ffffff" d="M30.276 28.391l-7.576-7.576c1.644-2.053 2.633-4.652 2.633-7.481 0-6.616-5.384-12-12-12s-12 5.384-12 12 5.384 12 12 12c2.829 0 5.428-0.989 7.481-2.633l7.576 7.576c0.26 0.26 0.601 0.391 0.943 0.391s0.683-0.131 0.943-0.391c0.521-0.521 0.521-1.364 0-1.885zM13.333 22.667c-5.147 0-9.333-4.187-9.333-9.333s4.187-9.333 9.333-9.333 9.333 4.187 9.333 9.333-4.187 9.333-9.333 9.333z"></path>
                         </svg>
+                      </button>
+                      {# Vehicle Filter Toggle Button (Mobile Only) #}
+                      <button type="button" class="vehicle-filter-toggle-btn" id="vehicle-filter-toggle-btn" aria-label="{{ trans('blocks.home.choose_your_car') }}">
+                        <i class="sicon-filter"></i>
                       </button>
                     </div>
                   </div>
@@ -155,4 +155,48 @@
           </div>
       </div>
   </nav>
+  
+  {# Vehicle Filter Modal (Mobile Only) #}
+  <div class="vehicle-filter-modal" id="vehicle-filter-modal">
+    <div class="vehicle-filter-modal-content">
+      <div class="vehicle-filter-modal-header">
+        <h5>
+          <i class="sicon-filter"></i>
+          {{ trans('blocks.home.choose_your_car') }}
+        </h5>
+        <button type="button" class="vehicle-filter-close-btn" id="vehicle-filter-close-btn" aria-label="Close">
+          <i class="sicon-close"></i>
+        </button>
+      </div>
+      <div class="vehicle-filter-modal-body">
+        <div class="vehicle-filter-form">
+          <div class="vehicle-filter-fields">
+            <select class="vehicle-select" id="vehicle-filter-brand">
+              <option value="">{{ trans('blocks.home.brand') }}</option>
+            </select>
+            <select class="vehicle-select" id="vehicle-filter-model">
+              <option value="">{{ trans('blocks.home.model') }}</option>
+            </select>
+            <select class="vehicle-select" id="vehicle-filter-year">
+              <option value="">{{ trans('blocks.home.year') }}</option>
+            </select>
+            <select class="vehicle-select" id="vehicle-filter-engine">
+              <option value="">{{ trans('blocks.home.engine') }}</option>
+            </select>
+            <select class="vehicle-select" id="vehicle-filter-trim">
+              <option value="">{{ trans('blocks.home.trim') }}</option>
+            </select>
+            <button type="button" class="vehicle-search-btn" id="vehicle-filter-search-btn">{{ trans('blocks.home.search') }}</button>
+          </div>
+          <div class="vehicle-filter-or">
+            <span>{{ trans('blocks.home.or') }}</span>
+          </div>
+          <div class="vehicle-filter-vin">
+            <input type="text" class="vin-input" id="vehicle-filter-vin" placeholder="{{ trans('blocks.home.search_by_vin') }}">
+            <button class="vin-search-btn" id="vehicle-filter-vin-search-btn">{{ trans('blocks.home.search') }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>

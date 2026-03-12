@@ -1121,16 +1121,11 @@ salla-cart-summary:not(.cart-link-main) {
           }
         }
         
-        // Car filter icon button (mobile only) - next to search
-        .vehicle-filter-toggle-btn {
-          display: none !important; // Hidden on desktop
-        }
-        
         .search-submit-btn {
           width: 45px !important;
           height: 40px !important;
           flex-shrink: 0 !important;
-          border-radius: 0 8px 8px 0 !important;
+          border-radius: 0 !important; // No border radius, filter button will have it
           padding: 0 !important;
           box-sizing: border-box !important;
           
@@ -1139,68 +1134,266 @@ salla-cart-summary:not(.cart-link-main) {
             height: 18px !important;
           }
         }
+        
+        // Filter icon button next to search button (mobile only)
+        .vehicle-filter-toggle-btn {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          width: 45px !important;
+          height: 40px !important;
+          background-color: #034c8c !important;
+          border: none !important;
+          border-radius: 0 8px 8px 0 !important; // Right side rounded
+          cursor: pointer !important;
+          flex-shrink: 0 !important;
+          padding: 0 !important;
+          margin-left: 0 !important;
+          transition: background-color 0.3s !important;
+          
+          &:hover {
+            background-color: #023a6b !important;
+          }
+          
+          i {
+            font-size: 20px !important;
+            color: #ffffff !important;
+          }
+        }
       }
     }
     
-    // Show car filter icon button on mobile, positioned before search input
-    .main-nav-row-1 .header-search .search-wrapper {
+    // Hide All Categories section on mobile
+    .main-nav-row-2 {
+      display: none !important;
+    }
+  }
+}
+
+// Vehicle Filter Modal (Mobile Only)
+.vehicle-filter-modal {
+  display: none !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  z-index: 9999 !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  
+  &.active {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    padding: 20px 15px !important;
+  }
+  
+  .vehicle-filter-modal-content {
+    background-color: #ffffff !important;
+    border-radius: 12px !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+    position: relative !important;
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+    
+    .vehicle-filter-modal-header {
       display: flex !important;
-      align-items: stretch !important;
-      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 20px !important;
+      border-bottom: 1px solid #e0e0e0 !important;
+      position: sticky !important;
+      top: 0 !important;
+      background-color: #ffffff !important;
+      z-index: 10 !important;
+      border-radius: 12px 12px 0 0 !important;
       
-      .vehicle-filter-toggle-btn {
+      h5 {
+        font-size: 18px !important;
+        font-weight: 700 !important;
+        margin: 0 !important;
+        color: #111 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        
+        i {
+          font-size: 20px !important;
+          color: #034c8c !important;
+        }
+      }
+      
+      .vehicle-filter-close-btn {
+        background: none !important;
+        border: none !important;
+        font-size: 24px !important;
+        color: #666 !important;
+        cursor: pointer !important;
+        padding: 0 !important;
+        width: 32px !important;
+        height: 32px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        width: 40px !important;
-        height: 40px !important;
-        background-color: #034c8c !important;
-        color: #ffffff !important;
-        border: none !important;
-        border-radius: 8px 0 0 8px !important;
-        cursor: pointer !important;
-        flex-shrink: 0 !important;
-        margin-right: 0 !important;
-        padding: 0 !important;
+        border-radius: 50% !important;
         transition: background-color 0.3s !important;
-        order: -1 !important; // Place before search input
         
         &:hover {
-          background-color: #023a6b !important;
+          background-color: #f5f5f5 !important;
         }
         
         i {
           font-size: 20px !important;
-          color: #ffffff !important;
         }
-      }
-      
-      // Adjust search input border radius when car button is present
-      salla-search {
-        order: 0 !important;
-        
-        .s-search-input {
-          border-radius: 0 !important; // Remove left border radius when car button is before it
-        }
-      }
-      
-      // Adjust search submit button position
-      .search-submit-btn {
-        order: 1 !important;
-        border-radius: 0 8px 8px 0 !important;
       }
     }
     
-    .main-nav-row-2 {
-      display: none !important; // Hide All Categories menu on mobile
+    .vehicle-filter-modal-body {
+      padding: 20px !important;
       
-      .all-categories-dropdown {
-        display: none !important;
-      }
-      
-      custom-main-menu {
-        display: none !important;
+      .vehicle-filter-form {
+        .vehicle-filter-fields {
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 12px !important;
+          margin-bottom: 16px !important;
+        }
+        
+        .vehicle-select {
+          padding: 14px !important;
+          border: 1px solid #e0e0e0 !important;
+          border-radius: 8px !important;
+          font-size: 15px !important;
+          background-color: #ffffff !important;
+          cursor: pointer !important;
+          height: 50px !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+          appearance: none !important;
+          -webkit-appearance: none !important;
+          -moz-appearance: none !important;
+          transition: border-color 0.3s !important;
+          
+          &:focus {
+            border-color: #034c8c !important;
+            outline: none !important;
+          }
+        }
+        
+        .vehicle-search-btn {
+          padding: 14px !important;
+          background-color: #f29f05 !important;
+          color: #000000 !important;
+          border: none !important;
+          border-radius: 8px !important;
+          cursor: pointer !important;
+          font-weight: 600 !important;
+          font-size: 15px !important;
+          height: 50px !important;
+          width: 100% !important;
+          transition: background-color 0.3s !important;
+          
+          &:hover {
+            background-color: #e68f04 !important;
+          }
+        }
+        
+        .vehicle-filter-or {
+          text-align: center !important;
+          margin: 16px 0 !important;
+          position: relative !important;
+          
+          &::before,
+          &::after {
+            content: '' !important;
+            position: absolute !important;
+            top: 50% !important;
+            width: 40% !important;
+            height: 1px !important;
+            background-color: #e0e0e0 !important;
+          }
+          
+          &::before {
+            left: 0 !important;
+          }
+          
+          &::after {
+            right: 0 !important;
+          }
+          
+          span {
+            background-color: #ffffff !important;
+            padding: 0 12px !important;
+            font-weight: 700 !important;
+            color: #444 !important;
+            position: relative !important;
+            z-index: 1 !important;
+            display: inline-block !important;
+            font-size: 14px !important;
+          }
+        }
+        
+        .vehicle-filter-vin {
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 12px !important;
+        }
+        
+        .vin-input {
+          padding: 14px !important;
+          border: 1px solid #e0e0e0 !important;
+          border-radius: 8px !important;
+          font-size: 15px !important;
+          height: 50px !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+          transition: border-color 0.3s !important;
+          
+          &:focus {
+            border-color: #034c8c !important;
+            outline: none !important;
+          }
+          
+          &::placeholder {
+            color: #999 !important;
+          }
+        }
+        
+        .vin-search-btn {
+          padding: 14px !important;
+          background-color: #034c8c !important;
+          color: #ffffff !important;
+          border: none !important;
+          border-radius: 8px !important;
+          cursor: pointer !important;
+          font-weight: 600 !important;
+          font-size: 15px !important;
+          height: 50px !important;
+          width: 100% !important;
+          transition: background-color 0.3s !important;
+          
+          &:hover {
+            background-color: #023a6b !important;
+          }
+        }
       }
     }
+  }
+}
+
+// Desktop: Hide filter button and modal
+@media (min-width: 769px) {
+  .vehicle-filter-toggle-btn {
+    display: none !important;
+  }
+  
+  .vehicle-filter-modal {
+    display: none !important;
   }
 }
