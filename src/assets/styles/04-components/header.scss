@@ -914,189 +914,122 @@ salla-cart-summary:not(.cart-link-main) {
   }
   
   @media (max-width: 768px) {
-    // Mobile: Match reference design - Logo + Icons on top row, Search below
     .main-nav-row-1 {
       flex-wrap: wrap;
-      gap: 0;
-      align-items: center;
-      padding: 10px 0;
+      gap: 10px;
+      align-items: center !important;
+      position: relative !important;
+      padding-right: 50px !important; // Make room for hamburger on right
     }
     
-    // Logo section - Left side
-    .flex.items-center {
-      flex: 1;
-      min-width: 0;
+    // Logo section - left side only
+    > div:first-child {
+      flex: 0 0 auto !important;
+      display: flex !important;
+      align-items: center !important;
       
+      // Move hamburger to right side of the row (not relative to this div)
       .mburger {
-        margin-right: 8px !important;
-        margin-left: 0 !important;
-        padding: 0;
+        position: absolute !important;
+        right: 15px !important; // Position on right side of .main-nav-row-1
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 32px !important;
+        height: 32px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background-color: transparent !important;
+        border: none !important;
+        z-index: 10 !important;
         
         i {
-          font-size: 20px !important;
+          font-size: 24px !important; // Match screenshot size
           color: #ffffff !important;
         }
       }
       
       .navbar-brand {
+        margin: 0 !important;
+        
         .mobex-logo {
           .mobex-title {
-            font-size: 20px !important;
-            font-weight: bold !important;
-            display: inline-block !important;
-            position: relative !important;
-            line-height: 1.2 !important;
-            
-            // Split MOB (white) and EX (orange) using CSS
-            // Hide original text by making it transparent
-            color: transparent !important;
-            
-            // Make first 3 characters white
-            &::before {
-              content: "MOB";
-              color: #ffffff !important;
-              font-size: 20px !important;
-              font-weight: bold !important;
-              display: inline-block !important;
-            }
-            
-            // Make last 2 characters orange
-            &::after {
-              content: "EX";
-              color: #f29f05 !important;
-              font-size: 20px !important;
-              font-weight: bold !important;
-              display: inline-block !important;
-            }
+            font-size: 22px !important; // Smaller on mobile
+            letter-spacing: 0.5px !important;
           }
           
           .mobex-subtitle {
-            font-size: 9px !important;
+            font-size: 10px !important; // Smaller on mobile
             margin-top: 1px !important;
-            color: #ffffff !important;
           }
         }
       }
     }
     
-    // Right side: Cart and hamburger menu
+    // Header actions - right side: cart, badge
     .header-actions-wrapper {
       display: flex !important;
       align-items: center !important;
-      gap: 12px !important;
-      flex-shrink: 0 !important;
+      gap: 0 !important;
+      flex: 0 0 auto !important;
+      order: 2 !important;
+      margin-right: 45px !important; // Space for hamburger menu
       
-      // Hide scope button on mobile
+      // Hide scopes/branches button on mobile
       .btn--rounded-gray {
         display: none !important;
       }
       
-      // Cart styling - white icon with orange badge
-      salla-cart-summary.cart-link-main {
-        padding: 0 !important;
-        background-color: transparent !important;
-        margin-right: 0 !important;
-        position: relative !important;
-        
-        &::before {
-          font-size: 20px !important;
-          color: #ffffff !important;
-          margin-right: 0 !important;
-        }
-        
-        // Cart badge - orange circle
-        .s-cart-summary-count {
-          background-color: #f29f05 !important;
-          color: #ffffff !important;
-          border-radius: 50% !important;
-          min-width: 18px !important;
-          height: 18px !important;
-          display: flex !important;
-          align-items: center !important;
-          justify-content: center !important;
-          font-size: 11px !important;
-          font-weight: bold !important;
-          position: absolute !important;
-          top: -6px !important;
-          right: -6px !important;
-          left: auto !important;
-        }
+      // Hide user menu on mobile (if shown)
+      salla-user-menu {
+        display: none !important;
       }
       
-      // Hamburger menu icon (if visible)
-      .mburger {
-        display: block !important;
+      // Cart styling for mobile - match screenshot
+      salla-cart-summary.cart-link-main {
+        padding: 0 !important;
+        margin-right: 0 !important;
+        background-color: transparent !important;
+        position: relative !important;
+        width: auto !important;
+        height: auto !important;
+        display: flex !important;
+        align-items: center !important;
         
-        i {
-          font-size: 20px !important;
+        &::before {
+          font-size: 22px !important; // Cart icon size
+          width: 22px !important;
+          height: 22px !important;
+          line-height: 22px !important;
+          margin-right: 0 !important;
           color: #ffffff !important;
+        }
+        
+        .s-cart-summary-count {
+          width: 18px !important; // Badge size
+          height: 18px !important;
+          min-width: 18px !important;
+          font-size: 11px !important;
+          top: -4px !important;
+          right: -4px !important;
+          background-color: #f29f05 !important; // Orange badge like screenshot
+          border: none !important;
+          box-shadow: none !important;
+        }
+        
+        .s-cart-summary-total {
+          display: none !important; // Hide total on mobile
         }
       }
     }
     
-    // Search bar - Full width below, centered
     .header-search {
       order: 3;
       width: 100%;
       max-width: 100%;
       margin: 10px 0 0 0;
-      flex: none !important;
-      min-width: auto !important;
-      
-      .search-wrapper {
-        border-radius: 8px !important;
-        overflow: hidden;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      }
-      
-      // Hide category dropdown on mobile
-      .search-category-wrapper {
-        display: none !important;
-      }
-      
-      .search-wrapper {
-        position: relative !important;
-      }
-      
-      salla-search {
-        position: relative !important;
-        
-        .s-search-input {
-          padding-left: 40px !important; // Space for magnifying glass icon
-          border-radius: 8px !important;
-        }
-      }
-      
-      // Add orange magnifying glass icon on left of search
-      .search-wrapper::before {
-        content: "";
-        position: absolute;
-        left: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 18px;
-        height: 18px;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f29f05'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E");
-        background-size: contain;
-        background-repeat: no-repeat;
-        z-index: 2;
-        pointer-events: none;
-      }
-      
-      // Filter icon on right (orange)
-      .search-submit-btn {
-        background-color: transparent !important;
-        width: 40px !important;
-        
-        svg {
-          width: 18px !important;
-          height: 18px !important;
-          
-          path {
-            fill: #f29f05 !important; // Orange filter icon
-          }
-        }
-      }
     }
     
     .main-nav-row-2 {
