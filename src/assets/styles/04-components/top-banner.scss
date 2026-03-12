@@ -117,62 +117,84 @@
   
   @media (max-width: 1024px) {
     .container {
-      flex-direction: column !important;
+      flex-direction: row !important; // Keep in row on tablet
       align-items: center !important;
-      text-align: center !important;
+      justify-content: space-between !important;
     }
     
     .top-banner-contact-left,
     .top-banner-contact-right {
-      justify-content: center !important;
-      width: 100% !important;
+      width: auto !important; // Don't force full width
+      flex-shrink: 0 !important;
     }
   }
   
-  // Mobile: Make everything smaller to reduce height
+  // Mobile: Make everything smaller and keep on one line
   @media (max-width: 768px) {
-    padding: 6px 0 !important; // Reduced from 10px
-    font-size: 12px !important; // Reduced from 14px
+    padding: 4px 0 !important; // Reduced from 10px to minimize height
+    font-size: 10px !important; // Reduced from 14px
     
     .container {
+      flex-direction: row !important; // Keep in row on mobile
+      align-items: center !important;
+      justify-content: space-between !important;
       gap: 8px !important; // Reduced from 15px
+      flex-wrap: nowrap !important; // Prevent wrapping
     }
     
     .top-banner-contact-left {
-      gap: 10px !important; // Reduced from 20px
+      gap: 8px !important; // Reduced from 20px
+      flex-shrink: 1 !important; // Allow shrinking
+      min-width: 0 !important; // Allow text truncation if needed
       
       span {
-        font-size: 11px !important; // Smaller text
-        gap: 6px !important; // Reduced from 8px
+        font-size: 9px !important; // Much smaller text
+        gap: 4px !important; // Reduced from 8px
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
         
         i {
-          font-size: 12px !important; // Reduced from 16px
-          width: 12px !important;
-          height: 12px !important;
-          line-height: 12px !important;
+          font-size: 10px !important; // Reduced from 16px
+          width: 10px !important;
+          height: 10px !important;
+          line-height: 10px !important;
+          flex-shrink: 0 !important;
         }
       }
     }
     
     .top-banner-contact-right {
-      gap: 6px !important; // Reduced from 10px
+      gap: 4px !important; // Reduced from 10px
+      flex-shrink: 0 !important; // Don't shrink buttons
+      display: flex !important;
+      align-items: center !important;
       
       .header-buttons {
         .btn--rounded-gray {
-          padding: 4px 8px !important; // Reduced from 6px 12px
-          font-size: 11px !important; // Reduced from 13px
-          gap: 3px !important; // Reduced from 5px
+          padding: 2px 4px !important; // Even smaller padding
+          font-size: 8px !important; // Smaller font
+          gap: 1px !important; // Reduced gap
+          line-height: 1.1 !important;
+          white-space: nowrap !important;
+          min-height: auto !important;
+          height: auto !important;
+          
+          span {
+            font-size: 8px !important;
+            line-height: 1.1 !important;
+          }
         }
       }
       
       .login-btn-icon {
-        padding: 5px 7px !important; // Reduced from 8px 10px
-        width: 28px !important; // Reduced from 36px
-        height: 28px !important; // Reduced from 36px
-        min-width: 28px !important;
+        padding: 4px !important; // Reduced from 8px 10px
+        width: 24px !important; // Reduced from 36px
+        height: 24px !important; // Reduced from 36px
+        min-width: 24px !important;
         
         i, .login-icon {
-          font-size: 14px !important; // Reduced from 18px
+          font-size: 12px !important; // Reduced from 18px
         }
       }
     }
@@ -255,20 +277,77 @@
     }
   }
   
-  @media (max-width: 640px) {
-    font-size: 12px !important;
-    padding: 8px 0 !important;
+  // Mobile: Make promotional banner more compact
+  @media (max-width: 768px) {
+    padding: 4px 0 !important; // Reduced from 10px
+    font-size: 10px !important; // Reduced from 14px
     
-    .top-banner-promo-content {
-      flex-direction: column !important;
-      gap: 10px !important;
+    .container {
+      gap: 8px !important; // Reduced from 15px
     }
     
-    .countdown-timer {
-      .timer-box {
-        padding: 4px 8px !important;
-        font-size: 12px !important;
-        min-width: 30px !important;
+    .top-banner-promo-content {
+      gap: 8px !important; // Reduced from 15px
+      flex-wrap: wrap !important;
+      
+      .sale-text {
+        font-size: 10px !important; // Smaller text
+      }
+      
+      .offer-expires {
+        font-size: 9px !important; // Smaller text
+      }
+      
+      .countdown-timer {
+        gap: 3px !important; // Reduced from 5px
+        
+        .timer-box {
+          padding: 3px 6px !important; // Reduced from 5px 10px
+          font-size: 10px !important; // Reduced from 14px
+          min-width: 24px !important; // Reduced from 35px
+          line-height: 1.2 !important;
+        }
+        
+        .timer-separator {
+          font-size: 10px !important; // Reduced from 16px
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 640px) {
+    padding: 3px 0 !important; // Even smaller padding
+    font-size: 9px !important; // Smaller base font
+    
+    .container {
+      gap: 6px !important;
+    }
+    
+    .top-banner-promo-content {
+      flex-direction: row !important; // Keep in row if possible
+      gap: 6px !important; // Reduced gap
+      flex-wrap: wrap !important;
+      
+      .sale-text {
+        font-size: 9px !important;
+      }
+      
+      .offer-expires {
+        font-size: 8px !important;
+      }
+      
+      .countdown-timer {
+        gap: 2px !important;
+        
+        .timer-box {
+          padding: 2px 5px !important;
+          font-size: 9px !important;
+          min-width: 20px !important;
+        }
+        
+        .timer-separator {
+          font-size: 9px !important;
+        }
       }
     }
   }
