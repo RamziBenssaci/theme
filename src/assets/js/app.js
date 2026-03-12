@@ -22,6 +22,7 @@ class App extends AppHelpers {
     this.initiateModals();
     this.initiateCollapse();
     this.initAttachWishlistListeners();
+    this.initiateVehicleFilterModal();
     
     // Ensure #more-menu-dropdown exists before running changeMenuDirection
     const menuDirInterval = setInterval(() => {
@@ -286,6 +287,78 @@ isElementLoaded(selector){
           toggleState(isOpen);
         });
       });
+  }
+
+  initiateVehicleFilterModal() {
+    const toggleBtn = document.getElementById('vehicle-filter-toggle-btn');
+    const vehicleFilter = document.querySelector('.hero-vehicle-filter');
+    
+    if (!toggleBtn || !vehicleFilter) return;
+
+    // Create modal overlay
+    let modal = document.querySelector('.vehicle-filter-modal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.className = 'vehicle-filter-modal';
+      
+      const modalContent = document.createElement('div');
+      modalContent.className = 'vehicle-filter-modal-content';
+      
+      const closeBtn = document.createElement('button');
+      closeBtn.type = 'button';
+      closeBtn.className = 'vehicle-filter-modal-close';
+      closeBtn.setAttribute('aria-label', 'Close');
+      closeBtn.innerHTML = '<i class="sicon-close"></i>';
+      
+      // Clone vehicle filter form
+      const vehicleFilterForm = vehicleFilter.querySelector('.vehicle-filter-form');
+      if (vehicleFilterForm) {
+        const clonedForm = vehicleFilterForm.cloneNode(true);
+        modalContent.appendChild(closeBtn);
+        modalContent.appendChild(clonedForm);
+      }
+      
+      modal.appendChild(modalContent);
+      document.body.appendChild(modal);
+    }
+
+    const closeBtn = modal.querySelector('.vehicle-filter-modal-close');
+
+    // Toggle modal on button click (only on mobile)
+    toggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (window.innerWidth <= 768) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+
+    // Close modal on close button click
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    }
+
+    // Close modal on overlay click
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Close modal on ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
   }
 
 

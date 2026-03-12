@@ -92,6 +92,10 @@
                         </select>
                       </div>
                       <salla-search inline height="48"></salla-search>
+                      {# Car filter icon button (mobile only) #}
+                      <button type="button" class="vehicle-filter-toggle-btn" id="vehicle-filter-toggle-btn" aria-label="Choose Your Car">
+                        <i class="sicon-car"></i>
+                      </button>
                       {# Red search button at the end #}
                       <button type="button" class="search-submit-btn" onclick="document.querySelector('.s-search-input')?.closest('salla-search')?.querySelector('button[type=\"submit\"]')?.click() || document.querySelector('.s-search-input')?.form?.requestSubmit()">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
