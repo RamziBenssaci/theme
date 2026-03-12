@@ -44413,6 +44413,14 @@ section.hero-section {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
+section.hero-section .hero-section-mobile-slider {
+  display: none !important;
+}
+@media (max-width: 768px) {
+  section.hero-section .hero-section-mobile-slider {
+    display: block !important;
+  }
+}
 section.hero-section .hero-slider {
   width: 100% !important;
   height: 100% !important;
@@ -44738,17 +44746,61 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
     display: block !important;
     visibility: visible !important;
     overflow: visible !important;
-    min-height: 350px !important;
+    min-height: auto !important;
     position: relative !important;
   }
   section.hero-section .hero-slider {
-    min-height: 350px !important;
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   section.hero-section .hero-slide {
-    min-height: 350px !important;
-    position: relative !important;
+    display: none !important;
   }
-  section.hero-section .hero-slide::before {
+  section.hero-section .hero-image,
+  section.hero-section .hero-content,
+  section.hero-section .hero-text,
+  section.hero-section .price-badge {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  section.hero-section .slider-dots {
+    display: flex !important;
+    visibility: visible !important;
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+    justify-content: center !important;
+    margin: 20px 0 !important;
+    padding: 0 !important;
+    z-index: 10 !important;
+    width: 100% !important;
+  }
+  section.hero-section .hero-vehicle-filter {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 0 !important;
+  }
+  .hero-section-mobile-slider {
+    position: relative !important;
+    min-height: 350px !important;
+    overflow: visible !important;
+    background-image: url("https://enovathemes.com/mobex/wp-content/uploads/slide-1.webp") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    border-radius: 10px !important;
+    margin: 20px 15px !important;
+  }
+  .hero-section-mobile-slider::before {
     content: "" !important;
     position: absolute !important;
     top: 0 !important;
@@ -44758,49 +44810,54 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
     background: linear-gradient(to bottom, rgba(26, 26, 26, 0.3) 0%, rgba(26, 26, 26, 0.1) 50%, transparent 100%) !important;
     z-index: 1 !important;
     pointer-events: none !important;
+    border-radius: 10px !important;
   }
-  section.hero-section .hero-slide .hero-image {
-    background-image: url("https://enovathemes.com/mobex/wp-content/uploads/slide-1.webp") !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    z-index: 0 !important;
-  }
-  section.hero-section .hero-slide .hero-image img {
-    display: none !important;
-  }
-  section.hero-section .hero-overlay-image {
+  .hero-section-mobile-slider .hero-overlay-images-right {
     position: absolute !important;
+    right: -10px !important;
+    bottom: -20px !important;
+    top: auto !important;
+    left: auto !important;
     z-index: 2 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    justify-content: flex-end !important;
+    gap: 5px !important;
     pointer-events: none !important;
+  }
+  .hero-section-mobile-slider .hero-overlay-images-right .hero-overlay-image {
     display: flex !important;
     align-items: flex-end !important;
+    justify-content: flex-end !important;
   }
-  section.hero-section .hero-overlay-image img {
+  .hero-section-mobile-slider .hero-overlay-images-right .hero-overlay-image img {
     width: auto !important;
-    max-width: 45% !important;
-    max-height: 90% !important;
+    max-width: 35% !important;
+    max-height: 40% !important;
     height: auto !important;
     display: block !important;
     -o-object-fit: contain !important;
        object-fit: contain !important;
+    -o-object-position: bottom right !important;
+       object-position: bottom right !important;
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3)) !important;
   }
-  section.hero-section .hero-overlay-image-1 {
-    left: -15px !important;
-    bottom: -25px !important;
-    top: auto !important;
-    right: auto !important;
-    justify-content: flex-start !important;
+  .hero-section-mobile-slider .hero-overlay-images-right .hero-overlay-image-2 {
+    order: 1 !important;
   }
-  section.hero-section .hero-overlay-image-2 {
-    right: -15px !important;
-    bottom: -25px !important;
-    top: auto !important;
-    left: auto !important;
-    justify-content: flex-end !important;
+  .hero-section-mobile-slider .hero-overlay-images-right .hero-overlay-image-2 img {
+    max-width: 30% !important;
+    max-height: 35% !important;
   }
-  section.hero-section .hero-content {
+  .hero-section-mobile-slider .hero-overlay-images-right .hero-overlay-image-1 {
+    order: 2 !important;
+  }
+  .hero-section-mobile-slider .hero-overlay-images-right .hero-overlay-image-1 img {
+    max-width: 40% !important;
+    max-height: 45% !important;
+  }
+  .hero-section-mobile-slider .hero-content {
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
@@ -44812,16 +44869,14 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
     justify-content: center !important;
     pointer-events: none !important;
   }
-  section.hero-section .hero-text {
+  .hero-section-mobile-slider .hero-text {
     position: relative !important;
-    bottom: auto !important;
-    right: auto !important;
     text-align: center !important;
     max-width: 90% !important;
     z-index: 4 !important;
     pointer-events: auto !important;
   }
-  section.hero-section .hero-text h2 {
+  .hero-section-mobile-slider .hero-text h2 {
     font-size: 32px !important;
     color: #034c8c !important;
     margin-bottom: 10px !important;
@@ -44829,12 +44884,12 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
   }
 }
 @media (max-width: 768px) and (max-width: 480px) {
-  section.hero-section .hero-text h2 {
+  .hero-section-mobile-slider .hero-text h2 {
     font-size: 28px !important;
   }
 }
 @media (max-width: 768px) {
-  section.hero-section .hero-text p {
+  .hero-section-mobile-slider .hero-text p {
     font-size: 18px !important;
     color: #ffffff !important;
     margin-bottom: 20px !important;
@@ -44842,33 +44897,13 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
   }
 }
 @media (max-width: 768px) and (max-width: 480px) {
-  section.hero-section .hero-text p {
+  .hero-section-mobile-slider .hero-text p {
     font-size: 16px !important;
   }
 }
 @media (max-width: 768px) {
-  section.hero-section .hero-text .shop-now-btn {
+  .hero-section-mobile-slider .hero-text .shop-now-btn {
     pointer-events: auto !important;
-  }
-  section.hero-section .price-badge {
-    position: absolute !important;
-    bottom: 20px !important;
-    right: 20px !important;
-    z-index: 4 !important;
-    font-size: 16px !important;
-    padding: 8px 16px !important;
-  }
-  section.hero-section .slider-dots {
-    display: none !important;
-  }
-  section.hero-section .hero-vehicle-filter {
-    display: none !important;
-    visibility: hidden !important;
-    height: 0 !important;
-    overflow: hidden !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    opacity: 0 !important;
   }
 }
 /* Promotional Banners */
