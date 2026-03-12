@@ -914,68 +914,79 @@ salla-cart-summary:not(.cart-link-main) {
   }
   
   @media (max-width: 768px) {
-    .main-nav-row-1 {
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center !important;
-      position: relative !important;
-      padding-right: 50px !important; // Make room for hamburger on right
+    // Prevent horizontal scroll
+    .main-nav-container,
+    .main-nav-container .container,
+    .main-nav-container .inner {
+      overflow-x: hidden !important;
+      max-width: 100% !important;
+      width: 100% !important;
     }
     
-    // Logo section - left side only
+    .main-nav-row-1 {
+      flex-wrap: nowrap !important; // Keep everything on one line
+      gap: 8px !important; // Reduced gap
+      align-items: center !important;
+      position: relative !important;
+      padding: 0 10px !important; // Add padding to prevent edge issues
+      overflow: visible !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    
+    // Logo section - use image logo on mobile
     > div:first-child {
       flex: 0 0 auto !important;
       display: flex !important;
       align-items: center !important;
+      gap: 0 !important;
+      min-width: 0 !important; // Allow shrinking
+      order: 1 !important;
       
-      // Move hamburger to right side of the row (not relative to this div)
+      // Hide hamburger from logo section (it will be moved to header-actions-wrapper)
       .mburger {
-        position: absolute !important;
-        right: 15px !important; // Position on right side of .main-nav-row-1
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        width: 32px !important;
-        height: 32px !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        background-color: transparent !important;
-        border: none !important;
-        z-index: 10 !important;
-        
-        i {
-          font-size: 24px !important; // Match screenshot size
-          color: #ffffff !important;
-        }
+        display: none !important;
       }
       
       .navbar-brand {
         margin: 0 !important;
+        flex: 0 0 auto !important;
+        display: flex !important;
+        align-items: center !important;
+        min-width: 0 !important;
         
+        // Hide text logo on mobile
         .mobex-logo {
-          .mobex-title {
-            font-size: 22px !important; // Smaller on mobile
-            letter-spacing: 0.5px !important;
-          }
-          
-          .mobex-subtitle {
-            font-size: 10px !important; // Smaller on mobile
-            margin-top: 1px !important;
-          }
+          display: none !important;
+        }
+        
+        // Show image logo on mobile
+        .mobile-logo-img {
+          display: block !important;
+          max-width: 120px !important;
+          max-height: 40px !important;
+          width: auto !important;
+          height: auto !important;
+          object-fit: contain !important;
+        }
+        
+        // Hide any other images that might conflict
+        img:not(.mobile-logo-img) {
+          display: none !important;
         }
       }
     }
     
-    // Header actions - right side: cart, badge
+    // Header actions - inline with logo: cart, badge, menu
     .header-actions-wrapper {
       display: flex !important;
       align-items: center !important;
-      gap: 0 !important;
+      gap: 6px !important; // Small gap between cart and menu
       flex: 0 0 auto !important;
-      order: 2 !important;
-      margin-right: 45px !important; // Space for hamburger menu
+      order: 2 !important; // After logo, before search
+      margin: 0 !important;
+      padding: 0 !important;
+      min-width: 0 !important;
       
       // Hide scopes/branches button on mobile
       .btn--rounded-gray {
@@ -987,10 +998,10 @@ salla-cart-summary:not(.cart-link-main) {
         display: none !important;
       }
       
-      // Cart styling for mobile - match screenshot
+      // Cart styling for mobile - inline with logo
       salla-cart-summary.cart-link-main {
         padding: 0 !important;
-        margin-right: 0 !important;
+        margin: 0 !important;
         background-color: transparent !important;
         position: relative !important;
         width: auto !important;
@@ -1014,7 +1025,7 @@ salla-cart-summary:not(.cart-link-main) {
           font-size: 11px !important;
           top: -4px !important;
           right: -4px !important;
-          background-color: #f29f05 !important; // Orange badge like screenshot
+          background-color: #f29f05 !important; // Orange badge
           border: none !important;
           box-shadow: none !important;
         }
@@ -1025,11 +1036,81 @@ salla-cart-summary:not(.cart-link-main) {
       }
     }
     
+    // Hamburger menu - position inline with cart on right side
+    .main-nav-row-1 .mburger {
+      position: absolute !important;
+      right: 15px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 32px !important;
+      height: 32px !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      background-color: transparent !important;
+      border: none !important;
+      z-index: 10 !important;
+      
+      i {
+        font-size: 24px !important;
+        color: #ffffff !important;
+      }
+    }
+    
+    // Adjust header-actions-wrapper to leave space for hamburger
+    .header-actions-wrapper {
+      margin-right: 40px !important; // Space for hamburger menu
+    }
+    
+    // Search bar - responsive and smaller
     .header-search {
-      order: 3;
-      width: 100%;
-      max-width: 100%;
-      margin: 10px 0 0 0;
+      order: 3 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 10px 0 0 0 !important;
+      flex: 1 1 100% !important;
+      padding: 0 10px !important; // Add padding to prevent overflow
+      box-sizing: border-box !important;
+      
+      .search-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: flex !important;
+        gap: 0 !important;
+        overflow: hidden !important;
+        
+        // Hide category dropdown on mobile
+        .search-category-wrapper {
+          display: none !important;
+        }
+        
+        salla-search {
+          width: 100% !important;
+          max-width: 100% !important;
+          flex: 1 !important;
+          
+          .s-search-input {
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: 10px 12px !important; // Smaller padding
+            font-size: 14px !important;
+            box-sizing: border-box !important;
+          }
+        }
+        
+        .search-submit-btn {
+          flex-shrink: 0 !important;
+          padding: 10px 15px !important; // Smaller padding
+          width: auto !important;
+          
+          svg {
+            width: 20px !important; // Smaller icon
+            height: 20px !important;
+          }
+        }
+      }
     }
     
     .main-nav-row-2 {

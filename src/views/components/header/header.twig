@@ -68,6 +68,8 @@
                         <i class="sicon-menu text-primary text-2xl"></i>
                       </a>
                       <a class="navbar-brand" href="{{ store.url }}">
+                          {# Image logo for mobile #}
+                          <img src="{{ 'images/mobexlogo.png'|asset }}" alt="{{ store.name }}" class="mobile-logo-img" style="display: none;">
                           {# MOBEX AUTO PARTS & ACCESSORIES Logo #}
                           {% if is_page('index') %}
                             <h1 class="mobex-logo">

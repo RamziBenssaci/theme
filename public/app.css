@@ -3638,6 +3638,14 @@ textarea.s-input{
 .main-nav-container .s-advertisement-content.items-stretch {
   align-items: center;
 }
+@media (max-width: 768px) {
+  
+  .main-nav-container .main-nav-container .s-advertisement-content {
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+  }
+}
 .main-nav-row-2 .s-advertisement-content {
   display: flex;
   align-items: baseline;
@@ -43594,58 +43602,65 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   }
 }
 @media (max-width: 768px) {
-  .main-nav-container .main-nav-row-1 {
-    align-items: center !important;
-    position: relative !important;
-    padding-right: 50px !important;
+  .main-nav-container .main-nav-container,
+  .main-nav-container .main-nav-container .container,
+  .main-nav-container .main-nav-container .inner {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+    width: 100% !important;
   }
   .main-nav-container .main-nav-row-1 {
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    align-items: center !important;
+    position: relative !important;
+    padding: 0 10px !important;
+    overflow: visible !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
   .main-nav-container > div:first-child {
     flex: 0 0 auto !important;
     display: flex !important;
     align-items: center !important;
+    gap: 0 !important;
+    min-width: 0 !important;
+    order: 1 !important;
   }
   .main-nav-container > div:first-child .mburger {
-    position: absolute !important;
-    right: 15px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 32px !important;
-    height: 32px !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    background-color: transparent !important;
-    border: none !important;
-    z-index: 10 !important;
-  }
-  .main-nav-container > div:first-child .mburger i {
-    font-size: 24px !important;
-    color: #ffffff !important;
+    display: none !important;
   }
   .main-nav-container > div:first-child .navbar-brand {
     margin: 0 !important;
+    flex: 0 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    min-width: 0 !important;
   }
-  .main-nav-container > div:first-child .navbar-brand .mobex-logo .mobex-title {
-    font-size: 22px !important;
-    letter-spacing: 0.5px !important;
+  .main-nav-container > div:first-child .navbar-brand .mobex-logo {
+    display: none !important;
   }
-  .main-nav-container > div:first-child .navbar-brand .mobex-logo .mobex-subtitle {
-    font-size: 10px !important;
-    margin-top: 1px !important;
+  .main-nav-container > div:first-child .navbar-brand .mobile-logo-img {
+    display: block !important;
+    max-width: 120px !important;
+    max-height: 40px !important;
+    width: auto !important;
+    height: auto !important;
+    -o-object-fit: contain !important;
+       object-fit: contain !important;
+  }
+  .main-nav-container > div:first-child .navbar-brand img:not(.mobile-logo-img) {
+    display: none !important;
   }
   .main-nav-container .header-actions-wrapper {
     display: flex !important;
     align-items: center !important;
-    gap: 0 !important;
+    gap: 6px !important;
     flex: 0 0 auto !important;
     order: 2 !important;
-    margin-right: 45px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-width: 0 !important;
   }
   .main-nav-container .header-actions-wrapper .btn--rounded-gray {
     display: none !important;
@@ -43655,7 +43670,7 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   }
   .main-nav-container .header-actions-wrapper salla-cart-summary.cart-link-main {
     padding: 0 !important;
-    margin-right: 0 !important;
+    margin: 0 !important;
     background-color: transparent !important;
     position: relative !important;
     width: auto !important;
@@ -43685,11 +43700,68 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   .main-nav-container .header-actions-wrapper salla-cart-summary.cart-link-main .s-cart-summary-total {
     display: none !important;
   }
+  .main-nav-container .main-nav-row-1 .mburger {
+    position: absolute !important;
+    right: 15px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: transparent !important;
+    border: none !important;
+    z-index: 10 !important;
+  }
+  .main-nav-container .main-nav-row-1 .mburger i {
+    font-size: 24px !important;
+    color: #ffffff !important;
+  }
+  .main-nav-container .header-actions-wrapper {
+    margin-right: 40px !important;
+  }
   .main-nav-container .header-search {
-    order: 3;
-    width: 100%;
-    max-width: 100%;
-    margin: 10px 0 0 0;
+    order: 3 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 10px 0 0 0 !important;
+    flex: 1 1 100% !important;
+    padding: 0 10px !important;
+    box-sizing: border-box !important;
+  }
+  .main-nav-container .header-search .search-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    gap: 0 !important;
+    overflow: hidden !important;
+  }
+  .main-nav-container .header-search .search-wrapper .search-category-wrapper {
+    display: none !important;
+  }
+  .main-nav-container .header-search .search-wrapper salla-search {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 !important;
+  }
+  .main-nav-container .header-search .search-wrapper salla-search .s-search-input {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    box-sizing: border-box !important;
+  }
+  .main-nav-container .header-search .search-wrapper .search-submit-btn {
+    flex-shrink: 0 !important;
+    padding: 10px 15px !important;
+    width: auto !important;
+  }
+  .main-nav-container .header-search .search-wrapper .search-submit-btn svg {
+    width: 20px !important;
+    height: 20px !important;
   }
   .main-nav-container .main-nav-row-2 {
     flex-direction: column;
@@ -48406,6 +48478,14 @@ model-viewer[style*=width]:before{
 }
 .main-nav-container .s-comments-product .s-comments-container > div.flex.items-stretch > div:last-child {
   flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  
+  .main-nav-container .main-nav-container .s-comments-product .s-comments-container {
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+  }
 }
 .main-nav-row-2 .s-comments-product .s-comments-container {
   display: flex;
