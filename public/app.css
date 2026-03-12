@@ -3639,6 +3639,10 @@ textarea.s-input{
   align-items: center;
 }
 @media (max-width: 768px) {
+  .main-nav-container .main-nav-container .s-advertisement-content {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
   
   .main-nav-container .main-nav-container .s-advertisement-content {
     overflow-x: hidden;
@@ -43603,6 +43607,18 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   }
 }
 @media (max-width: 768px) {
+  .main-nav-container .main-nav-container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .main-nav-container .main-nav-container .inner {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .main-nav-container .main-nav-container .container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
   .main-nav-container .main-nav-container,
   .main-nav-container .main-nav-container .container,
   .main-nav-container .main-nav-container .inner,
@@ -43617,9 +43633,10 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
     gap: 0 !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding: 8px 15px !important;
+    padding: 4px 15px !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    min-height: auto !important;
   }
   .main-nav-container > div:first-child {
     flex: 0 0 auto !important;
@@ -43627,6 +43644,8 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
     align-items: center !important;
     order: 1 !important;
     position: relative !important;
+    padding-left: 10px !important;
+    margin-left: 0 !important;
   }
   .main-nav-container > div:first-child .mburger {
     position: absolute !important;
@@ -48491,6 +48510,10 @@ model-viewer[style*=width]:before{
   flex-shrink: 0;
 }
 @media (max-width: 768px) {
+  .main-nav-container .main-nav-container .s-comments-product .s-comments-container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
   
   .main-nav-container .main-nav-container .s-comments-product .s-comments-container {
     overflow-x: hidden;

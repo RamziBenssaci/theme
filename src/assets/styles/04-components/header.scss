@@ -914,7 +914,22 @@ salla-cart-summary:not(.cart-link-main) {
   }
   
   @media (max-width: 768px) {
-    // Prevent horizontal scroll
+    // Prevent horizontal scroll and reduce vertical spacing
+    .main-nav-container {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      
+      .inner {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+      }
+      
+      .container {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+      }
+    }
+    
     .main-nav-container,
     .main-nav-container .container,
     .main-nav-container .inner,
@@ -930,18 +945,21 @@ salla-cart-summary:not(.cart-link-main) {
       gap: 0 !important;
       align-items: center !important;
       justify-content: space-between !important;
-      padding: 8px 15px !important; // Add padding
+      padding: 4px 15px !important; // Reduced top/bottom padding to compact height
       width: 100% !important;
       box-sizing: border-box !important;
+      min-height: auto !important;
     }
     
-    // Logo section - left side
+    // Logo section - left side with space from left edge
     > div:first-child {
       flex: 0 0 auto !important;
       display: flex !important;
       align-items: center !important;
       order: 1 !important;
       position: relative !important;
+      padding-left: 10px !important; // Add space from left edge
+      margin-left: 0 !important;
       
       // Keep hamburger but position it in header-actions-wrapper area
       .mburger {
