@@ -70,22 +70,32 @@
   
   .s-products-list {
     display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
+    // Mobile-first: Start with 1 column
+    grid-template-columns: 1fr !important;
     gap: 16px !important;
+    width: 100% !important;
     
-    // Mobile: One card per line - full width for each card
-    @media (max-width: 768px) {
+    // Mobile: Ensure one card per line (explicit override)
+    @media (max-width: 767px) {
       grid-template-columns: 1fr !important; // One card per line
       gap: 16px !important; // Comfortable spacing between cards
       width: 100% !important; // Ensure full width
     }
     
+    // Tablet and up: 2 columns
     @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 16px !important;
+    }
+    
+    // Desktop: 3 columns
+    @media (min-width: 1024px) {
       grid-template-columns: repeat(3, 1fr) !important;
       gap: 20px !important;
     }
     
-    @media (min-width: 1024px) {
+    // Large desktop: 4 columns
+    @media (min-width: 1280px) {
       grid-template-columns: repeat(4, 1fr) !important;
       gap: 24px !important;
     }

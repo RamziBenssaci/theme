@@ -50713,11 +50713,12 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
 }
 .s-block--latest-products salla-products-list .s-products-list {
   display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
+  grid-template-columns: 1fr !important;
   grid-gap: 16px !important;
   gap: 16px !important;
+  width: 100% !important;
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .s-block--latest-products salla-products-list .s-products-list {
     grid-template-columns: 1fr !important;
     gap: 16px !important;
@@ -50726,11 +50727,17 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
 }
 @media (min-width: 768px) {
   .s-block--latest-products salla-products-list .s-products-list {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+}
+@media (min-width: 1024px) {
+  .s-block--latest-products salla-products-list .s-products-list {
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 20px !important;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .s-block--latest-products salla-products-list .s-products-list {
     grid-template-columns: repeat(4, 1fr) !important;
     gap: 24px !important;
