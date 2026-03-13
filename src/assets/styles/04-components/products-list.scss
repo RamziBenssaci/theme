@@ -175,11 +175,119 @@
     max-width: 100% !important; // No max-width restrictions
     padding: 14px !important; // Comfortable padding for full width
     min-height: 130px !important; // Relaxed height
-    gap: 14px !important; // Better spacing between image and content
-    border-radius: 8px !important; // Slightly more rounded
+    gap: 0 !important; // No gap, image and content side by side
+    border-radius: 8px 8px 0 0 !important; // Rounded top only (button below)
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important; // Subtle shadow for depth
     flex-shrink: 0 !important; // Prevent shrinking
     flex-grow: 1 !important; // Allow growth to fill space
+    margin-bottom: 0 !important; // No margin, button connects
+  }
+}
+
+// Mobile: Add to cart button below card
+.s-block--latest-products .s-product-card-entry {
+  @media (max-width: 768px) {
+    // Create wrapper for card + button
+    display: flex !important;
+    flex-direction: column !important;
+    
+    // Show button below card
+    .s-product-card-content-footer,
+    .s-product-card-actions {
+      display: flex !important;
+      visibility: visible !important;
+      height: auto !important;
+      overflow: visible !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      margin-top: 0 !important;
+      order: 2 !important; // Below card content
+      
+      salla-add-product-button,
+      salla-button {
+        display: flex !important;
+        visibility: visible !important;
+        height: auto !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+    }
+  }
+}
+
+// Mobile: Style button below card
+.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button,
+.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button,
+.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button {
+  @media (max-width: 768px) {
+    position: relative !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: center !important;
+    width: 100% !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    background-color: #034c8c !important;
+    padding: 10px 16px !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 0 0 8px 8px !important; // Rounded bottom only
+    cursor: pointer !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    min-height: 42px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 4px rgba(3, 76, 140, 0.2) !important;
+    
+    button,
+    .s-button {
+      background-color: transparent !important;
+      color: #ffffff !important;
+      border: none !important;
+      padding: 0 !important;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      text-align: center !important;
+      width: 100% !important;
+      min-height: 42px !important;
+      height: 42px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 6px !important;
+    }
+    
+    &:hover,
+    &:hover button,
+    &:hover .s-button {
+      color: #ffffff !important;
+      background-color: #023a6b !important;
+      box-shadow: 0 3px 6px rgba(3, 76, 140, 0.3) !important;
+    }
+    
+    // Single arrow after text
+    &::after {
+      content: "→" !important;
+      display: inline-block !important;
+      font-size: 16px !important;
+      line-height: 1 !important;
+      color: #ffffff !important;
+      margin-left: 6px !important;
+      transition: transform 0.3s ease !important;
+      font-weight: normal !important;
+    }
+    
+    &:hover::after {
+      transform: translateX(2px) !important;
+    }
   }
 }
 
@@ -233,13 +341,14 @@
   flex-shrink: 0 !important;
   overflow: visible !important; // Allow heart icon to overlay
   
-  // Mobile: Larger image container for full-width cards
+  // Mobile: Image takes 50% of card width
   @media (max-width: 768px) {
-    width: 110px !important;
-    min-width: 110px !important;
-    max-width: 110px !important;
-    height: 100px !important;
-    min-height: 100px !important;
+    width: 50% !important;
+    min-width: 50% !important;
+    max-width: 50% !important;
+    height: auto !important;
+    min-height: 120px !important;
+    flex-shrink: 0 !important;
   }
   
   img {
@@ -413,6 +522,16 @@
   flex-grow: 1 !important;
   justify-content: space-between !important;
   min-width: 0 !important;
+  
+  // Mobile: Content takes remaining 50% next to image
+  @media (max-width: 768px) {
+    width: 50% !important;
+    flex-grow: 1 !important;
+    padding-left: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
 }
 
 /* Product Title - Compact */
@@ -437,8 +556,13 @@
   @media (max-width: 768px) {
     font-size: 14px !important;
     line-height: 18px !important;
-    margin-bottom: 4px !important;
+    margin-bottom: 6px !important;
     max-height: 36px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
   
   &:hover {
@@ -462,6 +586,14 @@
   &:empty {
     display: none !important;
   }
+  
+  // Mobile: Ensure rating is visible
+  @media (max-width: 768px) {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin-bottom: 4px !important;
+  }
 }
 
 /* Product Price - Compact */
@@ -480,7 +612,11 @@
   // Mobile: Better price styling for full-width cards
   @media (max-width: 768px) {
     font-size: 16px !important;
-    margin-top: 4px !important;
+    margin-top: 6px !important;
+    margin-bottom: 8px !important;
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
   
   h4 {
@@ -534,13 +670,14 @@
   transition: all 0.3s ease !important;
   box-shadow: 0 2px 4px rgba(3, 76, 140, 0.2) !important;
   
-  // Mobile: Better button styling for full-width cards
+  // Mobile: Hide button inside card
   @media (max-width: 768px) {
-    font-size: 13px !important;
-    padding: 9px 18px !important;
-    min-height: 38px !important;
-    height: 38px !important;
-    border-radius: 6px !important;
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   
   button,
@@ -640,6 +777,16 @@
     display: flex !important;
     width: 100% !important;
     order: 1 !important;
+  }
+  
+  // Mobile: Hide button inside card, it will be moved outside
+  @media (max-width: 768px) {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 }
 
