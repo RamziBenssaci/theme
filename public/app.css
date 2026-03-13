@@ -31717,6 +31717,15 @@ input[type=radio].sr-only:checked ~ div.s-quick-order-expandable .s-form-group >
 .s-rating-modal-thanks-btn {
   /* Button Variants */
 }
+@media (max-width: 768px) and (max-width: 768px) {
+  .hero-section-mobile-slider .hero-section-mobile-slider .hero-content .s-rating-modal-thanks-btn,
+  .hero-section-mobile-slider .hero-section-mobile-slider .hero-content a.s-rating-modal-thanks-btn {
+    font-size: 12px;
+    padding: 6px 14px;
+    display: inline-block;
+    margin-top: 8px;
+  }
+}
 @media only screen and (min-width: 1024px) {
   .main-menu .sub-menu .s-rating-modal-thanks-btn {
     padding: 8px 10px 10px;
@@ -44844,6 +44853,19 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
     display: none !important;
     visibility: hidden !important;
   }
+  section.hero-section .hero-section-mobile-slider .hero-content,
+  section.hero-section .hero-section-mobile-slider .hero-text,
+  section.hero-section .hero-section-mobile-slider .price-badge {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  section.hero-section .hero-section-mobile-slider .hero-text {
+    display: block !important;
+  }
+  section.hero-section .hero-section-mobile-slider .price-badge {
+    display: inline-block !important;
+  }
   section.hero-section .slider-dots {
     display: flex !important;
     visibility: visible !important;
@@ -44876,6 +44898,9 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
     background-repeat: no-repeat !important;
     border-radius: 10px !important;
     margin: 20px 15px !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
   .hero-section-mobile-slider::before {
     content: "" !important;
@@ -44968,6 +44993,14 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
     justify-content: flex-start !important;
     pointer-events: none !important;
     padding: 30px 20px !important;
+  }
+}
+@media (max-width: 768px) and (max-width: 768px) {
+  .hero-section-mobile-slider .hero-content {
+    margin-left: -80px !important;
+    margin-top: -80px !important;
+    position: relative !important;
+    z-index: 500 !important;
   }
 }
 @media (max-width: 768px) and (max-width: 480px) {
@@ -45071,6 +45104,48 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
     width: auto !important;
     height: auto !important;
     margin: 0 !important;
+  }
+}
+@media (max-width: 768px) and (max-width: 768px) {
+  .hero-section-mobile-slider .hero-section-mobile-slider .price-badge {
+    font-size: 14px !important;
+    text-align: left !important;
+    display: block !important;
+    position: absolute !important;
+    bottom: auto !important;
+    right: auto !important;
+    left: 30px !important;
+    top: auto !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+    color: #ffffff !important;
+    border-radius: 0 !important;
+    white-space: normal !important;
+    width: auto !important;
+    height: auto !important;
+    z-index: 401 !important;
+    font-weight: normal !important;
+  }
+  .hero-section-mobile-slider .hero-section-mobile-slider .hero-text {
+    margin-top: 30px !important;
+  }
+  .hero-section-mobile-slider .hero-section-mobile-slider .hero-content .price,
+  .hero-section-mobile-slider .hero-section-mobile-slider .hero-content .product-price {
+    font-size: 14px !important;
+    text-align: left !important;
+    display: block !important;
+  }
+  .hero-section-mobile-slider .hero-section-mobile-slider .hero-content .btn,
+  .hero-section-mobile-slider .hero-section-mobile-slider .hero-content a.btn,
+  .hero-section-mobile-slider .hero-section-mobile-slider .hero-content .button,
+  .hero-section-mobile-slider .hero-section-mobile-slider .hero-content .shop-now-btn,
+  .hero-section-mobile-slider .hero-section-mobile-slider .hero-text .shop-now-btn {
+    font-size: 12px !important;
+    padding: 6px 14px !important;
+    display: inline-block !important;
+    margin-top: 8px !important;
   }
 }
 /* Promotional Banners */
@@ -48133,6 +48208,15 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 }
 .s-block--slider-with-bg .s-slider-block__display-all{
     border-radius: 9999px;
+}
+@media (max-width: 768px) and (max-width: 768px) {
+  .hero-section-mobile-slider .hero-section-mobile-slider .hero-content .s-block--slider-with-bg .s-slider-block__display-all,
+  .hero-section-mobile-slider .hero-section-mobile-slider .hero-content a.s-block--slider-with-bg .s-slider-block__display-all {
+    font-size: 12px;
+    padding: 6px 14px;
+    display: inline-block;
+    margin-top: 8px;
+  }
 }
 @media only screen and (min-width: 1024px) {
   .main-menu .sub-menu .s-block--slider-with-bg .s-slider-block__display-all {
