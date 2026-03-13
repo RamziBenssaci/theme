@@ -50825,28 +50825,33 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
 }
 @media (max-width: 768px) {
   .s-block--latest-products .s-product-card-entry {
+    width: 100% !important;
     max-width: 100% !important;
-    padding: 14px !important;
-    min-height: 130px !important;
+    padding: 0 !important;
+    min-height: auto !important;
     gap: 0 !important;
     border-radius: 8px 8px 0 0 !important;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
     flex-shrink: 0 !important;
     flex-grow: 1 !important;
     margin-bottom: 0 !important;
-    flex-direction: row !important;
     display: flex !important;
     flex-direction: column !important;
-    position: relative !important;
-    width: 100% !important;
+    align-items: stretch !important;
     overflow: visible !important;
   }
   .s-block--latest-products .s-product-card-entry > .s-product-card-image,
   .s-block--latest-products .s-product-card-entry > .s-product-card-content {
     order: 1 !important;
   }
-  .s-block--latest-products .s-product-card-entry > .s-product-card-content-footer,
-  .s-block--latest-products .s-product-card-entry > .s-product-card-actions,
+  .s-block--latest-products .s-product-card-entry > .s-product-card-content-footer {
+    order: 2 !important;
+  }
+  .s-block--latest-products .s-product-card-entry {
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+  }
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer,
   .s-block--latest-products .s-product-card-entry .s-product-card-actions {
     display: flex !important;
@@ -50861,12 +50866,7 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     margin-top: 0 !important;
     order: 2 !important;
     position: relative !important;
-    flex-shrink: 0 !important;
   }
-  .s-block--latest-products .s-product-card-entry > .s-product-card-content-footer salla-add-product-button,
-  .s-block--latest-products .s-product-card-entry > .s-product-card-content-footer salla-button,
-  .s-block--latest-products .s-product-card-entry > .s-product-card-actions salla-add-product-button,
-  .s-block--latest-products .s-product-card-entry > .s-product-card-actions salla-button,
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button,
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button,
   .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button,
@@ -50881,16 +50881,10 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     padding: 0 !important;
   }
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button,
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button salla-button {
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button {
     position: relative !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin: 0 !important;
     text-align: center !important;
     width: 100% !important;
     font-size: 13px !important;
@@ -50912,19 +50906,14 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     transition: all 0.3s ease !important;
     box-shadow: 0 2px 4px rgba(3, 76, 140, 0.2) !important;
     overflow: visible !important;
+    z-index: 11 !important;
   }
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button button,
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button .s-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button .s-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button .s-button,
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button button,
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button .s-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button .s-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button salla-button button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button salla-button .s-button {
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button button,
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button .s-button {
     background-color: transparent !important;
     color: #ffffff !important;
     border: none !important;
@@ -50941,31 +50930,19 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     gap: 6px !important;
   }
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button:hover, .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button:hover button, .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button:hover .s-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button:hover,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button:hover button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button:hover .s-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button:hover,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button:hover button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button:hover .s-button,
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button:hover,
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button:hover button,
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button:hover .s-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button:hover,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button:hover button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button:hover .s-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button salla-button:hover,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button salla-button:hover button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button salla-button:hover .s-button {
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button:hover,
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button:hover button,
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button:hover .s-button {
     color: #ffffff !important;
     background-color: #023a6b !important;
     box-shadow: 0 3px 6px rgba(3, 76, 140, 0.3) !important;
   }
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button::after,
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button salla-button::after {
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button::after {
     content: "→" !important;
     display: inline-block !important;
     font-size: 16px !important;
@@ -50976,11 +50953,8 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     font-weight: normal !important;
   }
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button:hover::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button:hover::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button:hover::after,
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button:hover::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button:hover::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button salla-button:hover::after {
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button:hover::after {
     transform: translateX(2px) !important;
   }
 }
@@ -51034,12 +51008,19 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
 }
 @media (max-width: 768px) {
   .s-block--latest-products .s-product-card-image {
-    width: 50% !important;
-    min-width: 50% !important;
-    max-width: 50% !important;
+    width: 35% !important;
+    min-width: 35% !important;
+    max-width: 35% !important;
     height: auto !important;
-    min-height: 120px !important;
+    min-height: 100px !important;
+    max-height: 120px !important;
     flex-shrink: 0 !important;
+    padding: 12px !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 }
 .s-block--latest-products .s-product-card-image img {
@@ -51211,9 +51192,10 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
 }
 @media (max-width: 768px) {
   .s-block--latest-products .s-product-card-content {
-    width: 50% !important;
+    width: 65% !important;
     flex-grow: 1 !important;
-    padding-left: 12px !important;
+    padding: 12px !important;
+    padding-left: 8px !important;
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -51222,6 +51204,8 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     flex-direction: column !important;
     justify-content: flex-start !important;
     overflow: visible !important;
+    position: relative !important;
+    z-index: 1 !important;
   }
 }
 /* Product Title - Compact */
@@ -51249,8 +51233,9 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   .s-block--latest-products .s-product-card-content a[href*="/product/"] {
     font-size: 14px !important;
     line-height: 18px !important;
-    margin-bottom: 6px !important;
-    max-height: 36px !important;
+    margin-bottom: 8px !important;
+    margin-top: 0 !important;
+    max-height: 40px !important;
     display: -webkit-box !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -51261,6 +51246,11 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     color: #333 !important;
+    font-weight: 700 !important;
+    -webkit-text-decoration: none !important;
+    text-decoration: none !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
 }
 .s-block--latest-products .s-product-card-content h3:hover,
@@ -51314,8 +51304,8 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   .s-block--latest-products .s-product-card-content .s-product-card-sale-price,
   .s-block--latest-products .s-product-card-content .s-product-card-price {
     font-size: 16px !important;
-    margin-top: 6px !important;
-    margin-bottom: 8px !important;
+    margin-top: 4px !important;
+    margin-bottom: 0 !important;
     display: inline-flex !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -51324,6 +51314,9 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     width: 100% !important;
     overflow: visible !important;
     color: #bf3617 !important;
+    font-weight: 700 !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
 }
 .s-block--latest-products .s-product-card-content .s-product-card-sale-price h4,
@@ -51653,212 +51646,111 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   opacity: 0.5 !important;
 }
 @media (max-width: 768px) {
-  .s-block--latest-products .s-product-card-entry .s-product-card-content,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-main,
-  .s-block--latest-products .s-product-card-entry [class*=content],
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=content],
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-main,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=content],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-main,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=content],
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-main,
-  section.s-block--latest-products .s-product-card-entry [class*=content],
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=content] {
+  .s-block--latest-products .s-product-card-entry {
+    display: grid !important;
+    grid-template-columns: 35% 65% !important;
+    grid-template-rows: auto auto !important;
+    width: 100% !important;
+    padding: 0 !important;
+    border-radius: 8px 8px 0 0 !important;
+    margin-bottom: 0 !important;
+    overflow: visible !important;
+    background-color: #fff !important;
+    border: 1px solid #e0e0e0 !important;
+    border-bottom: none !important;
+    grid-gap: 0 !important;
+    gap: 0 !important;
+  }
+  .s-block--latest-products .s-product-card-entry > .s-product-card-image {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  .s-block--latest-products .s-product-card-entry > .s-product-card-content {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  .s-block--latest-products .s-product-card-entry > .s-product-card-content-footer {
+    grid-column: 1/-1 !important;
+    grid-row: 2 !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  .s-block--latest-products .s-product-card-entry .s-product-card-image {
+    width: 100% !important;
+    padding: 12px !important;
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
     height: auto !important;
-    min-height: auto !important;
-    max-height: none !important;
-    width: 50% !important;
-    padding-left: 12px !important;
-    overflow: visible !important;
-    position: relative !important;
-    z-index: 1 !important;
+    min-height: 100px !important;
+    max-height: 120px !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-main,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-main,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-main,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-main,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main {
-    display: block !important;
+  .s-block--latest-products .s-product-card-entry .s-product-card-image img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 120px !important;
+    -o-object-fit: contain !important;
+       object-fit: contain !important;
+  }
+  .s-block--latest-products .s-product-card-entry .s-product-card-content {
+    width: 100% !important;
+    padding: 12px !important;
+    padding-left: 8px !important;
+    display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
-    width: 100% !important;
-    flex-grow: 1 !important;
+    height: auto !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
   }
   .s-block--latest-products .s-product-card-entry .s-product-card-content h3,
   .s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-title,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-content-title,
   .s-block--latest-products .s-product-card-entry .s-product-card-content a[href*="/product/"],
-  .s-block--latest-products .s-product-card-entry .s-product-card-content a,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-main h3,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-content-title,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-main a,
-  .s-block--latest-products .s-product-card-entry h3.s-product-card-content-title,
-  .s-block--latest-products .s-product-card-entry h3,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-title,
-  .s-block--latest-products .s-product-card-entry .s-product-card-title,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-content-title a,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content h3,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-title,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-content-title,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content a[href*="/product/"],
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content a,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main h3,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-content-title,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main a,
-  .s-block--latest-products salla-products-list .s-product-card-entry h3.s-product-card-content-title,
-  .s-block--latest-products salla-products-list .s-product-card-entry h3,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-title,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-title,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-content-title a,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content h3,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-title,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-content-title,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content a[href*="/product/"],
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content a,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-main h3,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-content-title,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-main a,
-  .s-block--latest-products .s-products-list .s-product-card-entry h3.s-product-card-content-title,
-  .s-block--latest-products .s-products-list .s-product-card-entry h3,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-title,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-title,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-content-title a,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content h3,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-title,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-content-title,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content a[href*="/product/"],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content a,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-main h3,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-content-title,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-main a,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry h3.s-product-card-content-title,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry h3,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-title,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-title,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-content-title a,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content h3,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-title,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-content-title,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content a[href*="/product/"],
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content a,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-main h3,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-content-title,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-main a,
-  section.s-block--latest-products .s-product-card-entry h3.s-product-card-content-title,
-  section.s-block--latest-products .s-product-card-entry h3,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-title,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-title,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-content-title a,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content h3,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-title,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-content-title,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content a[href*="/product/"],
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content a,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main h3,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-content-title,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main a,
-  section.s-block--latest-products salla-products-list .s-product-card-entry h3.s-product-card-content-title,
-  section.s-block--latest-products salla-products-list .s-product-card-entry h3,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-title,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-title,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-content-title a {
+  .s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-content-title {
     display: -webkit-box !important;
     visibility: visible !important;
     opacity: 1 !important;
     height: auto !important;
     min-height: auto !important;
-    max-height: 36px !important;
+    max-height: 40px !important;
     color: #333 !important;
     font-size: 14px !important;
     line-height: 18px !important;
     font-weight: 700 !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 8px !important;
     margin-top: 0 !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
     -webkit-line-clamp: 2 !important;
     -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    -webkit-text-decoration: none !important;
+    text-decoration: none !important;
     position: relative !important;
     z-index: 2 !important;
   }
   .s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-sale-price,
   .s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-price,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-starting-price,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-price,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price,
-  .s-block--latest-products .s-product-card-entry .s-product-card-sale-price,
-  .s-block--latest-products .s-product-card-entry .s-product-card-price,
-  .s-block--latest-products .s-product-card-entry .s-product-card-starting-price,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-sale-price,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-price,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-starting-price,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-price,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-sale-price,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-price,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-starting-price,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-sale-price,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-price,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-starting-price,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-price,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-sale-price,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-price,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-starting-price,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-sale-price,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-price,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-starting-price,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-price,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-sale-price,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-price,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-starting-price,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-sale-price,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-price,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-starting-price,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-price,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-sale-price,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-price,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-starting-price,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-sale-price,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-price,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-starting-price,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-price,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-sale-price,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-price,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-starting-price {
+  .s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-starting-price {
     display: inline-flex !important;
     visibility: visible !important;
     opacity: 1 !important;
     height: auto !important;
     min-height: auto !important;
-    max-height: none !important;
     color: #bf3617 !important;
     font-size: 16px !important;
     font-weight: 700 !important;
-    margin-top: 6px !important;
-    margin-bottom: 8px !important;
+    margin-top: 4px !important;
+    margin-bottom: 0 !important;
     width: 100% !important;
-    overflow: visible !important;
     position: relative !important;
     z-index: 2 !important;
   }
@@ -51870,388 +51762,49 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   .s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-price *,
   .s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-starting-price h4,
   .s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-starting-price span,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-starting-price *,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price h4,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price span,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price *,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-price h4,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-price span,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-price *,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price h4,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price span,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price *,
-  .s-block--latest-products .s-product-card-entry .s-product-card-sale-price h4,
-  .s-block--latest-products .s-product-card-entry .s-product-card-sale-price span,
-  .s-block--latest-products .s-product-card-entry .s-product-card-sale-price *,
-  .s-block--latest-products .s-product-card-entry .s-product-card-price h4,
-  .s-block--latest-products .s-product-card-entry .s-product-card-price span,
-  .s-block--latest-products .s-product-card-entry .s-product-card-price *,
-  .s-block--latest-products .s-product-card-entry .s-product-card-starting-price h4,
-  .s-block--latest-products .s-product-card-entry .s-product-card-starting-price span,
-  .s-block--latest-products .s-product-card-entry .s-product-card-starting-price *,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-sale-price h4,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-sale-price span,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-sale-price *,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-price h4,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-price span,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-price *,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-starting-price h4,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-starting-price span,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-starting-price *,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price h4,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price span,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price *,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-price h4,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-price span,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-price *,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price h4,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price span,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price *,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-sale-price h4,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-sale-price span,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-sale-price *,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-price h4,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-price span,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-price *,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-starting-price h4,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-starting-price span,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-starting-price *,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-sale-price h4,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-sale-price span,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-sale-price *,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-price h4,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-price span,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-price *,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-starting-price h4,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-starting-price span,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-starting-price *,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price h4,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price span,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price *,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-price h4,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-price span,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-price *,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price h4,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price span,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price *,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-sale-price h4,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-sale-price span,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-sale-price *,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-price h4,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-price span,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-price *,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-starting-price h4,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-starting-price span,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-starting-price *,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-sale-price h4,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-sale-price span,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-sale-price *,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-price h4,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-price span,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-price *,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-starting-price h4,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-starting-price span,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content .s-product-card-starting-price *,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price h4,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price span,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price *,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-price h4,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-price span,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-price *,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price h4,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price span,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price *,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-sale-price h4,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-sale-price span,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-sale-price *,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-price h4,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-price span,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-price *,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-starting-price h4,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-starting-price span,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-starting-price *,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-sale-price h4,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-sale-price span,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-sale-price *,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-price h4,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-price span,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-price *,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-starting-price h4,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-starting-price span,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-starting-price *,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price h4,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price span,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price *,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-price h4,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-price span,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-price *,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price h4,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price span,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price *,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-sale-price h4,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-sale-price span,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-sale-price *,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-price h4,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-price span,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-price *,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-starting-price h4,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-starting-price span,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-starting-price *,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-sale-price h4,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-sale-price span,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-sale-price *,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-price h4,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-price span,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-price *,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-starting-price h4,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-starting-price span,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-product-card-starting-price *,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price h4,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price span,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-sale-price *,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-price h4,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-price span,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-price *,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price h4,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price span,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-main .s-product-card-starting-price *,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-sale-price h4,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-sale-price span,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-sale-price *,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-price h4,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-price span,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-price *,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-starting-price h4,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-starting-price span,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-starting-price * {
+  .s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-starting-price * {
     display: inline-block !important;
     visibility: visible !important;
     opacity: 1 !important;
     color: #bf3617 !important;
     font-size: 16px !important;
     font-weight: 700 !important;
-    height: auto !important;
   }
   .s-block--latest-products .s-product-card-entry .s-product-card-content .s-rating-stars,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content .s-rating-stars-reviews,
-  .s-block--latest-products .s-product-card-entry .s-rating-stars,
-  .s-block--latest-products .s-product-card-entry .s-rating-stars-reviews,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-rating-stars,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-rating-stars-reviews,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-rating-stars,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-rating-stars-reviews,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content .s-rating-stars,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content .s-rating-stars-reviews,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-rating-stars,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-rating-stars-reviews,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content .s-rating-stars,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content .s-rating-stars-reviews,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-rating-stars,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-rating-stars-reviews,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content .s-rating-stars,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content .s-rating-stars-reviews,
-  section.s-block--latest-products .s-product-card-entry .s-rating-stars,
-  section.s-block--latest-products .s-product-card-entry .s-rating-stars-reviews,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-rating-stars,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content .s-rating-stars-reviews,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-rating-stars,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-rating-stars-reviews {
+  .s-block--latest-products .s-product-card-entry .s-product-card-content .s-rating-stars-reviews {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
     height: auto !important;
-    min-height: auto !important;
     margin-bottom: 4px !important;
   }
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions,
-  .s-block--latest-products .s-product-card-entry [class*=footer],
-  .s-block--latest-products .s-product-card-entry [class*=actions],
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer],
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions],
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer],
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions],
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions,
-  section.s-block--latest-products .s-product-card-entry [class*=footer],
-  section.s-block--latest-products .s-product-card-entry [class*=actions],
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer],
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] {
+  .s-block--latest-products .s-product-card-entry .s-product-card-content .s-product-card-content-footer,
+  .s-block--latest-products .s-product-card-entry .s-product-card-content salla-add-product-button {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
     height: auto !important;
     min-height: 42px !important;
-    max-height: none !important;
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    overflow: visible !important;
-    position: relative !important;
     order: 2 !important;
+    position: relative !important;
     z-index: 10 !important;
   }
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button],
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-button],
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer .s-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-add-product-button],
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-button],
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions .s-button,
-  .s-block--latest-products .s-product-card-entry [class*=footer] salla-add-product-button,
-  .s-block--latest-products .s-product-card-entry [class*=footer] salla-button,
-  .s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-add-product-button],
-  .s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-button],
-  .s-block--latest-products .s-product-card-entry [class*=footer] button,
-  .s-block--latest-products .s-product-card-entry [class*=footer] .s-button,
-  .s-block--latest-products .s-product-card-entry [class*=actions] salla-add-product-button,
-  .s-block--latest-products .s-product-card-entry [class*=actions] salla-button,
-  .s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-add-product-button],
-  .s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-button],
-  .s-block--latest-products .s-product-card-entry [class*=actions] button,
-  .s-block--latest-products .s-product-card-entry [class*=actions] .s-button,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-button,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button],
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button],
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer button,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer .s-button,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-button,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button],
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-button],
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions button,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions .s-button,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-add-product-button,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-button,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button],
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-button],
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] button,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] .s-button,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-add-product-button,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-button,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button],
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-button],
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] button,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] .s-button,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer salla-button,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button],
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button],
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer button,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer .s-button,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions salla-button,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button],
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-button],
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions button,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions .s-button,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] salla-add-product-button,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] salla-button,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button],
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] [is=salla-button],
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] button,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] .s-button,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] salla-add-product-button,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] salla-button,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button],
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] [is=salla-button],
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] button,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] .s-button,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer salla-button,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer button,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer .s-button,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions salla-button,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-button],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions button,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions .s-button,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] salla-add-product-button,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] salla-button,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] [is=salla-button],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] button,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] .s-button,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] salla-add-product-button,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] salla-button,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] [is=salla-button],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] button,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] .s-button,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button],
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-button],
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer button,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer .s-button,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-add-product-button],
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-button],
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions button,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions .s-button,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] salla-add-product-button,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] salla-button,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-add-product-button],
-  section.s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-button],
-  section.s-block--latest-products .s-product-card-entry [class*=footer] button,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] .s-button,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] salla-add-product-button,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] salla-button,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-add-product-button],
-  section.s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-button],
-  section.s-block--latest-products .s-product-card-entry [class*=actions] button,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] .s-button,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-button,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button],
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button],
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer button,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer .s-button,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-button,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button],
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-button],
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions button,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions .s-button,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-add-product-button,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-button,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button],
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-button],
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] button,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] .s-button,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-add-product-button,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-button,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button],
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-button],
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] button,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] .s-button {
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
+    width: 100% !important;
     height: auto !important;
     min-height: 42px !important;
-    max-height: none !important;
-    width: 100% !important;
     margin: 0 !important;
     padding: 10px 16px !important;
     background-color: #034c8c !important;
@@ -52260,1036 +51813,30 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     border-radius: 0 0 8px 8px !important;
     font-size: 13px !important;
     font-weight: 600 !important;
-    cursor: pointer !important;
     align-items: center !important;
     justify-content: center !important;
-    overflow: visible !important;
-    position: relative !important;
-    z-index: 11 !important;
-    -webkit-text-decoration: none !important;
-    text-decoration: none !important;
+    cursor: pointer !important;
     transition: all 0.3s ease !important;
     box-shadow: 0 2px 4px rgba(3, 76, 140, 0.2) !important;
   }
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button i,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button .sicon,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button [class*=icon],
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button svg,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button ::before,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button i,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button .sicon,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button [class*=icon],
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button svg,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button ::before,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] i,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] .sicon,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] [class*=icon],
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] svg,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] ::before,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-button] i,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-button] .sicon,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-button] [class*=icon],
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-button] svg,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-button] ::before,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer button i,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer button .sicon,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer button [class*=icon],
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer button svg,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer button ::before,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer .s-button i,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer .s-button .sicon,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer .s-button [class*=icon],
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer .s-button svg,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer .s-button ::before,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button i,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button .sicon,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button [class*=icon],
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button svg,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button ::before,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button i,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button .sicon,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button [class*=icon],
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button svg,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button ::before,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] i,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] .sicon,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] [class*=icon],
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] svg,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] ::before,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-button] i,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-button] .sicon,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-button] [class*=icon],
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-button] svg,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-button] ::before,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions button i,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions button .sicon,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions button [class*=icon],
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions button svg,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions button ::before,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions .s-button i,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions .s-button .sicon,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions .s-button [class*=icon],
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions .s-button svg,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions .s-button ::before,
-  .s-block--latest-products .s-product-card-entry [class*=footer] salla-add-product-button i,
-  .s-block--latest-products .s-product-card-entry [class*=footer] salla-add-product-button .sicon,
-  .s-block--latest-products .s-product-card-entry [class*=footer] salla-add-product-button [class*=icon],
-  .s-block--latest-products .s-product-card-entry [class*=footer] salla-add-product-button svg,
-  .s-block--latest-products .s-product-card-entry [class*=footer] salla-add-product-button ::before,
-  .s-block--latest-products .s-product-card-entry [class*=footer] salla-button i,
-  .s-block--latest-products .s-product-card-entry [class*=footer] salla-button .sicon,
-  .s-block--latest-products .s-product-card-entry [class*=footer] salla-button [class*=icon],
-  .s-block--latest-products .s-product-card-entry [class*=footer] salla-button svg,
-  .s-block--latest-products .s-product-card-entry [class*=footer] salla-button ::before,
-  .s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-add-product-button] i,
-  .s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-add-product-button] .sicon,
-  .s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-add-product-button] [class*=icon],
-  .s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-add-product-button] svg,
-  .s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-add-product-button] ::before,
-  .s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-button] i,
-  .s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-button] .sicon,
-  .s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-button] [class*=icon],
-  .s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-button] svg,
-  .s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-button] ::before,
-  .s-block--latest-products .s-product-card-entry [class*=footer] button i,
-  .s-block--latest-products .s-product-card-entry [class*=footer] button .sicon,
-  .s-block--latest-products .s-product-card-entry [class*=footer] button [class*=icon],
-  .s-block--latest-products .s-product-card-entry [class*=footer] button svg,
-  .s-block--latest-products .s-product-card-entry [class*=footer] button ::before,
-  .s-block--latest-products .s-product-card-entry [class*=footer] .s-button i,
-  .s-block--latest-products .s-product-card-entry [class*=footer] .s-button .sicon,
-  .s-block--latest-products .s-product-card-entry [class*=footer] .s-button [class*=icon],
-  .s-block--latest-products .s-product-card-entry [class*=footer] .s-button svg,
-  .s-block--latest-products .s-product-card-entry [class*=footer] .s-button ::before,
-  .s-block--latest-products .s-product-card-entry [class*=actions] salla-add-product-button i,
-  .s-block--latest-products .s-product-card-entry [class*=actions] salla-add-product-button .sicon,
-  .s-block--latest-products .s-product-card-entry [class*=actions] salla-add-product-button [class*=icon],
-  .s-block--latest-products .s-product-card-entry [class*=actions] salla-add-product-button svg,
-  .s-block--latest-products .s-product-card-entry [class*=actions] salla-add-product-button ::before,
-  .s-block--latest-products .s-product-card-entry [class*=actions] salla-button i,
-  .s-block--latest-products .s-product-card-entry [class*=actions] salla-button .sicon,
-  .s-block--latest-products .s-product-card-entry [class*=actions] salla-button [class*=icon],
-  .s-block--latest-products .s-product-card-entry [class*=actions] salla-button svg,
-  .s-block--latest-products .s-product-card-entry [class*=actions] salla-button ::before,
-  .s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-add-product-button] i,
-  .s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-add-product-button] .sicon,
-  .s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-add-product-button] [class*=icon],
-  .s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-add-product-button] svg,
-  .s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-add-product-button] ::before,
-  .s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-button] i,
-  .s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-button] .sicon,
-  .s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-button] [class*=icon],
-  .s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-button] svg,
-  .s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-button] ::before,
-  .s-block--latest-products .s-product-card-entry [class*=actions] button i,
-  .s-block--latest-products .s-product-card-entry [class*=actions] button .sicon,
-  .s-block--latest-products .s-product-card-entry [class*=actions] button [class*=icon],
-  .s-block--latest-products .s-product-card-entry [class*=actions] button svg,
-  .s-block--latest-products .s-product-card-entry [class*=actions] button ::before,
-  .s-block--latest-products .s-product-card-entry [class*=actions] .s-button i,
-  .s-block--latest-products .s-product-card-entry [class*=actions] .s-button .sicon,
-  .s-block--latest-products .s-product-card-entry [class*=actions] .s-button [class*=icon],
-  .s-block--latest-products .s-product-card-entry [class*=actions] .s-button svg,
-  .s-block--latest-products .s-product-card-entry [class*=actions] .s-button ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button i,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-button i,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-button .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-button svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-button ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] i,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] i,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer button i,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer button .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer button [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer button svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer button ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer .s-button i,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer .s-button .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer .s-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer .s-button svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer .s-button ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button i,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-button i,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-button .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-button svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-button ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] i,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] i,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions button i,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions button .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions button [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions button svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions button ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions .s-button i,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions .s-button .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions .s-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions .s-button svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions .s-button ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-add-product-button i,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-add-product-button .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-add-product-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-add-product-button svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-add-product-button ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-button i,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-button .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-button svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-button ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] i,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-button] i,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-button] .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-button] [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-button] svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-button] ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] button i,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] button .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] button [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] button svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] button ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] .s-button i,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] .s-button .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] .s-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] .s-button svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] .s-button ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-add-product-button i,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-add-product-button .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-add-product-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-add-product-button svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-add-product-button ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-button i,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-button .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-button svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-button ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] i,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-button] i,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-button] .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-button] [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-button] svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-button] ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] button i,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] button .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] button [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] button svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] button ::before,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] .s-button i,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] .s-button .sicon,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] .s-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] .s-button svg,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] .s-button ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button i,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer salla-button i,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer salla-button .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer salla-button [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer salla-button svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer salla-button ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] i,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] i,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer button i,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer button .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer button [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer button svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer button ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer .s-button i,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer .s-button .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer .s-button [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer .s-button svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer .s-button ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button i,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions salla-button i,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions salla-button .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions salla-button [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions salla-button svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions salla-button ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] i,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] i,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions button i,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions button .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions button [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions button svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions button ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions .s-button i,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions .s-button .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions .s-button [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions .s-button svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions .s-button ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] salla-add-product-button i,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] salla-add-product-button .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] salla-add-product-button [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] salla-add-product-button svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] salla-add-product-button ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] salla-button i,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] salla-button .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] salla-button [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] salla-button svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] salla-button ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] i,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] [is=salla-button] i,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] [is=salla-button] .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] [is=salla-button] [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] [is=salla-button] svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] [is=salla-button] ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] button i,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] button .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] button [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] button svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] button ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] .s-button i,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] .s-button .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] .s-button [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] .s-button svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] .s-button ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] salla-add-product-button i,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] salla-add-product-button .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] salla-add-product-button [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] salla-add-product-button svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] salla-add-product-button ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] salla-button i,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] salla-button .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] salla-button [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] salla-button svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] salla-button ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] i,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] [is=salla-button] i,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] [is=salla-button] .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] [is=salla-button] [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] [is=salla-button] svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] [is=salla-button] ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] button i,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] button .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] button [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] button svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] button ::before,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] .s-button i,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] .s-button .sicon,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] .s-button [class*=icon],
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] .s-button svg,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] .s-button ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer salla-button i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer salla-button .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer salla-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer salla-button svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer salla-button ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer button i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer button .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer button [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer button svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer button ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer .s-button i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer .s-button .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer .s-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer .s-button svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer .s-button ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions salla-button i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions salla-button .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions salla-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions salla-button svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions salla-button ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions button i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions button .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions button [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions button svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions button ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions .s-button i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions .s-button .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions .s-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions .s-button svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions .s-button ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] salla-add-product-button i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] salla-add-product-button .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] salla-add-product-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] salla-add-product-button svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] salla-add-product-button ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] salla-button i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] salla-button .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] salla-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] salla-button svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] salla-button ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] [is=salla-button] i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] [is=salla-button] .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] [is=salla-button] [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] [is=salla-button] svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] [is=salla-button] ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] button i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] button .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] button [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] button svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] button ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] .s-button i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] .s-button .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] .s-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] .s-button svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] .s-button ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] salla-add-product-button i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] salla-add-product-button .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] salla-add-product-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] salla-add-product-button svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] salla-add-product-button ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] salla-button i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] salla-button .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] salla-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] salla-button svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] salla-button ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] [is=salla-button] i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] [is=salla-button] .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] [is=salla-button] [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] [is=salla-button] svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] [is=salla-button] ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] button i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] button .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] button [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] button svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] button ::before,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] .s-button i,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] .s-button .sicon,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] .s-button [class*=icon],
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] .s-button svg,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] .s-button ::before,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button i,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button .sicon,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button [class*=icon],
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button svg,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button ::before,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button i,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button .sicon,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button [class*=icon],
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button svg,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button ::before,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] i,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] .sicon,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] [class*=icon],
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] svg,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] ::before,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-button] i,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-button] .sicon,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-button] [class*=icon],
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-button] svg,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-button] ::before,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer button i,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer button .sicon,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer button [class*=icon],
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer button svg,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer button ::before,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer .s-button i,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer .s-button .sicon,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer .s-button [class*=icon],
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer .s-button svg,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer .s-button ::before,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button i,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button .sicon,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button [class*=icon],
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button svg,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button ::before,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button i,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button .sicon,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button [class*=icon],
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button svg,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button ::before,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] i,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] .sicon,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] [class*=icon],
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] svg,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] ::before,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-button] i,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-button] .sicon,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-button] [class*=icon],
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-button] svg,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-button] ::before,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions button i,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions button .sicon,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions button [class*=icon],
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions button svg,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions button ::before,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions .s-button i,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions .s-button .sicon,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions .s-button [class*=icon],
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions .s-button svg,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions .s-button ::before,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] salla-add-product-button i,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] salla-add-product-button .sicon,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] salla-add-product-button [class*=icon],
-  section.s-block--latest-products .s-product-card-entry [class*=footer] salla-add-product-button svg,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] salla-add-product-button ::before,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] salla-button i,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] salla-button .sicon,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] salla-button [class*=icon],
-  section.s-block--latest-products .s-product-card-entry [class*=footer] salla-button svg,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] salla-button ::before,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-add-product-button] i,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-add-product-button] .sicon,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-add-product-button] [class*=icon],
-  section.s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-add-product-button] svg,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-add-product-button] ::before,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-button] i,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-button] .sicon,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-button] [class*=icon],
-  section.s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-button] svg,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-button] ::before,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] button i,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] button .sicon,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] button [class*=icon],
-  section.s-block--latest-products .s-product-card-entry [class*=footer] button svg,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] button ::before,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] .s-button i,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] .s-button .sicon,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] .s-button [class*=icon],
-  section.s-block--latest-products .s-product-card-entry [class*=footer] .s-button svg,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] .s-button ::before,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] salla-add-product-button i,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] salla-add-product-button .sicon,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] salla-add-product-button [class*=icon],
-  section.s-block--latest-products .s-product-card-entry [class*=actions] salla-add-product-button svg,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] salla-add-product-button ::before,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] salla-button i,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] salla-button .sicon,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] salla-button [class*=icon],
-  section.s-block--latest-products .s-product-card-entry [class*=actions] salla-button svg,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] salla-button ::before,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-add-product-button] i,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-add-product-button] .sicon,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-add-product-button] [class*=icon],
-  section.s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-add-product-button] svg,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-add-product-button] ::before,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-button] i,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-button] .sicon,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-button] [class*=icon],
-  section.s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-button] svg,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-button] ::before,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] button i,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] button .sicon,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] button [class*=icon],
-  section.s-block--latest-products .s-product-card-entry [class*=actions] button svg,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] button ::before,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] .s-button i,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] .s-button .sicon,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] .s-button [class*=icon],
-  section.s-block--latest-products .s-product-card-entry [class*=actions] .s-button svg,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] .s-button ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-button i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-button .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-button [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-button svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-button ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button] ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button] ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer button i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer button .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer button [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer button svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer button ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer .s-button i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer .s-button .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer .s-button [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer .s-button svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer .s-button ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-button i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-button .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-button [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-button svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-button ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button] ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-button] ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions button i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions button .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions button [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions button svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions button ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions .s-button i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions .s-button .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions .s-button [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions .s-button svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions .s-button ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-add-product-button i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-add-product-button .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-add-product-button [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-add-product-button svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-add-product-button ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-button i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-button .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-button [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-button svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-button ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button] ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-button] i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-button] .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-button] [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-button] svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-button] ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] button i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] button .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] button [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] button svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] button ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] .s-button i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] .s-button .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] .s-button [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] .s-button svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] .s-button ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-add-product-button i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-add-product-button .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-add-product-button [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-add-product-button svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-add-product-button ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-button i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-button .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-button [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-button svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-button ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button] ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-button] i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-button] .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-button] [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-button] svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-button] ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] button i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] button .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] button [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] button svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] button ::before,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] .s-button i,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] .s-button .sicon,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] .s-button [class*=icon],
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] .s-button svg,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] .s-button ::before {
-    display: none !important;
-    visibility: hidden !important;
-  }
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button]::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-button]::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer button::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer .s-button::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-add-product-button]::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-button]::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions button::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions .s-button::after,
-  .s-block--latest-products .s-product-card-entry [class*=footer] salla-add-product-button::after,
-  .s-block--latest-products .s-product-card-entry [class*=footer] salla-button::after,
-  .s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-add-product-button]::after,
-  .s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-button]::after,
-  .s-block--latest-products .s-product-card-entry [class*=footer] button::after,
-  .s-block--latest-products .s-product-card-entry [class*=footer] .s-button::after,
-  .s-block--latest-products .s-product-card-entry [class*=actions] salla-add-product-button::after,
-  .s-block--latest-products .s-product-card-entry [class*=actions] salla-button::after,
-  .s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-add-product-button]::after,
-  .s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-button]::after,
-  .s-block--latest-products .s-product-card-entry [class*=actions] button::after,
-  .s-block--latest-products .s-product-card-entry [class*=actions] .s-button::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-button::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button]::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button]::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer button::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer .s-button::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-button::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button]::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-button]::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions button::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions .s-button::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-add-product-button::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-button::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button]::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-button]::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] button::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] .s-button::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-add-product-button::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-button::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button]::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-button]::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] button::after,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] .s-button::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer salla-button::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button]::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button]::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer button::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer .s-button::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions salla-button::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button]::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-button]::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions button::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions .s-button::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] salla-add-product-button::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] salla-button::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button]::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] [is=salla-button]::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] button::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] .s-button::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] salla-add-product-button::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] salla-button::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button]::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] [is=salla-button]::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] button::after,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] .s-button::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer salla-button::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button]::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button]::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer button::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer .s-button::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions salla-button::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button]::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-button]::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions button::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions .s-button::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] salla-add-product-button::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] salla-button::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button]::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] [is=salla-button]::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] button::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] .s-button::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] salla-add-product-button::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] salla-button::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button]::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] [is=salla-button]::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] button::after,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] .s-button::after,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button::after,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button::after,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button]::after,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-button]::after,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer button::after,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer .s-button::after,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button::after,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button::after,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-add-product-button]::after,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-button]::after,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions button::after,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions .s-button::after,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] salla-add-product-button::after,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] salla-button::after,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-add-product-button]::after,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-button]::after,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] button::after,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] .s-button::after,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] salla-add-product-button::after,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] salla-button::after,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-add-product-button]::after,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-button]::after,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] button::after,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] .s-button::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-button::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button]::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button]::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer button::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer .s-button::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-button::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button]::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-button]::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions button::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions .s-button::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-add-product-button::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-button::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button]::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-button]::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] button::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] .s-button::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-add-product-button::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-button::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button]::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-button]::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] button::after,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] .s-button::after {
-    content: "→" !important;
-    display: inline-block !important;
-    font-size: 16px !important;
-    margin-left: 6px !important;
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button,
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button button,
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button .s-button {
+    background-color: transparent !important;
     color: #ffffff !important;
+    border: none !important;
+    padding: 0 !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    width: 100% !important;
+    min-height: 42px !important;
+    height: 42px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button:hover,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button:hover,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button]:hover,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-button]:hover,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer button:hover,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer .s-button:hover,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button:hover,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button:hover,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-add-product-button]:hover,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-button]:hover,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions button:hover,
-  .s-block--latest-products .s-product-card-entry .s-product-card-actions .s-button:hover,
-  .s-block--latest-products .s-product-card-entry [class*=footer] salla-add-product-button:hover,
-  .s-block--latest-products .s-product-card-entry [class*=footer] salla-button:hover,
-  .s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-add-product-button]:hover,
-  .s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-button]:hover,
-  .s-block--latest-products .s-product-card-entry [class*=footer] button:hover,
-  .s-block--latest-products .s-product-card-entry [class*=footer] .s-button:hover,
-  .s-block--latest-products .s-product-card-entry [class*=actions] salla-add-product-button:hover,
-  .s-block--latest-products .s-product-card-entry [class*=actions] salla-button:hover,
-  .s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-add-product-button]:hover,
-  .s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-button]:hover,
-  .s-block--latest-products .s-product-card-entry [class*=actions] button:hover,
-  .s-block--latest-products .s-product-card-entry [class*=actions] .s-button:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-button:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button]:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button]:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer button:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer .s-button:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-button:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button]:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-button]:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions button:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions .s-button:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-add-product-button:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-button:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button]:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-button]:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] button:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] .s-button:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-add-product-button:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-button:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button]:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-button]:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] button:hover,
-  .s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] .s-button:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer salla-button:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button]:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button]:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer button:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-content-footer .s-button:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions salla-button:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button]:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-button]:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions button:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry .s-product-card-actions .s-button:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] salla-add-product-button:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] salla-button:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button]:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] [is=salla-button]:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] button:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=footer] .s-button:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] salla-add-product-button:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] salla-button:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button]:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] [is=salla-button]:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] button:hover,
-  .s-block--latest-products .s-products-list .s-product-card-entry [class*=actions] .s-button:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer salla-button:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button]:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button]:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer button:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-content-footer .s-button:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions salla-button:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button]:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions [is=salla-button]:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions button:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry .s-product-card-actions .s-button:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] salla-add-product-button:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] salla-button:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button]:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] [is=salla-button]:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] button:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=footer] .s-button:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] salla-add-product-button:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] salla-button:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button]:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] [is=salla-button]:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] button:hover,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry [class*=actions] .s-button:hover,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button:hover,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button:hover,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button]:hover,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer [is=salla-button]:hover,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer button:hover,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-content-footer .s-button:hover,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button:hover,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button:hover,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-add-product-button]:hover,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions [is=salla-button]:hover,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions button:hover,
-  section.s-block--latest-products .s-product-card-entry .s-product-card-actions .s-button:hover,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] salla-add-product-button:hover,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] salla-button:hover,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-add-product-button]:hover,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] [is=salla-button]:hover,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] button:hover,
-  section.s-block--latest-products .s-product-card-entry [class*=footer] .s-button:hover,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] salla-add-product-button:hover,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] salla-button:hover,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-add-product-button]:hover,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] [is=salla-button]:hover,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] button:hover,
-  section.s-block--latest-products .s-product-card-entry [class*=actions] .s-button:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-add-product-button:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer salla-button:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-add-product-button]:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer [is=salla-button]:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer button:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-content-footer .s-button:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-add-product-button:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions salla-button:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-add-product-button]:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions [is=salla-button]:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions button:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry .s-product-card-actions .s-button:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-add-product-button:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] salla-button:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-add-product-button]:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] [is=salla-button]:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] button:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=footer] .s-button:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-add-product-button:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] salla-button:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-add-product-button]:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] [is=salla-button]:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] button:hover,
-  section.s-block--latest-products salla-products-list .s-product-card-entry [class*=actions] .s-button:hover {
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button:hover {
     background-color: #023a6b !important;
-    box-shadow: 0 3px 6px rgba(3, 76, 140, 0.3) !important;
   }
 }
 /* Deals Section - Orange Background - Auto height based on visible products */

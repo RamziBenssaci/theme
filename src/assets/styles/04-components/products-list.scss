@@ -169,44 +169,45 @@
   min-height: 120px !important;
   gap: 12px !important;
   
-  // Mobile: Full-width card styling for relaxed, responsive layout
+  // Mobile: Complete redesign - image left, content right, button below
   @media (max-width: 768px) {
-    width: 100% !important; // Full width
-    max-width: 100% !important; // No max-width restrictions
-    padding: 14px !important; // Comfortable padding for full width
-    min-height: 130px !important; // Relaxed height
-    gap: 0 !important; // No gap, image and content side by side
-    border-radius: 8px 8px 0 0 !important; // Rounded top only (button below)
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important; // Subtle shadow for depth
-    flex-shrink: 0 !important; // Prevent shrinking
-    flex-grow: 1 !important; // Allow growth to fill space
-    margin-bottom: 0 !important; // No margin, button connects
-    display: flex !important; // Ensure flex layout
-    flex-direction: row !important; // Image and content side by side
-    position: relative !important;
-    overflow: visible !important; // Allow button to show below
-  }
-}
-
-// Mobile: Card entry wrapper - column layout for button below
-.s-block--latest-products .s-product-card-entry {
-  @media (max-width: 768px) {
-    // Wrap card and button in column layout
-    display: flex !important;
-    flex-direction: column !important;
-    position: relative !important;
     width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important; // Remove padding, add to inner elements
+    min-height: auto !important;
+    gap: 0 !important;
+    border-radius: 8px 8px 0 0 !important; // Rounded top only
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+    flex-shrink: 0 !important;
+    flex-grow: 1 !important;
+    margin-bottom: 0 !important;
+    display: flex !important;
+    flex-direction: column !important; // Column layout: card body + button
+    align-items: stretch !important;
     overflow: visible !important;
     
-    // Card body (image + content) - row layout
+    // Card body: image + content side by side
     > .s-product-card-image,
     > .s-product-card-content {
       order: 1 !important;
     }
     
-    // Button below card - AGGRESSIVE OVERRIDE
-    > .s-product-card-content-footer,
-    > .s-product-card-actions,
+    // Button below card
+    > .s-product-card-content-footer {
+      order: 2 !important;
+    }
+  }
+}
+
+// Mobile: Add to cart button below card - FORCE VISIBILITY
+.s-block--latest-products .s-product-card-entry {
+  @media (max-width: 768px) {
+    // Create wrapper for card + button
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+    
+    // Show button below card - AGGRESSIVE OVERRIDE
     .s-product-card-content-footer,
     .s-product-card-actions {
       display: flex !important;
@@ -221,7 +222,6 @@
       margin-top: 0 !important;
       order: 2 !important; // Below card content
       position: relative !important;
-      flex-shrink: 0 !important;
       
       salla-add-product-button,
       salla-button {
@@ -238,19 +238,13 @@
   }
 }
 
-// Mobile: Style button below card - AGGRESSIVE VISIBILITY OVERRIDE
+// Mobile: Style button below card - MAXIMUM VISIBILITY AND STYLING
 .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button,
-.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button,
-.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button,
 .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button,
-.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button,
-.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-add-product-button salla-button {
+.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button {
   @media (max-width: 768px) {
     position: relative !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin: 0 !important;
     text-align: center !important;
     width: 100% !important;
     font-size: 13px !important;
@@ -272,6 +266,7 @@
     transition: all 0.3s ease !important;
     box-shadow: 0 2px 4px rgba(3, 76, 140, 0.2) !important;
     overflow: visible !important;
+    z-index: 11 !important;
     
     button,
     .s-button {
@@ -367,14 +362,21 @@
   flex-shrink: 0 !important;
   overflow: visible !important; // Allow heart icon to overlay
   
-  // Mobile: Image takes 50% of card width
+  // Mobile: Small image on the left side
   @media (max-width: 768px) {
-    width: 50% !important;
-    min-width: 50% !important;
-    max-width: 50% !important;
+    width: 35% !important; // Smaller image
+    min-width: 35% !important;
+    max-width: 35% !important;
     height: auto !important;
-    min-height: 120px !important;
+    min-height: 100px !important;
+    max-height: 120px !important;
     flex-shrink: 0 !important;
+    padding: 12px !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
   
   img {
@@ -549,11 +551,12 @@
   justify-content: space-between !important;
   min-width: 0 !important;
   
-  // Mobile: Content takes remaining 50% next to image - FORCE VISIBILITY
+  // Mobile: Content takes remaining space next to image - FORCE VISIBILITY
   @media (max-width: 768px) {
-    width: 50% !important;
+    width: 65% !important; // Remaining space after 35% image
     flex-grow: 1 !important;
-    padding-left: 12px !important;
+    padding: 12px !important;
+    padding-left: 8px !important;
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -562,6 +565,8 @@
     flex-direction: column !important;
     justify-content: flex-start !important;
     overflow: visible !important;
+    position: relative !important;
+    z-index: 1 !important;
   }
 }
 
@@ -583,12 +588,13 @@
   color: #333 !important;
   text-decoration: none !important;
   
-  // Mobile: Better title styling for full-width cards - FORCE VISIBILITY
+  // Mobile: Title visible next to image - MAXIMUM VISIBILITY
   @media (max-width: 768px) {
     font-size: 14px !important;
     line-height: 18px !important;
-    margin-bottom: 6px !important;
-    max-height: 36px !important;
+    margin-bottom: 8px !important;
+    margin-top: 0 !important;
+    max-height: 40px !important;
     display: -webkit-box !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -599,6 +605,10 @@
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     color: #333 !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
   
   &:hover {
@@ -645,11 +655,11 @@
   align-items: center !important;
   justify-content: flex-start !important;
   
-  // Mobile: Better price styling for full-width cards - FORCE VISIBILITY
+  // Mobile: Price visible next to image - MAXIMUM VISIBILITY
   @media (max-width: 768px) {
     font-size: 16px !important;
-    margin-top: 6px !important;
-    margin-bottom: 8px !important;
+    margin-top: 4px !important;
+    margin-bottom: 0 !important;
     display: inline-flex !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -658,6 +668,9 @@
     width: 100% !important;
     overflow: visible !important;
     color: #bf3617 !important;
+    font-weight: 700 !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
   
   h4 {
@@ -861,83 +874,108 @@
   }
 }
 
-// Mobile: ULTRA AGGRESSIVE VISIBILITY OVERRIDE - Maximum specificity
+// Mobile: COMPLETE REDESIGN - Image left, content right, button below
 @media (max-width: 768px) {
-  // Force card entry to show content - ALL POSSIBLE SELECTORS
-  .s-block--latest-products .s-product-card-entry,
-  .s-block--latest-products salla-products-list .s-product-card-entry,
-  .s-block--latest-products .s-products-list .s-product-card-entry,
-  .s-block--latest-products salla-products-list .s-products-list .s-product-card-entry,
-  section.s-block--latest-products .s-product-card-entry,
-  section.s-block--latest-products salla-products-list .s-product-card-entry {
-    
-    // Force card content container visible
-    .s-product-card-content,
-    .s-product-card-content-main,
-    [class*="content"] {
-      display: flex !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      height: auto !important;
-      min-height: auto !important;
-      max-height: none !important;
-      width: 50% !important;
-      padding-left: 12px !important;
-      overflow: visible !important;
-      position: relative !important;
-      z-index: 1 !important;
-    }
-    
-    // Force content-main visible
-    .s-product-card-content-main {
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
+  // Card entry: Grid layout (image left, content right, button below)
+    .s-block--latest-products .s-product-card-entry {
+      display: grid !important;
+      grid-template-columns: 35% 65% !important;
+      grid-template-rows: auto auto !important;
       width: 100% !important;
-      flex-grow: 1 !important;
+      padding: 0 !important;
+      border-radius: 8px 8px 0 0 !important;
+      margin-bottom: 0 !important;
+      overflow: visible !important;
+      background-color: #fff !important;
+      border: 1px solid #e0e0e0 !important;
+      border-bottom: none !important;
+      gap: 0 !important;
+      
+      > .s-product-card-image {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      
+      > .s-product-card-content {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      
+      > .s-product-card-content-footer {
+        grid-column: 1 / -1 !important;
+        grid-row: 2 !important;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
     }
+  
+  // Image: 35% width on left (grid handles width)
+  .s-block--latest-products .s-product-card-entry .s-product-card-image {
+    width: 100% !important;
+    padding: 12px !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    min-height: 100px !important;
+    max-height: 120px !important;
+    align-items: center !important;
+    justify-content: center !important;
     
-    // Force title visible - ALL POSSIBLE SELECTORS
-    .s-product-card-content h3,
-    .s-product-card-content .s-product-card-title,
-    .s-product-card-content .s-product-card-content-title,
-    .s-product-card-content a[href*="/product/"],
-    .s-product-card-content a,
-    .s-product-card-content-main h3,
-    .s-product-card-content-main .s-product-card-content-title,
-    .s-product-card-content-main a,
-    h3.s-product-card-content-title,
+    img {
+      width: 100% !important;
+      height: auto !important;
+      max-height: 120px !important;
+      object-fit: contain !important;
+    }
+  }
+  
+  // Content: 65% width on right with title and price (grid handles width)
+  .s-block--latest-products .s-product-card-entry .s-product-card-content {
+    width: 100% !important;
+    padding: 12px !important;
+    padding-left: 8px !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    
+    // Title: FORCE VISIBLE
     h3,
-    .s-product-card-content-title,
     .s-product-card-title,
-    .s-product-card-content-main .s-product-card-content-title a {
+    a[href*="/product/"],
+    .s-product-card-content-title {
       display: -webkit-box !important;
       visibility: visible !important;
       opacity: 1 !important;
       height: auto !important;
       min-height: auto !important;
-      max-height: 36px !important;
+      max-height: 40px !important;
       color: #333 !important;
       font-size: 14px !important;
       line-height: 18px !important;
       font-weight: 700 !important;
-      margin-bottom: 6px !important;
+      margin-bottom: 8px !important;
       margin-top: 0 !important;
-      overflow: hidden !important;
-      text-overflow: ellipsis !important;
       -webkit-line-clamp: 2 !important;
       -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      text-decoration: none !important;
       position: relative !important;
       z-index: 2 !important;
     }
     
-    // Force price visible - ALL POSSIBLE SELECTORS
-    .s-product-card-content .s-product-card-sale-price,
-    .s-product-card-content .s-product-card-price,
-    .s-product-card-content .s-product-card-starting-price,
-    .s-product-card-content-main .s-product-card-sale-price,
-    .s-product-card-content-main .s-product-card-price,
-    .s-product-card-content-main .s-product-card-starting-price,
+    // Price: FORCE VISIBLE
     .s-product-card-sale-price,
     .s-product-card-price,
     .s-product-card-starting-price {
@@ -946,14 +984,12 @@
       opacity: 1 !important;
       height: auto !important;
       min-height: auto !important;
-      max-height: none !important;
       color: #bf3617 !important;
       font-size: 16px !important;
       font-weight: 700 !important;
-      margin-top: 6px !important;
-      margin-bottom: 8px !important;
+      margin-top: 4px !important;
+      margin-bottom: 0 !important;
       width: 100% !important;
-      overflow: visible !important;
       position: relative !important;
       z-index: 2 !important;
       
@@ -966,96 +1002,83 @@
         color: #bf3617 !important;
         font-size: 16px !important;
         font-weight: 700 !important;
-        height: auto !important;
       }
     }
     
-    // Force rating visible
-    .s-product-card-content .s-rating-stars,
-    .s-product-card-content .s-rating-stars-reviews,
+    // Rating: FORCE VISIBLE if exists
     .s-rating-stars,
     .s-rating-stars-reviews {
       display: block !important;
       visibility: visible !important;
       opacity: 1 !important;
       height: auto !important;
-      min-height: auto !important;
       margin-bottom: 4px !important;
     }
     
-    // Force button below card visible - ALL POSSIBLE SELECTORS
+    // Hide button inside content
     .s-product-card-content-footer,
-    .s-product-card-actions,
-    [class*="footer"],
-    [class*="actions"] {
+    salla-add-product-button {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      overflow: hidden !important;
+    }
+  }
+  
+  // Button: Below card, full width
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    min-height: 42px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    order: 2 !important;
+    position: relative !important;
+    z-index: 10 !important;
+    
+    salla-add-product-button {
       display: flex !important;
       visibility: visible !important;
       opacity: 1 !important;
+      width: 100% !important;
       height: auto !important;
       min-height: 42px !important;
-      max-height: none !important;
-      width: 100% !important;
       margin: 0 !important;
-      padding: 0 !important;
-      overflow: visible !important;
-      position: relative !important;
-      order: 2 !important;
-      z-index: 10 !important;
+      padding: 10px 16px !important;
+      background-color: #034c8c !important;
+      color: #ffffff !important;
+      border: none !important;
+      border-radius: 0 0 8px 8px !important;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease !important;
+      box-shadow: 0 2px 4px rgba(3, 76, 140, 0.2) !important;
       
-      salla-add-product-button,
       salla-button,
-      [is="salla-add-product-button"],
-      [is="salla-button"],
       button,
       .s-button {
-        display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        height: auto !important;
-        min-height: 42px !important;
-        max-height: none !important;
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 10px 16px !important;
-        background-color: #034c8c !important;
+        background-color: transparent !important;
         color: #ffffff !important;
         border: none !important;
-        border-radius: 0 0 8px 8px !important;
+        padding: 0 !important;
         font-size: 13px !important;
         font-weight: 600 !important;
-        cursor: pointer !important;
+        width: 100% !important;
+        min-height: 42px !important;
+        height: 42px !important;
+        display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        overflow: visible !important;
-        position: relative !important;
-        z-index: 11 !important;
-        text-decoration: none !important;
-        transition: all 0.3s ease !important;
-        box-shadow: 0 2px 4px rgba(3, 76, 140, 0.2) !important;
-        
-        // Hide Salla icons
-        i,
-        .sicon,
-        [class*="icon"],
-        svg,
-        ::before {
-          display: none !important;
-          visibility: hidden !important;
-        }
-        
-        // Add arrow after text
-        &::after {
-          content: "→" !important;
-          display: inline-block !important;
-          font-size: 16px !important;
-          margin-left: 6px !important;
-          color: #ffffff !important;
-        }
-        
-        &:hover {
-          background-color: #023a6b !important;
-          box-shadow: 0 3px 6px rgba(3, 76, 140, 0.3) !important;
-        }
+      }
+      
+      &:hover {
+        background-color: #023a6b !important;
       }
     }
   }
