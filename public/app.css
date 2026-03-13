@@ -44958,7 +44958,7 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
-    z-index: 3 !important;
+    z-index: 400 !important;
     display: flex !important;
     align-items: flex-start !important;
     justify-content: flex-start !important;
@@ -44976,7 +44976,7 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
     position: relative !important;
     text-align: left !important;
     max-width: 60% !important;
-    z-index: 4 !important;
+    z-index: 401 !important;
     pointer-events: auto !important;
   }
   .hero-section-mobile-slider .hero-text h2 {
@@ -45010,6 +45010,7 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
 @media (max-width: 768px) {
   .hero-section-mobile-slider .hero-text .shop-now-btn {
     pointer-events: auto !important;
+    display: inline-flex !important;
     background-color: #ffffff !important;
     color: #000000 !important;
     border: none !important;
@@ -45017,7 +45018,6 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
     border-radius: 6px !important;
     font-weight: 600 !important;
     font-size: 15px !important;
-    display: inline-flex !important;
     align-items: center !important;
     gap: 8px !important;
     transition: background-color 0.3s !important;
