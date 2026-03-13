@@ -73,14 +73,10 @@
       gap: 24px !important;
     }
     
-    // Mobile: Balanced gap for cleaner look
+    // Mobile: One card per line for relaxed, responsive styling
     @media (max-width: 768px) {
-      gap: 14px !important; // Slightly tighter for better balance
-    }
-    
-    @media (max-width: 480px) {
-      grid-template-columns: 1fr !important;
-      gap: 12px !important;
+      grid-template-columns: 1fr !important; // One card per line
+      gap: 16px !important; // Comfortable spacing between cards
     }
   }
 }
@@ -101,13 +97,15 @@
   min-height: 120px !important;
   gap: 12px !important;
   
-  // Mobile: Improved card styling for cleaner, balanced look
+  // Mobile: Improved card styling for full-width, relaxed layout
   @media (max-width: 768px) {
-    padding: 10px !important; // Tighter padding
-    min-height: 110px !important; // Slightly smaller
-    gap: 10px !important; // Tighter gap
+    padding: 14px !important; // More comfortable padding for full width
+    min-height: 130px !important; // More relaxed height
+    gap: 14px !important; // Better spacing between image and content
     border-radius: 8px !important; // Slightly more rounded
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important; // Subtle shadow
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important; // Subtle shadow for depth
+    width: 100% !important; // Ensure full width
+    max-width: 100% !important; // No max-width restrictions
   }
 }
 
@@ -161,13 +159,13 @@
   flex-shrink: 0 !important;
   overflow: visible !important; // Allow heart icon to overlay
   
-  // Mobile: Slightly smaller image container for better balance
+  // Mobile: Larger image container for full-width cards
   @media (max-width: 768px) {
-    width: 100px !important;
-    min-width: 100px !important;
-    max-width: 100px !important;
-    height: 90px !important;
-    min-height: 90px !important;
+    width: 110px !important;
+    min-width: 110px !important;
+    max-width: 110px !important;
+    height: 100px !important;
+    min-height: 100px !important;
   }
   
   img {
@@ -361,12 +359,12 @@
   color: #333 !important;
   text-decoration: none !important;
   
-  // Mobile: Tighter title for better balance
+  // Mobile: Better title styling for full-width cards
   @media (max-width: 768px) {
-    font-size: 13px !important;
-    line-height: 16px !important;
-    margin-bottom: 3px !important;
-    max-height: 32px !important;
+    font-size: 14px !important;
+    line-height: 18px !important;
+    margin-bottom: 4px !important;
+    max-height: 36px !important;
   }
   
   &:hover {
@@ -405,10 +403,10 @@
   align-items: center !important;
   justify-content: flex-start !important;
   
-  // Mobile: Slightly smaller price for better balance
+  // Mobile: Better price styling for full-width cards
   @media (max-width: 768px) {
-    font-size: 15px !important;
-    margin-top: 3px !important;
+    font-size: 16px !important;
+    margin-top: 4px !important;
   }
   
   h4 {
@@ -418,7 +416,7 @@
     margin: 0 !important;
     
     @media (max-width: 768px) {
-      font-size: 15px !important;
+      font-size: 16px !important;
     }
   }
   
@@ -462,13 +460,13 @@
   transition: all 0.3s ease !important;
   box-shadow: 0 2px 4px rgba(3, 76, 140, 0.2) !important;
   
-  // Mobile: Slightly smaller button for better balance
+  // Mobile: Better button styling for full-width cards
   @media (max-width: 768px) {
-    font-size: 12px !important;
-    padding: 7px 14px !important;
-    min-height: 34px !important;
-    height: 34px !important;
-    border-radius: 5px !important;
+    font-size: 13px !important;
+    padding: 9px 18px !important;
+    min-height: 38px !important;
+    height: 38px !important;
+    border-radius: 6px !important;
   }
   
   button,
