@@ -44,6 +44,25 @@
       }
     }
   }
+  
+  // Mobile: Ensure title is centered
+  @media (max-width: 768px) {
+    .s-block__title {
+      justify-content: center !important;
+      text-align: center !important;
+      
+      .right-side {
+        width: 100% !important;
+        text-align: center !important;
+        
+        h2 {
+          text-align: center !important;
+          width: 100% !important;
+          margin: 0 auto !important;
+        }
+      }
+    }
+  }
 }
 
 /*
@@ -323,6 +342,26 @@
 
   h2 {
     @apply font-bold text-sm;
+  }
+  
+  // Make images perfectly circular with white background circle
+  img {
+    border-radius: 50% !important;
+    width: 64px !important;
+    height: 64px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    background-color: #ffffff !important;
+    border: 2px solid #f0f0f0 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    display: block !important;
+    margin: 0 auto 10px auto !important;
+    
+    // Ensure perfect circle on all devices
+    min-width: 64px !important;
+    min-height: 64px !important;
+    max-width: 64px !important;
+    max-height: 64px !important;
   }
 }
 

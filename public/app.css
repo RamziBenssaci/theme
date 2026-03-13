@@ -47425,6 +47425,21 @@ input[type=radio].sr-only:checked ~ div.dropdown__menu {
     width: 100% !important;
     text-align: center !important;
 }
+@media (max-width: 768px) {
+  .s-block--categories .s-block__title {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .s-block--categories .s-block__title .right-side {
+    width: 100% !important;
+    text-align: center !important;
+  }
+  .s-block--categories .s-block__title .right-side h2 {
+    text-align: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+}
 /*
   Main slider
 */
@@ -48399,6 +48414,24 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 700;
+}
+.slide--cat-entry img {
+  border-radius: 50% !important;
+  width: 64px !important;
+  height: 64px !important;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
+  -o-object-position: center !important;
+     object-position: center !important;
+  background-color: #ffffff !important;
+  border: 2px solid #f0f0f0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  display: block !important;
+  margin: 0 auto 10px auto !important;
+  min-width: 64px !important;
+  min-height: 64px !important;
+  max-width: 64px !important;
+  max-height: 64px !important;
 }
 /*
   offers slider
