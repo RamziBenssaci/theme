@@ -5,12 +5,24 @@
   padding: 60px 0 !important;
   background-color: #ffffff !important;
   
+  // Mobile: Reduce top padding to bring closer to Featured Categories
+  @media (max-width: 768px) {
+    padding-top: 20px !important; // Reduced from 60px
+    padding-bottom: 40px !important;
+    margin-top: 0 !important;
+  }
+  
   .s-block__title {
     text-align: center !important;
     margin-bottom: 32px !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+    
+    // Mobile: Reduce title bottom margin
+    @media (max-width: 768px) {
+      margin-bottom: 20px !important;
+    }
     
     h2 {
       font-size: 24px !important;
@@ -20,6 +32,12 @@
       color: #111 !important;
       line-height: 24px !important;
       width: 100% !important;
+      
+      // Mobile: Slightly smaller title
+      @media (max-width: 768px) {
+        font-size: 20px !important;
+        margin-bottom: 12px !important;
+      }
     }
   }
 }
@@ -55,6 +73,11 @@
       gap: 24px !important;
     }
     
+    // Mobile: Balanced gap for cleaner look
+    @media (max-width: 768px) {
+      gap: 14px !important; // Slightly tighter for better balance
+    }
+    
     @media (max-width: 480px) {
       grid-template-columns: 1fr !important;
       gap: 12px !important;
@@ -77,6 +100,15 @@
   height: auto !important;
   min-height: 120px !important;
   gap: 12px !important;
+  
+  // Mobile: Improved card styling for cleaner, balanced look
+  @media (max-width: 768px) {
+    padding: 10px !important; // Tighter padding
+    min-height: 110px !important; // Slightly smaller
+    gap: 10px !important; // Tighter gap
+    border-radius: 8px !important; // Slightly more rounded
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important; // Subtle shadow
+  }
 }
 
 /* Product Badges - Repositioned for horizontal layout */
@@ -129,12 +161,28 @@
   flex-shrink: 0 !important;
   overflow: visible !important; // Allow heart icon to overlay
   
+  // Mobile: Slightly smaller image container for better balance
+  @media (max-width: 768px) {
+    width: 100px !important;
+    min-width: 100px !important;
+    max-width: 100px !important;
+    height: 90px !important;
+    min-height: 90px !important;
+  }
+  
   img {
     max-width: 100% !important;
     max-height: 100% !important;
     object-fit: contain !important;
     width: auto !important;
     height: auto !important;
+    
+    // Mobile: Ensure images don't stretch
+    @media (max-width: 768px) {
+      max-width: 100% !important;
+      max-height: 100% !important;
+      object-fit: contain !important;
+    }
   }
   
   a {
@@ -313,6 +361,14 @@
   color: #333 !important;
   text-decoration: none !important;
   
+  // Mobile: Tighter title for better balance
+  @media (max-width: 768px) {
+    font-size: 13px !important;
+    line-height: 16px !important;
+    margin-bottom: 3px !important;
+    max-height: 32px !important;
+  }
+  
   &:hover {
     color: #034c8c !important;
   }
@@ -349,11 +405,21 @@
   align-items: center !important;
   justify-content: flex-start !important;
   
+  // Mobile: Slightly smaller price for better balance
+  @media (max-width: 768px) {
+    font-size: 15px !important;
+    margin-top: 3px !important;
+  }
+  
   h4 {
     color: #bf3617 !important;
     font-size: 16px !important;
     font-weight: 700 !important;
     margin: 0 !important;
+    
+    @media (max-width: 768px) {
+      font-size: 15px !important;
+    }
   }
   
   span {
@@ -395,6 +461,15 @@
   height: 36px !important;
   transition: all 0.3s ease !important;
   box-shadow: 0 2px 4px rgba(3, 76, 140, 0.2) !important;
+  
+  // Mobile: Slightly smaller button for better balance
+  @media (max-width: 768px) {
+    font-size: 12px !important;
+    padding: 7px 14px !important;
+    min-height: 34px !important;
+    height: 34px !important;
+    border-radius: 5px !important;
+  }
   
   button,
   .s-button {

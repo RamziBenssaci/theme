@@ -45,11 +45,15 @@
     }
   }
   
-  // Mobile: Ensure title is centered
+  // Mobile: Ensure title is centered and reduce bottom spacing
   @media (max-width: 768px) {
+    margin-bottom: 0 !important;
+    padding-bottom: 20px !important;
+    
     .s-block__title {
       justify-content: center !important;
       text-align: center !important;
+      margin-bottom: 16px !important;
       
       .right-side {
         width: 100% !important;

@@ -50644,12 +50644,24 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   padding: 60px 0 !important;
   background-color: #ffffff !important;
 }
+@media (max-width: 768px) {
+  .s-block--latest-products {
+    padding-top: 20px !important;
+    padding-bottom: 40px !important;
+    margin-top: 0 !important;
+  }
+}
 .s-block--latest-products .s-block__title {
   text-align: center !important;
   margin-bottom: 32px !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
+}
+@media (max-width: 768px) {
+  .s-block--latest-products .s-block__title {
+    margin-bottom: 20px !important;
+  }
 }
 .s-block--latest-products .s-block__title h2 {
   font-size: 24px !important;
@@ -50659,6 +50671,12 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   color: #111 !important;
   line-height: 24px !important;
   width: 100% !important;
+}
+@media (max-width: 768px) {
+  .s-block--latest-products .s-block__title h2 {
+    font-size: 20px !important;
+    margin-bottom: 12px !important;
+  }
 }
 /* Products Grid - More columns for horizontal cards */
 .s-block--latest-products salla-products-list {
@@ -50718,6 +50736,15 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   min-height: 120px !important;
   gap: 12px !important;
 }
+@media (max-width: 768px) {
+  .s-block--latest-products .s-product-card-entry {
+    padding: 10px !important;
+    min-height: 110px !important;
+    gap: 10px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+  }
+}
 /* Product Badges - Repositioned for horizontal layout */
 .s-block--latest-products .s-product-card-entry .s-product-card-promotion-title {
   position: absolute !important;
@@ -50766,6 +50793,15 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   flex-shrink: 0 !important;
   overflow: visible !important;
 }
+@media (max-width: 768px) {
+  .s-block--latest-products .s-product-card-image {
+    width: 100px !important;
+    min-width: 100px !important;
+    max-width: 100px !important;
+    height: 90px !important;
+    min-height: 90px !important;
+  }
+}
 .s-block--latest-products .s-product-card-image img {
   max-width: 100% !important;
   max-height: 100% !important;
@@ -50773,6 +50809,14 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
      object-fit: contain !important;
   width: auto !important;
   height: auto !important;
+}
+@media (max-width: 768px) {
+  .s-block--latest-products .s-product-card-image img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    -o-object-fit: contain !important;
+       object-fit: contain !important;
+  }
 }
 .s-block--latest-products .s-product-card-image a {
   width: 100% !important;
@@ -50944,6 +50988,16 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   -webkit-text-decoration: none !important;
   text-decoration: none !important;
 }
+@media (max-width: 768px) {
+  .s-block--latest-products .s-product-card-content h3,
+  .s-block--latest-products .s-product-card-content .s-product-card-title,
+  .s-block--latest-products .s-product-card-content a[href*="/product/"] {
+    font-size: 13px !important;
+    line-height: 16px !important;
+    margin-bottom: 3px !important;
+    max-height: 32px !important;
+  }
+}
 .s-block--latest-products .s-product-card-content h3:hover,
 .s-block--latest-products .s-product-card-content .s-product-card-title:hover,
 .s-block--latest-products .s-product-card-content a[href*="/product/"]:hover {
@@ -50982,12 +51036,25 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   align-items: center !important;
   justify-content: flex-start !important;
 }
+@media (max-width: 768px) {
+  .s-block--latest-products .s-product-card-content .s-product-card-sale-price,
+  .s-block--latest-products .s-product-card-content .s-product-card-price {
+    font-size: 15px !important;
+    margin-top: 3px !important;
+  }
+}
 .s-block--latest-products .s-product-card-content .s-product-card-sale-price h4,
 .s-block--latest-products .s-product-card-content .s-product-card-price h4 {
   color: #bf3617 !important;
   font-size: 16px !important;
   font-weight: 700 !important;
   margin: 0 !important;
+}
+@media (max-width: 768px) {
+  .s-block--latest-products .s-product-card-content .s-product-card-sale-price h4,
+  .s-block--latest-products .s-product-card-content .s-product-card-price h4 {
+    font-size: 15px !important;
+  }
 }
 .s-block--latest-products .s-product-card-content .s-product-card-sale-price span,
 .s-block--latest-products .s-product-card-content .s-product-card-price span {
@@ -51027,6 +51094,18 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   height: 36px !important;
   transition: all 0.3s ease !important;
   box-shadow: 0 2px 4px rgba(3, 76, 140, 0.2) !important;
+}
+@media (max-width: 768px) {
+  .s-block--latest-products .s-product-card-content salla-add-product-button,
+  .s-block--latest-products .s-product-card-content salla-button[fill=outline],
+  .s-block--latest-products .s-product-card-content .s-product-card-actions salla-button,
+  .s-block--latest-products .s-product-card-content-footer salla-add-product-button {
+    font-size: 12px !important;
+    padding: 7px 14px !important;
+    min-height: 34px !important;
+    height: 34px !important;
+    border-radius: 5px !important;
+  }
 }
 .s-block--latest-products .s-product-card-content salla-add-product-button button,
 .s-block--latest-products .s-product-card-content salla-add-product-button .s-button,
