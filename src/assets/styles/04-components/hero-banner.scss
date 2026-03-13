@@ -501,6 +501,25 @@ section.hero-section .hero-vehicle-filter {
       visibility: hidden !important;
     }
     
+    // Ensure mobile slider content is NOT affected by the above hiding styles
+    .hero-section-mobile-slider {
+      .hero-content,
+      .hero-text,
+      .price-badge {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      
+      .hero-text {
+        display: block !important;
+      }
+      
+      .price-badge {
+        display: inline-block !important;
+      }
+    }
+    
     // Keep slider dots visible - move them outside hidden content
     .slider-dots {
       display: flex !important;
@@ -539,6 +558,9 @@ section.hero-section .hero-vehicle-filter {
     background-repeat: no-repeat !important;
     border-radius: 10px !important;
     margin: 20px 15px !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     
     // Dark overlay for text readability
     &::before {
@@ -626,8 +648,12 @@ section.hero-section .hero-vehicle-filter {
       left: 0 !important;
       right: 0 !important;
       bottom: 0 !important;
-      z-index: 400 !important;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 400 !important; // Higher than overlay images (z-index: 300)
       display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
       align-items: flex-start !important;
       justify-content: flex-start !important;
       pointer-events: none !important;
@@ -644,6 +670,13 @@ section.hero-section .hero-vehicle-filter {
       max-width: 60% !important;
       z-index: 401 !important;
       pointer-events: auto !important;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      width: auto !important;
+      height: auto !important;
+      margin: 0 !important;
+      padding: 0 !important;
       
       h2 {
         font-size: 32px !important;
@@ -652,6 +685,8 @@ section.hero-section .hero-vehicle-filter {
         font-weight: bold !important;
         line-height: 1.2 !important;
         text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8) !important;
+        display: block !important;
+        visibility: visible !important;
         
         @media (max-width: 480px) {
           font-size: 28px !important;
@@ -664,6 +699,8 @@ section.hero-section .hero-vehicle-filter {
         margin-bottom: 20px !important;
         line-height: 1.4 !important;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+        display: block !important;
+        visibility: visible !important;
         
         @media (max-width: 480px) {
           font-size: 16px !important;
@@ -673,6 +710,8 @@ section.hero-section .hero-vehicle-filter {
       .shop-now-btn {
         pointer-events: auto !important;
         display: inline-flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
         background-color: #ffffff !important;
         color: #000000 !important;
         border: none !important;
@@ -684,6 +723,9 @@ section.hero-section .hero-vehicle-filter {
         gap: 8px !important;
         transition: background-color 0.3s !important;
         text-decoration: none !important;
+        width: auto !important;
+        height: auto !important;
+        margin: 0 !important;
         
         &:hover {
           background-color: #f5f5f5 !important;
@@ -692,6 +734,8 @@ section.hero-section .hero-vehicle-filter {
         i {
           font-size: 13px !important;
           color: #000000 !important;
+          display: inline-block !important;
+          visibility: visible !important;
         }
       }
     }
@@ -701,7 +745,7 @@ section.hero-section .hero-vehicle-filter {
       position: absolute !important;
       bottom: 20px !important;
       right: 20px !important;
-      z-index: 4 !important;
+      z-index: 401 !important; // Higher than overlay images
       font-size: 16px !important;
       padding: 8px 16px !important;
       background-color: #bf3617 !important;
@@ -709,7 +753,12 @@ section.hero-section .hero-vehicle-filter {
       border-radius: 6px !important;
       font-weight: bold !important;
       display: inline-block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
       white-space: nowrap !important;
+      width: auto !important;
+      height: auto !important;
+      margin: 0 !important;
     }
   }
 }
