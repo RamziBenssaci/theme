@@ -44897,6 +44897,7 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
     background-repeat: no-repeat !important;
     border-radius: 10px !important;
     margin: 20px 15px !important;
+    margin-bottom: 10px !important;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -45265,9 +45266,12 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
 }
 @media (max-width: 768px) {
   .banner-badge {
-    padding: 4px 12px !important;
-    font-size: 10px !important;
-    margin-bottom: 12px !important;
+    padding: 3px 10px !important;
+    font-size: 9px !important;
+    margin-bottom: 10px !important;
+    border-radius: 12px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.3px !important;
   }
 }
 .banner-btn {
@@ -45298,13 +45302,16 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
 }
 @media (max-width: 768px) {
   .banner-btn {
-    padding: 8px 16px !important;
-    font-size: 12px !important;
-    border-width: 1.5px !important;
-    gap: 6px !important;
+    padding: 6px 14px !important;
+    font-size: 11px !important;
+    border-width: 1px !important;
+    border-radius: 4px !important;
+    gap: 5px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.2px !important;
   }
   .banner-btn i {
-    font-size: 11px !important;
+    font-size: 10px !important;
   }
 }
 .banner-image {

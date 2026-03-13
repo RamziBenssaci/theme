@@ -129,11 +129,14 @@
     background-color: #f29f05 !important; // var(--primary-orange)
   }
   
-  // Mobile: Make badges smaller
+  // Mobile: Make badges smaller and more elegant
   @media (max-width: 768px) {
-    padding: 4px 12px !important; // Reduced from 5px 15px
-    font-size: 10px !important; // Reduced from 12px
-    margin-bottom: 12px !important;
+    padding: 3px 10px !important; // Further reduced for elegance
+    font-size: 9px !important; // Smaller, more refined
+    margin-bottom: 10px !important;
+    border-radius: 12px !important; // Slightly smaller radius for refinement
+    font-weight: 500 !important; // Slightly lighter weight for elegance
+    letter-spacing: 0.3px !important; // Subtle letter spacing for premium feel
   }
 }
 
@@ -163,15 +166,18 @@
     vertical-align: middle !important;
   }
   
-  // Mobile: Make Shop Now buttons smaller - override all inheritance
+  // Mobile: Make Shop Now buttons smaller and more elegant - override all inheritance
   @media (max-width: 768px) {
-    padding: 8px 16px !important; // Reduced from 12px 25px
-    font-size: 12px !important; // Reduced from default
-    border-width: 1.5px !important; // Slightly thinner border
-    gap: 6px !important; // Reduced gap
+    padding: 6px 14px !important; // Further reduced for elegance
+    font-size: 11px !important; // Smaller, more refined
+    border-width: 1px !important; // Thinner border for elegance
+    border-radius: 4px !important; // Slightly smaller radius
+    gap: 5px !important; // Tighter gap
+    font-weight: 600 !important; // Slightly lighter than bold for refinement
+    letter-spacing: 0.2px !important; // Subtle letter spacing
     
     i {
-      font-size: 11px !important; // Reduced icon size
+      font-size: 10px !important; // Smaller icon for proportion
     }
   }
 }
