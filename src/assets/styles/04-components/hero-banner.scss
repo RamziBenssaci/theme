@@ -562,6 +562,13 @@ section.hero-section .hero-vehicle-filter {
     visibility: visible !important;
     opacity: 1 !important;
     
+    @media (max-width: 768px) {
+      margin-top: 5px !important; // Reduce top margin to bring sidebar closer to header
+      margin-bottom: 20px !important;
+      margin-left: 15px !important;
+      margin-right: 15px !important;
+    }
+    
     // Dark overlay for text readability
     &::before {
       content: '' !important;
@@ -783,8 +790,72 @@ section.hero-section .hero-vehicle-filter {
       margin: 0 !important;
     }
     
-    // Mobile-specific price and button styles - simple and clean
+    // Mobile Action Container - Simple wrapper with no layout logic
+    .mobile-hero-actions {
+      position: absolute !important;
+      left: 30px !important;
+      top: auto !important;
+      bottom: 30px !important;
+      z-index: 1000 !important; // Above everything
+      display: block !important;
+      pointer-events: auto !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      
+      @media (min-width: 769px) {
+        display: none !important; // Hide on desktop
+      }
+    }
+    
+    // Unique class for price - directly on element
+    .mobile-hero-price {
+      font-size: 14px !important;
+      display: block !important;
+      margin-bottom: 6px !important;
+      color: #ffffff !important;
+      text-align: left !important;
+      pointer-events: auto !important;
+      position: relative !important;
+      z-index: 1001 !important;
+    }
+    
+    // Unique class for shop button - directly on element
+    .mobile-hero-shop-btn {
+      font-size: 13px !important;
+      padding: 6px 14px !important;
+      margin-top: 6px !important;
+      display: inline-block !important;
+      background-color: #ffffff !important;
+      color: #000000 !important;
+      border: none !important;
+      border-radius: 6px !important;
+      font-weight: 600 !important;
+      text-decoration: none !important;
+      pointer-events: auto !important;
+      position: relative !important;
+      z-index: 1001 !important;
+      cursor: pointer !important;
+      transition: background-color 0.3s !important;
+      
+      &:hover {
+        background-color: #f5f5f5 !important;
+      }
+      
+      i {
+        font-size: 13px !important;
+        color: #000000 !important;
+        display: inline-block !important;
+      }
+    }
+    
+    // Hide original price badge on mobile (we use mobile-hero-price instead)
     @media (max-width: 768px) {
+      .price-badge {
+        display: none !important;
+        visibility: hidden !important;
+      }
+      
+      // Legacy support for any old selectors
       .hero-section-mobile-slider .hero-content .btn,
       .hero-section-mobile-slider .hero-content button,
       .hero-section-mobile-slider .hero-content a {
@@ -800,29 +871,6 @@ section.hero-section .hero-vehicle-filter {
         font-size: 14px !important;
         display: block !important;
         margin-bottom: 6px !important;
-      }
-      
-      // Price badge - move to left and match shop now button size
-      .hero-section-mobile-slider .price-badge {
-        position: absolute !important;
-        bottom: auto !important;
-        right: auto !important;
-        left: 20px !important;
-        top: auto !important;
-        z-index: 999 !important;
-        font-size: 13px !important;
-        padding: 6px 14px !important;
-        background-color: rgb(191, 54, 23) !important;
-        color: rgb(255, 255, 255) !important;
-        font-weight: bold !important;
-        display: inline-block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        width: auto !important;
-        height: auto !important;
-        border-radius: 6px !important;
-        white-space: nowrap !important;
-        margin: 0px !important;
       }
     }
   }

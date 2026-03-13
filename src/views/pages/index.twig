@@ -52,9 +52,14 @@
                 <div class="hero-text">
                     <h2>{{ trans('blocks.home.battery_starters') }}</h2>
                     <p>{{ trans('blocks.home.start_batteries_seconds') }}</p>
-                    <a href="{{ link('/') }}" class="shop-now-btn">{{ trans('blocks.home.shop_now') }} <i class="sicon-sar"></i></a>
                 </div>
             </div>
+            {# Mobile Action Container - Simple wrapper with unique classes #}
+            <div class="mobile-hero-actions">
+                <div class="mobile-hero-price">{{ trans('blocks.home.from_price') }}</div>
+                <a href="{{ link('/') }}" class="mobile-hero-shop-btn">{{ trans('blocks.home.shop_now') }} <i class="sicon-sar"></i></a>
+            </div>
+            {# Keep original price badge for desktop/fallback #}
             <div class="price-badge">{{ trans('blocks.home.from_price') }}</div>
         </div>
         
