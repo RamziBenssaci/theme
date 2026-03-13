@@ -1098,8 +1098,8 @@ salla-cart-summary:not(.cart-link-main) {
         // Hide category dropdown on mobile
         .search-category-wrapper {
           display: none !important;
-        }
-        
+    }
+    
         salla-search {
           width: 100% !important;
           flex: 1 !important;
@@ -1183,8 +1183,8 @@ salla-cart-summary:not(.cart-link-main) {
       visibility: hidden !important;
       height: 0 !important;
       overflow: hidden !important;
-    }
-    
+      }
+      
     // Hide custom main menu on mobile
       custom-main-menu {
       display: none !important;

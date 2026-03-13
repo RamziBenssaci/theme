@@ -48,6 +48,8 @@ section.hero-section {
       
       img {
         width: auto !important;
+        max-width: 35% !important;
+        max-height: 40% !important;
         height: auto !important;
         display: block !important;
         object-fit: contain !important;
@@ -56,25 +58,37 @@ section.hero-section {
       }
     }
     
-    // First image (asset-2) on top - bigger on desktop
+    // First image (asset-2) on top - smaller
     .hero-overlay-image-2 {
       order: 1 !important;
       
+      @media (min-width: 769px) {
+        img {
+          max-width: 50% !important; // Increased from 30%
+          max-height: 55% !important; // Increased from 35%
+        }
+      }
+      
       img {
-        width: 600px !important;
-        max-width: none !important;
-        max-height: none !important;
+        max-width: 30% !important;
+        max-height: 35% !important;
       }
     }
     
-    // Second image (asset-1) below - bigger on desktop
+    // Second image (asset-1) below - slightly larger
     .hero-overlay-image-1 {
       order: 2 !important;
       
+      @media (min-width: 769px) {
+        img {
+          max-width: 60% !important; // Increased from 40%
+          max-height: 65% !important; // Increased from 45%
+        }
+      }
+      
       img {
-        width: 700px !important;
-        max-width: none !important;
-        max-height: none !important;
+        max-width: 40% !important;
+        max-height: 45% !important;
       }
     }
   }
@@ -122,10 +136,6 @@ section.hero-section {
         object-fit: cover !important;
         object-position: center !important;
         display: block !important;
-        
-        @media (min-width: 769px) {
-          opacity: 0 !important; // Hide the original image on desktop, use background instead
-        }
       }
     }
   }
@@ -579,30 +589,32 @@ section.hero-section .hero-vehicle-filter {
       // First image (asset-2) on top - smaller
       .hero-overlay-image-2 {
         order: 1 !important;
-        width: 900px !important;
-        margin-bottom: -250px !important;
-        z-index: 300 !important;
-        margin-right: -70px !important;
-        opacity: 0.6 !important;
+        
+        @media (max-width: 768px) {
+          width: 900px !important;
+          margin-bottom: -250px !important;
+          margin-right: -70px !important;
+          z-index: 300 !important;
+          opacity: 0.6 !important;
+        }
         
         img {
-          width: 900px !important;
-          max-width: none !important;
-          max-height: none !important;
-          height: auto !important;
+          max-width: 30% !important;
+          max-height: 35% !important;
         }
       }
       
       // Second image (asset-1) below - slightly larger
       .hero-overlay-image-1 {
         order: 2 !important;
-        width: 450px !important;
+        
+        @media (max-width: 768px) {
+          width: 450px !important;
+        }
         
         img {
-          width: 450px !important;
-          max-width: none !important;
-          max-height: none !important;
-          height: auto !important;
+          max-width: 40% !important;
+          max-height: 45% !important;
         }
       }
     }
