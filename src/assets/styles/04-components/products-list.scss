@@ -47,6 +47,16 @@
   display: block !important;
   padding-left: 15px !important;
   padding-right: 15px !important;
+  width: 100% !important;
+  
+  // Mobile: Ensure container allows full-width cards
+  @media (max-width: 768px) {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
   
   @media (min-width: 768px) {
     padding-left: 20px !important;
@@ -63,6 +73,13 @@
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 16px !important;
     
+    // Mobile: One card per line - full width for each card
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr !important; // One card per line
+      gap: 16px !important; // Comfortable spacing between cards
+      width: 100% !important; // Ensure full width
+    }
+    
     @media (min-width: 768px) {
       grid-template-columns: repeat(3, 1fr) !important;
       gap: 20px !important;
@@ -71,12 +88,6 @@
     @media (min-width: 1024px) {
       grid-template-columns: repeat(4, 1fr) !important;
       gap: 24px !important;
-    }
-    
-    // Mobile: One card per line for relaxed, responsive styling
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr !important; // One card per line
-      gap: 16px !important; // Comfortable spacing between cards
     }
   }
 }
@@ -97,15 +108,17 @@
   min-height: 120px !important;
   gap: 12px !important;
   
-  // Mobile: Improved card styling for full-width, relaxed layout
+  // Mobile: Full-width card styling for relaxed, responsive layout
   @media (max-width: 768px) {
-    padding: 14px !important; // More comfortable padding for full width
-    min-height: 130px !important; // More relaxed height
+    width: 100% !important; // Full width
+    max-width: 100% !important; // No max-width restrictions
+    padding: 14px !important; // Comfortable padding for full width
+    min-height: 130px !important; // Relaxed height
     gap: 14px !important; // Better spacing between image and content
     border-radius: 8px !important; // Slightly more rounded
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important; // Subtle shadow for depth
-    width: 100% !important; // Ensure full width
-    max-width: 100% !important; // No max-width restrictions
+    flex-shrink: 0 !important; // Prevent shrinking
+    flex-grow: 1 !important; // Allow growth to fill space
   }
 }
 
