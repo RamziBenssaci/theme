@@ -619,7 +619,7 @@ section.hero-section .hero-vehicle-filter {
       }
     }
     
-    // Text content in center
+    // Text content on left side (like screenshot)
     .hero-content {
       position: absolute !important;
       top: 0 !important;
@@ -628,15 +628,20 @@ section.hero-section .hero-vehicle-filter {
       bottom: 0 !important;
       z-index: 3 !important;
       display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
       pointer-events: none !important;
+      padding: 30px 20px !important;
+      
+      @media (max-width: 480px) {
+        padding: 20px 15px !important;
+      }
     }
     
     .hero-text {
       position: relative !important;
-      text-align: center !important;
-      max-width: 90% !important;
+      text-align: left !important;
+      max-width: 60% !important;
       z-index: 4 !important;
       pointer-events: auto !important;
       
@@ -644,6 +649,8 @@ section.hero-section .hero-vehicle-filter {
         font-size: 32px !important;
         color: #034c8c !important;
         margin-bottom: 10px !important;
+        font-weight: bold !important;
+        line-height: 1.2 !important;
         text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8) !important;
         
         @media (max-width: 480px) {
@@ -655,6 +662,7 @@ section.hero-section .hero-vehicle-filter {
         font-size: 18px !important;
         color: #ffffff !important;
         margin-bottom: 20px !important;
+        line-height: 1.4 !important;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
         
         @media (max-width: 480px) {
@@ -664,6 +672,27 @@ section.hero-section .hero-vehicle-filter {
       
       .shop-now-btn {
         pointer-events: auto !important;
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        border: none !important;
+        padding: 12px 25px !important;
+        border-radius: 6px !important;
+        font-weight: 600 !important;
+        font-size: 15px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        transition: background-color 0.3s !important;
+        text-decoration: none !important;
+        
+        &:hover {
+          background-color: #f5f5f5 !important;
+        }
+        
+        i {
+          font-size: 13px !important;
+          color: #000000 !important;
+        }
       }
     }
     

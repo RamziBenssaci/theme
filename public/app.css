@@ -44960,14 +44960,22 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
     bottom: 0 !important;
     z-index: 3 !important;
     display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
     pointer-events: none !important;
+    padding: 30px 20px !important;
   }
+}
+@media (max-width: 768px) and (max-width: 480px) {
+  .hero-section-mobile-slider .hero-content {
+    padding: 20px 15px !important;
+  }
+}
+@media (max-width: 768px) {
   .hero-section-mobile-slider .hero-text {
     position: relative !important;
-    text-align: center !important;
-    max-width: 90% !important;
+    text-align: left !important;
+    max-width: 60% !important;
     z-index: 4 !important;
     pointer-events: auto !important;
   }
@@ -44975,6 +44983,8 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
     font-size: 32px !important;
     color: #034c8c !important;
     margin-bottom: 10px !important;
+    font-weight: bold !important;
+    line-height: 1.2 !important;
     text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8) !important;
   }
 }
@@ -44988,6 +44998,7 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
     font-size: 18px !important;
     color: #ffffff !important;
     margin-bottom: 20px !important;
+    line-height: 1.4 !important;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
   }
 }
@@ -44999,6 +45010,26 @@ section.hero-section .hero-vehicle-filter .vin-search-btn:hover {
 @media (max-width: 768px) {
   .hero-section-mobile-slider .hero-text .shop-now-btn {
     pointer-events: auto !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: none !important;
+    padding: 12px 25px !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    transition: background-color 0.3s !important;
+    -webkit-text-decoration: none !important;
+    text-decoration: none !important;
+  }
+  .hero-section-mobile-slider .hero-text .shop-now-btn:hover {
+    background-color: #f5f5f5 !important;
+  }
+  .hero-section-mobile-slider .hero-text .shop-now-btn i {
+    font-size: 13px !important;
+    color: #000000 !important;
   }
   .hero-section-mobile-slider .price-badge {
     position: absolute !important;
