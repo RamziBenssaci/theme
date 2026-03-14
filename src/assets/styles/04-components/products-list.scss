@@ -169,7 +169,7 @@
   min-height: 120px !important;
   gap: 12px !important;
   
-  // Mobile: Complete redesign - image left, content right, button below
+  // Mobile: Complete redesign - grid layout (image left, content right, button below)
   @media (max-width: 768px) {
     width: 100% !important;
     max-width: 100% !important;
@@ -181,21 +181,14 @@
     flex-shrink: 0 !important;
     flex-grow: 1 !important;
     margin-bottom: 0 !important;
-    display: flex !important;
-    flex-direction: column !important; // Column layout: card body + button
+    display: grid !important; // Grid layout for precise control
+    grid-template-columns: 35% 65% !important; // Image 35%, Content 65%
+    grid-template-rows: auto auto !important; // Content row + button row
     align-items: stretch !important;
     overflow: visible !important;
-    
-    // Card body: image + content side by side
-    > .s-product-card-image,
-    > .s-product-card-content {
-      order: 1 !important;
-    }
-    
-    // Button below card
-    > .s-product-card-content-footer {
-      order: 2 !important;
-    }
+    background-color: #fff !important;
+    border: 1px solid #e0e0e0 !important;
+    border-bottom: none !important; // Button will have border
   }
 }
 
@@ -240,8 +233,9 @@
 
 // Mobile: Style button below card - MAXIMUM VISIBILITY AND STYLING
 .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button,
-.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button,
-.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button {
+.s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button,
+.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button,
+.s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button {
   @media (max-width: 768px) {
     position: relative !important;
     margin: 0 !important;
@@ -362,7 +356,7 @@
   flex-shrink: 0 !important;
   overflow: visible !important; // Allow heart icon to overlay
   
-  // Mobile: Small image on the left side
+  // Mobile: Smaller image on left side
   @media (max-width: 768px) {
     width: 35% !important; // Smaller image
     min-width: 35% !important;
@@ -377,6 +371,18 @@
     opacity: 1 !important;
     align-items: center !important;
     justify-content: center !important;
+    position: relative !important;
+    z-index: 1 !important;
+    
+    img {
+      width: 100% !important;
+      height: auto !important;
+      max-height: 120px !important;
+      object-fit: contain !important;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
   }
   
   img {
@@ -566,7 +572,7 @@
     justify-content: flex-start !important;
     overflow: visible !important;
     position: relative !important;
-    z-index: 1 !important;
+    z-index: 2 !important;
   }
 }
 

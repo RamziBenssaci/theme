@@ -50829,25 +50829,21 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     max-width: 100% !important;
     padding: 0 !important;
     min-height: auto !important;
+    grid-gap: 0 !important;
     gap: 0 !important;
     border-radius: 8px 8px 0 0 !important;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
     flex-shrink: 0 !important;
     flex-grow: 1 !important;
     margin-bottom: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
+    display: grid !important;
+    grid-template-columns: 35% 65% !important;
+    grid-template-rows: auto auto !important;
     align-items: stretch !important;
     overflow: visible !important;
-  }
-  .s-block--latest-products .s-product-card-entry > .s-product-card-image,
-  .s-block--latest-products .s-product-card-entry > .s-product-card-content {
-    order: 1 !important;
-  }
-  .s-block--latest-products .s-product-card-entry > .s-product-card-content-footer {
-    order: 2 !important;
-  }
-  .s-block--latest-products .s-product-card-entry {
+    background-color: #fff !important;
+    border: 1px solid #e0e0e0 !important;
+    border-bottom: none !important;
     display: flex !important;
     flex-direction: column !important;
     position: relative !important;
@@ -50881,8 +50877,9 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     padding: 0 !important;
   }
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button {
+  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button,
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button,
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button {
     position: relative !important;
     margin: 0 !important;
     text-align: center !important;
@@ -50910,10 +50907,12 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
   }
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button button,
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button .s-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button .s-button,
+  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button button,
+  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button .s-button,
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button .s-button {
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button .s-button,
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button button,
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button .s-button {
     background-color: transparent !important;
     color: #ffffff !important;
     border: none !important;
@@ -50930,19 +50929,23 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     gap: 6px !important;
   }
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button:hover, .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button:hover button, .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button:hover .s-button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button:hover,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button:hover button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button:hover .s-button,
+  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button:hover,
+  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button:hover button,
+  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button:hover .s-button,
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button:hover,
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button:hover button,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button:hover .s-button {
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button:hover .s-button,
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button:hover,
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button:hover button,
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button:hover .s-button {
     color: #ffffff !important;
     background-color: #023a6b !important;
     box-shadow: 0 3px 6px rgba(3, 76, 140, 0.3) !important;
   }
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button::after {
+  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button::after,
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button::after,
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button::after {
     content: "→" !important;
     display: inline-block !important;
     font-size: 16px !important;
@@ -50953,8 +50956,9 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     font-weight: normal !important;
   }
   .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button:hover::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button:hover::after,
-  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button:hover::after {
+  .s-block--latest-products .s-product-card-entry .s-product-card-actions salla-button:hover::after,
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-button:hover::after,
+  .s-block--latest-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button salla-button:hover::after {
     transform: translateX(2px) !important;
   }
 }
@@ -51021,6 +51025,18 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     opacity: 1 !important;
     align-items: center !important;
     justify-content: center !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+  .s-block--latest-products .s-product-card-image img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 120px !important;
+    -o-object-fit: contain !important;
+       object-fit: contain !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 }
 .s-block--latest-products .s-product-card-image img {
@@ -51205,7 +51221,7 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     justify-content: flex-start !important;
     overflow: visible !important;
     position: relative !important;
-    z-index: 1 !important;
+    z-index: 2 !important;
   }
 }
 /* Product Title - Compact */
